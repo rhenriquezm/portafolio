@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="modelo.Perfil" table="PERFIL">
+        <id column="ID_PERFIL" name="idPerfil" type="integer">
+            <generator class="sequence">
+                <param name="sequence">PERFIL_SEQ</param>
+            </generator>
+        </id>
+        <property column="NOM_PERFIL" name="nomPerfil"/>
+        <property column="DESC_PERFIL" name="descPerfil"/>
+    </class>
+</hibernate-mapping>

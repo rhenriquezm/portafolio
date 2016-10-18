@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Perfil</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Prueba de ingreso de Datos -->
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Perfil">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <p:outputLabel for="per" value="Perfil: "/>
+                            <p:selectOneMenu id="per" value="#{perfilControl.idPerfil}" style="width:150px">
+                                <p:ajax listener="#{perfilControl.cambioPerfil()}" update="idper,nomper,descper" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel for="idper" value="Id. Perfil: " />
+                            <p:inputText id="idper" value="#{perfilControl.perfil.idPerfil}" required="true" label="ID Per: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="nomper" value="Nombre Perfil: " />
+                            <p:inputText id="nomper" value="#{perfilControl.perfil.nomPerfil}" required="true" label="Nombre Per: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="descper" value="Desc. Perfil: " />
+                            <p:inputText id="descper" value="#{perfilControl.perfil.descPerfil}" required="true" label="Desc Per: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modiricar" update="panel" actionListener="#{perfilControl.modificarPerfil()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>
+

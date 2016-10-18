@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/util/HibernateUtil.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/controlador/UTControl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/dao/impl/UsuarioDaoImpl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/web/mantenedores/usuario/ingresarUsuario.xhtml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/dao/impl/UnidadTrabajoDaoImpl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/controlador/UsuarioControl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/modelo/Usuario.hbm.xml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/dao/impl/PerfilDaoImpl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/web/mantenedores/usuario/modificarUsuario.xhtml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/web/mantenedores/usuario/eliminarUsuario.xhtml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/dao/PerfilDao.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/controlador/PerfilControl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/src/java/dao/UsuarioDao.java</file>
+        </group>
+    </open-files>
+</project-private>
