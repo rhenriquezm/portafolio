@@ -2,7 +2,6 @@ package dao;
 
 import java.util.ArrayList;
 import modelo.Perfil;
-import modelo.Usuario;
 
 public interface PerfilDao {
     

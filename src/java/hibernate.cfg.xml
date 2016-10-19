@@ -8,7 +8,7 @@
     <property name="hibernate.connection.username">proyportafolio</property>
     <property name="hibernate.connection.password">proyportafolio</property>
     <mapping resource="modelo/UnidadTrabajo.hbm.xml"/>
-    <mapping resource="modelo/Perfil.hbm.xml"/>
     <mapping resource="modelo/Usuario.hbm.xml"/>
+    <mapping resource="modelo/Perfil.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

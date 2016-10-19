@@ -4,7 +4,7 @@
   <class name="modelo.Usuario" table="USUARIO">
       <id column="ID_USUARIO" name="idUsuario" type="integer" >
           <generator class="sequence">
-              <param name="generator">USUARIO_SEQ</param>
+              <param name="sequence">USUARIO_SEQ</param>
           </generator>
       </id>
       <property column="USER_USUARIO" name="userUsuario"/>

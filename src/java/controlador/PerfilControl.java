@@ -52,11 +52,10 @@ public class PerfilControl {
         this.listaParcial = listaParcial;
     }
     
-    
     // Metodos Personalizados
     public void ingresarPerfil() {
         PerfilDao perfilDao = new PerfilDaoImpl();
-        perfilDao.insert(perfil);
+        perfilDao.insert(perfil);       
     }
 
     public void eliminarPerfil() {

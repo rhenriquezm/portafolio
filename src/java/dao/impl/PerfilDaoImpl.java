@@ -3,8 +3,6 @@ package dao.impl;
 import dao.PerfilDao;
 import java.util.ArrayList;
 import modelo.Perfil;
-import modelo.UnidadTrabajo;
-import modelo.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
