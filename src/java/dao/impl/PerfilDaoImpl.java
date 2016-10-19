@@ -17,11 +17,11 @@ public class PerfilDaoImpl implements PerfilDao {
     @Override
     public ArrayList<Perfil> getAll() throws Exception {
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
             Criteria criteria = session.createCriteria(Perfil.class);
             ArrayList<Perfil> per = (ArrayList<Perfil>) criteria.list();
-            session.close();
+            this.transaction.commit();
             return per;
         } catch (Exception e) {
             if (this.transaction != null) {

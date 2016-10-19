@@ -5,18 +5,18 @@ import modelo.UnidadTrabajo;
 
 public interface UnidadTrabajoDao {
 
-    public ArrayList<UnidadTrabajo> getAll();
+    public ArrayList<UnidadTrabajo> getAll() throws Exception;
 
-    public UnidadTrabajo getPerfil(UnidadTrabajo ut);
+    public UnidadTrabajo getPerfil(UnidadTrabajo ut) throws Exception;
 
-    public void insert(UnidadTrabajo ut);
+    public boolean insert(UnidadTrabajo ut) throws Exception;
 
-    public void delete(UnidadTrabajo ut);
-    
-    public void deleteById(int id);
+    public boolean delete(UnidadTrabajo ut) throws Exception;
 
-    public void update(UnidadTrabajo ut);
-   
-    public UnidadTrabajo getById(int id);
-    
+    public boolean deleteById(int id) throws Exception;
+
+    public boolean update(UnidadTrabajo ut) throws Exception;
+
+    public UnidadTrabajo getById(int id) throws Exception;
+
 }
