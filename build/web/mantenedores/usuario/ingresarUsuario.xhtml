@@ -32,7 +32,7 @@
                             </p:inputText>
 
                             <p:outputLabel for="pUsuario" value="Apellido Paterno: " />
-                            <p:inputText id="pUsuario" value="#{usuarioControl.usuario.apelPUsuario}" required="true" label="Apellido Usuario: ">
+                            <p:inputText id="pUsuario"  value="#{usuarioControl.usuario.apelPUsuario}" required="true" label="Apellido Usuario: ">
                                 <f:validateLength minimum="2" />
                             </p:inputText>
 
@@ -51,14 +51,17 @@
                                 <f:validateLength minimum="1" />
                             </p:inputText>
 
-                            <p:outputLabel for="sexoUsuario" value="Sexo Usuario: " />
-                            <p:inputText id="sexoUsuario" value="#{usuarioControl.usuario.sexoUsuario}" required="true" label="Sexo Usuario: ">
-                                <f:validateLength minimum="1" />
-                            </p:inputText>
+                            <p:outputLabel for="sexoUsuario" value="Sexo: " />
+                            <p:selectOneMenu id="sexoUsuario" value="#{usuarioControl.usuario.sexoUsuario}">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <f:selectItems value="#{usuarioControl.sexo}" />
+                            </p:selectOneMenu>
+
 
                             <p:outputLabel for="correoUsuario" value="Correo Usuario: " />
-                            <p:inputText id="correoUsuario" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
+                            <p:inputText id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
                                 <f:validateLength minimum="2" />
+                                <f:validator validatorId="validatorEmail" />
                             </p:inputText>
 
                             <p:outputLabel for="fonoUsuario" value="Fono Usuario: " />
@@ -75,22 +78,22 @@
                             <p:inputText id="pass" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
                                 <f:validateLength minimum="2" />
                             </p:inputText>
-                            
+
                             <p:outputLabel for="perfil" value="Perfil: " />
                             <p:selectOneMenu id="perfil" value="#{usuarioControl.usuario.idPerfil}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                 <f:selectItems value="#{usuarioControl.mostrarPerfiles()}" />
                             </p:selectOneMenu>
-                            
+
                             <p:outputLabel for="ut" value="Unidad Trabajo: " />
                             <p:selectOneMenu id="ut" value="#{usuarioControl.usuario.idUniTrab}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                 <f:selectItems value="#{usuarioControl.mostrarUniTrabs()}" />
                             </p:selectOneMenu>
-                            
-                            
-                            
-                            
+
+
+
+
 
 
                         </h:panelGrid>

@@ -7,9 +7,13 @@ import dao.impl.PerfilDaoImpl;
 import dao.impl.UnidadTrabajoDaoImpl;
 import dao.impl.UsuarioDaoImpl;
 import java.util.ArrayList;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.ws.rs.POST;
 import modelo.Perfil;
 import modelo.UnidadTrabajo;
 import modelo.Usuario;
@@ -19,9 +23,17 @@ import modelo.Usuario;
 public class UsuarioControl {
 
     private Usuario usuario;
+    private ArrayList<SelectItem> sexo;
 
     public UsuarioControl() {
         this.usuario = new Usuario();
+        this.sexo = new ArrayList<>();
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.sexo.add(new SelectItem('M', "Masculino"));
+        this.sexo.add(new SelectItem('F', "Femenino"));
     }
 
     public Usuario getUsuario() {
@@ -32,10 +44,28 @@ public class UsuarioControl {
         this.usuario = usuario;
     }
 
+    public ArrayList<SelectItem> getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(ArrayList<SelectItem> sexo) {
+        this.sexo = sexo;
+    }
+    
     // Metodos personalizados
     public void ingresarUsuario() {
-        UsuarioDao usuarioDao = new UsuarioDaoImpl();
-        usuarioDao.insert(this.usuario);
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UsuarioDao usuarioDao = new UsuarioDaoImpl();
+            boolean ingresado = usuarioDao.insert(this.usuario);
+            if (ingresado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido ingresado exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar Usuario " + ex.getMessage()));
+        }
     }
 
     public ArrayList<SelectItem> mostrarPerfiles() {

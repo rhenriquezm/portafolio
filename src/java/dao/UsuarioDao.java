@@ -6,18 +6,18 @@ import modelo.Usuario;
 
 public interface UsuarioDao {
        
-    public ArrayList<Usuario> getAll();
+    public ArrayList<Usuario> getAll() throws Exception;
 
-    public Usuario getUsuario(Usuario us);
+    public Usuario getUsuario(Usuario us) throws Exception;
 
-    public void insert(Usuario us);
+    public boolean insert(Usuario us) throws Exception;
 
-    public void delete(Usuario us);
+    public boolean delete(Usuario us) throws Exception;
     
-    public void deleteById(int id);
+    public boolean deleteById(int id) throws Exception;
 
-    public void update(Usuario us);
+    public boolean update(Usuario us) throws Exception;
    
-    public Usuario getById(int id);
+    public Usuario getById(int id) throws Exception;
     
 }
