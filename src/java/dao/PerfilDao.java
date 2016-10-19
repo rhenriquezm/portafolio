@@ -5,19 +5,19 @@ import modelo.Perfil;
 
 public interface PerfilDao {
     
-    public ArrayList<Perfil> getAll();
+    public ArrayList<Perfil> getAll() throws Exception;
 
-    public Perfil getPerfil(Perfil per);
+    public Perfil getPerfil(Perfil per) throws Exception;
 
-    public void insert(Perfil per);
+    public boolean insert(Perfil per) throws Exception;
 
-    public void delete(Perfil per);
+    public boolean delete(Perfil per) throws Exception;
     
-    public void deleteById(int id);
+    public boolean deleteById(int id) throws Exception;
 
-    public void update(Perfil per);
+    public boolean update(Perfil per) throws Exception;
    
-    public Perfil getById(int id);
+    public Perfil getById(int id) throws Exception;
 
     
 }

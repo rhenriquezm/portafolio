@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:p="http://primefaces.org/ui">
+      
     <h:head>
         <title>Ingresar Perfil</title>
     </h:head>
@@ -11,19 +11,14 @@
 
         <div class="ui-g">
             <div class="ui-g-4">
-
             </div>
             <div class="ui-g-4">
-
-                <!-- Prueba de ingreso de Datos -->
-
-                <h:form >
-
+                <h:form>
                     <p:panel id="panel" header="Nuevo Perfil">
-                        <p:messages id="msgs" />
-
+                        
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        
                         <h:panelGrid columns="2" cellpadding="5">
-                            
                             <p:outputLabel for="nomPer" value="Nombre Perfil " />
                             <p:inputText id="nomPer" value="#{perfilControl.perfil.nomPerfil}" required="true" label="Nom Perfil: ">
                                 <f:validateLength minimum="2" />
@@ -47,5 +42,6 @@
         </div>
 
     </h:body>
+    
 </html>
 

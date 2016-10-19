@@ -17,9 +17,8 @@ import modelo.Usuario;
 @ViewScoped
 @ManagedBean
 public class UsuarioControl {
-    
+
     private Usuario usuario;
-    
 
     public UsuarioControl() {
         this.usuario = new Usuario();
@@ -32,29 +31,39 @@ public class UsuarioControl {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     // Metodos personalizados
-    
-    public void ingresarUsuario(){
+    public void ingresarUsuario() {
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         usuarioDao.insert(this.usuario);
     }
-    
-    public ArrayList<SelectItem> mostrarPerfiles(){
-        PerfilDao perfilDao = new PerfilDaoImpl();
-        ArrayList<SelectItem> perfiles = new ArrayList<>();
-        for (Perfil perfil : perfilDao.getAll()) {
-            perfiles.add(new SelectItem(perfil.getIdPerfil(), perfil.getNomPerfil()));
+
+    public ArrayList<SelectItem> mostrarPerfiles() {
+
+        try {
+            PerfilDao perfilDao = new PerfilDaoImpl();
+            ArrayList<SelectItem> perfiles = new ArrayList<>();
+            for (Perfil perfil : perfilDao.getAll()) {
+                perfiles.add(new SelectItem(perfil.getIdPerfil(), perfil.getNomPerfil()));
+            }
+            return perfiles;
+        } catch (Exception ex) {
+
         }
-        return perfiles;
+        return null;
+
     }
-    
-    public ArrayList<SelectItem> mostrarUniTrabs(){
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        ArrayList<SelectItem> uniTrabs = new ArrayList<>();
-        for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
-            uniTrabs.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+
+    public ArrayList<SelectItem> mostrarUniTrabs() {
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            ArrayList<SelectItem> uniTrabs = new ArrayList<>();
+            for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
+                uniTrabs.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+            }
+            return uniTrabs;
+        } catch (Exception e) {
         }
-        return uniTrabs;
+        return null;
     }
 }

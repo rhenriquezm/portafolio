@@ -3,9 +3,10 @@ package controlador;
 import dao.PerfilDao;
 import dao.impl.PerfilDaoImpl;
 import java.util.ArrayList;
-import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import modelo.Perfil;
 
@@ -15,18 +16,12 @@ public class PerfilControl {
 
     private Perfil perfil;
     private int idPerfil;
-    private ArrayList<SelectItem> listaParcial;
 
     public PerfilControl() {
         this.perfil = new Perfil();
         this.idPerfil = 0;
-        this.listaParcial = new ArrayList<>();
     }
-    
-    @PostConstruct
-    public void init(){
-        resetLista();
-    }
+
 
     public Perfil getPerfil() {
         return perfil;
@@ -44,51 +39,93 @@ public class PerfilControl {
         this.idPerfil = idPerfil;
     }
 
-    public ArrayList<SelectItem> getListaParcial() {
-        return listaParcial;
-    }
-
-    public void setListaParcial(ArrayList<SelectItem> listaParcial) {
-        this.listaParcial = listaParcial;
-    }
-    
     // Metodos Personalizados
     public void ingresarPerfil() {
-        PerfilDao perfilDao = new PerfilDaoImpl();
-        perfilDao.insert(perfil);       
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            PerfilDao perfilDao = new PerfilDaoImpl();
+            boolean ingresado = perfilDao.insert(perfil);
+            limpiarIngresar();
+            if (ingresado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil ingresado exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser ingresado"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar " + ex.getMessage()));
+        }
     }
 
+    //Limpiar formulario INGRESAR
+    public void limpiarIngresar() {
+        perfil.setNomPerfil(null);
+        perfil.setDescPerfil(null);
+    }
+            
+
     public void eliminarPerfil() {
-        PerfilDao perfilDao = new PerfilDaoImpl();
-        perfilDao.deleteById(idPerfil);
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            PerfilDao perfilDao = new PerfilDaoImpl();
+            boolean eliminado = perfilDao.deleteById(this.idPerfil);
+            if (eliminado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil eliminado exitosamente"));
+            } else if (this.idPerfil == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un perfil"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser eliminado exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
+        }
     }
 
     public ArrayList<SelectItem> mostrarPerfiles() {
-        PerfilDao perfilDao = new PerfilDaoImpl();
-        ArrayList<Perfil> perfilesComp = perfilDao.getAll();
-
-        for (Perfil perfil : perfilesComp) {
-            listaParcial.add(new SelectItem(perfil.getIdPerfil(), perfil.getNomPerfil()));
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            PerfilDao perfilDao = new PerfilDaoImpl();
+            ArrayList<SelectItem> perfiles = new ArrayList<>();
+            for (Perfil perfil : perfilDao.getAll()) {
+                perfiles.add(new SelectItem(perfil.getIdPerfil(), perfil.getNomPerfil()));
+            }
+            if (perfiles.isEmpty()) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen perfiles en el sistema"));
+            } else {
+                return perfiles;
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
         }
-        
-        return listaParcial;
+        return null;
     }
-    
-    public void cambioPerfil(){
-        PerfilDao perDao = new PerfilDaoImpl();
-        perfil = perDao.getById(idPerfil);
+
+    public void cambioPerfil() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            PerfilDao perDao = new PerfilDaoImpl();
+            this.perfil = perDao.getById(this.idPerfil);
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
+        }
+
     }
-    
-    public void modificarPerfil(){
-        PerfilDao perDao = new PerfilDaoImpl();
-        Perfil per = perDao.getById(idPerfil);
-        per.setNomPerfil(perfil.getNomPerfil());
-        per.setDescPerfil(perfil.getDescPerfil());
-        perDao.update(per);
-        resetLista();
-    }
-    
-    public void resetLista(){
-        listaParcial.clear();
+
+    public void modificarPerfil() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            PerfilDao perDao = new PerfilDaoImpl();
+            Perfil per = perDao.getById(idPerfil);
+            per.setNomPerfil(perfil.getNomPerfil());
+            per.setDescPerfil(perfil.getDescPerfil());
+            boolean modificar = perDao.update(per);
+            if (modificar) {
+                //limpiarLista();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil modificado exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser modificado exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar " + ex.getMessage()));
+        }
     }
 }

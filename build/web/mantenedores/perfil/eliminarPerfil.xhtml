@@ -20,7 +20,8 @@
                 <h:form >
 
                     <p:panel id="panel" header="Eliminar Unidad de Trabajo">
-                        <p:messages id="msgs" />
+                        
+                        <p:growl id="growl" showDetail="true" sticky="true" />
 
                         <h:panelGrid columns="3" cellpadding="5">
 
@@ -34,6 +35,7 @@
                         </h:panelGrid>
 
                         <p:commandButton value="Eliminar" update="panel" actionListener="#{perfilControl.eliminarPerfil()}" />
+
                     </p:panel>
 
                 </h:form>  
