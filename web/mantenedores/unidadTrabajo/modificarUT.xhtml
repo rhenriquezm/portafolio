@@ -21,7 +21,7 @@
 
                 <h:form >
                     <p:panel id="panel" header="Modificar Unidad de Trabajo">
-                        <p:messages id="msgs" />
+                        <p:growl id="growl" showDetail="true" sticky="true" />
 
                         <h:panelGrid columns="2" cellpadding="5">
                             
@@ -29,7 +29,7 @@
                             <p:selectOneMenu id="ut" value="#{uTControl.id}" style="width:150px">
                                 <p:ajax listener="#{uTControl.cambioUT()}" update="utr,idutr" />
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{uTControl.listarTodo()}" />
+                                <f:selectItems value="#{uTControl.mostrarUTs()}" />
                             </p:selectOneMenu>
 
 

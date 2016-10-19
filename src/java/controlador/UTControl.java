@@ -1,3 +1,4 @@
+//Rodrigo Ignacio Henriquez Moreno
 package controlador;
 
 import dao.UnidadTrabajoDao;
@@ -19,22 +20,13 @@ public class UTControl {
     //Atributos
     private int id;
     private UnidadTrabajo ut;
-    private ArrayList<SelectItem> listaUT;
-    private ArrayList<UnidadTrabajo> listaComp;
 
     //Constructor sin parametros
     public UTControl() {
         this.ut = new UnidadTrabajo();
         this.id = 0;
-        this.listaUT = new ArrayList<>();
-        this.listaComp = new ArrayList<>();
     }
     
-    @PostConstruct
-    public void init(){
-        resetLista();
-    }
-
     //Getters and Setters
     
     public UnidadTrabajo getUt() {
@@ -45,14 +37,6 @@ public class UTControl {
         this.ut = ut;
     }
 
-    public List<SelectItem> getListaUT() {
-        return listaUT;
-    }
-
-    public void setListaUT(ArrayList<SelectItem> listaUT) {
-        this.listaUT = listaUT;
-    }
-
     public int getId() {
         return id;
     }
@@ -61,69 +45,99 @@ public class UTControl {
         this.id = id;
     }
 
-    public ArrayList<UnidadTrabajo> getListaComp() {
-        return listaComp;
-    }
-
-    public void setListaComp(ArrayList<UnidadTrabajo> listaComp) {
-        this.listaComp = listaComp;
-    }
-
     //Metodos Personalizados
-    
     public void ingresarUTrabajo() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        utDao.insert(ut);
-        String nomb = ut.getNomUnidTrab();
-        reset();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(nomb + " " + "agregada exitosamente"));
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            boolean ingresado = utDao.insert(ut);
+            if (ingresado) {
+                limpiarIngresar();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT ingresada exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido ingresada exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar" + ex.getMessage()));
+        }
+
     }
 
-    public List<SelectItem> listarTodo() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
-            listaUT.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+    public List<SelectItem> mostrarUTs() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            ArrayList<SelectItem> listaUT = new ArrayList<>();
+            for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
+                listaUT.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+            }
+            if (listaUT.isEmpty()) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen UTs en el sistema"));
+            } else {
+                return listaUT;
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al mostrar UTS" + ex.getMessage()));
+        
         }
-        return listaUT;
+        return null;
     }
 
     public void eliminarUTrabajo() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        utDao.deleteById(id);
-        resetLista();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ID: " + id + " " + "Eliminada exitosamente"));
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            boolean eliminado = utDao.deleteById(id);
+            if (eliminado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT eliminada exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido eliminada exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar" + ex.getMessage()));
+        }
     }
 
     public void modificarUTrabajo() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        UnidadTrabajo uTrab = utDao.getById(id);
-        uTrab.setNomUnidTrab(ut.getNomUnidTrab());
-        utDao.update(uTrab);
-        resetLista();
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            UnidadTrabajo uTrab = utDao.getById(id);
+            uTrab.setNomUnidTrab(ut.getNomUnidTrab());
+            boolean modificado = utDao.update(uTrab);
+            if (modificado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido modificada exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
+        }
+
     }
 
-    public void busarUTrabajo() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        ut = utDao.getById(id);
+    public void buscarUTrabajo() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            ut = utDao.getById(id);
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al buscar" + ex.getMessage()));
+        }
 
     }
 
-    public void resetLista() {
-        listaUT.clear();
-    }
-
-    public void reset() {
+    public void limpiarIngresar() {
         this.ut.setNomUnidTrab(null);
     }
 
     public void cambioUT() {
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        ut = utDao.getById(id);
-    }
-    
-    public ArrayList<UnidadTrabajo> listaCompleta(){
-        UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-        listaComp = utDao.getAll();
-        return listaComp;
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            ut = utDao.getById(id);
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
+        }
     }
 }

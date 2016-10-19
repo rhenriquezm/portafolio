@@ -20,7 +20,7 @@
                 <h:form >
 
                     <p:panel id="panel" header="Eliminar Unidad de Trabajo">
-                        <p:messages id="msgs" />
+                        <p:growl id="growl" showDetail="true" sticky="true" />
 
                         <h:panelGrid columns="3" cellpadding="5">
 
@@ -28,7 +28,7 @@
                             <p:outputLabel for="ut" value="Unidad Trabajo: " />
                             <p:selectOneMenu id="ut" value="#{uTControl.id}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                <f:selectItems value="#{uTControl.listarTodo()}" />
+                                <f:selectItems value="#{uTControl.mostrarUTs()}" />
                             </p:selectOneMenu>
 
                         </h:panelGrid>
