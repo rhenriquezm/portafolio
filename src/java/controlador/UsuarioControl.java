@@ -1,5 +1,8 @@
 package controlador;
 
+import POJO.Perfil;
+import POJO.UnidadTrabajo;
+import POJO.Usuario;
 import dao.PerfilDao;
 import dao.UnidadTrabajoDao;
 import dao.UsuarioDao;
@@ -13,10 +16,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.ws.rs.POST;
-import modelo.Perfil;
-import modelo.UnidadTrabajo;
-import modelo.Usuario;
 
 @ViewScoped
 @ManagedBean
@@ -89,7 +88,7 @@ public class UsuarioControl {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
             ArrayList<SelectItem> uniTrabs = new ArrayList<>();
             for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
-                uniTrabs.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+                uniTrabs.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUniTrab()));
             }
             return uniTrabs;
         } catch (Exception e) {

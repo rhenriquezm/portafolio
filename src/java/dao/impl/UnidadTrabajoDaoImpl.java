@@ -1,8 +1,8 @@
 package dao.impl;
 
+import POJO.UnidadTrabajo;
 import dao.UnidadTrabajoDao;
 import java.util.ArrayList;
-import modelo.UnidadTrabajo;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -66,7 +66,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
             UnidadTrabajo uTrab = (UnidadTrabajo) session.load(UnidadTrabajo.class, ut.getIdUniTrab());
-            uTrab.setNomUnidTrab(ut.getNomUnidTrab());
+            uTrab.setNomUniTrab(ut.getNomUniTrab());
             session.update(uTrab);
             this.transaction.commit();
             return true;

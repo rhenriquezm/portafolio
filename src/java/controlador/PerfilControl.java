@@ -1,5 +1,6 @@
 package controlador;
 
+import POJO.Perfil;
 import dao.PerfilDao;
 import dao.impl.PerfilDaoImpl;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import modelo.Perfil;
+
 
 @ViewScoped
 @ManagedBean

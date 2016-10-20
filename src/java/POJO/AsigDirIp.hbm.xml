@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.AsigDirIp" table="ASIG_DIR_IP" schema="PROYPORTAFOLIO" optimistic-lock="version">
+        <composite-id name="id" class="POJO.AsigDirIpId">
+            <key-property name="idDir" type="short">
+                <column name="ID_DIR" precision="4" scale="0" />
+            </key-property>
+            <key-property name="idServ" type="short">
+                <column name="ID_SERV" precision="4" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="dirIp" class="POJO.DirIp" update="false" insert="false" fetch="select">
+            <column name="ID_DIR" precision="4" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servidor" class="POJO.Servidor" update="false" insert="false" fetch="select">
+            <column name="ID_SERV" precision="4" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaAsig" type="date">
+            <column name="FECHA_ASIG" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

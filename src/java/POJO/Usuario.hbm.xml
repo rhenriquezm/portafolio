@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Usuario" table="USUARIO" schema="PROYPORTAFOLIO" optimistic-lock="version">
+        <id name="idUsuario" type="short">
+            <column name="ID_USUARIO" precision="4" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="perfil" class="POJO.Perfil" fetch="select">
+            <column name="ID_PERFIL" precision="4" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="unidadTrabajo" class="POJO.UnidadTrabajo" fetch="select">
+            <column name="ID_UNI_TRAB" precision="4" scale="0" />
+        </many-to-one>
+        <property name="userUsuario" type="string">
+            <column name="USER_USUARIO" length="20" not-null="true" />
+        </property>
+        <property name="passUsuario" type="string">
+            <column name="PASS_USUARIO" length="32" not-null="true" />
+        </property>
+        <property name="rutUsuario" type="int">
+            <column name="RUT_USUARIO" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="dvUsuario" type="char">
+            <column name="DV_USUARIO" length="1" not-null="true" />
+        </property>
+        <property name="nomUsuario" type="string">
+            <column name="NOM_USUARIO" length="20" not-null="true" />
+        </property>
+        <property name="patUsuario" type="string">
+            <column name="PAT_USUARIO" length="20" not-null="true" />
+        </property>
+        <property name="matUsuario" type="string">
+            <column name="MAT_USUARIO" length="20" not-null="true" />
+        </property>
+        <property name="sexoUsuario" type="char">
+            <column name="SEXO_USUARIO" length="1" not-null="true" />
+        </property>
+        <property name="correoUsuario" type="string">
+            <column name="CORREO_USUARIO" length="30" not-null="true" />
+        </property>
+        <property name="fonoUsuario" type="int">
+            <column name="FONO_USUARIO" precision="8" scale="0" not-null="true" />
+        </property>
+        <set name="servidors" table="SERVIDOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" precision="4" scale="0" />
+            </key>
+            <one-to-many class="POJO.Servidor" />
+        </set>
+        <set name="sistemas" table="SISTEMA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" precision="4" scale="0" />
+            </key>
+            <one-to-many class="POJO.Sistema" />
+        </set>
+    </class>
+</hibernate-mapping>

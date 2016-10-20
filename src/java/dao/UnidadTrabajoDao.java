@@ -1,7 +1,7 @@
 package dao;
 
+import POJO.UnidadTrabajo;
 import java.util.ArrayList;
-import modelo.UnidadTrabajo;
 
 public interface UnidadTrabajoDao {
 

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Servicio" table="SERVICIO" schema="PROYPORTAFOLIO" optimistic-lock="version">
+        <id name="idServicio" type="short">
+            <column name="ID_SERVICIO" precision="4" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sistema" class="POJO.Sistema" fetch="select">
+            <column name="ID_SIST" precision="4" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nomServicio" type="string">
+            <column name="NOM_SERVICIO" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

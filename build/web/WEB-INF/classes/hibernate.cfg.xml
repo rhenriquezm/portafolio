@@ -7,8 +7,31 @@
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">proyportafolio</property>
     <property name="hibernate.connection.password">proyportafolio</property>
-    <mapping resource="modelo/UnidadTrabajo.hbm.xml"/>
-    <mapping resource="modelo/Usuario.hbm.xml"/>
-    <mapping resource="modelo/Perfil.hbm.xml"/>
+    <mapping resource="POJO/SistOper.hbm.xml"/>
+    <mapping resource="POJO/Servicio.hbm.xml"/>
+    <mapping resource="POJO/NivSeg.hbm.xml"/>
+    <mapping resource="POJO/NivSens.hbm.xml"/>
+    <mapping resource="POJO/AsigDirIp.hbm.xml"/>
+    <mapping resource="POJO/SoftBd.hbm.xml"/>
+    <mapping resource="POJO/Rack.hbm.xml"/>
+    <mapping resource="POJO/Sistema.hbm.xml"/>
+    <mapping resource="POJO/Dept.hbm.xml"/>
+    <mapping resource="POJO/Servidor.hbm.xml"/>
+    <mapping resource="POJO/ContGar.hbm.xml"/>
+    <mapping resource="POJO/CarServ.hbm.xml"/>
+    <mapping resource="POJO/UnidadTrabajo.hbm.xml"/>
+    <mapping resource="POJO/Webservice.hbm.xml"/>
+    <mapping resource="POJO/Garantia.hbm.xml"/>
+    <mapping resource="POJO/DirIp.hbm.xml"/>
+    <mapping resource="POJO/Organizacion.hbm.xml"/>
+    <mapping resource="POJO/LengDesSist.hbm.xml"/>
+    <mapping resource="POJO/Usuario.hbm.xml"/>
+    <mapping resource="POJO/Proveedor.hbm.xml"/>
+    <mapping resource="POJO/SalaServ.hbm.xml"/>
+    <mapping resource="POJO/TipoServ.hbm.xml"/>
+    <mapping resource="POJO/Emp.hbm.xml"/>
+    <mapping resource="POJO/Perfil.hbm.xml"/>
+    <mapping resource="POJO/Incidente.hbm.xml"/>
+    <mapping resource="POJO/TipoServidor.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

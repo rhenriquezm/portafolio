@@ -1,6 +1,7 @@
 //Rodrigo Ignacio Henriquez Moreno
 package controlador;
 
+import POJO.UnidadTrabajo;
 import dao.UnidadTrabajoDao;
 import dao.impl.UnidadTrabajoDaoImpl;
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import modelo.UnidadTrabajo;
 
 @ViewScoped
 @ManagedBean
@@ -68,7 +68,7 @@ public class UTControl {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
             ArrayList<SelectItem> listaUT = new ArrayList<>();
             for (UnidadTrabajo unidadTrabajo : utDao.getAll()) {
-                listaUT.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUnidTrab()));
+                listaUT.add(new SelectItem(unidadTrabajo.getIdUniTrab(), unidadTrabajo.getNomUniTrab()));
             }
             if (listaUT.isEmpty()) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen UTs en el sistema"));
@@ -102,7 +102,7 @@ public class UTControl {
         try {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
             UnidadTrabajo uTrab = utDao.getById(id);
-            uTrab.setNomUnidTrab(ut.getNomUnidTrab());
+            uTrab.setNomUniTrab(ut.getNomUniTrab());
             boolean modificado = utDao.update(uTrab);
             if (modificado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));
@@ -127,7 +127,7 @@ public class UTControl {
     }
 
     public void limpiarIngresar() {
-        this.ut.setNomUnidTrab(null);
+        this.ut.setNomUniTrab(null);
     }
 
     public void cambioUT() {

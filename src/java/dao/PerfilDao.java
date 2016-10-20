@@ -1,7 +1,7 @@
 package dao;
 
+import POJO.Perfil;
 import java.util.ArrayList;
-import modelo.Perfil;
 
 public interface PerfilDao {
     

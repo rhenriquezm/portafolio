@@ -1,8 +1,8 @@
 package dao.impl;
 
+import POJO.Perfil;
 import dao.PerfilDao;
 import java.util.ArrayList;
-import modelo.Perfil;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;

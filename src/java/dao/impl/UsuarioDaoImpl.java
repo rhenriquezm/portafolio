@@ -1,8 +1,8 @@
 package dao.impl;
 
+import POJO.Usuario;
 import dao.UsuarioDao;
 import java.util.ArrayList;
-import modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;

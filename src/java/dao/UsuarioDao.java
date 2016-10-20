@@ -1,8 +1,7 @@
-
 package dao;
 
+import POJO.Usuario;
 import java.util.ArrayList;
-import modelo.Usuario;
 
 public interface UsuarioDao {
        
