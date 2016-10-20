@@ -6,7 +6,11 @@
     <class name="POJO.Usuario" table="USUARIO" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idUsuario" type="short">
             <column name="ID_USUARIO" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    USUARIO_SEQ
+                </param>
+            </generator>
         </id>
         <many-to-one name="perfil" class="POJO.Perfil" fetch="select">
             <column name="ID_PERFIL" precision="4" scale="0" not-null="true" />

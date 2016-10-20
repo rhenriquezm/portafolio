@@ -19,4 +19,6 @@ public interface UsuarioDao {
    
     public Usuario getById(int id) throws Exception;
     
+    public Usuario getByUserPass(String nombreUsuario, String contrasena) throws Exception;
+    
 }

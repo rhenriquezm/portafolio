@@ -6,7 +6,11 @@
     <class name="POJO.Perfil" table="PERFIL" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idPerfil" type="short">
             <column name="ID_PERFIL" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">
+                    PERFIL_SEQ
+                </param>
+            </generator>
         </id>
         <property name="nomPerfil" type="string">
             <column name="NOM_PERFIL" length="20" not-null="true" />
