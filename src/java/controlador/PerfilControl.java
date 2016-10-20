@@ -47,7 +47,7 @@ public class PerfilControl {
             PerfilDao perfilDao = new PerfilDaoImpl();
             boolean ingresado = perfilDao.insert(perfil);
             if (ingresado) {
-                limpiarIngresar();
+                //limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil ingresado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser ingresado"));

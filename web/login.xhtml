@@ -18,7 +18,7 @@
                 <h:form>
                     <p:panel id="panel" header="LOGIN">
 
-                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <p:growl id="growl" showDetail="true" sticky="true" life/>
 
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="nomUsuario" value="Nombre Usuario " />
@@ -27,7 +27,7 @@
                             </p:inputText>
 
                             <p:outputLabel for="passUsuario" value="Pass Usuario: " />
-                            <p:password id="passUsuario" value="#{sessionControl.password}" />
+                            <p:password id="passUsuario" value="#{sessionControl.passUsuario}" />
 
                         </h:panelGrid>
 
