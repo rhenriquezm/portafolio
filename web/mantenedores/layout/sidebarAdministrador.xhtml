@@ -4,7 +4,8 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui"
-    xmlns:po="http://primefaces.org/omega">
+    xmlns:po="http://primefaces.org/omega"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <div class="sidebar">
         <div class="nano">
@@ -34,7 +35,7 @@
                 <div class="menu">
                     <po:menu>
                         <p:menuitem id="om_dashboard" value="Dashboard" icon="fa fa-home" outcome="/dashboard"/>
-                        
+
                         <p:submenu id="MantenedorPersona" label="Mantenedor Usuario" icon="fa fa-group">
                             <p:menuitem id="ingresar_persona" value="Ingresar Usuario" icon="fa fa-columns" outcome="/mantenedores/MantenedorPersona/ingresarPersona" />
                             <p:menuitem id="modificar_persona" value="Modificar Usuario" icon="fa fa-columns" outcome="/mantenedores/MantenedorPersona/modificarPersona" />
@@ -55,29 +56,27 @@
 
                         <p:submenu id="MantenedorRegistrosIncidente" label="Mantenedor Registro de Incidente" icon="fa fa-group">
                             <p:menuitem id="registrar_incidente" value="Registrar Incidente" icon="fa fa-columns" outcome="/mantenedores/MantenedorRegistroIncidentes/registrarIncidente" />
-
                         </p:submenu>
 
                         <p:submenu id="ConfiguracionSistema" label="Mantenedor Configuracion de Sistema" icon="fa fa-group">
                             <p:menuitem id="configuracion_general" value="Configuracion General" icon="fa fa-columns" outcome="/mantenedores/MantenedorConfiguracionSistema/configuracionGeneral" />
                             <p:menuitem id="configuracion_email" value="Configuracion Email" icon="fa fa-columns" outcome="/mantenedores/MantenedorConfiguracionSistema/configuracionEmail" />
                         </p:submenu>
-                        
+
                         <p:submenu id="MantenedorRack" label="Mantenedor Rack" icon="fa fa-group">
                             <p:menuitem id="ingresar_rack" value="Ingresar Rack" icon="fa fa-columns" outcome="/mantenedores/MantenedorRack/ingresarRack" />
                             <p:menuitem id="modificar_rack" value="Modificar Rack" icon="fa fa-columns" outcome="/mantenedores/MantenedorRack/modificarRack" />
                             <p:menuitem id="eliminar_rack" value="Eliminar Rack" icon="fa fa-columns" outcome="/mantenedores/MantenedorRack/eliminarRack" />
                         </p:submenu>
-                        
-                           <p:submenu id="ModuloConsultarServidor" label="Modulo Consultar Servidor" icon="fa fa-group">
+
+                        <p:submenu id="ModuloConsultarServidor" label="Modulo Consultar Servidor" icon="fa fa-group">
                             <p:menuitem id="consultar_servidor" value="Consultar Servidor" icon="fa fa-columns" outcome="/mantenedores/ModuloConsultarServidor/consultarServidor" />
-
-                          </p:submenu>
+                        </p:submenu>
                         
-                               <p:submenu id="ModuloConsultarSistemas" label="Modulo Consultar Sistema" icon="fa fa-group">
-                                <p:menuitem id="consultar_sistemas" value="Consultar Sistema" icon="fa fa-columns" outcome="/mantenedores/ModuloConsultarSistemas/consultarSistemas" />
-
-                               </p:submenu>
+                        <p:submenu id="ModuloConsultarSistemas" label="Modulo Consultar Sistema" icon="fa fa-group">
+                            <p:menuitem id="consultar_sistemas" value="Consultar Sistema" icon="fa fa-columns" outcome="/mantenedores/ModuloConsultarSistemas/consultarSistemas" />
+                        </p:submenu>
+                        
                     </po:menu>
                 </div>
             </div>
