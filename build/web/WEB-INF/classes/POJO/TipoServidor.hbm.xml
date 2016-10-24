@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.TipoServidor" table="TIPO_SERVIDOR" schema="PROYPORTAFOLIO" optimistic-lock="version">
+        <id name="idTipoServ" type="short">
+            <column name="ID_TIPO_SERV" precision="4" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomTipoServ" type="string">
+            <column name="NOM_TIPO_SERV" length="20" not-null="true" />
+        </property>
+        <set name="servidors" table="SERVIDOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_TIPO_SERV1" precision="4" scale="0" />
+            </key>
+            <one-to-many class="POJO.Servidor" />
+        </set>
+    </class>
+</hibernate-mapping>
