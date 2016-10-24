@@ -86,7 +86,7 @@
                             </p:selectOneMenu>
 
                             <p:outputLabel for="ut" value="Unidad Trabajo: " />
-                            <p:selectOneMenu id="ut" value="#{usuarioControl.usuario.idUniTrab}">
+                            <p:selectOneMenu id="ut" value="#{usuarioControl.usuario.unidadTrabajo.idUniTrab}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                 <f:selectItems value="#{usuarioControl.mostrarUniTrabs()}" />
                             </p:selectOneMenu>
