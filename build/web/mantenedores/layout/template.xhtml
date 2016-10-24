@@ -14,21 +14,19 @@
         <ui:insert name="head"/>
     </h:head>
 
-    
-        <h:outputStylesheet name="css/animate.css" library="omega-layout" />
-        <h:outputStylesheet name="css/nanoscroller.css" library="omega-layout" />
-        <h:outputStylesheet name="css/layout.css" library="omega-layout" />
+    <h:body styleClass="main-body">
         
-            <ui:include src="topbar.xhtml" />
+        <div class="wrapper">
+            <ui:include src="/mantenedores/layout/topbar.xhtml" />
             
-            <ui:include src="sidebar.xhtml" />
+            <ui:include src="/mantenedores/layout/sidebar.xhtml" />
             
             <div class="main">
                 <ui:insert name="content"/>
             </div>
             
-            <ui:include src="footer.xhtml" />
-        
+            <ui:include src="/mantenedores/layout/footer.xhtml" />
+        </div>
         
         <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
             <f:facet name="start">
@@ -40,7 +38,9 @@
             </f:facet>
         </p:ajaxStatus>
         
-        
-    
+        <h:outputStylesheet name="css/animate.css" library="omega-layout" />
+        <h:outputStylesheet name="css/nanoscroller.css" library="omega-layout" />
+        <h:outputStylesheet name="css/layout.css" library="omega-layout" />
+    </h:body>
 
 </html>

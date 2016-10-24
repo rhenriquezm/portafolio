@@ -32,12 +32,12 @@
                             </p:inputText>
 
                             <p:outputLabel for="pUsuario" value="Apellido Paterno: " />
-                            <p:inputText id="pUsuario"  value="#{usuarioControl.usuario.apelPUsuario}" required="true" label="Apellido Usuario: ">
+                            <p:inputText id="pUsuario"  value="#{usuarioControl.usuario.patUsuario}" required="true" label="Apellido Usuario: ">
                                 <f:validateLength minimum="2" />
                             </p:inputText>
 
                             <p:outputLabel for="mUsuario" value="Apellido Materno " />
-                            <p:inputText id="mUsuario" value="#{usuarioControl.usuario.apelMUsuario}" required="true" label="Apellido Usuario: ">
+                            <p:inputText id="mUsuario" value="#{usuarioControl.usuario.matUsuario}" required="true" label="Apellido Usuario: ">
                                 <f:validateLength minimum="2" />
                             </p:inputText>
 
@@ -80,7 +80,7 @@
                             </p:inputText>
 
                             <p:outputLabel for="perfil" value="Perfil: " />
-                            <p:selectOneMenu id="perfil" value="#{usuarioControl.usuario.idPerfil}">
+                            <p:selectOneMenu id="perfil" value="#{usuarioControl.usuario.perfil.idPerfil}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                 <f:selectItems value="#{usuarioControl.mostrarPerfiles()}" />
                             </p:selectOneMenu>
