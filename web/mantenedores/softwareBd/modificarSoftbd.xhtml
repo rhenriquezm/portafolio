@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Nivel Seguridad </title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Prueba de ingreso de Datos -->
+
+
+
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Nivel de Seguridad">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="sbd" value="Software BD: " />
+                            <p:selectOneMenu id="sbd" value="#{softBDControl.id}" style="width:150px">
+                                <p:ajax listener="#{softBDControl.cambioSDB()}" update="soft,idsoft" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{softBDControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                            
+                            <p:outputLabel for="idsoft" value="Id. Software BD: " />
+                            <p:inputText id="idsoft" value="#{softBDControl.sbd.idSoftBd}" required="true" label="Software BD: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="soft" value=" Nuevo Nombre: " />
+                            <p:inputText id="soft" value="#{softBDControl.sbd.nomSoftBd}" required="true" label="Nombre: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="softe" value=" Nueva Empresa: " />
+                            <p:inputText id="softe" value="#{softBDControl.sbd.empSoftBd}" required="true" label="Empresa: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="softv" value=" Nueva Version: " />
+                            <p:inputText id="softv" value="#{softBDControl.sbd.verSoftBd}" required="true" label="Version: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            
+
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{softBDControl.modificarSBD()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Ingresar Lenguaje de Desarrollo</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+
+
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Ingreso de Datos -->
+
+                <h:form >
+
+                    <p:panel id="panel" header="Nuevo Lenguaje de Desarrollo">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="4" cellpadding="5">
+
+                            <!--Nombre Lenguaje -->
+                            <p:outputLabel for="ld" value="Nombre: " />
+                            <p:inputText id="ld" value="#{lengDesControl.ld.nomLengDes}" required="true" label="Nombre Lenguaje: ">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Ingresar" update="panel" actionListener="#{lengDesControl.ingresarLengDesSist()}" />
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>
