@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Nivel Seguridad </title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Prueba de ingreso de Datos -->
+
+
+
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Nivel de Seguridad">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="ns" value="Nivel de Seguridad: " />
+                            <p:selectOneMenu id="ns" value="#{nSegControl.id}" style="width:150px">
+                                <p:ajax listener="#{nSegControl.cambioNS()}" update="nseg,idnseg" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{nSegControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                            
+                            <p:outputLabel for="idnseg" value="Id. Nivel de Seguridad: " />
+                            <p:inputText id="idnseg" value="#{nSegControl.ns.idNivSeg}" required="true" label="Nivel de Seguridad: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="nseg" value=" Nuevo Nombre: " />
+                            <p:inputText id="nseg" value="#{nSegControl.ns.descNivSeg}" required="true" label="Nivel de Seguridad: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{nSegControl.modificarNS()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>

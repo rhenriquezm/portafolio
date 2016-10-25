@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar WebService </title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Prueba de ingreso de Datos -->
+
+
+
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar WebService">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="wbs" value="WebService: " />
+                            <p:selectOneMenu id="wbs" value="#{wSControl.id}" style="width:150px">
+                                <p:ajax listener="#{wSControl.cambioWS()}" update="wbsr,idwbsr" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{wSControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                            
+                            <p:outputLabel for="idwbsr" value="Id. Nivel de Seguridad: " />
+                            <p:inputText id="idwbsr" value="#{wSControl.ws.idWebservice}" required="true" label="Nivel de Seguridad: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="wbsr" value=" Nuevo Nombre: " />
+                            <p:inputText id="wbsr" value="#{wSControl.ws.nomWebservice}" required="true" label="Nivel de Seguridad: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="wbsp" value=" Nuevo Protocolo: " />
+                            <p:inputText id="wbsp" value="#{wSControl.ws.protWebservice}" required="true" label="Protocolo: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{wSControl.modificarWS()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>

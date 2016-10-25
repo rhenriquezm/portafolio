@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+        <title>Eliminar Nivel Sensibilidad</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+            </div>
+            <div class="ui-g-4">
+
+                <!-- Prueba de ingreso de Datos -->
+
+                <h:form >
+
+                    <p:panel id="panel" header="Eliminar Nivel de Sensibilidad">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="3" cellpadding="5">
+
+
+                            <p:outputLabel for="ns" value="Nivel de Sensibilidad: " />
+                            <p:selectOneMenu id="ns" value="#{nSensControl.id}">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <f:selectItems value="#{nSensControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Eliminar" update="panel" actionListener="#{nSensControl.eliminarNS()}" />
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>
