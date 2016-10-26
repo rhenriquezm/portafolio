@@ -6,7 +6,11 @@
     <class name="POJO.Proveedor" table="PROVEEDOR" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idProv" type="short">
             <column name="ID_PROV" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    PROV_SEQ
+                </param>
+            </generator>
         </id>
         <property name="nomProv" type="string">
             <column name="NOM_PROV" length="20" not-null="true" />

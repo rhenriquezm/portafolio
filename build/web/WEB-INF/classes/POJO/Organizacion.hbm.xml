@@ -6,7 +6,11 @@
     <class name="POJO.Organizacion" table="ORGANIZACION" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idOrg" type="short">
             <column name="ID_ORG" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    ORGA_SEQ
+                </param>
+            </generator>
         </id>
         <property name="nomOrg" type="string">
             <column name="NOM_ORG" length="20" not-null="true" />
