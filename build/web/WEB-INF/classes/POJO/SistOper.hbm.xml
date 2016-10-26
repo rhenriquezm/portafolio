@@ -6,7 +6,11 @@
     <class name="POJO.SistOper" table="SIST_OPER" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idSo" type="short">
             <column name="ID_SO" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    SO_SEQ
+                </param>
+            </generator>
         </id>
         <property name="desSo" type="string">
             <column name="DES_SO" length="20" not-null="true" />

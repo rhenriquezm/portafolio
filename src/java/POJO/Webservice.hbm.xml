@@ -6,7 +6,11 @@
     <class name="POJO.Webservice" table="WEBSERVICE" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idWebservice" type="short">
             <column name="ID_WEBSERVICE" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    WS_SEQ
+                </param>
+            </generator>
         </id>
         <property name="nomWebservice" type="string">
             <column name="NOM_WEBSERVICE" length="20" not-null="true" />

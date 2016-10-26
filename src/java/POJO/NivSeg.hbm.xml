@@ -6,7 +6,11 @@
     <class name="POJO.NivSeg" table="NIV_SEG" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idNivSeg" type="int">
             <column name="ID_NIV_SEG" precision="5" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    NIVSEG_SEQ
+                </param>
+            </generator>
         </id>
         <property name="descNivSeg" type="string">
             <column name="DESC_NIV_SEG" length="20" not-null="true" />
