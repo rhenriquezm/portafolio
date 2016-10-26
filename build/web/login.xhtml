@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <h:head>
         <f:facet name="first">
@@ -16,29 +17,43 @@
     </h:head>
 
     <h:body styleClass="login-body">
+        
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        
         <div id="login-wrapper">
             <p:graphicImage name="images/logo-homero2.png" library="omega-layout" width="160" height="160"/>
             <div id="login-container">
 
                 <span class="title">Bienvenido</span>
 
-                <div class="ui-g ui-fluid">
-                    <div class="ui-g-12">
-                        <p:inputText placeholder="Usuario" value="#{sesionControl.nomUsuario}"/>
+
+                <h:form>
+                    
+                    
+
+                    <div class="ui-g ui-fluid">
+                        <div class="ui-g-12">
+                            <p:inputText placeholder="Usuario" value="#{sesionControl.nomUsuario}"/>
+                        </div>
+
+                        <div class="ui-g-12">
+                            <p:password placeholder="Contraseña" value="#{sesionControl.passUsuario}" feedback="false"  />
+                        </div>
+
+                        <div class="ui-g-12">
+                            <h:commandButton  action="#{sesionControl.iniciarSesion()}" value="Ingresar"  />
+                                
+                        </div>                                     
                     </div>
 
-                    <div class="ui-g-12">
-                        <p:password placeholder="Contraseña" value="#{sesionControl.passUsuario}" feedback="false"  />
-                    </div>
-
-                    <div class="ui-g-12">
-                        <p:button outcome="#{sesionControl.iniciarSesion()}" value="Ingresar" icon="fa fa-check" />
-                    </div>
-                </div>
+                </h:form>
             </div>
 
             <div class="login-footer">Biblioteca Homero's System</div>
+
         </div>
+
+
 
         <h:outputStylesheet name="css/layout.css" library="omega-layout" />
     </h:body>
