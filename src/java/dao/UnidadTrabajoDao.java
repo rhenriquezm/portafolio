@@ -13,10 +13,10 @@ public interface UnidadTrabajoDao {
 
     public boolean delete(UnidadTrabajo ut) throws Exception;
 
-    public boolean deleteById(int id) throws Exception;
+    public boolean deleteById(short id) throws Exception;
 
     public boolean update(UnidadTrabajo ut) throws Exception;
 
-    public UnidadTrabajo getById(int id) throws Exception;
+    public UnidadTrabajo getById(short id) throws Exception;
 
 }

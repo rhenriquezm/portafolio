@@ -81,7 +81,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
     }
 
     @Override
-    public boolean deleteById(int id) throws Exception {
+    public boolean deleteById(short id) throws Exception {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
@@ -99,7 +99,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
     }
 
     @Override
-    public UnidadTrabajo getById(int id) throws Exception {
+    public UnidadTrabajo getById(short id) throws Exception {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();

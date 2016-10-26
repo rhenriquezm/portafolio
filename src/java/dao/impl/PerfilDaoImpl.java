@@ -61,7 +61,7 @@ public class PerfilDaoImpl implements PerfilDao {
     }
 
     @Override
-    public boolean deleteById(int id) throws Exception {
+    public boolean deleteById(short id) throws Exception {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
@@ -101,7 +101,7 @@ public class PerfilDaoImpl implements PerfilDao {
     }
 
     @Override
-    public Perfil getById(int id) throws Exception {
+    public Perfil getById(short id) throws Exception {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();

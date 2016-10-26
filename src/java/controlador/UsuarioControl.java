@@ -21,6 +21,8 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 public class UsuarioControl {
 
+    private short idPerfil;
+    private short idUniTrab;
     private Usuario usuario;
     private ArrayList<SelectItem> sexo;
 
@@ -50,12 +52,34 @@ public class UsuarioControl {
     public void setSexo(ArrayList<SelectItem> sexo) {
         this.sexo = sexo;
     }
+
+    public short getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(short idPerfil) {
+        this.idPerfil = idPerfil;
+    }
+
+    public short getIdUniTrab() {
+        return idUniTrab;
+    }
+
+    public void setIdUniTrab(short idUniTrab) {
+        this.idUniTrab = idUniTrab;
+    }
+    
+    
     
     // Metodos personalizados
     public void ingresarUsuario() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             UsuarioDao usuarioDao = new UsuarioDaoImpl();
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            PerfilDao pDao = new PerfilDaoImpl();
+            this.usuario.setPerfil(pDao.getById(getIdPerfil()));
+            this.usuario.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
             boolean ingresado = usuarioDao.insert(this.usuario);
             if (ingresado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));

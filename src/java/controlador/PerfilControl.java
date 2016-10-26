@@ -16,7 +16,7 @@ import javax.faces.model.SelectItem;
 public class PerfilControl {
 
     private Perfil perfil;
-    private int idPerfil;
+    private short idPerfil;
 
     public PerfilControl() {
         this.perfil = new Perfil();
@@ -32,11 +32,11 @@ public class PerfilControl {
         this.perfil = perfil;
     }
 
-    public int getIdPerfil() {
+    public short getIdPerfil() {
         return idPerfil;
     }
 
-    public void setIdPerfil(int idPerfil) {
+    public void setIdPerfil(short idPerfil) {
         this.idPerfil = idPerfil;
     }
 

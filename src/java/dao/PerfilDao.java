@@ -13,11 +13,11 @@ public interface PerfilDao {
 
     public boolean delete(Perfil per) throws Exception;
     
-    public boolean deleteById(int id) throws Exception;
+    public boolean deleteById(short id) throws Exception;
 
     public boolean update(Perfil per) throws Exception;
    
-    public Perfil getById(int id) throws Exception;
+    public Perfil getById(short id) throws Exception;
 
     
 }
