@@ -14,16 +14,16 @@ import java.util.ArrayList;
  */
 public interface ProveedorDao {
 
-    public ArrayList<Proveedor> getAll();
+	public ArrayList<Proveedor> getAll() throws Exception;
 
-    public void insert(Proveedor pr);
+    public boolean insert(Proveedor prov) throws Exception;
 
-    public void delete(Proveedor pr);
+    public boolean delete(Proveedor prov) throws Exception;
 
-    public void deleteById(int id);
+    public boolean deleteById(short id) throws Exception;
 
-    public void update(Proveedor pr);
+    public boolean update(Proveedor prov) throws Exception;
 
-    public Proveedor getById(int id);
-
+    public Proveedor getById(short id) throws Exception;
+    
 }

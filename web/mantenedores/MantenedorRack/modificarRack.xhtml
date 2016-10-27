@@ -20,7 +20,33 @@
 
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                <p:panel id="panel" header="Modificar Rack">
+                                <p:messages id="msgs" />
+
+                               <h:panelGrid columns="2" cellpadding="5">
+                               <p:outputLabel for="ra" value="Rack: " />
+                               <p:selectOneMenu id="ra" value="#{rackControl.idRack}" style="width:150px">
+                                   <p:ajax listener="#{rackControl.cambioRack()}" update="rar,idrar" />
+                                  <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                 <f:selectItems value="#{rackControl.listarTodo()}" />
+                                </p:selectOneMenu>
+
+                            
+                               <p:outputLabel for="idrar" value="Id. Rack: " />
+                               <p:inputText id="idrar" value="#{rackControl.rack.idRack}" required="true" label="Unidad Rack: " disabled="true">
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+                            
+                               <p:outputLabel for="rar" value=" Nombre Rack: " />
+                               <p:inputText id="rar" value="#{rackControl.rack.nombreRack}" required="true" label="Unidad Rack: "  >
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+ 
+                               <p:commandButton value="Modicar" update="panel" actionListener="#{rackControl.modificarRack()}" />
+                          </h:panelGrid>
+
+
+                    </p:panel>
 
 
 

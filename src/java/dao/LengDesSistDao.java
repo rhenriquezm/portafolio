@@ -5,24 +5,24 @@
  */
 package dao;
 
-import java.util.ArrayList;
 import POJO.LengDesSist;
+import java.util.ArrayList;
 
 /**
  *
  * @author shelob
  */
 public interface LengDesSistDao {
-    
-    public ArrayList<LengDesSist> getAll();
 
-    public void insert(LengDesSist ld);
+    public ArrayList<LengDesSist> getAll() throws Exception;
 
-    public void delete(LengDesSist ld);
-    
-    public void deleteById(int id);
+    public boolean insert(LengDesSist lds) throws Exception;
 
-    public void update(LengDesSist ld);
-   
-    public LengDesSist getById(int id);
+    public boolean delete(LengDesSist lds) throws Exception;
+
+    public boolean deleteById(short id) throws Exception;
+
+    public boolean update(LengDesSist lds) throws Exception;
+
+    public LengDesSist getById(short id) throws Exception;
 }

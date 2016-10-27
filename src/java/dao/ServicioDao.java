@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dao;
 
 import POJO.Servicio;
@@ -10,17 +14,15 @@ import java.util.ArrayList;
  */
 public interface ServicioDao {
     
-    public ArrayList<Servicio> getAll();
+    public ArrayList<Servicio> getAll() throws Exception;
 
-    public ServicioDao getPerfil(Servicio ser);
+    public boolean insert(Servicio serv) throws Exception;
 
-    public void insert(Servicio ser);
+    public boolean delete(Servicio serv) throws Exception;
 
-    public void delete(Servicio ser);
-    
-    public void deleteById(int id);
+    public boolean deleteById(short id) throws Exception;
 
-    public void update(Servicio ser);
-   
-    public Servicio getById(int id);
+    public boolean update(Servicio serv) throws Exception;
+
+    public Servicio getById(short id) throws Exception;
 }

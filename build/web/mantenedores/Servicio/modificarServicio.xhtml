@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Servicio</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-4">
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Servicio">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <p:outputLabel for="msoft" value="Servicio: " />
+                            <p:selectOneMenu id="msoft" value="#{servicioControl.idServicio}" style="width:150px">
+                                <p:ajax listener="#{servicioControl.cambioServicio()}" update="idser,nser" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems id="servicios" value="#{servicioControl.mostrarServicio()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel for="idser" value="Id. Servicio: " />
+                            <p:inputText id="idser" value="#{servicioControl.servicio.idServicio}" required="true" label="Servicio: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="nser" value=" Nombre: " />
+                            <p:inputText id="nser" value="#{servicioControl.servicio.nomServicio}" required="true" label="Nombre: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                           
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{servicioControl.modificarServicio()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Sistema</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-4">
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Sistema">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <p:outputLabel for="msis" value="Sistema: " />
+                            <p:selectOneMenu id="msis" value="#{sistemaControl.idSist}" style="width:150px">
+                                <p:ajax listener="#{sistemaControl.cambioSistema()}" update="idmsis,mnsis,mssis,iusu,inseg,insens,iso,iprov,isof,iws,iorg" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems id="sistemas" value="#{sistemaControl.mostrarSistema()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel for="idmsis" value="Id. Sistema: " />
+                            <p:inputText id="idmsis" value="#{sistemaControl.idSist}" required="true" label="Sistema: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="mnsis" value="Nombre Sistema: " />
+                            <p:inputText id="mnsis" value="#{sistemaControl.sistema.nomSist}" required="true" label="Nombre: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="mssis" value="Servidor: " />
+                            <p:selectOneMenu id="mssis" value="#{sistemaControl.idServidor}" style="width:150px">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{servidorControl.mostrarServidor()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="iusu" value="Usuario: " />
+                            <p:selectOneMenu id="iusu" value="#{sistemaControl.idUsuario}" style="width:150px" required="true" requiredMessage="Seleccione Usuario.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                            </p:selectOneMenu>
+
+                            
+                            <p:outputLabel for="inseg" value="NivSeg: " />
+                            <p:selectOneMenu id="inseg" value="#{sistemaControl.idNivSeg}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Seguridad.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
+                            </p:selectOneMenu>
+                           
+                            <p:outputLabel for="insens" value="NivSens " />
+                            <p:selectOneMenu id="insens" value="#{sistemaControl.idNivSens}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Sensibilidad.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{nivSensControl.mostrarNivSens()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="iso" value="SistOper " />
+                            <p:selectOneMenu id="iso" value="#{sistemaControl.idSistOper}" style="width:150px" required="true" requiredMessage="Seleccione Sistema Operativo.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="iprov" value="Proveedor " />
+                            <p:selectOneMenu id="iprov" value="#{sistemaControl.idProveedor}" style="width:150px" required="true" requiredMessage="Seleccione Proveedor.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="isof" value="SoftBd " />
+                            <p:selectOneMenu id="isof" value="#{sistemaControl.idSoftBd}" style="width:150px" required="true" requiredMessage="Seleccione Software Desarrollo.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="iws" value="Webservice " />
+                            <p:selectOneMenu id="iws" value="#{sistemaControl.idWebservice}" style="width:150px" required="true" requiredMessage="Seleccione Webservice.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="iorg" value="Organizacion" />
+                            <p:selectOneMenu id="iorg" value="#{sistemaControl.idOrganizacion}" style="width:150px" required="true" requiredMessage="Seleccione Organizacion.">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{softBdControl.modificarSoftBd()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>
+
+

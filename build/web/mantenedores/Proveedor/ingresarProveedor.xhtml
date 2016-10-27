@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      
+    <h:head>
+        <title>Ingresar Proveedor</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-4">
+                <h:form>
+                    <p:panel id="panel" header="Nuevo Proveedor">
+                        
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="nomProv" value="Nombre " />
+                            <p:inputText id="nomProv" value="#{proveedorControl.proveedor.nomProv}" required="true" label="Nom Proveedor: ">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="correoProv" value="Correo " />
+                            <p:inputText id="correoProv" value="#{proveedorControl.proveedor.correoProv}" required="true" label="Correo: ">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="fonoProv" value="Fono " />
+                            <p:inputText id="fonoProv" value="#{proveedorControl.proveedor.fonoProv}" required="true" label="Fono: ">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Ingresar" update="panel" actionListener="#{proveedorControl.ingresarProveedor()}" />
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+    
+</html>
+

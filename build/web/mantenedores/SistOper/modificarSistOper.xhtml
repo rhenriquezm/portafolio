@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Modificar Sistema Operativo</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+            </div>
+            <div class="ui-g-4">
+
+                <h:form >
+                    <p:panel id="panel" header="Modificar Sistema Operativo">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <p:outputLabel for="mso" value="Sistema Operativo: " />
+                            <p:selectOneMenu id="mso" value="#{sistOperControl.idSo}" style="width:150px">
+                                <p:ajax listener="#{sistOperControl.cambioSistOper()}" update="idmso,nmso" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems id="sistoperativos" value="#{sistOperControl.mostrarSistOper()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel for="idmso" value="Id. SistOper: " />
+                            <p:inputText id="idmso" value="#{sistOperControl.sistoper.idSo}" required="true" label="Sistema Operativo: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="nmso" value=" Nombre: " />
+                            <p:inputText id="nmso" value="#{sistOperControl.sistoper.desSo}" required="true" label="Nombre: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{sistOperControl.modificarSistOper()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>

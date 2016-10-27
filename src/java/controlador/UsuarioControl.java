@@ -10,6 +10,7 @@ import dao.impl.PerfilDaoImpl;
 import dao.impl.UnidadTrabajoDaoImpl;
 import dao.impl.UsuarioDaoImpl;
 import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -89,6 +90,26 @@ public class UsuarioControl {
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar Usuario " + ex.getMessage()));
         }
+    }
+    
+    public List<SelectItem> mostrarUsuario() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UsuarioDao lsisDao = new UsuarioDaoImpl();
+            ArrayList<SelectItem> usuarios= new ArrayList<>();
+            for (Usuario usuario : lsisDao.getAll()) {
+                usuarios.add(new SelectItem(usuario.getIdUsuario(), usuario.getNomUsuario()));
+            }
+            if (usuarios.isEmpty()) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Usuarios Ingresados en el sistema"));
+
+            } else {
+                return usuarios;
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
+        }
+        return null;
     }
 
     public ArrayList<SelectItem> mostrarPerfiles() {
