@@ -1,6 +1,10 @@
 package dao.impl;
 
+<<<<<<< HEAD
 import POJO.SistOper;
+=======
+import POJO.UnidadTrabajo;
+>>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
 import POJO.Usuario;
 import dao.UsuarioDao;
 import java.util.ArrayList;
@@ -20,6 +24,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();
+<<<<<<< HEAD
             Criteria criteria = session.createCriteria(Usuario.class);
             ArrayList<Usuario> users = (ArrayList<Usuario>) criteria.list();
             this.transaction.commit();
@@ -29,6 +34,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 transaction.rollback();
             }
             System.out.println("Error" + e.getMessage());
+=======
+            Criteria criteria = this.session.createCriteria(Usuario.class);
+            ArrayList<Usuario> lis = (ArrayList<Usuario>) criteria.list();
+            this.transaction.commit();
+            return lis;
+        } catch (Exception ex) {
+            if (this.transaction != null) {
+                this.transaction.rollback();
+            }
+            System.out.println("Error" + ex.getMessage());
+>>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
         }
         return null;
     }
@@ -62,7 +78,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    public boolean deleteById(int id) throws Exception {
+    public boolean deleteById(short id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -72,8 +88,22 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
-    public Usuario getById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Usuario getById(short id) throws Exception {
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
+            String sql = "  FROM Usuario WHERE idUsuario=:idUsuario";
+            Query query = session.createQuery(sql);
+            query.setParameter("idUsuario", id);
+            this.transaction.commit();
+            return (Usuario) query.uniqueResult();
+        } catch (Exception ex) {
+            if (this.transaction != null) {
+                this.transaction.rollback();
+            }
+            System.out.println("Error" + ex.getMessage());
+        }
+        return null;
     }
 
     @Override

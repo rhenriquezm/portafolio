@@ -13,11 +13,11 @@ public interface UsuarioDao {
 
     public boolean delete(Usuario us) throws Exception;
     
-    public boolean deleteById(int id) throws Exception;
+    public boolean deleteById(short id) throws Exception;
 
     public boolean update(Usuario us) throws Exception;
    
-    public Usuario getById(int id) throws Exception;
+    public Usuario getById(short id) throws Exception;
     
     public Usuario getByUserPass(String nombreUsuario, String contrasena) throws Exception;
     

@@ -1,5 +1,6 @@
 package controlador;
 
+import Converter.Encrypt;
 import POJO.Perfil;
 import POJO.UnidadTrabajo;
 import POJO.Usuario;
@@ -23,19 +24,47 @@ import javax.faces.model.SelectItem;
 public class UsuarioControl {
 
     private short idPerfil;
+    private short idUsuario;
     private short idUniTrab;
     private Usuario usuario;
+    
+
     private ArrayList<SelectItem> sexo;
+    private ArrayList<SelectItem> perfiles;
+    private ArrayList<SelectItem> unidadesTrabajo;
 
     public UsuarioControl() {
         this.usuario = new Usuario();
         this.sexo = new ArrayList<>();
+        this.perfiles = new ArrayList<>();
+        this.unidadesTrabajo = new ArrayList<>();
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         this.sexo.add(new SelectItem('M', "Masculino"));
         this.sexo.add(new SelectItem('F', "Femenino"));
+        llenarSelectItems();
+
+    }
+
+    public void llenarSelectItems() {
+        try {
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            PerfilDao perDao = new PerfilDaoImpl();
+            
+            for (UnidadTrabajo ut : utDao.getAll()) {
+                 this.perfiles.add(new SelectItem(ut.getIdUniTrab(), ut.getNomUniTrab()));
+            }
+            
+            for (Perfil per : perDao.getAll()) {
+                 this.unidadesTrabajo.add(new SelectItem(per.getIdPerfil(), per.getNomPerfil()));
+            }
+                      
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public Usuario getUsuario() {
@@ -69,9 +98,31 @@ public class UsuarioControl {
     public void setIdUniTrab(short idUniTrab) {
         this.idUniTrab = idUniTrab;
     }
-    
-    
-    
+
+    public short getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(short idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public ArrayList<SelectItem> getPerfiles() {
+        return perfiles;
+    }
+
+    public void setPerfiles(ArrayList<SelectItem> perfiles) {
+        this.perfiles = perfiles;
+    }
+
+    public ArrayList<SelectItem> getUnidadesTrabajo() {
+        return unidadesTrabajo;
+    }
+
+    public void setUnidadesTrabajo(ArrayList<SelectItem> unidadesTrabajo) {
+        this.unidadesTrabajo = unidadesTrabajo;
+    }
+
     // Metodos personalizados
     public void ingresarUsuario() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -81,6 +132,7 @@ public class UsuarioControl {
             PerfilDao pDao = new PerfilDaoImpl();
             this.usuario.setPerfil(pDao.getById(getIdPerfil()));
             this.usuario.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
+            this.usuario.setPassUsuario(Encrypt.sha512(getUsuario().getPassUsuario()));
             boolean ingresado = usuarioDao.insert(this.usuario);
             if (ingresado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
@@ -91,13 +143,13 @@ public class UsuarioControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar Usuario " + ex.getMessage()));
         }
     }
-    
+
     public List<SelectItem> mostrarUsuario() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            UsuarioDao lsisDao = new UsuarioDaoImpl();
-            ArrayList<SelectItem> usuarios= new ArrayList<>();
-            for (Usuario usuario : lsisDao.getAll()) {
+            UsuarioDao usDao = new UsuarioDaoImpl();
+            ArrayList<SelectItem> usuarios = new ArrayList<>();
+            for (Usuario usuario : usDao.getAll()) {
                 usuarios.add(new SelectItem(usuario.getIdUsuario(), usuario.getNomUsuario()));
             }
             if (usuarios.isEmpty()) {
@@ -139,5 +191,55 @@ public class UsuarioControl {
         } catch (Exception e) {
         }
         return null;
+    }
+
+    public void modificarUsuario() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            UsuarioDao usDao = new UsuarioDaoImpl();
+            Usuario usu = usDao.getUsuario(usuario);
+            usu.setNomUsuario(usuario.getNomUsuario());
+            usu.setCorreoUsuario(usuario.getCorreoUsuario());
+            usu.setPatUsuario(usuario.getPatUsuario());
+            usu.setMatUsuario(usuario.getMatUsuario());
+            usu.setPerfil(usuario.getPerfil());
+            usu.setUnidadTrabajo(usuario.getUnidadTrabajo());
+            usu.setFonoUsuario(usuario.getFonoUsuario());
+            
+            PerfilDao perDao = new PerfilDaoImpl();
+            usu.setPerfil(perDao.getById(getIdPerfil()));
+            
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            usu.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
+            
+            
+            
+            boolean modificado = usDao.update(usu);
+            if (modificado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido modificada exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
+        }
+
+    }
+
+    public void cambioUsuario() {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        try {
+            UsuarioDao usDao = new UsuarioDaoImpl();
+            setUsuario(usDao.getById(getIdUsuario()));
+            setIdUniTrab(getUsuario().getUnidadTrabajo().getIdUniTrab());
+            setIdPerfil(getUsuario().getPerfil().getIdPerfil());
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
+        }
+    }
+
+    private Object EncryptgetUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
