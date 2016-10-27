@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -17,11 +18,8 @@
     </h:head>
 
     <h:body styleClass="login-body">
-        
-        <p:growl id="growl" showDetail="true" sticky="true" />
-        
         <div id="login-wrapper">
-            <p:graphicImage name="images/logo-homero2.png" library="omega-layout" width="100" height="100"/>
+            <p:graphicImage name="images/logo-homero2.png" library="omega-layout" width="160" height="160"/>
             <div id="login-container">
 
                 <span class="title">Bienvenido</span>
@@ -29,20 +27,19 @@
 
                 <h:form>
                     
+                    <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
                     
-
                     <div class="ui-g ui-fluid">
                         <div class="ui-g-12">
-                            <p:inputText placeholder="Usuario" value="#{sesionControl.nomUsuario}"/>
+                            <p:inputText placeholder="Usuario" value="#{sesionControl.nombreUsuario}"/>
                         </div>
 
                         <div class="ui-g-12">
-                            <p:password placeholder="Contraseña" value="#{sesionControl.passUsuario}" feedback="false"  />
+                            <p:password placeholder="Contraseña" value="#{sesionControl.passUsuario}" feedback="false" />
                         </div>
 
                         <div class="ui-g-12">
-                            <h:commandButton  action="#{sesionControl.iniciarSesion()}" value="Ingresar"  />
-                                
+                            <h:commandButton  actionListener="#{sesionControl.inciarSesion()}" value="Ingresar" />
                         </div>                                     
                     </div>
 

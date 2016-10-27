@@ -11,15 +11,115 @@
         <h:form>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12">
+                    <div class="ui-g-12 ui-lg-9">
                         <div class="card">
                             <h1>Registrar Sistema</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
+                                <h:form>
+                                    <p:panel id="panel" header="Nuevo Sistema">
 
+                                        <p:messages id="msgs" />
+                                        <div class="ui-g">
+                                            <div class="ui-g-12">
+                                                <div class="ui-g-4">
+
+                                                    <p:outputLabel for="nomSist" value="Nombre " />
+                                                    <p:inputText id="nomSist" value="#{sistemaControl.sistema.nomSist}" required="true" label="Nom Sistema: ">
+                                                        <f:validateLength minimum="2" />	
+                                                    </p:inputText>
+                                                </div>
+
+
+                                                <!--    <p:outputLabel for="isrvd" value="ID Servidor: " />
+                                                    <p:selectOneMenu id="isrvd" value="{sistemaControl.sistema.servidor.idServ}" style="width:150px">
+                                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                        <f:selectItems value="{servidorControl.mostrarServidor()}" />
+                                                    </p:selectOneMenu>
+                                                -->
+                                                <div class="ui-g-4">
+                                                    <p:outputLabel for="iusu" value="ID Usuario: " />
+                                                    <p:selectOneMenu id="iusu" value="#{sistemaControl.idUsuario}" style="width:150px" required="true" requiredMessage="Seleccione Usuario.">
+                                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                        <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                                                    </p:selectOneMenu>
+                                                </div>
+
+                                                <div class="ui-g-4">
+                                                    <p:outputLabel for="inseg" value="ID NivSeg: " />
+                                                    <p:selectOneMenu id="inseg" value="#{sistemaControl.idNivSeg}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Seguridad.">
+                                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                        <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                            <div class="ui-g">
+                                                <div class="ui-g-12">
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="insens" value="ID NivSens " />
+                                                        <p:selectOneMenu id="insens" value="#{sistemaControl.idNivSens}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Sensibilidad.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{nivSensControl.mostrarNivSens()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="iso" value="ID SistOper " />
+                                                        <p:selectOneMenu id="iso" value="#{sistemaControl.idSistOper}" style="width:150px" required="true" requiredMessage="Seleccione Sistema Operativo.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="iprov" value="ID Proveedor " />
+                                                        <p:selectOneMenu id="iprov" value="#{sistemaControl.idProveedor}" style="width:150px" required="true" requiredMessage="Seleccione Proveedor.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ui-g">
+                                                <div class="ui-g-12">
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="isof" value="ID SoftBd " />
+                                                        <p:selectOneMenu id="isof" value="#{sistemaControl.idSoftBd}" style="width:150px" required="true" requiredMessage="Seleccione Software Desarrollo.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="iws" value="ID Webservice " />
+                                                        <p:selectOneMenu id="iws" value="#{sistemaControl.idWebservice}" style="width:150px" required="true" requiredMessage="Seleccione Webservice.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="iorg" value="ID Organizacion" />
+                                                        <p:selectOneMenu id="iorg" value="#{sistemaControl.idOrganizacion}" style="width:150px" required="true" requiredMessage="Seleccione Organizacion.">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ui-g">
+                                                <div class="ui-g-12">
+                                                    
+
+                                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{sistemaControl.ingresarSistema()}" />  
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </p:panel>
+
+                                </h:form>   
                                 <!--AQUI VAN LOS PANEL--> 
 
 
@@ -31,11 +131,11 @@
 
                         </div>
 
-                        <div class="card">
+                        <!--<div class="card">
 
                             <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
 
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>

@@ -5,37 +5,37 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Sala Servidores</ui:define>
+    <ui:define name="title">MANTENEDOR SALA SERVIDORES / ELIMINAR SALA SERVIDORES</ui:define>
 
     <ui:define name="content">
         <h:form>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-20">
+                    <div class="ui-g-12">
                         <div class="card">
-                            <h1>Eliminar Sala Servidores</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>ELIMINAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
-                                 <p:panel id="panel" header="Eliminar Sala Servidor">
-                        <p:messages id="msgs" />
-
-                        <h:panelGrid columns="3" cellpadding="5">
 
 
-                            <p:outputLabel for="ss" value="Sala Servidor: " />
-                            <p:selectOneMenu id="ss" value="#{salaServControl.idSalaServidor}">
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                <f:selectItems value="#{salaServControl.listarTodo()}" />
-                            </p:selectOneMenu>
+                                <p:panel id="panel" header="Eliminar Sala Servidor">
+                                    <p:messages id="msgs" />
 
-                        </h:panelGrid>
+                                    <h:panelGrid columns="" cellpadding="5">
 
-                        <p:commandButton value="Eliminar" update="panel" actionListener="#{salaServControl.eliminarSalaServidor()}" />
-                    </p:panel>
+
+                                        <p:outputLabel for="ss" value="Sala Servidor: " />
+                                        <p:selectOneMenu id="ss" value="#{salaServControl.idSalaServidor}">
+                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                            <f:selectItems value="#{salaServControl.listarTodo()}" />
+                                        </p:selectOneMenu>
+                                        <p:commandButton value="Eliminar" update="panel" actionListener="#{salaServControl.eliminarSalaServidor()}" />
+                                    </h:panelGrid>
+
+                                    
+                                </p:panel>
 
 
 

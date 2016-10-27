@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Rack</ui:define>
+    <ui:define name="title">MANTENEDOR RACK / ELIMINAR RACK</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,9 +13,9 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Eliminar Rack</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>ELIMINAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
@@ -25,16 +25,23 @@
 
                                <h:panelGrid columns="3" cellpadding="5">
 
-
+                                
                                 <p:outputLabel for="ra" value="Rack: " />
                                 <p:selectOneMenu id="ra" value="#{rackControl.idRack}">
                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                    <f:selectItems value="#{rackControl.listarTodo()}" />
                                </p:selectOneMenu>
-
+                                
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <div class="ui-g-4">
+                                            <p:commandButton value="Eliminar" update="panel" actionListener="#{rackControl.eliminarRack()}" />
+                                        </div>
+                                    </div>
+                                </div>
                               </h:panelGrid>
-
-                            <p:commandButton value="Eliminar" update="panel" actionListener="#{rackControl.eliminarRack()}" />
+                                
+                            
                      </p:panel>
 
 
@@ -46,11 +53,11 @@
 
                         </div>
 
-                        <div class="card">
+                        <!--<div class="card">
 
                             <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
 
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>

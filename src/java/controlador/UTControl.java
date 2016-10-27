@@ -45,6 +45,25 @@ public class UTControl {
     }
 
     //Metodos Personalizados
+    
+    public ArrayList<UnidadTrabajo> todo(){
+        try {
+            
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            ArrayList<UnidadTrabajo> todos = utDao.getAll();
+            if(!todos.isEmpty()){
+                return todos;
+            }else{
+                return null;
+            }
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar" + ex.getMessage()));
+        }
+        return null;
+    }
+    
+    
     public void ingresarUTrabajo() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
@@ -139,4 +158,6 @@ public class UTControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
     }
+    
+    
 }

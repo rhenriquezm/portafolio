@@ -4,12 +4,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-    <application>
-        <resource-bundle>
-            <base-name>net.javabeat.jsf.application</base-name>
-            <var>msg</var>
-        </resource-bundle>
-    </application>
+    
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
@@ -17,13 +12,7 @@
             <to-view-id>/mantenedores/layout/dashboard.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/login.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>reintentar</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>

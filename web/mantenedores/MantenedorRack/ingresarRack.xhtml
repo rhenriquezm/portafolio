@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Rack</ui:define>
+    <ui:define name="title">MANTENEDOR RACK / REGISTRAR RACK</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,34 +13,39 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Registrar Rack</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>INGRESE DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
 
                                 <p:panel id="panel" header="Nuevo Rack">
-                                <p:messages id="msgs" />
+                                    <p:messages id="msgs" />
 
-                               <h:panelGrid columns="2" cellpadding="5">
+                                    <h:panelGrid columns="" cellpadding="5">
 
-                               <p:outputLabel for="ra" value="Nombre Rack: " />
-                              <p:inputText id="ra" value="#{rackControl.rack.nombreRack}" required="true" label="Nombre Rack: ">
-                                <f:validateLength minimum="2" />
-                              </p:inputText>
-                            
-                            
-                              <p:outputLabel for="ss" value="ID Sala Servidor: " />
-                              <p:selectOneMenu id="ss" value="#{rackControl.idSalaservidor}" style="width:150px">
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{salaServControl.listarTodo()}" />
-                              </p:selectOneMenu>
+                                        <p:outputLabel for="ra" value="Nombre Rack: " />
+                                        <p:inputText id="ra" value="#{rackControl.rack.nombreRack}" required="true" label="Nombre Rack: ">
+                                            <f:validateLength minimum="2" />
+                                        </p:inputText>
 
-                        </h:panelGrid>
 
-                        <p:commandButton value="Ingresar" update="panel" actionListener="#{rackControl.ingresarRack()}"  />
-                        </p:panel>
+                                        <p:outputLabel for="ss" value="ID Sala Servidor: " />
+                                        <p:selectOneMenu id="ss" value="#{rackControl.idSalaservidor}" style="width:150px">
+                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{salaServControl.listarTodo()}" />
+                                        </p:selectOneMenu>
+                                     <div class="ui-g">
+                                        <div class="ui-g-6">
+                                            <div class="ui-g-4">
+                                                <p:commandButton value="Ingresar" update="panel" actionListener="#{rackControl.ingresarRack()}"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </h:panelGrid>
+                                    
+                                </p:panel>
 
 
 
@@ -51,11 +56,7 @@
 
                         </div>
 
-                        <div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
-                        </div>
+                        
                     </div>
 
                 </div>
