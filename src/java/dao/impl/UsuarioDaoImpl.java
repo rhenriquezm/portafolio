@@ -1,10 +1,7 @@
 package dao.impl;
 
-<<<<<<< HEAD
 import POJO.SistOper;
-=======
 import POJO.UnidadTrabajo;
->>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
 import POJO.Usuario;
 import dao.UsuarioDao;
 import java.util.ArrayList;
