@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Sala Servidores</ui:define>
+    <ui:define name="title">MANTENEDOR SALA SERVIDORES / INGRESAR SALA SERVIDOR</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,27 +13,38 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Ingresar Sala Servidores</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>INGRESAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-
-                                 <p:panel id="panel" header="Nueva Sala Servidor">
-                                 <p:messages id="msgs" />
-
-                                <h:panelGrid columns="4" cellpadding="5">
-
-                            
-                                <p:outputLabel for="ss" value="Nombre Sala Servidor: " />
-                                <p:inputText id="ss" value="#{salaServControl.salaser.nomSalaServ}" required="true" label="Nombre Sala Servidor: ">
-                                <f:validateLength minimum="2" />
-                               </p:inputText>
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
-                            </h:panelGrid>
+                                <p:panel id="panel" header="Nueva Sala Servidor">
+                                    <p:messages id="msgs" />
 
-                                 <p:commandButton value="Ingresar" update="panel" actionListener="#{salaServControl.ingresarSalaServidor()}" />
-                    </p:panel> 
+                                    <h:panelGrid columns="" cellpadding="5">
+
+                                        <div class="ui-g">
+                                            <div class="ui-g-12">
+                                                <div class="ui-g-6">
+                                                    <p:outputLabel for="ss" value="Nombre Sala Servidor: " />
+                                                    <p:inputText id="ss" value="#{salaServControl.salaser.nomSalaServ}" required="true" label="Nombre Sala Servidor: ">
+                                                        <f:validateLength minimum="2" />
+                                                    </p:inputText>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-g">
+                                            <div class="ui-g-6">
+                                                <div class="ui-g-4">
+                                                    <p:commandButton value="Ingresar" update="panel" actionListener="#{salaServControl.ingresarSalaServidor()}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </h:panelGrid>
+
+                                </p:panel> 
 
 
                             </p:panelGrid>
@@ -41,11 +52,11 @@
 
                         </div>
 
-                        <div class="card">
+                        <!--<div class="card">
 
                             <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
 
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>
