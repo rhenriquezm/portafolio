@@ -10,20 +10,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author shelob
+ * @author ricardo
  */
 public interface ProveedorDao {
+    
+    public ArrayList<Proveedor> getAll() throws Exception;
 
-    public ArrayList<Proveedor> getAll();
+    public Proveedor getPerfil(Proveedor pro) throws Exception;
 
-    public void insert(Proveedor pr);
+    public boolean insert(Proveedor pro) throws Exception;
 
-    public void delete(Proveedor pr);
+    public boolean delete(Proveedor pro) throws Exception;
+    
+    public boolean deleteById(short id) throws Exception;
 
-    public void deleteById(int id);
-
-    public void update(Proveedor pr);
-
-    public Proveedor getById(int id);
-
+    public boolean update(Proveedor pro) throws Exception;
+   
+    public Proveedor getById(short id) throws Exception;
+    
 }

@@ -6,7 +6,11 @@
     <class name="POJO.Rack" table="RACK" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idRack" type="short">
             <column name="ID_RACK" precision="4" scale="0" />
-            <generator class="assigned" />
+           <generator class="sequence" >
+                <param name="sequence">
+                    RACK_SEQ
+                </param>
+            </generator>
         </id>
         <many-to-one name="salaServ" class="POJO.SalaServ" fetch="select">
             <column name="ID_SALA_SERV" precision="4" scale="0" />

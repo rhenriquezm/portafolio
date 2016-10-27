@@ -5,22 +5,37 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Usuarios</ui:define>
+    <ui:define name="title">Mantenedor Sala Servidores</ui:define>
 
     <ui:define name="content">
         <h:form>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12">
+                    <div class="ui-g-20">
                         <div class="card">
-                            <h1>Eliminar Usuarios</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>Eliminar Sala Servidores</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                 <p:panel id="panel" header="Eliminar Sala Servidor">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="3" cellpadding="5">
+
+
+                            <p:outputLabel for="ss" value="Sala Servidor: " />
+                            <p:selectOneMenu id="ss" value="#{salaServControl.idSalaServidor}">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <f:selectItems value="#{salaServControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Eliminar" update="panel" actionListener="#{salaServControl.eliminarSalaServidor()}" />
+                    </p:panel>
 
 
 

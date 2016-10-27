@@ -20,7 +20,22 @@
 
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                <p:panel id="panel" header="Eliminar Rack">
+                                <p:messages id="msgs" />
+
+                               <h:panelGrid columns="3" cellpadding="5">
+
+
+                                <p:outputLabel for="ra" value="Rack: " />
+                                <p:selectOneMenu id="ra" value="#{rackControl.idRack}">
+                                   <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                   <f:selectItems value="#{rackControl.listarTodo()}" />
+                               </p:selectOneMenu>
+
+                              </h:panelGrid>
+
+                            <p:commandButton value="Eliminar" update="panel" actionListener="#{rackControl.eliminarRack()}" />
+                     </p:panel>
 
 
 

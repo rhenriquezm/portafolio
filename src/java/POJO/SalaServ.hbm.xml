@@ -6,7 +6,11 @@
     <class name="POJO.SalaServ" table="SALA_SERV" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idSalaServ" type="short">
             <column name="ID_SALA_SERV" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    SAL_SER_SEQ
+                </param>
+            </generator>
         </id>
         <property name="nomSalaServ" type="string">
             <column name="NOM_SALA_SERV" length="20" not-null="true" />
