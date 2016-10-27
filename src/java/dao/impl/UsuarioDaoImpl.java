@@ -1,8 +1,10 @@
 package dao.impl;
 
+import POJO.SistOper;
 import POJO.Usuario;
 import dao.UsuarioDao;
 import java.util.ArrayList;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -15,7 +17,20 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public ArrayList<Usuario> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
+            Criteria criteria = session.createCriteria(Usuario.class);
+            ArrayList<Usuario> users = (ArrayList<Usuario>) criteria.list();
+            this.transaction.commit();
+            return users;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return null;
     }
 
     @Override
