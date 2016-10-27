@@ -19,7 +19,22 @@
                             <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+                                <p:panel id="panel" header="Eliminar Unidad de Trabajo">
+                        <p:messages id="msgs" />
 
+                        <h:panelGrid columns="3" cellpadding="5">
+
+
+                            <p:outputLabel for="ut" value="Unidad Trabajo: " />
+                            <p:selectOneMenu id="ut" value="#{uTControl.id}">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <f:selectItems value="#{uTControl.todo()}" />
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Eliminar" update="panel" actionListener="#{uTControl.eliminarUTrabajo()}" />
+                    </p:panel>
 
                                 <!--AQUI VAN LOS PANEL--> 
 
