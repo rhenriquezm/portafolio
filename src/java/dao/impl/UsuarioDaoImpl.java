@@ -14,6 +14,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
+
+
 public class UsuarioDaoImpl implements UsuarioDao {
 
     private Session session;
@@ -24,7 +26,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();
-<<<<<<< HEAD
             Criteria criteria = session.createCriteria(Usuario.class);
             ArrayList<Usuario> users = (ArrayList<Usuario>) criteria.list();
             this.transaction.commit();
@@ -34,19 +35,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 transaction.rollback();
             }
             System.out.println("Error" + e.getMessage());
-=======
-            Criteria criteria = this.session.createCriteria(Usuario.class);
-            ArrayList<Usuario> lis = (ArrayList<Usuario>) criteria.list();
-            this.transaction.commit();
-            return lis;
-        } catch (Exception ex) {
-            if (this.transaction != null) {
-                this.transaction.rollback();
-            }
-            System.out.println("Error" + ex.getMessage());
->>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
         }
-        return null;
+        return null;    
     }
 
     @Override
