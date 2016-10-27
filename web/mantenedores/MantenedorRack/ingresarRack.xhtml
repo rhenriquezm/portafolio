@@ -20,7 +20,27 @@
 
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                <p:panel id="panel" header="Nuevo Rack">
+                                <p:messages id="msgs" />
+
+                               <h:panelGrid columns="2" cellpadding="5">
+
+                               <p:outputLabel for="ra" value="Nombre Rack: " />
+                              <p:inputText id="ra" value="#{rackControl.rack.nombreRack}" required="true" label="Nombre Rack: ">
+                                <f:validateLength minimum="2" />
+                              </p:inputText>
+                            
+                            
+                              <p:outputLabel for="ss" value="ID Sala Servidor: " />
+                              <p:selectOneMenu id="ss" value="#{rackControl.idSalaservidor}" style="width:150px">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{salaServControl.listarTodo()}" />
+                              </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Ingresar" update="panel" actionListener="#{rackControl.ingresarRack()}"  />
+                        </p:panel>
 
 
 

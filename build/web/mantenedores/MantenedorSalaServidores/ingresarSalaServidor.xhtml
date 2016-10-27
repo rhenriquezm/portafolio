@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Usuarios</ui:define>
+    <ui:define name="title">Mantenedor Sala Servidores</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,12 +13,27 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Eliminar Usuarios</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>Ingresar Sala Servidores</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                 <p:panel id="panel" header="Nueva Sala Servidor">
+                                 <p:messages id="msgs" />
+
+                                <h:panelGrid columns="4" cellpadding="5">
+
+                            
+                                <p:outputLabel for="ss" value="Nombre Sala Servidor: " />
+                                <p:inputText id="ss" value="#{salaServControl.salaser.nomSalaServ}" required="true" label="Nombre Sala Servidor: ">
+                                <f:validateLength minimum="2" />
+                               </p:inputText>
+
+
+                            </h:panelGrid>
+
+                                 <p:commandButton value="Ingresar" update="panel" actionListener="#{salaServControl.ingresarSalaServidor()}" />
+                    </p:panel> 
 
 
                             </p:panelGrid>

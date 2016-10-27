@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
        
@@ -18,8 +19,27 @@
         
         <div class="wrapper">
             <ui:include src="/mantenedores/layout/topbar.xhtml" />
+            <!-- TEST PERFIL -->
             
-            <ui:include src="/mantenedores/layout/sidebarAdministrador.xhtml" />
+            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'admin'}">
+                <ui:include src="/mantenedores/layout/sidebarAdministrador.xhtml" />
+            </c:if>
+            
+            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'consultor'}">
+                <ui:include src="/mantenedores/layout/sidebarConsultor.xhtml" />
+            </c:if>
+            
+            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'informante'}">
+                <ui:include src="/mantenedores/layout/sidebarInformante.xhtml" />
+            </c:if>
+            
+            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'responsable'}">
+                <ui:include src="/mantenedores/layout/sidebarResponsable.xhtml.xhtml" />
+            </c:if>
+            
+            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'root'}">
+                <ui:include src="/mantenedores/layout/sidebarSAdministrador.xhtml" />
+            </c:if>
             
             <div class="main">
                 <ui:insert name="content"/>

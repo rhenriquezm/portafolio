@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Usuarios</ui:define>
+    <ui:define name="title">Mantenedor Sala Servidores</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,11 +13,38 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Modificar Usuarios</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>Modificar Sala Servidores</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                <p:panel id="panel" header="Modificar Sala Servidor">
+                        <p:messages id="msgs" />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="ss" value="Sala Servidor: " />
+                            <p:selectOneMenu id="ss" value="#{salaServControl.idSalaServidor}" style="width:150px">
+                                <p:ajax listener="#{salaServControl.cambioSalaServidor()}" update="sas,idsas" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{salaServControl.listarTodo()}" />
+                            </p:selectOneMenu>
+
+                            
+                            <p:outputLabel for="idsas" value="Id. Sala Servidor: " />
+                            <p:inputText id="idsas" value="#{salaServControl.salaser.idSalaServ}" required="true" label="Sala Servidor: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            
+                            <p:outputLabel for="sas" value=" Nombre Sala Servidor: " />
+                            <p:inputText id="sas" value="#{salaServControl.salaser.nomSalaServ}" required="true" label="Sala Servidor: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{salaServControl.modificarSalaServidor()}" />
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
 
                             </p:panelGrid>
 

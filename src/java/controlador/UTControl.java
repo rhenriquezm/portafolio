@@ -17,7 +17,7 @@ import javax.faces.model.SelectItem;
 public class UTControl {
 
     //Atributos
-    private int id;
+    private short id;
     private UnidadTrabajo ut;
 
     //Constructor sin parametros
@@ -36,11 +36,11 @@ public class UTControl {
         this.ut = ut;
     }
 
-    public int getId() {
+    public short getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(short id) {
         this.id = id;
     }
 
