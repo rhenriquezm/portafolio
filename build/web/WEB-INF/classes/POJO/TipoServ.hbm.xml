@@ -6,7 +6,11 @@
     <class name="POJO.TipoServ" table="TIPO_SERV" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idTipoServ" type="short">
             <column name="ID_TIPO_SERV" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    TIPO_SERV_SEQ
+                </param>
+            </generator>
         </id>
         <property name="descTipo" type="string">
             <column name="DESC_TIPO" length="20" not-null="true" />

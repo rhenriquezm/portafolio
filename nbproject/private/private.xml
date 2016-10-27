@@ -3,20 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/portafolio/web/login.xhtml</file>
-            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/portafolio/src/java/POJO/Usuario.java</file>
-            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/portafolio/src/java/controlador/SesionControl.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Users/shelob/Desktop/ProyectoPortafolio/portafolio/src/java/controlador/NivSensControl.java</file>
-            <file>file:/C:/Users/shelob/Desktop/ProyectoPortafolio/portafolio/web/mantenedores/Organizacion/modificarOrganizacion.xhtml</file>
-            <file>file:/C:/Users/shelob/Desktop/ProyectoPortafolio/portafolio/src/java/controlador/OrganizacionControl.java</file>
-=======
-            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/portafolio/src/java/controlador/SesionControl.java</file>
-            <file>file:/C:/Users/Rorro/Desktop/Prototipos/ProyectoPortafolio/portafolio/src/java/dao/impl/PerfilDaoImpl.java</file>
->>>>>>> d4e70c3c32d2910fe2b018aba1573acbb06ba489
->>>>>>> 05a66fa487fbc81272ebd4103095136541481538
+            <file>file:/C:/Users/shelob/Desktop/ProyectoPortafolio/portafolio/src/java/util/HibernateUtil.java</file>
         </group>
     </open-files>
 </project-private>

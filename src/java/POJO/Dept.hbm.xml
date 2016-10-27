@@ -6,7 +6,11 @@
     <class name="POJO.Dept" table="DEPT" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="deptno" type="byte">
             <column name="DEPTNO" precision="2" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    DEPT_SEQ
+                </param>
+            </generator>
         </id>
         <property name="dname" type="string">
             <column name="DNAME" length="14" />

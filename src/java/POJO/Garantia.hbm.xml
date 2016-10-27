@@ -6,7 +6,11 @@
     <class name="POJO.Garantia" table="GARANTIA" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idGar" type="short">
             <column name="ID_GAR" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    GARANTIA_SEQ
+                </param>
+            </generator>
         </id>
         <many-to-one name="contGar" class="POJO.ContGar" fetch="select">
             <column name="ID_CONT" precision="4" scale="0" />
