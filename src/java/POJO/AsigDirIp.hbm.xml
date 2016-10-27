@@ -7,11 +7,6 @@
         <composite-id name="id" class="POJO.AsigDirIpId">
             <key-property name="idDir" type="short">
                 <column name="ID_DIR" precision="4" scale="0" />
-                <generator class="sequence" >
-                <param name="sequence">
-                    ASIG_IP_SEQ
-                </param>
-            </generator>
             </key-property>
             <key-property name="idServ" type="short">
                 <column name="ID_SERV" precision="4" scale="0" />

@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
+
+    <ui:define name="title">MANTENEDOR SOFTWARE BASE DE DATOS / INGRESAR SOTWARE BASE DE DATOS</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h1>INGRESAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+
+
+                                <p:panel id="panel" header="Nueva Software BD">
+                                    <p:messages id="msgs" />
+
+                                    <h:panelGrid columns="" cellpadding="5">
+
+                                        <div class="ui-g">
+                                            <div class="ui-g-12">
+                                                <div class="ui-g-6">
+                                                    <p:outputLabel for="ss" value="Nombre Software: " />
+                                                    <p:inputText id="ss" value="#{salaServControl.salaser.nomSalaServ}" required="true" label="Nombre Software: ">
+                                                        <f:validateLength minimum="2" />
+                                                    </p:inputText>
+                                                    <h:panelGrid columns="2" cellpadding="5">
+
+                                                    <p:outputLabel for="empSoftBd" value="Nombre Empresa " />
+                                                    <p:inputText id="empSoftBd" value="#{softBdControl.softbd.empSoftBd}" required="true" label="Nombre Empresa: ">
+                                                            <f:validateLength minimum="2" />
+                                                    </p:inputText>
+
+                                                    <p:outputLabel for="verSoftBd" value="Version " />
+                                                    <p:inputText id="verSoftBd" value="#{softBdControl.softbd.verSoftBd}" required="true" label="Nombre Empresa: ">
+                                                            <f:validateLength minimum="2" />
+                                                     </p:inputText>
+
+                                                    </h:panelGrid>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-g">
+                                            <div class="ui-g-6">
+                                                <div class="ui-g-4">
+                                                    <p:commandButton value="Ingresar" update="panel" actionListener="#{softBdControl.ingresarSoftBd()}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </h:panelGrid>
+
+                                </p:panel> 
+
+
+                            </p:panelGrid>
+
+
+                        </div>
+
+                        <!--<div class="card">
+
+                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
+
+                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
