@@ -6,7 +6,11 @@
     <class name="POJO.Emp" table="EMP" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="empno" type="short">
             <column name="EMPNO" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    EMP_SEQ
+                </param>
+            </generator>
         </id>
         <many-to-one name="dept" class="POJO.Dept" fetch="select">
             <column name="DEPTNO" precision="2" scale="0" />

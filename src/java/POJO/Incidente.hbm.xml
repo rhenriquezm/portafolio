@@ -6,7 +6,11 @@
     <class name="POJO.Incidente" table="INCIDENTE" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idIncidente" type="short">
             <column name="ID_INCIDENTE" precision="4" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence" >
+                <param name="sequence">
+                    INCIDENTE_SEQ
+                </param>
+            </generator>
         </id>
         <many-to-one name="servidor" class="POJO.Servidor" fetch="select">
             <column name="ID_SERV" precision="4" scale="0" />
