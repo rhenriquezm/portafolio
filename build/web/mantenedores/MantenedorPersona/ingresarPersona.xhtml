@@ -58,6 +58,7 @@
 
                                                         <p:inputText id="rutUsuario" value="#{usuarioControl.usuario.rutUsuario}" required="true" label="Rut Usuario: ">
                                                             <f:validateLength minimum="2" /> 
+                                                            
                                                         </p:inputText>
 
                                                     </div> 
@@ -82,7 +83,7 @@
                                                         <p:outputLabel for="correoUsuario" value="Correo Usuario: " />
                                                         <p:inputText id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
                                                             <f:validateLength minimum="2" />
-                                                            <f:validator validatorId="validatorEmail" />
+                                                            <f:validator validatorId="ValidatorEmail" />
                                                         </p:inputText>
                                                     </div>
                                                 </div>
@@ -103,9 +104,9 @@
                                                     </div>
                                                     <div class="ui-g-4">
                                                         <p:outputLabel for="pass" value="Password " />
-                                                        <p:inputText id="pass" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
+                                                        <p:password id="pass" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
                                                             <f:validateLength minimum="2" />
-                                                        </p:inputText>  
+                                                        </p:password>>  
                                                     </div>
                                                 </div>
                                             </div>

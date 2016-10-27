@@ -1,5 +1,6 @@
 package controlador;
 
+import Converter.Encrypt;
 import POJO.Usuario;
 import dao.UsuarioDao;
 import dao.impl.UsuarioDaoImpl;
@@ -50,7 +51,7 @@ public class SesionControl {
         try {
 
             UsuarioDao usuarioDao = new UsuarioDaoImpl();
-            Usuario usuario = usuarioDao.getByUserPass(getNombreUsuario(), getPassUsuario());
+            Usuario usuario = usuarioDao.getByUserPass(getNombreUsuario(), Encrypt.sha512(getPassUsuario()));
 
             if (usuario != null) {
 

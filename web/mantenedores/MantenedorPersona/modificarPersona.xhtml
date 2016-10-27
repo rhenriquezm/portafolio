@@ -11,37 +11,115 @@
         <h:form>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12">
+                    <div class="ui-g-12 ui-lg-9">
                         <div class="card">
                             <h1>MODIFICAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
                                 <h:form >
-                                    <p:panel id="panel" header="Modificar Unidad de Trabajo">
+                                    <p:panel id="panel" header="Modificar Usuario">
                                         <p:messages id="msgs" />
 
-                                        <h:panelGrid columns="" cellpadding="5">
+                                        <div class="ui-g">
+                                            <div class="ui-g-12">
+                                                <div class="ui-g">
+                                                    <div class="ui-g-12">
+                                                        <div class="ui-g-3">
+                                                            <p:outputLabel for="idus" value="Usuario: " />
+                                                            <p:selectOneMenu id="idus" value="#{usuarioControl.idUsuario}" style="width:150px">
+                                                                <p:ajax listener="#{usuarioControl.cambioUsuario()}" update="idus2, nomUsuario, rutUsuario, dvUsuario, sexoUsuario, correoUsuario, fonoUsuario, perfil, ut" />
+                                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                                <f:selectItems value="#{usuarioControl.mostrarUsuario()}"/>
+                                                            </p:selectOneMenu>
+                                                        </div>
+                                                        <div class="ui-g-3">
+                                                            <p:outputLabel for="idus2" value="ID Usuario " />
+                                                            <p:inputText id="idus2" value="#{usuarioControl.usuario.idUsuario}" required="true" disabled="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                            <p:outputLabel for="ut" value="Unidad de Trabajo: " />
-                                            <p:selectOneMenu id="ut" value="#{uTControl.id}" style="width:150px">
-                                                <p:ajax listener="#{uTControl.cambioUT()}" update="utr,idutr" />
-                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                <f:selectItems value="#{uTControl.mostrarUTs()}"/>
-                                            </p:selectOneMenu>
+                                                <div class="ui-g">
+                                                    <div class="ui-g-12">
+                                                        <div class="ui-g-4">
+                                                            <p:outputLabel for="nomUsuario" value="Nombre Usuario " />
+                                                            <p:inputText id="nomUsuario" value="#{usuarioControl.usuario.nomUsuario}" required="true" label="Nombre Usuario: ">
+                                                                <f:validateLength minimum="2" />
+                                                            </p:inputText>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g">
+                                                    <div class="ui-g-12">
+                                                        <div class="ui-g-3">
+                                                            <p:outputLabel for="rutUsuario" value="Rut Usuario " />
 
+                                                            <p:inputText id="rutUsuario" value="#{usuarioControl.usuario.rutUsuario}" required="true" label="Rut Usuario: ">
+                                                                <f:validateLength minimum="2" /> 
 
-                                            <p:outputLabel for="idutr" value="Id. UT: " />
-                                            <p:inputText id="idutr" value="#{uTControl.ut.idUniTrab}" required="true" label="Unidad UT: " disabled="true">
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
+                                                            </p:inputText>
 
-                                            <p:outputLabel for="utr" value=" Nombre UT: " />
-                                            <p:inputText id="utr" value="#{usuarioControl.usuario.unidadTrabajo.idUniTrab}" required="true" label="Unidad UT: "  >
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
+                                                        </div> 
 
-                                            <p:commandButton value="Modicar" update="panel" actionListener="#{uTControl.modificarUTrabajo()}" />
-                                        </h:panelGrid>
+                                                        <div class="ui-g-1">
+                                                            <p:outputLabel for="dvUsuario" value="DV" />
+
+                                                            <p:inputText id="dvUsuario" value="#{usuarioControl.usuario.dvUsuario}" required="true">
+                                                                <f:validateLength minimum="1" />
+                                                            </p:inputText>
+                                                        </div>
+
+                                                        <div class="ui-g-4">
+
+                                                            <p:outputLabel for="sexoUsuario" value="Sexo: " />
+                                                            <p:selectOneMenu id="sexoUsuario" value="#{usuarioControl.usuario.sexoUsuario}">
+                                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                                                <f:selectItems value="#{usuarioControl.sexo}" />
+                                                            </p:selectOneMenu>
+
+                                                        </div>
+                                                        <div class="ui-g-6">
+                                                            <p:outputLabel for="correoUsuario" value="Correo Usuario: " />
+                                                            <p:inputText id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
+                                                                <f:validateLength minimum="2" />
+                                                                <f:validator validatorId="ValidatorEmail" />
+                                                            </p:inputText>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g">
+                                                    <div class="ui-g-12">
+                                                        <div class="ui-g-4">
+                                                            <p:outputLabel for="fonoUsuario" value="Fono Usuario: " />
+                                                            <p:inputText id="fonoUsuario" value="#{usuarioControl.usuario.fonoUsuario}" required="true" label="Fono Usuario: ">
+                                                                <f:validateLength minimum="2" />
+                                                            </p:inputText>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g">
+                                                    <div class="ui-g-12">
+                                                        <div class="ui-g-6">
+                                                            <p:outputLabel for="perfil" value="Perfil: " />
+                                                            <p:selectOneMenu id="perfil" value="#{usuarioControl.idPerfil}">
+                                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                                                <f:selectItems value="#{usuarioControl.perfiles}" />
+                                                            </p:selectOneMenu>
+                                                        </div>
+
+                                                        <div class="ui-g-6">
+                                                            <p:outputLabel for="ut" value="Unidad Trabajo: " />
+                                                            <p:selectOneMenu id="ut" value="#{usuarioControl.idUniTrab}">
+                                                                <f:selectItem itemLabel="Selecione uno..." itemValue="" />
+                                                                <f:selectItems value="#{usuarioControl.unidadesTrabajo}"/>
+                                                            </p:selectOneMenu>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p:commandButton value="Modicar" update="panel" actionListener="#{usuarioControl.modificarUsuario()}" />
 
 
                                     </p:panel>

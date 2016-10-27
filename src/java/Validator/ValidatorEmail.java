@@ -10,7 +10,7 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Pattern;
 import org.primefaces.context.RequestContext;
 
-@FacesValidator("validatorEmail")
+@FacesValidator("ValidatorEmail")
 
 public class ValidatorEmail implements Validator{
 
