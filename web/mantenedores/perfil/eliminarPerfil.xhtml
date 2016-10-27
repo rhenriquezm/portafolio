@@ -18,8 +18,14 @@
                 <!-- Prueba de ingreso de Datos -->
 
                 <h:form >
+                    
+                    
+                    <p:messages showDetail="true" autoUpdate="true" closable="true" />
 
                     <p:panel id="panel" header="Eliminar Unidad de Trabajo">
+                        
+                        
+                        <p:messages showDetail="true" autoUpdate="true" closable="true" />
                         
                         <p:growl id="growl" showDetail="true" sticky="true" />
 
@@ -33,6 +39,8 @@
                             </p:selectOneMenu>
 
                         </h:panelGrid>
+                        
+                        <p:messages showDetail="true" autoUpdate="true" closable="true" />
 
                         <p:commandButton value="Eliminar" update="panel" actionListener="#{perfilControl.eliminarPerfil()}" />
 

@@ -5,10 +5,11 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Bibloteca Homero's System</ui:define>
+    <ui:define name="title">Mantenedor Perfil / Eliminar Perfil</ui:define>
 
     <ui:define name="head">
         <script type="text/javascript">
+            //<![CDATA[
             function skinChart() {
                 this.cfg.shadow = false;
                 this.cfg.title = '';
@@ -34,8 +35,8 @@
                     }
                 }
             }
+            //]]>  
         </script>
-
         <style type="text/css">
             .main-content {
                 padding: 0;
@@ -43,67 +44,43 @@
         </style>
     </ui:define>
 
-
-
-
     <ui:define name="content">
 
-        <div class="ui-g ui-fluid dashboard">
 
-            <div class="ui-g-12 ui-md-4">
-         
+        <h:form>
+
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
+            <div class="ui-g ui-fluid dashboard">
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                    
+
+                    <p:panel id="panel" header="Eliminar Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{perfilControl.idPerfil}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
+                                </p:selectOneMenu>
+                            </div>
+
+                        </div>
+                        <p:commandButton  actionListener="#{perfilControl.eliminarPerfil()}" update="panel" value="Eliminar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+
+                </div>
             </div>
-
-            <div class="ui-g-12 ui-md-4">
-
-            </div>
-
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-
-            </div>
-
-
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-
-            </div>
-
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-
-            </div>
-
-
-            <div class="ui-g-12 ui-md-6 ui-lg-3">
-
-            </div>
-
-            <div class="ui-g-12 ui-md-6 ui-lg-4">
-
-            </div>
-
-
-            <div class="ui-g-12 ui-lg-4">
-
-            </div>
-
-            <div class="ui-g-12 ui-md-6">
-
-            </div>
-
-
-            <div class="ui-g-12 ui-md-6">
-
-            </div>
-
-            <div class="ui-g-12 ui-md-8">
-
-            </div>
-
-
-            <div class="ui-g-12 ui-md-4">
-
-            </div>
-        </div>
-
+        </h:form>
     </ui:define>
 
 </ui:composition>

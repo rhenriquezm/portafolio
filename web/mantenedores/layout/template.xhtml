@@ -21,23 +21,23 @@
             <ui:include src="/mantenedores/layout/topbar.xhtml" />
             <!-- TEST PERFIL -->
             
-            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'admin'}">
+            <c:if test="#{sesionControl.us.perfil.nomPerfil eq 'admin'}">
                 <ui:include src="/mantenedores/layout/sidebarAdministrador.xhtml" />
             </c:if>
             
-            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'consultor'}">
+            <c:if test="#{sesionControl.us.perfil.nomPerfil eq 'consultor'}">
                 <ui:include src="/mantenedores/layout/sidebarConsultor.xhtml" />
             </c:if>
             
-            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'informante'}">
+            <c:if test="#{sesionControl.us.perfil.nomPerfil eq 'informante'}">
                 <ui:include src="/mantenedores/layout/sidebarInformante.xhtml" />
             </c:if>
             
-            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'responsable'}">
+            <c:if test="#{sesionControl.us.perfil.nomPerfil eq 'responsable'}">
                 <ui:include src="/mantenedores/layout/sidebarResponsable.xhtml.xhtml" />
             </c:if>
             
-            <c:if test="#{sesionControl.usuario.perfil.nomPerfil eq 'root'}">
+            <c:if test="#{sesionControl.us.perfil.nomPerfil eq 'root'}">
                 <ui:include src="/mantenedores/layout/sidebarSAdministrador.xhtml" />
             </c:if>
             

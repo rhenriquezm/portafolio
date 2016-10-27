@@ -18,5 +18,6 @@ public interface UnidadTrabajoDao {
     public boolean update(UnidadTrabajo ut) throws Exception;
 
     public UnidadTrabajo getById(short id) throws Exception;
+    
 
 }

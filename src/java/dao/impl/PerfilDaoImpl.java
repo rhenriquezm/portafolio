@@ -45,6 +45,7 @@ public class PerfilDaoImpl implements PerfilDao {
             this.transaction = this.session.beginTransaction();
             this.session.save(per);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception e) {
             if (this.transaction != null) {
