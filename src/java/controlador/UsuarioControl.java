@@ -205,6 +205,15 @@ public class UsuarioControl {
             usu.setPerfil(usuario.getPerfil());
             usu.setUnidadTrabajo(usuario.getUnidadTrabajo());
             usu.setFonoUsuario(usuario.getFonoUsuario());
+            
+            PerfilDao perDao = new PerfilDaoImpl();
+            usu.setPerfil(perDao.getById(getIdPerfil()));
+            
+            UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
+            usu.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
+            
+            
+            
             boolean modificado = usDao.update(usu);
             if (modificado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));

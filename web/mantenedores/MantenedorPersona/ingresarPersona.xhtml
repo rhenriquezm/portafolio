@@ -10,18 +10,19 @@
 
     <ui:define name="content">
         <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
             <div class="ui-fluid ">
                 <div class="ui-grid-responsive">
                     <div class="ui-g">
                         <div class="ui-g-12 ui-lg-9">
                             <div class="card">
                                 <h1>INGRESE DATOS</h1> <!-- TITULO-->
-
+                                
                                 <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
                                     <p:panel id="panel" header="Nuevo Usuario">
-                                        <p:messages id="msgs" />
+                                        
 
                                         
                                         <div class="ui-g">
@@ -97,16 +98,16 @@
                                                         </p:inputText>
                                                     </div>
                                                     <div class="ui-g-4">
-                                                        <p:outputLabel for="user" value="UserName: " />
-                                                        <p:inputText id="user" value="#{usuarioControl.usuario.userUsuario}" required="true" label="Username: ">
+                                                        <p:outputLabel for="username" value="UserName: " />
+                                                        <p:inputText id="username" value="#{usuarioControl.usuario.userUsuario}" required="true" label="Username: ">
                                                             <f:validateLength minimum="2" />
                                                         </p:inputText>
                                                     </div>
                                                     <div class="ui-g-4">
-                                                        <p:outputLabel for="pass" value="Password " />
-                                                        <p:password id="pass" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
+                                                        <p:outputLabel for="passuser" value="Password " />
+                                                        <p:password id="passuser" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
                                                             <f:validateLength minimum="2" />
-                                                        </p:password>>  
+                                                        </p:password>
                                                     </div>
                                                 </div>
                                             </div>
