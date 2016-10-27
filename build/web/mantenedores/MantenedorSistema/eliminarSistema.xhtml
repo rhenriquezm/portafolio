@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Sistema</ui:define>
+    <ui:define name="title">MANTENEDOR SISTEMA / ELIMINAR SISTEMA/</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -13,11 +13,30 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Eliminar Sistema</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h1>ELIMINAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+
+                                <h:form >
+
+                                    <p:panel id="panel" header="ELIMINAR SISTEMAS">
+                                        <p:growl id="growl" showDetail="true" sticky="true" />
+
+                                        <h:panelGrid columns="3" cellpadding="5">
 
 
+                                            <p:outputLabel for="esis" value="Sistema: "/>
+                                            <p:selectOneMenu id="esis" value="#{sistemaControl.idSist}">
+                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                                <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
+                                            </p:selectOneMenu>
+                                        <p:commandButton value="Eliminar" update="panel" actionListener="#{sistemaControl.eliminarSistema()}" />
+                                        </h:panelGrid>
+
+                                        
+                                    </p:panel>
+
+                                </h:form>  
 
 
                                 <!--AQUI VAN LOS PANEL--> 

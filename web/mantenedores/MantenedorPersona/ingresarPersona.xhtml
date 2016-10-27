@@ -10,7 +10,7 @@
 
     <ui:define name="content">
         <h:form>
-            <div class="ui-fluid">
+            <div class="ui-fluid ">
                 <div class="ui-grid-responsive">
                     <div class="ui-g">
                         <div class="ui-g-12 ui-lg-9">
@@ -23,7 +23,7 @@
                                     <p:panel id="panel" header="Nuevo Usuario">
                                         <p:messages id="msgs" />
 
-
+                                        
                                         <div class="ui-g">
                                             <div class="ui-g-12">
                                                 <div class="ui-g-4">
@@ -127,8 +127,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
+                                        
+                                            <p:commandButton value="Ingresar" update="panel" class="center" actionListener="#{usuarioControl.ingresarUsuario()}" />
+                                        
+
+
+
+
                                     </p:panel>
                                 </p:panelGrid>
 
@@ -137,7 +143,7 @@
 
 
 
-                            
+
 
 
                         </div>

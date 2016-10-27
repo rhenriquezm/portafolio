@@ -15,38 +15,38 @@
                         <div class="card">
                             <h1>MODIFICAR DATOS</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
                                 <h:form >
-                    <p:panel id="panel" header="Modificar Unidad de Trabajo">
-                        <p:messages id="msgs" />
+                                    <p:panel id="panel" header="Modificar Unidad de Trabajo">
+                                        <p:messages id="msgs" />
 
-                        <h:panelGrid columns="2" cellpadding="5">
-                            
-                            <p:outputLabel for="ut" value="Unidad de Trabajo: " />
-                            <p:selectOneMenu id="ut" value="#{uTControl.id}" style="width:150px">
-                                <p:ajax listener="#{uTControl.cambioUT()}" update="utr,idutr" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{uTControl.todo()}"/>
-                            </p:selectOneMenu>
+                                        <h:panelGrid columns="" cellpadding="5">
 
-
-                            <p:outputLabel for="idutr" value="Id. UT: " />
-                            <p:inputText id="idutr" value="#{uTControl.ut.idUniTrab}" required="true" label="Unidad UT: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="utr" value=" Nombre UT: " />
-                            <p:inputText id="utr" value="#{uTControl.ut.nomUnidTrab}" required="true" label="Unidad UT: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:commandButton value="Modicar" update="panel" actionListener="#{uTControl.modificarUTrabajo()}" />
-                        </h:panelGrid>
+                                            <p:outputLabel for="ut" value="Unidad de Trabajo: " />
+                                            <p:selectOneMenu id="ut" value="#{uTControl.id}" style="width:150px">
+                                                <p:ajax listener="#{uTControl.cambioUT()}" update="utr,idutr" />
+                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                <f:selectItems value="#{uTControl.mostrarUTs()}"/>
+                                            </p:selectOneMenu>
 
 
-                    </p:panel>
+                                            <p:outputLabel for="idutr" value="Id. UT: " />
+                                            <p:inputText id="idutr" value="#{uTControl.ut.idUniTrab}" required="true" label="Unidad UT: " disabled="true">
+                                                <f:validateLength minimum="2" />
+                                            </p:inputText>
 
-                </h:form>  
+                                            <p:outputLabel for="utr" value=" Nombre UT: " />
+                                            <p:inputText id="utr" value="#{usuarioControl.usuario.unidadTrabajo.idUniTrab}" required="true" label="Unidad UT: "  >
+                                                <f:validateLength minimum="2" />
+                                            </p:inputText>
+
+                                            <p:commandButton value="Modicar" update="panel" actionListener="#{uTControl.modificarUTrabajo()}" />
+                                        </h:panelGrid>
+
+
+                                    </p:panel>
+
+                                </h:form>  
 
 
 
