@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dao;
 
 import POJO.Sistema;
@@ -9,18 +13,15 @@ import java.util.ArrayList;
  * @author shelob
  */
 public interface SistemaDao {
+    public ArrayList<Sistema> getAll() throws Exception;
 
-    public ArrayList<Sistema> getAll();
+    public boolean insert(Sistema sis) throws Exception;
 
-    public Sistema getPerfil(Sistema sis);
+    public boolean delete(Sistema sis) throws Exception;
 
-    public void insert(Sistema sis);
+    public boolean deleteById(short id) throws Exception;
 
-    public void delete(Sistema sis);
+    public boolean update(Sistema sis) throws Exception;
 
-    public void deleteById(int id);
-
-    public void update(Sistema sis);
-
-    public Sistema getById(int id);
+    public Sistema getById(short id) throws Exception;
 }

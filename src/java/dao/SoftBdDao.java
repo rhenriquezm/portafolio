@@ -5,22 +5,24 @@
  */
 package dao;
 
-import java.util.ArrayList;
 import POJO.SoftBd;
+import java.util.ArrayList;
+
 /**
  *
  * @author shelob
  */
 public interface SoftBdDao {
-    public ArrayList<SoftBd> getAll();
-
-    public void insert(SoftBd sbd);
-
-    public void delete(SoftBd sbd);
     
-    public void deleteById(int id);
+    public ArrayList<SoftBd> getAll() throws Exception;
 
-    public void update(SoftBd sbd);
-   
-    public SoftBd getById(int id);
+    public boolean insert(SoftBd sbd) throws Exception;
+
+    public boolean delete(SoftBd sbd) throws Exception;
+
+    public boolean deleteById(short id) throws Exception;
+
+    public boolean update(SoftBd sbd) throws Exception;
+
+    public SoftBd getById(short id) throws Exception;
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Eliminar Proveedor</title>
+    </h:head>
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-4">
+
+            </div>
+            <div class="ui-g-4">
+
+                <h:form >
+
+                    <p:panel id="panel" header="Eliminar Proveedor">
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+
+                        <h:panelGrid columns="3" cellpadding="5">
+
+
+                            <p:outputLabel for="eprov" value="Proveedor: " />
+                            <p:selectOneMenu id="eprov" value="#{proveedorControl.idProv}">
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Eliminar" update="panel" actionListener="#{proveedorControl.eliminarProveedor()}" />
+                    </p:panel>
+
+                </h:form>  
+
+            </div>
+            <div class="ui-g-4"></div>
+        </div>
+
+    </h:body>
+</html>

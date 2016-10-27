@@ -14,16 +14,15 @@ import java.util.ArrayList;
  */
 public interface OrganizacionDao {
 
-    public ArrayList<Organizacion> getAll();
+    public ArrayList<Organizacion> getAll() throws Exception;
 
-    public void insert(Organizacion org);
+    public boolean insert(Organizacion org) throws Exception;
 
-    public void delete(Organizacion org);
+    public boolean delete(Organizacion org) throws Exception;
 
-    public void deleteById(int id);
+    public boolean deleteById(short id) throws Exception;
 
-    public void update(Organizacion org);
+    public boolean update(Organizacion org) throws Exception;
 
-    public Organizacion getById(int id);
-
+    public Organizacion getById(short id) throws Exception;
 }

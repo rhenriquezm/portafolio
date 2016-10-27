@@ -11,7 +11,7 @@ import java.util.Set;
 public class NivSeg  implements java.io.Serializable {
 
 
-     private int idNivSeg;
+     private short idNivSeg;
      private String descNivSeg;
      private Set sistemas = new HashSet(0);
 
@@ -19,21 +19,21 @@ public class NivSeg  implements java.io.Serializable {
     }
 
 	
-    public NivSeg(int idNivSeg, String descNivSeg) {
+    public NivSeg(short idNivSeg, String descNivSeg) {
         this.idNivSeg = idNivSeg;
         this.descNivSeg = descNivSeg;
     }
-    public NivSeg(int idNivSeg, String descNivSeg, Set sistemas) {
+    public NivSeg(short idNivSeg, String descNivSeg, Set sistemas) {
        this.idNivSeg = idNivSeg;
        this.descNivSeg = descNivSeg;
        this.sistemas = sistemas;
     }
    
-    public int getIdNivSeg() {
+    public short getIdNivSeg() {
         return this.idNivSeg;
     }
     
-    public void setIdNivSeg(int idNivSeg) {
+    public void setIdNivSeg(short idNivSeg) {
         this.idNivSeg = idNivSeg;
     }
     public String getDescNivSeg() {
