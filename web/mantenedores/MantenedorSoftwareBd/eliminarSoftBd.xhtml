@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR SISTEMA / ELIMINAR SISTEMA/</ui:define>
+    <ui:define name="title">MANTENEDOR SOFTWARE BASE DE DATOS / ELIMINAR SOFTWARE/</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -19,18 +19,18 @@
 
                                 <h:form >
 
-                                    <p:panel id="panel" header="ELIMINAR SISTEMAS">
+                                    <p:panel id="panel" header="ELIMINAR SOSFTWARE">
                                         <p:growl id="growl" showDetail="true" sticky="true" />
 
                                         <h:panelGrid columns="3" cellpadding="5">
 
 
-                                            <p:outputLabel for="esis" value="Sistema: "/>
-                                            <p:selectOneMenu id="esis" value="#{sistemaControl.idSist}">
+                                            <p:outputLabel for="esof" value="Software: "/>
+                                            <p:selectOneMenu id="esof" value="#{softBdControl.idSoftBd}">
                                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                                <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
+                                                <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
                                             </p:selectOneMenu>
-                                        <p:commandButton value="Eliminar" update="panel" actionListener="#{sistemaControl.eliminarSistema()}" />
+                                            <p:commandButton value="Eliminar" update="panel" actionListener="#{softBdControl.eliminarSoftBd()}" />
                                         </h:panelGrid>
 
                                         

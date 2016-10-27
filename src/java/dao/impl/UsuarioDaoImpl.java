@@ -1,6 +1,10 @@
 package dao.impl;
 
+<<<<<<< HEAD
+import POJO.SistOper;
+=======
 import POJO.UnidadTrabajo;
+>>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
 import POJO.Usuario;
 import dao.UsuarioDao;
 import java.util.ArrayList;
@@ -20,6 +24,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();
+<<<<<<< HEAD
+            Criteria criteria = session.createCriteria(Usuario.class);
+            ArrayList<Usuario> users = (ArrayList<Usuario>) criteria.list();
+            this.transaction.commit();
+            return users;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+=======
             Criteria criteria = this.session.createCriteria(Usuario.class);
             ArrayList<Usuario> lis = (ArrayList<Usuario>) criteria.list();
             this.transaction.commit();
@@ -29,6 +44,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 this.transaction.rollback();
             }
             System.out.println("Error" + ex.getMessage());
+>>>>>>> 9253324be7ca1eb79fa6099c543ec6766a790b07
         }
         return null;
     }
