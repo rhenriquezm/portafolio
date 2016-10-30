@@ -5,6 +5,7 @@
  */
 package dao.impl;
 
+import POJO.Rack;
 import POJO.SalaServ;
 import dao.SalaServDao;
 import dao.SalaServDao;
@@ -94,11 +95,11 @@ public class SalaServDaoImpl implements SalaServDao {
         try {
         this.session = HibernateUtil.getSessionFactory().openSession();
         this.transaction = session.beginTransaction();
-        SalaServ salaservidor = (SalaServ) session.load(SalaServ.class, id);
-        this.session.delete(salaservidor);
+        SalaServ sala = (SalaServ) session.load(SalaServ.class, id);
+        this.session.delete(sala);
         this.transaction.commit();
         return true;
-        }  catch (Exception ex) {
+    } catch (Exception ex) {
             if (this.transaction != null) {
                 this.transaction.rollback();
             }

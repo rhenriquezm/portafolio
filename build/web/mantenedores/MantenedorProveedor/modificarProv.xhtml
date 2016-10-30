@@ -27,35 +27,35 @@
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="pr" value="Proveedor: " />
                             <p:selectOneMenu id="pr" value="#{proveedorControl.idProv}" style="width:150px">
-                                <p:ajax listener="#{proveedorControl.cambioProv()}" update="prr,idprr,prf,prc" />
+                                <p:ajax listener="#{proveedorControl.cambioProveedor()}" update="prr,idprr,prf,prc" />
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{proveedorControl.listarTodo()}" />
+                                <f:selectItems value="#{proveedorControl.mostrarProveedor}" />
                             </p:selectOneMenu>
 
                             
                             <p:outputLabel for="idprr" value="Id. Proveedor: " />
-                            <p:inputText id="idprr" value="#{proveedorControl.prov.idProv}" required="true" label="Proveedor: " disabled="true">
+                            <p:inputText id="idprr" value="#{proveedorControl.proveedor.idProv}" required="true" label="Proveedor: " disabled="true">
                                 <f:validateLength minimum="2" />
                             </p:inputText>
                             
                             <p:outputLabel for="prr" value=" Nombre Proveedor: " />
-                            <p:inputText id="prr" value="#{proveedorControl.prov.nomProv}" required="true" label="Nombre Proveedor: "  >
+                            <p:inputText id="prr" value="#{proveedorControl.proveedor.nomProv}" required="true" label="Nombre Proveedor: "  >
                                 <f:validateLength minimum="2" />
                             </p:inputText>
                             
                             <p:outputLabel for="prf" value=" Fono Proveedor: " />
-                            <p:inputText id="prf" value="#{proveedorControl.prov.fonoProv}" required="true" label="Fono Proveedor: "  >
+                            <p:inputText id="prf" value="#{proveedorControl.proveedor.fonoProv}" required="true" label="Fono Proveedor: "  >
                                 <f:validateLength minimum="2" />
                             </p:inputText>
                             
                             <p:outputLabel for="prc" value=" Correo Proveedor: " />
-                            <p:inputText id="prc" value="#{proveedorControl.prov.correoProv}" required="true" label="Correo Proveedor: "  >
+                            <p:inputText id="prc" value="#{proveedorControl.proveedor.correoProv}" required="true" label="Correo Proveedor: "  >
                                 <f:validateLength minimum="2" />
                             </p:inputText>
                             
                             
 
-                            <p:commandButton value="Modicar" update="panel" actionListener="#{proveedorControl.modificarProv()}" />
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{proveedorControl.mostrarProveedor()}" />
                         </h:panelGrid>
 
 

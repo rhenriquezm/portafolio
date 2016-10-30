@@ -7,7 +7,9 @@ package controlador;
 
 
 import POJO.SalaServ;
+import dao.RackDao;
 import dao.SalaServDao;
+import dao.impl.RackDaoImpl;
 import dao.impl.SalaServDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,9 +123,9 @@ public class SalaServControl {
     public void eliminarSalaServidor() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-          SalaServDao salaDao = new SalaServDaoImpl();
-          boolean eliminado = salaDao.deleteById(idSalaServidor);
-        if (eliminado) {
+            SalaServDao salaDao = new SalaServDaoImpl();
+            boolean eliminado = salaDao.deleteById(idSalaServidor);
+            if (eliminado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sala Servidor eliminada exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sala Servidor no ha sido eliminada exitosamente"));
