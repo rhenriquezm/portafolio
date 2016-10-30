@@ -5,7 +5,7 @@
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">proyportafolio</property>
-    <property name="hibernate.connection.password">proyportafolio</property>
+    <property name="hibernate.connection.password">portafolio</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="POJO/SistOper.hbm.xml"/>

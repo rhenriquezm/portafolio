@@ -5,9 +5,9 @@
  */
 package controlador;
 
-import POJO.NivSeg;
-import dao.NivSegDao;
-import dao.impl.NivSegDaoImpl;
+import POJO.ContGar;
+import dao.ContGarDao;
+import dao.impl.ContGarDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -22,39 +22,38 @@ import javax.faces.model.SelectItem;
  */
 @ViewScoped
 @ManagedBean
+public class ContGarControl {
 
-public class NivSegControl {
+    private ContGar contgar;
+    private short idContGar;
 
-    private NivSeg nivseg;
-    private short idNivSeg;
-
-    public NivSegControl() {
-        this.idNivSeg = 0;
-        this.nivseg = new NivSeg();
+    public ContGarControl() {
+        this.contgar = new ContGar();
+        this.idContGar = 0;
     }
 
-    public NivSeg getNivseg() {
-        return nivseg;
+    public ContGar getContgar() {
+        return contgar;
     }
 
-    public void setNivseg(NivSeg nivseg) {
-        this.nivseg = nivseg;
+    public void setContgar(ContGar contgar) {
+        this.contgar = contgar;
     }
 
-    public short getIdNivSeg() {
-        return idNivSeg;
+    public short getIdContGar() {
+        return idContGar;
     }
 
-    public void setIdNivSeg(short idNivSeg) {
-        this.idNivSeg = idNivSeg;
+    public void setIdContGar(short idContGar) {
+        this.idContGar = idContGar;
     }
 
     //Personalizados...
-    public void ingresarNivSeg() {
+    public void ingresarContGar() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            NivSegDao nsegDao = new NivSegDaoImpl();
-            boolean ingresado = nsegDao.insert(nivseg);
+            ContGarDao cgDao = new ContGarDaoImpl();
+            boolean ingresado = cgDao.insert(contgar);
             if (ingresado) {
                 LimpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel ingresado exitosamente"));
@@ -67,13 +66,15 @@ public class NivSegControl {
         }
     }
 
-    public void modificarNivSeg() {
+    public void modificarContGar() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            NivSegDao nivsegDao = new NivSegDaoImpl();
-            NivSeg nseg = nivsegDao.getById(getIdNivSeg());
-            nseg.setDescNivSeg(getNivseg().getDescNivSeg());
-            boolean modificar = nivsegDao.update(nseg);
+            ContGarDao cgDao = new ContGarDaoImpl();
+            ContGar cgar = cgDao.getById(getIdContGar());
+            cgar.setNomCont(getContgar().getNomCont());
+            cgar.setCorreoCont(getContgar().getCorreoCont());
+            cgar.setFonoCont(getContgar().getFonoCont());
+            boolean modificar = cgDao.update(cgar);
             if (modificar) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel modificado exitosamente"));
             } else {
@@ -85,15 +86,15 @@ public class NivSegControl {
         }
     }
 
-    public void eliminarNivSeg() {
+    public void eliminarContGar() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            NivSegDao nsegDao = new NivSegDaoImpl();
-            boolean eliminado = nsegDao.deleteById(this.idNivSeg);
+            ContGarDao cgDao = new ContGarDaoImpl();
+            boolean eliminado = cgDao.deleteById(this.idContGar);
             if (eliminado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel eliminado exitosamente"));
 
-            } else if (this.idNivSeg == 0) {
+            } else if (this.idContGar == 0) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Nivel"));
 
             } else {
@@ -104,34 +105,34 @@ public class NivSegControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
 
         }
+
     }
 
-    public void cambioNivSeg() {
+    public void cambioContGar() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            NivSegDao nvsegDao = new NivSegDaoImpl();
-            this.nivseg = nvsegDao.getById(this.idNivSeg);
+            ContGarDao cgDao = new ContGarDaoImpl();
+            this.contgar = cgDao.getById(this.idContGar);
 
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
 
         }
     }
-    
 
-    public List<SelectItem> mostrarNivSeg() {
+    public List<SelectItem> mostrarContGar() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            NivSegDao nsegDao = new NivSegDaoImpl();
-            ArrayList<SelectItem> niveles = new ArrayList<>();
-            for (NivSeg nivseg : nsegDao.getAll()) {
-                niveles.add(new SelectItem(nivseg.getIdNivSeg(), nivseg.getDescNivSeg()));
+            ContGarDao cgDao = new ContGarDaoImpl();
+            ArrayList<SelectItem> contactos = new ArrayList<>();
+            for (ContGar contgar : cgDao.getAll()) {
+                contactos.add(new SelectItem(contgar.getIdCont(), contgar.getNomCont()));
             }
-            if (niveles.isEmpty()) {
+            if (contactos.isEmpty()) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Niveles en el sistema"));
 
             } else {
-                return niveles;
+                return contactos;
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
@@ -140,7 +141,9 @@ public class NivSegControl {
     }
 
     public void LimpiarIngresar() {
-        nivseg.setDescNivSeg(null);
+        contgar.setNomCont(null);
+        contgar.setCorreoCont(null);
+        contgar.setFonoCont(0);
 
     }
 
