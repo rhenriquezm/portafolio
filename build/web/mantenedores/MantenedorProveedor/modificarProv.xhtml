@@ -29,7 +29,7 @@
                             <p:selectOneMenu id="pr" value="#{proveedorControl.idProv}" style="width:150px">
                                 <p:ajax listener="#{proveedorControl.cambioProveedor()}" update="prr,idprr,prf,prc" />
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{proveedorControl.mostrarProveedor}" />
+                                <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
                             </p:selectOneMenu>
 
                             
@@ -55,7 +55,7 @@
                             
                             
 
-                            <p:commandButton value="Modicar" update="panel" actionListener="#{proveedorControl.mostrarProveedor()}" />
+                            <p:commandButton value="Modicar" update="panel" actionListener="#{proveedorControl.modificarProveedor()}" />
                         </h:panelGrid>
 
 
