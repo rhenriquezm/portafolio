@@ -33,6 +33,9 @@
         <many-to-one name="tipoServidor" class="POJO.TipoServidor" fetch="select">
             <column name="ID_TIPO_SERV1" precision="4" scale="0" />
         </many-to-one>
+        <many-to-one name="proveedor" class="POJO.Proveedor" fetch="select">
+            <column name="ID_PROV" precision="4" scale="0" />
+        </many-to-one>
         <property name="nomServ" type="string">
             <column name="NOM_SERV" length="20" not-null="true" />
         </property>
@@ -41,9 +44,6 @@
         </property>
         <property name="modeloServ" type="string">
             <column name="MODELO_SERV" length="20" not-null="true" />
-        </property>
-        <property name="idProv" type="java.lang.Short">
-            <column name="ID_PROV" precision="4" scale="0" />
         </property>
         <set name="asigDirIps" table="ASIG_DIR_IP" inverse="true" lazy="true" fetch="select">
             <key>
