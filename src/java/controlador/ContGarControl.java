@@ -56,9 +56,9 @@ public class ContGarControl {
             boolean ingresado = cgDao.insert(contgar);
             if (ingresado) {
                 LimpiarIngresar();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel ingresado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Contacto ingresado exitosamente"));
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser ingresado"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Contacto no ha podido ser ingresado"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar " + ex.getMessage()));
@@ -76,9 +76,9 @@ public class ContGarControl {
             cgar.setFonoCont(getContgar().getFonoCont());
             boolean modificar = cgDao.update(cgar);
             if (modificar) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel modificado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Contacto modificado exitosamente"));
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser modificado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Contacto no ha podido ser modificado exitosamente"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar " + ex.getMessage()));
@@ -92,13 +92,13 @@ public class ContGarControl {
             ContGarDao cgDao = new ContGarDaoImpl();
             boolean eliminado = cgDao.deleteById(this.idContGar);
             if (eliminado) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel eliminado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Contacto eliminado exitosamente"));
 
             } else if (this.idContGar == 0) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Nivel"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Contacto"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser eliminado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Contacto no ha podido ser eliminado exitosamente"));
 
             }
         } catch (Exception ex) {
@@ -129,7 +129,7 @@ public class ContGarControl {
                 contactos.add(new SelectItem(contgar.getIdCont(), contgar.getNomCont()));
             }
             if (contactos.isEmpty()) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Niveles en el sistema"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Contactoes en el sistema"));
 
             } else {
                 return contactos;
