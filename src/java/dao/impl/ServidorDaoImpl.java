@@ -92,6 +92,8 @@ public class ServidorDaoImpl implements ServidorDao {
             this.transaction = session.beginTransaction();
             Servidor servidor = (Servidor) session.load(Servidor.class, se.getIdServ());
             servidor.setNomServ(se.getNomServ());
+            servidor.setMarcaServ(se.getMarcaServ());
+            servidor.setModeloServ(se.getModeloServ());
             session.update(servidor);
             this.transaction.commit();
             return true;

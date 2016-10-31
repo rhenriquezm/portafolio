@@ -20,7 +20,29 @@
 
 
 
-                                <!--AQUI VAN LOS PANEL--> 
+                                <p:panel id="panel" header="Eliminar Servidor">
+                               
+
+                               <h:panelGrid columns="3" cellpadding="5">
+
+                                
+                                <p:outputLabel for="serv" value="Servidor: " />
+                                <p:selectOneMenu id="serv" value="#{servidorControl.idServ}">
+                                   <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                   <f:selectItems value="#{servidorControl.listarTodo()}" />
+                               </p:selectOneMenu>
+                                
+                                <div class="ui-g">
+                                    <div class="ui-g-6">
+                                        <div class="ui-g-4">
+                                            <p:commandButton value="Eliminar" update="panel" actionListener="#{servidorControl.eliminarServidor()}" />
+                                        </div>
+                                    </div>
+                                </div>
+                              </h:panelGrid>
+                                
+                            
+                             </p:panel>
 
 
 
