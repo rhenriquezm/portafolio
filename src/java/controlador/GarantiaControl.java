@@ -14,10 +14,13 @@ import dao.ServidorDao;
 import dao.impl.ContGarDaoImpl;
 import dao.impl.GarantiaDaoImpl;
 import dao.impl.ServidorDaoImpl;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -28,6 +31,7 @@ import javax.faces.context.FacesContext;
 public class GarantiaControl {
 
     private Garantia garantia;
+    private short idGarantia;
     private short idServidor;
     private short idContGar;
 
@@ -44,6 +48,14 @@ public class GarantiaControl {
 
     public void setGarantia(Garantia garantia) {
         this.garantia = garantia;
+    }
+
+    public short getIdGarantia() {
+        return idGarantia;
+    }
+
+    public void setIdGarantia(short idGarantia) {
+        this.idGarantia = idGarantia;
     }
 
     public short getIdServidor() {
@@ -66,16 +78,15 @@ public class GarantiaControl {
     public void ingresarGarantia() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
+
             GarantiaDao garDao = new GarantiaDaoImpl();
 
             ServidorDao servidorDao = new ServidorDaoImpl();
             ContGarDao contgarDao = new ContGarDaoImpl();
-            //2) Instanciamos el objeto POJO y le asignamos un objeto que buscaremos a traves del ID que declaraste
-            // al comiezo
 
             Servidor servidor = servidorDao.getById(getIdServidor());
             ContGar contgar = contgarDao.getById(getIdContGar());
-            //3) Modificamos el objeto que hasta el momento es null por el nuevo objeto que fuimos a busacr
+
             getGarantia().setServidor(servidor);
             getGarantia().setContGar(contgar);
 
@@ -89,6 +100,93 @@ public class GarantiaControl {
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar " + ex.getMessage()));
 
-            }
+        }
     }
+
+    public void modificarGarantia() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+
+            GarantiaDao mgarDao = new GarantiaDaoImpl();
+            Garantia mgar = mgarDao.getById(getIdGarantia());
+
+            mgar.setContGar(getGarantia().getContGar());
+            mgar.setServidor(getGarantia().getServidor());
+            mgar.setNomGar(getGarantia().getNomGar());
+            mgar.setFechaGar(getGarantia().getFechaGar());
+            mgar.setFechaCadGar(getGarantia().getFechaCadGar());
+            boolean modificar = mgarDao.update(mgar);
+            if (modificar) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sistema modificado exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sistema no ha podido ser modificado exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar " + ex.getMessage()));
+
+        }
+    }
+
+    public void eliminarGarantia() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            GarantiaDao egarDao = new GarantiaDaoImpl();
+            boolean eliminado = egarDao.deleteById(this.idGarantia);
+            if (eliminado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sistema eliminado exitosamente"));
+
+            } else if (this.idGarantia == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Sistema"));
+
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sistema no ha podido ser eliminado exitosamente"));
+
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
+
+        }
+    }
+
+    public List<SelectItem> mostrarGarantia() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            GarantiaDao lgarDao = new GarantiaDaoImpl();
+            ArrayList<SelectItem> garantias = new ArrayList<>();
+            for (Garantia garantia : lgarDao.getAll()) {
+                garantias.add(new SelectItem(garantia.getIdGar(), garantia.getNomGar()));
+            }
+            if (garantias.isEmpty()) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Sistema Ingresados en el sistema"));
+
+            } else {
+                return garantias;
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
+        }
+        return null;
+    }
+
+    public void cambioGarantia() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            GarantiaDao cgarDao = new GarantiaDaoImpl();
+            this.garantia = cgarDao.getById(this.idGarantia);
+
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
+
+        }
+    }
+
+    public void LimpiarIngresar() {
+        garantia.setNomGar(null);
+        garantia.setContGar(null);
+        garantia.setServidor(null);
+        garantia.setFechaGar(null);
+        garantia.setFechaCadGar(null);
+
+    }
+
 }

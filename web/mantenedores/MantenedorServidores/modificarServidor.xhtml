@@ -9,6 +9,7 @@
 
     <ui:define name="content">
         <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12">
@@ -18,24 +19,56 @@
                             <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+                              <p:panel id="panel" header="Modificar Servidor">
+                                
+
+                               <h:panelGrid columns="2" cellpadding="5">
+                               <p:outputLabel for="se" value="Servidor: " />
+                               <p:selectOneMenu id="se" value="#{servidorControl.idServ}" style="width:150px">
+                                   <p:ajax listener="#{servidorControl.cambioServidor()}" update="idser,ser" />
+                                  <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                 <f:selectItems value="#{servidorControl.listarTodo()}" />
+                                </p:selectOneMenu>
+
+                            
+                               <p:outputLabel for="idser" value="Id. Servidor: " />
+                               <p:inputText id="idser" value="#{servidorControl.serv.idServ}" required="true" label="Servidor: " disabled="true">
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+                            
+                               <p:outputLabel for="ser" value=" Nombre Servidor: " />
+                               <p:inputText id="ser" value="#{servidorControl.serv.nomServ}" required="true" label="Nombre Servidor: "  >
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+                               
+                               <p:outputLabel for="sem" value=" Marca Servidor: " />
+                               <p:inputText id="sem" value="#{servidorControl.serv.marcaServ}" required="true" label="Marca Servidor: "  >
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+ 
+                               
+                               <p:outputLabel for="semo" value=" Modelo Servidor: " />
+                               <p:inputText id="semo" value="#{servidorControl.serv.modeloServ}" required="true" label="Modelo Servidor: "  >
+                                  <f:validateLength minimum="2" />
+                               </p:inputText>
+ 
+ 
+                               <p:commandButton value="Modicar" update="panel" actionListener="#{servidorControl.modificarServidor()}" />
+                              </h:panelGrid>
 
 
-                                <!--AQUI VAN LOS PANEL--> 
-
-
-
-
+                               </p:panel>
 
                             </p:panelGrid>
 
 
                         </div>
 
-                        <div class="card">
+                        <!--<div class="card">
 
                             <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
 
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>

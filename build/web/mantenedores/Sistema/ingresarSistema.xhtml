@@ -33,7 +33,7 @@ and open the template in the editor.
                             <p:outputLabel for="isrvd" value="ID Servidor: " />
                             <p:selectOneMenu id="isrvd" value="#{sistemaControl.sistema.servidor.idServ}" style="width:150px">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{servidorControl.mostrarServidor()}" />
+                                <f:selectItems value="#{servidorControl.listarTodo()}" />
                             </p:selectOneMenu>
 
                             <p:outputLabel for="iusu" value="ID Usuario: " />

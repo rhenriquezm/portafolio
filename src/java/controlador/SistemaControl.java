@@ -21,6 +21,7 @@ import dao.NivSensDao;
 import dao.OrganizacionDao;
 import dao.PerfilDao;
 import dao.ProveedorDao;
+import dao.ServidorDao;
 import dao.SistOperDao;
 import dao.SistemaDao;
 import dao.SoftBdDao;
@@ -31,6 +32,7 @@ import dao.impl.NivSensDaoImpl;
 import dao.impl.OrganizacionDaoImpl;
 import dao.impl.PerfilDaoImpl;
 import dao.impl.ProveedorDaoImpl;
+import dao.impl.ServidorDaoImpl;
 import dao.impl.SistOperDaoImpl;
 import dao.impl.SistemaDaoImpl;
 import dao.impl.SoftBdDaoImpl;
@@ -177,7 +179,7 @@ public class SistemaControl {
             SistemaDao sisDao = new SistemaDaoImpl();            
             //Tenemos que traer los objetos para llenar esta tabla y poder hacer bien el insert
             //1)Instanciamos el objetoDao X
-//OJOACA            ServidorDao servidorDao = new ServidorDaoImpl();
+            ServidorDao servidorDao = new ServidorDaoImpl();
             UsuarioDao usuarioDao = new UsuarioDaoImpl();
             NivSegDao nivsegDao = new NivSegDaoImpl();
             NivSensDao nivsensDao = new NivSensDaoImpl();
@@ -188,7 +190,7 @@ public class SistemaControl {
             OrganizacionDao organizacionDao = new OrganizacionDaoImpl();
             //2) Instanciamos el objeto POJO y le asignamos un objeto que buscaremos a traves del ID que declaraste
             // al comiezo
- //OJOACA           Servidor servidor = servidorDao.getById(getIdServidor());
+            Servidor servidor = servidorDao.getById(getIdServidor());
             Usuario usuario = usuarioDao.getById(getIdUsuario());
             NivSeg nivseg = nivsegDao.getById(getIdNivSeg());
             NivSens nivsens = nivsensDao.getById(getIdNivSens());
@@ -199,7 +201,7 @@ public class SistemaControl {
             Organizacion organizacion = organizacionDao.getById(getIdOrganizacion());          
             //3) Modificamos el objeto que hasta el momento es null por el nuevo objeto que fuimos a busacr
             getSistema().setUsuario(usuario);
-  //OJOACA          getSistema().setServidor(servidor);
+            getSistema().setServidor(servidor);
             getSistema().setNivSeg(nivseg);
             getSistema().setNivSens(nivsens);
             getSistema().setSistOper(sistoper);
@@ -316,119 +318,5 @@ public class SistemaControl {
         sistema.setOrganizacion(null);
     }
 
-//    public List<SelectItem> mostrarOrga() {
-//        try {
-//            OrganizacionDao orgDao = new OrganizacionDaoImpl();
-//            ArrayList<SelectItem> orgnes = new ArrayList<>();
-//            for (Organizacion organizacion : orgDao.getAll()) {
-//                orgnes.add(new SelectItem(organizacion.getIdOrg(), organizacion.getNomOrg()));
-//            }
-//            return orgnes;
-//
-//        } catch (Exception e) {
-//        }
-//        return null;
-//
-//    }
-//
-//    public ArrayList<SelectItem> mostrarWebservice() {
-//        try {
-//            WebServiceDao webserviceDao = new WebServiceDaoImpl();
-//            ArrayList<SelectItem> wss = new ArrayList<>();
-//            for (Webservice webservice : webserviceDao.getAll()) {
-//                wss.add(new SelectItem(webservice.getIdWebservice(), webservice.getNomWebservice()));
-//            }
-//            return wss;
-//        } catch (Exception e) {
-//        }
-//        return null;
-//    }
-//
-//    public List<SelectItem> mostrarSoftBd() {
-//        try {
-//            SoftBdDao lsofDao = new SoftBdDaoImpl();
-//            ArrayList<SelectItem> softwares = new ArrayList<>();
-//            for (SoftBd softbd : lsofDao.getAll()) {
-//                softwares.add(new SelectItem(softbd.getIdSoftBd(), softbd.getNomSoftBd()));
-//            }
-//            return softwares;
-//        } catch (Exception e) {
-//        }
-//        return null;
-//    }
-//
-//    public List<SelectItem> mostrarProveedor() {
-//        try {
-//            ProveedorDao lprovDao = new ProveedorDaoImpl();
-//            ArrayList<SelectItem> proveedores = new ArrayList<>();
-//            for (Proveedor proveedor : lprovDao.getAll()) {
-//                proveedores.add(new SelectItem(proveedor.getIdProv(), proveedor.getNomProv()));
-//            }
-//            return proveedores;
-//
-//        } catch (Exception e) {
-//        }
-//        return null;
-//
-//    }
-//
-//    public List<SelectItem> mostrarSistOper() {
-//        try {
-//            SistOperDao lsoDao = new SistOperDaoImpl();
-//            ArrayList<SelectItem> sistoperativos = new ArrayList<>();
-//            for (SistOper sistoper : lsoDao.getAll()) {
-//                sistoperativos.add(new SelectItem(sistoper.getIdSo(), sistoper.getDesSo()));
-//            }
-//            return sistoperativos;
-//
-//        } catch (Exception e) {
-//        }
-//        return null;
-//
-//    }
-//
-//    public List<SelectItem> mostrarNivSens() {
-//
-//        try {
-//            NivSensDao nssDao = new NivSensDaoImpl();
-//            ArrayList<SelectItem> nivelesen = new ArrayList<>();
-//            for (NivSens nivsens : nssDao.getAll()) {
-//                nivelesen.add(new SelectItem(nivsens.getIdNivSens(), nivsens.getDescNivSens()));
-//            }
-//            return nivelesen;
-//
-//        } catch (Exception e) {
-//        }
-//        return null;
-//    }
-//
-//    public List<SelectItem> mostrarNivSeg() {
-//        try {
-//            NivSegDao nsegDao = new NivSegDaoImpl();
-//            ArrayList<SelectItem> niveles = new ArrayList<>();
-//            for (NivSeg nivseg : nsegDao.getAll()) {
-//                niveles.add(new SelectItem(nivseg.getIdNivSeg(), nivseg.getDescNivSeg()));
-//            }
-//            return niveles;
-//
-//        } catch (Exception e) {
-//        }
-//        return null;
-//    }
-//
-//    public ArrayList<SelectItem> mostrarPerfiles() {
-//
-//        try {
-//            PerfilDao perfilDao = new PerfilDaoImpl();
-//            ArrayList<SelectItem> perfiles = new ArrayList<>();
-//            for (Perfil perfil : perfilDao.getAll()) {
-//                perfiles.add(new SelectItem(perfil.getIdPerfil(), perfil.getNomPerfil()));
-//            }
-//            return perfiles;
-//        } catch (Exception ex) {
-//
-//        }
-//        return null;
-//
-//    }
+
 }
