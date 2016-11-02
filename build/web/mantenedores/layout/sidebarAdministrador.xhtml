@@ -42,7 +42,7 @@
 
                     <div class="menu">
                         <po:menu>
-                            <p:menuitem id="om_dashboard" value="Dashboard" icon="fa fa-home" outcome="/mantenedores/layout/dashboard"/>
+                            <p:menuitem id="om_dashboard" value="Escritorio" icon="fa fa-home" outcome="/mantenedores/layout/dashboard"/>
 
                             <p:submenu id="MantenedorPersona" label="Mantenedor Usuario" icon="fa fa-group">
                                 <p:menuitem id="ingresar_persona" value="Ingresar Usuario" icon="fa fa-columns" outcome="/mantenedores/MantenedorPersona/ingresarPersona" />
@@ -68,10 +68,10 @@
                                 <p:menuitem id="eliminar_sistema" value="Eliminar Sistema" icon="fa fa-columns" outcome="/mantenedores/MantenedorSistema/eliminarSistema" />
                             </p:submenu>
 
-                            <p:submenu id="MantenedorRoles" label="Mantenedor Roles" icon="fa fa-group">
-                                <p:menuitem id="ingresar_rol" value="Ingresar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorRoles/ingresarRol" />
-                                <p:menuitem id="modificar_rol" value="Modificar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorRoles/modificarRol" />
-                                <p:menuitem id="eliminar_rol" value="Eliminar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorRoles/eliminarRol" />
+                            <p:submenu id="MantenedorPerfil" label="Mantenedor Roles" icon="fa fa-group">
+                                <p:menuitem id="ingresar_rol" value="Ingresar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorPerfil/ingresarPerfil" />
+                                <p:menuitem id="modificar_rol" value="Modificar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorPerfil/modificarPerfil" />
+                                <p:menuitem id="eliminar_rol" value="Eliminar Rol" icon="fa fa-columns" outcome="/mantenedores/MantenedorPerfil/eliminarPerfil" />
                             </p:submenu>
                             
                             <p:submenu id="MantenedorRack" label="Mantenedor Rack" icon="fa fa-group">
@@ -80,7 +80,78 @@
                                 <p:menuitem id="eliminar_rack" value="Eliminar Rack" icon="fa fa-columns" outcome="/mantenedores/MantenedorRack/eliminarRack" />
                             </p:submenu>
 
-
+                            <p:submenu id="MantenedorProveedor" label="Mantenedor Proveedor" icon="fa fa-group">
+                                <p:menuitem id="ingresar_proveedor" value="Ingresar proveedor" icon="fa fa-columns" outcome="/mantenedores/MantenedorProveedor/ingresarProv" />
+                                <p:menuitem id="modificar_proveedor" value="Modificar proveedor" icon="fa fa-columns" outcome="/mantenedores/MantenedorProveedor/modificarProv" />
+                                <p:menuitem id="eliminar_proveedor" value="Eliminar proveedor" icon="fa fa-columns" outcome="/mantenedores/MantenedorProveedor/eliminarProv" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorContGar" label="Mantenedor Contacto Garantia" icon="fa fa-group">
+                                <p:menuitem id="ingresar_cont_gar" value="Ingresar Contacto" icon="fa fa-columns" outcome="/mantenedores/MantenedorContGar/ingresarContGar" />
+                                <p:menuitem id="modificar_cont_gar" value="Modificar Contacto" icon="fa fa-columns" outcome="/mantenedores/MantenedorContGar/modificarContGar" />
+                                <p:menuitem id="eliminar_cont_gar" value="Eliminar Contacto" icon="fa fa-columns" outcome="/mantenedores/MantenedorContGar/eliminarContGar" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorGarantia" label="Mantenedor Garantia" icon="fa fa-group">
+                                <p:menuitem id="ingresar_garantia" value="Ingresar Garantia" icon="fa fa-columns" outcome="/mantenedores/MantenedorGarantia/ingresarGarantia" />
+                                <p:menuitem id="modificar_garantia" value="Modificar Garantia" icon="fa fa-columns" outcome="/mantenedores/MantenedorGarantia/modificarGarantia" />
+                                <p:menuitem id="eliminar_garantia" value="Eliminar Garantia" icon="fa fa-columns" outcome="/mantenedores/MantenedorGarantia/eliminarGarantia" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorOrganizacion" label="Mantenedor Organizacion" icon="fa fa-group">
+                                <p:menuitem id="ingresar_Organizacion" value="Ingresar Organizacion" icon="fa fa-columns" outcome="/mantenedores/MantenedorOrganizacion/ingresarOrganizacion" />
+                                <p:menuitem id="modificar_Organizacion" value="Modificar Organizacion" icon="fa fa-columns" outcome="/mantenedores/MantenedorOrganizacion/modificarOrganizacion" />
+                                <p:menuitem id="eliminar_Organizacion" value="Eliminar Organizacion" icon="fa fa-columns" outcome="/mantenedores/MantenedorOrganizacion/eliminarOrganizacion" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorServicio" label="Mantenedor Servicio" icon="fa fa-group">
+                                <p:menuitem id="ingresar_Servicio" value="Ingresar Servicio" icon="fa fa-columns" outcome="/mantenedores/MantenedorServicio/ingresarServicio" />
+                                <p:menuitem id="modificar_Servicio" value="Modificar Servicio" icon="fa fa-columns" outcome="/mantenedores/MantenedorServicio/modificarServicio" />
+                                <p:menuitem id="eliminar_Servicio" value="Eliminar Servicio" icon="fa fa-columns" outcome="/mantenedores/MantenedorServicio/eliminarServicio" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorSoftwareBd" label="Mantenedor SoftwareBd" icon="fa fa-group">
+                                <p:menuitem id="ingresar_SoftBd" value="Ingresar SoftwareBd" icon="fa fa-columns" outcome="/mantenedores/MantenedorSoftwareBd/ingresarSoftBd" />
+                                <p:menuitem id="modificar_SoftBd" value="Modificar SoftwareBd" icon="fa fa-columns" outcome="/mantenedores/MantenedorSoftwareBd/modificarSoftBd" />
+                                <p:menuitem id="eliminar_SoftBd" value="Eliminar SoftwareBd" icon="fa fa-columns" outcome="/mantenedores/MantenedorSoftwareBd/eliminarSoftBd" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorUT" label="Mantenedor Unidad de trabajo" icon="fa fa-group">
+                                <p:menuitem id="ingresar_UT" value="Ingresar U. T." icon="fa fa-columns" outcome="/mantenedores/MantenedorUT/ingresarUT" />
+                                <p:menuitem id="modificar_UT" value="Modificar U. T." icon="fa fa-columns" outcome="/mantenedores/MantenedorUT/modificarUT" />
+                                <p:menuitem id="eliminar_UT" value="Eliminar U. T." icon="fa fa-columns" outcome="/mantenedores/MantenedorUT/eliminarUT" />
+                            </p:submenu>
+                            
+                            <p:submenu id="NivSeg" label="Mantenedor Niveles de Seguridad" icon="fa fa-group">
+                                <p:menuitem id="ingresar_NivSeg" value="Ingresar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSeg/ingresarNivSeg" />
+                                <p:menuitem id="modificar_NivSeg" value="Modificar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSeg/modificarNivSeg" />
+                                <p:menuitem id="eliminar_NivSeg" value="Eliminar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSeg/eliminarNivSeg" />
+                            </p:submenu>
+                            
+                            <p:submenu id="NivSens" label="Mantenedor Niveles de Sensibilidad" icon="fa fa-group">
+                                <p:menuitem id="ingresar_NivSens" value="Ingresar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSens/ingresarNivSens" />
+                                <p:menuitem id="modificar_NivSens" value="Modificar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSens/modificarNivSens" />
+                                <p:menuitem id="eliminar_NivSens" value="Eliminar Nivel" icon="fa fa-columns" outcome="/mantenedores/NivSens/eliminarNivSens" />
+                            </p:submenu>
+                            
+                            <p:submenu id="MantenedorDirIp" label="Mantenedor Dirección IP" icon="fa fa-group">
+                                <p:menuitem id="ingresar_DirIp" value="Ingresar IP" icon="fa fa-columns" outcome="/mantenedores/MantenedorDirIp/ingresarDirIp" />
+                                <p:menuitem id="modificar_DirIp" value="Modificar IP" icon="fa fa-columns" outcome="/mantenedores/MantenedorDirIp/modificarDirIp" />
+                                <p:menuitem id="eliminar_DirIp" value="Eliminar IP" icon="fa fa-columns" outcome="/mantenedores/MantenedorDirIp/eliminarDirIp" />
+                            </p:submenu>
+                            
+                            <p:submenu id="LengDesSist" label="Mantenedor Lenguaje Desarrollo" icon="fa fa-group">
+                                <p:menuitem id="ingresar_LengDesSist" value="Ingresar Lenguaje" icon="fa fa-columns" outcome="/mantenedores/LengDesSist/ingresarLengDesSist" />
+                                <p:menuitem id="modificar_LengDesSist" value="Modificar Lenguaje" icon="fa fa-columns" outcome="/mantenedores/LengDesSist/modificarLengDesSist" />
+                                <p:menuitem id="eliminar_LengDesSist" value="Eliminar Lenguaje" icon="fa fa-columns" outcome="/mantenedores/LengDesSist/eliminarLengDesSist" />
+                            </p:submenu>
+                            
+                            <p:submenu id="Webserver" label="Mantenedor Web Services" icon="fa fa-group">
+                                <p:menuitem id="ingresar_Webservice" value="Ingresar Webservice" icon="fa fa-columns" outcome="/mantenedores/Webserver/ingresarWebservice" />
+                                <p:menuitem id="modificar_Webservice" value="Modificar Webservice" icon="fa fa-columns" outcome="/mantenedores/Webserver/modificarWebservice" />
+                                <p:menuitem id="eliminar_Webservice" value="Eliminar Webservice" icon="fa fa-columns" outcome="/mantenedores/Webserver/eliminarWebservice" />
+                            </p:submenu>
+                            
                         </po:menu>
                     </div>
 

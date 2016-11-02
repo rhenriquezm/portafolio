@@ -1,60 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
 
-    <h:head>
-        <title>Modificar Lenguaje Desarrollo</title>
-    </h:head>
-    <h:body>
+    <ui:define name="title">Mantenedor Lenguaje de Desarrollo</ui:define>
 
-        <div class="ui-g">
-            <div class="ui-g-4">
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h1>MODIFICAR</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                                <p:panel id="panel" header="Modificar Lenguaje">
+
+
+                                    <h:panelGrid columns="2" cellpadding="5">
+
+                                        <p:outputLabel for="ld" value="Lenguaje: " />
+                                        <p:selectOneMenu id="ld" value="#{lengDesSistControl.idLengSist}" style="width:150px">
+                                            <p:ajax listener="#{lengDesSistControl.cambioLengDes()}" update="idld,nld" />
+                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                            <f:selectItems id="lenguajes" value="#{lengDesSistControl.mostrarLengDes()}" />
+                                        </p:selectOneMenu>
+
+
+                                        <p:outputLabel for="idld" value="Id. Lenguaje Des: " />
+                                        <p:inputText id="idld" value="#{lengDesSistControl.lengdessist.idLengSist}" required="true" label="Lenguaje: " disabled="true">
+                                            <f:validateLength minimum="2" />
+                                        </p:inputText>
+
+                                        <p:outputLabel for="nld" value=" Nombre Lenguaje Des: " />
+                                        <p:inputText id="nld" value="#{lengDesSistControl.lengdessist.nomLengDes}" required="true" label="Lenguaje: "  >
+                                            <f:validateLength minimum="2" />
+                                        </p:inputText>
+                                        <div class="ui-g">
+                                            <div class="ui-g-4">
+                                                <p:commandButton value="Modificar" update="panel" actionListener="#{lengDesSistControl.modificarLengDes()}" />
+                                            </div>
+
+                                        </div>
+
+                                    </h:panelGrid>
+
+
+                                </p:panel>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="ui-g-4">
+        </h:form>
+    </ui:define>
 
-                <h:form >
-                    <p:panel id="panel" header="Modificar Lenguaje">
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-
-                        <h:panelGrid columns="2" cellpadding="5">
-                            
-                            <p:outputLabel for="ld" value="Lenguaje: " />
-                            <p:selectOneMenu id="ld" value="#{lengDesSistControl.idLengSist}" style="width:150px">
-                                <p:ajax listener="#{lengDesSistControl.cambioLengDes()}" update="idld,nld" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems id="lenguajes" value="#{lengDesSistControl.mostrarLengDes()}" />
-                            </p:selectOneMenu>
-
-
-                            <p:outputLabel for="idld" value="Id. Lenguaje Des: " />
-                            <p:inputText id="idld" value="#{lengDesSistControl.lengdessist.idLengSist}" required="true" label="Lenguaje: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="nld" value=" Nombre Lenguaje Des: " />
-                            <p:inputText id="nld" value="#{lengDesSistControl.lengdessist.nomLengDes}" required="true" label="Lenguaje: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:commandButton value="Modificar" update="panel" actionListener="#{lengDesSistControl.modificarLengDes()}" />
-                        </h:panelGrid>
-
-
-                    </p:panel>
-
-                </h:form>  
-
-            </div>
-            <div class="ui-g-4"></div>
-        </div>
-
-    </h:body>
-</html>
+</ui:composition>

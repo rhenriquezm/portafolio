@@ -9,6 +9,7 @@
 
     <ui:define name="content">
         <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12">
@@ -18,7 +19,7 @@
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
                                 <p:panel id="panel" header="Modificar Sala Servidor">
-                                    <p:messages id="msgs" />
+                                    
 
                                     <h:panelGrid columns="2" cellpadding="5">
                                         <p:outputLabel for="ss" value="Sala Servidor: " />
