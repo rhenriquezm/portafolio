@@ -1,50 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
 
-    <h:head>
-        <title>Eliminar Sistema Operativo</title>
-    </h:head>
-    <h:body>
+    <ui:define name="title">Mantenedor Sistema Operativo</ui:define>
 
-        <div class="ui-g">
-            <div class="ui-g-4">
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h1>Eliminar Sistema Operativo</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+
+
+
+
+                                <p:panel id="panel" header="Datos">
+
+
+                                    <h:panelGrid columns="3" cellpadding="5">
+
+
+                                        <p:outputLabel for="iso" value="Sistema Operativo: " />
+                                        <p:selectOneMenu id="iso" value="#{sistOperControl.idSo}">
+                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                            <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                        </p:selectOneMenu>
+
+                                        <div class="ui-g">
+                                            <div class="ui-g-6">
+                                                <div class="ui-g-4">
+                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{sistOperControl.eliminarSistOper()}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGrid>
+
+
+                                </p:panel>
+
+
+
+
+
+                            </p:panelGrid>
+
+
+                        </div>
+
+                        <!--<div class="card">
+
+                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
+
+                        </div>-->
+                    </div>
+
+                </div>
             </div>
-            <div class="ui-g-4">
+        </h:form>
+    </ui:define>
 
-                <h:form >
-
-                    <p:panel id="panel" header="Eliminar Sistema Operativo">
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-
-                        <h:panelGrid columns="3" cellpadding="5">
-
-
-                            <p:outputLabel for="iso" value="Sistema Operativo: " />
-                            <p:selectOneMenu id="iso" value="#{sistOperControl.idSo}">
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
-                            </p:selectOneMenu>
-
-                        </h:panelGrid>
-
-                        <p:commandButton value="Eliminar" update="panel" actionListener="#{sistOperControl.eliminarSistOper()}" />
-                    </p:panel>
-
-                </h:form>  
-
-            </div>
-            <div class="ui-g-4"></div>
-        </div>
-
-    </h:body>
-</html>
+</ui:composition>

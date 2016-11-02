@@ -1,54 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-      
-    <h:head>
-        <title>Ingresar Webservice</title>
-    </h:head>
-    <h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
 
-        <div class="ui-g">
-            <div class="ui-g-4">
+    <ui:define name="title">MANTENEDOR WEB SERVICE</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h1>INGRESAR WEB SERVICE</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+
+
+
+
+                                <p:panel id="panel" header="Datos Nuevo Web Service">
+
+
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:outputLabel for="nomWebservice" value="Nombre:" />
+                                        <p:inputText id="nomWebservice" value="#{webserviceControl.webservice.nomWebservice}" required="true" 
+                                                     label="Nom Webservice: ">
+                                            <f:validateLength minimum="2" />
+                                        </p:inputText>
+
+
+
+                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{webserviceControl.ingresarWebservice()}" />
+                                    </h:panelGrid>
+
+
+                                </p:panel>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="ui-g-4">
-                <h:form>
-                    <p:panel id="panel" header="Nuevo Webservice">
-                        
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-                        
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="nomWebservice" value="Nombre Webservice " />
-                            <p:inputText id="nomWebservice" value="#{webserviceControl.webservice.nomWebservice}" required="true" label="Nom Webservice: ">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
+        </h:form>
+    </ui:define>
 
-                            <p:outputLabel for="protWebservice" value=" Prot Webservice: " />
-                            <p:inputText id="protWebservice" value="#{webserviceControl.webservice.protWebservice}" required="true" label="Prot Webservice: ">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                        </h:panelGrid>
-
-                        <p:commandButton value="Ingresar" update="panel" actionListener="#{webserviceControl.ingresarWebservice()}" />
-
-                    </p:panel>
-
-                </h:form>  
-
-            </div>
-            <div class="ui-g-4"></div>
-        </div>
-
-    </h:body>
-    
-</html>
-
-
+</ui:composition>

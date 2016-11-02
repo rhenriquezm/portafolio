@@ -20,7 +20,7 @@
 
 
                                 <h:form>
-                                    <p:panel id="panel" header="Nuevo Sistema">
+                                    <p:panel id="panel" header="Datos">
 
                                         <p:messages id="msgs" />
                                         <div class="ui-g">
@@ -33,13 +33,14 @@
                                                     </p:inputText>
                                                 </div>
 
+                                                <div class="ui-g-4">    
+                                                <p:outputLabel for="isrvd" value="ID Servidor: " />
+                                                <p:selectOneMenu id="isrvd" value="{sistemaControl.sistema.servidor.idServ}" style="width:150px">
+                                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="#{servidorControl.listarTodo()}" />
+                                                </p:selectOneMenu>
+                                                </div>
 
-                                                <!--    <p:outputLabel for="isrvd" value="ID Servidor: " />
-                                                    <p:selectOneMenu id="isrvd" value="{sistemaControl.sistema.servidor.idServ}" style="width:150px">
-                                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                        <f:selectItems value="{servidorControl.mostrarServidor()}" />
-                                                    </p:selectOneMenu>
-                                                -->
                                                 <div class="ui-g-4">
                                                     <p:outputLabel for="iusu" value="ID Usuario: " />
                                                     <p:selectOneMenu id="iusu" value="#{sistemaControl.idUsuario}" style="width:150px" required="true" requiredMessage="Seleccione Usuario.">
@@ -108,10 +109,10 @@
                                             </div>
                                             <div class="ui-g">
                                                 <div class="ui-g-12">
-                                                    
 
-                                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{sistemaControl.ingresarSistema()}" />  
-                                                    
+
+                                                    <p:commandButton value="Ingresar" update="panel" actionListener="#{sistemaControl.ingresarSistema()}" />  
+
                                                 </div>
                                             </div>
 

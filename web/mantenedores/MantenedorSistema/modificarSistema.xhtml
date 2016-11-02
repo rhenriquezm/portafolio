@@ -13,28 +13,98 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>Modificar Sistema</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-
-
-
-                                <!--AQUI VAN LOS PANEL--> 
+                            <h2>Modificar Sistema</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <p:panel id="panel" header="Datos">
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
 
+                                    <p:outputLabel for="msis" value="Sistema: " />
+                                    <p:selectOneMenu id="msis" value="#{sistemaControl.idSist}" style="width:150px">
+                                        <p:ajax listener="#{sistemaControl.cambioSistema()}" update="idmsis,mnsis,mssis,iusu,inseg,insens,iso,iprov,isof,iws,iorg" />
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems id="sistemas" value="#{sistemaControl.mostrarSistema()}" />
+                                    </p:selectOneMenu>
 
-                            </p:panelGrid>
 
+                                    <p:outputLabel for="idmsis" value="Id. Sistema: " />
+                                    <p:inputText id="idmsis" value="#{sistemaControl.sistema.idSist}" required="true" label="Sistema: " disabled="true">
+                                        <f:validateLength minimum="2" />
+                                    </p:inputText>
+
+                                    <p:outputLabel for="mnsis" value="Nombre: " />
+                                    <p:inputText id="mnsis" value="#{sistemaControl.sistema.nomSist}" required="true" label="Nombre: "  >
+                                        <f:validateLength minimum="2" />
+                                    </p:inputText>
+
+                                    <p:outputLabel for="mssis" value="Servidor: " />
+                                    <p:selectOneMenu id="mssis" value="#{sistemaControl.idServidor}" style="width:150px">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{servidorControl.listarTodo()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="iusu" value="Usuario: " />
+                                    <p:selectOneMenu id="iusu" value="#{sistemaControl.idUsuario}" style="width:150px" required="true" requiredMessage="Seleccione Usuario.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                                    </p:selectOneMenu>
+
+
+                                    <p:outputLabel for="inseg" value="NivSeg: " />
+                                    <p:selectOneMenu id="inseg" value="#{sistemaControl.idNivSeg}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Seguridad.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="insens" value="NivSens " />
+                                    <p:selectOneMenu id="insens" value="#{sistemaControl.idNivSens}" style="width:150px" required="true" requiredMessage="Seleccione Nivel Sensibilidad.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{nivSensControl.mostrarNivSens()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="iso" value="SistOper " />
+                                    <p:selectOneMenu id="iso" value="#{sistemaControl.idSistOper}" style="width:150px" required="true" requiredMessage="Seleccione Sistema Operativo.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="iprov" value="Proveedor " />
+                                    <p:selectOneMenu id="iprov" value="#{sistemaControl.idProveedor}" style="width:150px" required="true" requiredMessage="Seleccione Proveedor.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="isof" value="SoftBd " />
+                                    <p:selectOneMenu id="isof" value="#{sistemaControl.idSoftBd}" style="width:150px" required="true" requiredMessage="Seleccione Software Desarrollo.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="iws" value="Webservice " />
+                                    <p:selectOneMenu id="iws" value="#{sistemaControl.idWebservice}" style="width:150px" required="true" requiredMessage="Seleccione Webservice.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="iorg" value="Organizacion" />
+                                    <p:selectOneMenu id="iorg" value="#{sistemaControl.idOrganizacion}" style="width:150px" required="true" requiredMessage="Seleccione Organizacion.">
+                                        <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
+                                    </p:selectOneMenu>
+
+
+
+                                    <p:commandButton value="Modificar" update="panel" actionListener="#{softBdControl.modificarSoftBd()}" />
+
+                                </p:panelGrid>
+                            </p:panel>
 
                         </div>
 
                         <div class="card">
 
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
+                            <!--          <h1> PANEL 2 EJ PARA UN DATA GRID</h1> -->
                         </div>
                     </div>
 

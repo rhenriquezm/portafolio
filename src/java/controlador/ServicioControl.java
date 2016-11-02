@@ -68,9 +68,11 @@ public class ServicioControl {
     	FacesContext context = FacesContext.getCurrentInstance();
         try {
             ServicioDao iservDao = new ServicioDaoImpl();
-//            SistemaDao sistemaDao = new SistemaDaoImpl();
-//            Sistema sistema = sistemaDao.getById(getIdSist());
-//            getServicio().setSistema(sistema);
+            SistemaDao sistemaDao = new SistemaDaoImpl();
+            
+            Sistema sistema = sistemaDao.getById(getIdSist());
+            
+            getServicio().setSistema(sistema);
             boolean ingresado = iservDao.insert(servicio);
             if (ingresado) {
                 LimpiarIngresarServicio();

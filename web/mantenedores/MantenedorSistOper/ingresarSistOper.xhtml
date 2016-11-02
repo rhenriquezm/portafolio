@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR WEB SERVICE</ui:define>
+    <ui:define name="title">Mantenedor Sistema Operativo</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -14,26 +14,25 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>INGRESAR WEB SERVICE</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h2>Ingresar Sistema Operativo</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
 
-                                <p:panel id="panel" header="Datos Nuevo Web Service">
+                                <p:panel id="panel" header="Datos">
 
 
                                     <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="nomWebservice" value="Nombre:" />
-                                        <p:inputText id="nomWebservice" value="#{webserviceControl.webservice.nomWebservice}" required="true" 
-                                                     label="Nom Webservice: ">
+                                        <p:outputLabel for="nomSo" value="Nombre " />
+                                        <p:inputText id="nomSo" value="#{sistOperControl.sistoper.desSo}" required="true" label="Nom Sistema Operativo: ">
                                             <f:validateLength minimum="2" />
                                         </p:inputText>
 
 
 
-                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{webserviceControl.ingresarWebservice()}" />
+                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{sistOperControl.ingresarSistOper()}" />
                                     </h:panelGrid>
 
 

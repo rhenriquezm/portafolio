@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Contacto Garantia</ui:define>
+    <ui:define name="title">Mantenedor Sistema Operativo</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -14,7 +14,7 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h2>Eliminar Contacto Garantia</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h2>Eliminar Sistema Operativo</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
@@ -27,16 +27,16 @@
                                     <h:panelGrid columns="3" cellpadding="5">
 
 
-                                        <p:outputLabel for="icg" value="Contactos Garantia: " />
-                                        <p:selectOneMenu id="icg" value="#{contGarControl.idContGar}">
+                                        <p:outputLabel for="iso" value="Sistema Operativo: " />
+                                        <p:selectOneMenu id="iso" value="#{sistOperControl.idSo}">
                                             <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                            <f:selectItems value="#{contGarControl.mostrarContGar()}" />
+                                            <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
                                         </p:selectOneMenu>
 
                                         <div class="ui-g">
                                             <div class="ui-g-6">
                                                 <div class="ui-g-4">
-                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{contGarControl.eliminarContGar()}" />
+                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{sistOperControl.eliminarSistOper()}" />
                                                 </div>
                                             </div>
                                         </div>
