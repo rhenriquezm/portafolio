@@ -1,51 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
 
-    <h:head>
-        <title>Eliminar Organizacion</title>
-    </h:head>
-    <h:body>
+    <ui:define name="title">Mantenedor Organizacion</ui:define>
 
-        <div class="ui-g">
-            <div class="ui-g-4">
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h2>Eliminar Organizacion</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-            </div>
-            <div class="ui-g-4">
-
-                <h:form >
-
-                    <p:panel id="panel" header="Eliminar Organizacion">
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-
-                        <h:panelGrid columns="3" cellpadding="5">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
-                            <p:outputLabel for="iorga" value="Organizacion: " />
+
+
+                                <p:panel id="panel" header="Datos">
+
+
+                                    <h:panelGrid columns="3" cellpadding="5">
+
+
+                                        <p:outputLabel for="iorga" value="Organizacion: " />
                             <p:selectOneMenu id="iorga" value="#{organizacionControl.idorg}">
                                 <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
                                 <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
                             </p:selectOneMenu>
 
-                        </h:panelGrid>
+                                        <div class="ui-g">
+                                            <div class="ui-g-6">
+                                                <div class="ui-g-4">
+                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{organizacionControl.eliminarOrga()}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGrid>
 
-                        <p:commandButton value="Eliminar" update="panel" actionListener="#{organizacionControl.eliminarOrga()}" />
-                    </p:panel>
 
-                </h:form>  
+                                </p:panel>
 
+
+
+
+
+                            </p:panelGrid>
+
+
+                        </div>
+
+                        <!--<div class="card">
+
+                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
+
+                        </div>-->
+                    </div>
+
+                </div>
             </div>
-            <div class="ui-g-4"></div>
-        </div>
+        </h:form>
+    </ui:define>
 
-    </h:body>
-</html>
-
+</ui:composition>
