@@ -12,93 +12,123 @@
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12">
+                    <div class="ui-g-12 ui-lg-9">
                         <div class="card">
                             <h1>Registrar Servidor</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
 
                                 <p:panel id="panel" header="Nuevo Servidor">
-                                    
-
-                                    <h:panelGrid columns="" cellpadding="5">
-
-                                        <p:outputLabel for="sen" value="Nombre Servidor: " />
-                                        <p:inputText id="sen" value="#{servidorControl.serv.nomServ}" required="true" label="Nombre Servidor: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-                                        
-                                        <p:outputLabel for="sem" value="Marca Servidor: " />
-                                        <p:inputText id="sem" value="#{servidorControl.serv.marcaServ}" required="true" label="Marca Servidor: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-                                        
-                                        <p:outputLabel for="semo" value="Modelo Servidor: " />
-                                        <p:inputText id="semo" value="#{servidorControl.serv.modeloServ}" required="true" label="Modelo Servidor: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
 
 
-                                        <p:outputLabel for="ss" value="Sala Servidor: " />
-                                        <p:selectOneMenu id="ss" value="#{servidorControl.idSalaServ}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{salaServControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="ra" value="Rack: " />
-                                        <p:selectOneMenu id="ra" value="#{servidorControl.idRack}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{rackControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="cs" value="Caracteristicas Servidor : " />
-                                        <p:selectOneMenu id="cs" value="#{servidorControl.idCarServ}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{carServidorControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="ts" value="Tipo Servicio: " />
-                                        <p:selectOneMenu id="ts" value="#{servidorControl.idTipoServ}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{tipoServControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="tse" value="Tipo Servidor: " />
-                                        <p:selectOneMenu id="tse" value="#{servidorControl.idTipoServidor}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{tipoServidorControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="mso" value="Sistema Operativo: " />
-                                        <p:selectOneMenu id="mso" value="#{servidorControl.idSistOper}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems id="sistoperativos" value="#{sistOperControl.mostrarSistOper()}" />
-                                         </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="pr" value="Proveedor: " />
-                                        <p:selectOneMenu id="pr" value="#{servidorControl.idProv}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
-                                       </p:selectOneMenu>
-                                        
-                                        <p:outputLabel for="us" value="Usuario: " />
-                                        <p:selectOneMenu id="us" value="#{servidorControl.idUsuario}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
-                                       </p:selectOneMenu>
-                                            
-                                     <div class="ui-g">
-                                        <div class="ui-g-6">
+
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">
                                             <div class="ui-g-4">
-                                                <p:commandButton value="Ingresar" update="panel" actionListener="#{servidorControl.ingresarServidor()}"  />
+                                                <p:outputLabel for="sen" value="Nombre Servidor: " />
+                                                <p:inputText id="sen" value="#{servidorControl.serv.nomServ}" required="true" label="Nombre Servidor: ">
+                                                    <f:validateLength minimum="2" />
+                                                </p:inputText>
+                                            </div>
+
+                                            <div class="ui-g-4">
+                                                <p:outputLabel for="sem" value="Marca Servidor: " />
+                                                <p:inputText id="sem" value="#{servidorControl.serv.marcaServ}" required="true" label="Marca Servidor: ">
+                                                    <f:validateLength minimum="2" />
+                                                </p:inputText>
+                                            </div>
+
+                                            <div class="ui-g-4">
+                                                <p:outputLabel for="semo" value="Modelo Servidor: " />
+                                                <p:inputText id="semo" value="#{servidorControl.serv.modeloServ}" required="true" label="Modelo Servidor: ">
+                                                    <f:validateLength minimum="2" />
+                                                </p:inputText>
                                             </div>
                                         </div>
+                                        <div class="ui-g">
+                                            <div class="ui-g-12">
+                                                <div class="ui-g-12">
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="ss" value="Sala Servidor: " />
+                                                        <p:selectOneMenu id="ss" value="#{servidorControl.idSalaServ}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{salaServControl.listarTodo()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+
+                                                    <div class="ui-g-3">
+                                                        <p:outputLabel for="ra" value="Rack: " />
+                                                        <p:selectOneMenu id="ra" value="#{servidorControl.idRack}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{rackControl.listarTodo()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                    <div class="ui-g-5">
+                                                        <p:outputLabel for="cs" value="Caracteristicas Servidor : " />
+                                                        <p:selectOneMenu id="cs" value="#{servidorControl.idCarServ}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{carServidorControl.listarTodo()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g-12">
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="ts" value="Tipo Servicio: " />
+                                                        <p:selectOneMenu id="ts" value="#{servidorControl.idTipoServ}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{tipoServControl.listarTodo()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="tse" value="Tipo Servidor: " />
+                                                        <p:selectOneMenu id="tse" value="#{servidorControl.idTipoServidor}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{tipoServidorControl.listarTodo()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="mso" value="Sistema Operativo: " />
+                                                        <p:selectOneMenu id="mso" value="#{servidorControl.idSistOper}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems id="sistoperativos" value="#{sistOperControl.mostrarSistOper()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-g-12">
+                                                    
+                                                    <div class="ui-g-4">
+                                                        <p:outputLabel for="pr" value="Proveedor: " />
+                                                        <p:selectOneMenu id="pr" value="#{servidorControl.idProv}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+
+                                                    <div class="ui-g-3">
+                                                        <p:outputLabel for="us" value="Usuario: " />
+                                                        <p:selectOneMenu id="us" value="#{servidorControl.idUsuario}" style="width:150px">
+                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                                            <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                                                        </p:selectOneMenu>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                        
+                                                <div class="ui-g-4">
+                                                    <p:commandButton value="Ingresar" update="panel" actionListener="#{servidorControl.ingresarServidor()}"  />
+                                                </div>
+                                            
                                     </div>
-                                    </h:panelGrid>
-                                    
+
                                 </p:panel>
 
 

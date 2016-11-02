@@ -16,13 +16,13 @@
                         <div class="card">
                             <h1>Modificar Servidor</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
                               <p:panel id="panel" header="Modificar Servidor">
                                 
 
-                               <h:panelGrid columns="2" cellpadding="5">
+                               <h:panelGrid columns="4" cellpadding="5">
                                <p:outputLabel for="se" value="Servidor: " />
                                <p:selectOneMenu id="se" value="#{servidorControl.idServ}" style="width:150px">
                                    <p:ajax listener="#{servidorControl.cambioServidor()}" update="idser,ser" />
