@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Garantia</ui:define>
+    <ui:define name="title">Mantenedor Direccion IP</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -14,7 +14,7 @@
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h2>Eliminar Garantia</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h2>Eliminar Direccion IP</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
@@ -27,16 +27,16 @@
                                     <h:panelGrid columns="3" cellpadding="5">
 
 
-                                        <p:outputLabel for="egar" value="Garantia: "/>
-                                        <p:selectOneMenu id="egar" value="#{garantiaControl.idGarantia}">
+                                        <p:outputLabel for="edip" value="Direccion IP: " />
+                                        <p:selectOneMenu id="edip" value="#{dirIpControl.idDirIp}">
                                             <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                            <f:selectItems value="#{garantiaControl.mostrarGarantia()}" />
+                                            <f:selectItems value="#{dirIpControl.mostrarDirIp()}" />
                                         </p:selectOneMenu>
 
                                         <div class="ui-g">
                                             <div class="ui-g-6">
                                                 <div class="ui-g-4">
-                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{garantiaControl.eliminarGarantia()}" />
+                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{dirIpControl.eliminarDirIp()}" />
                                                 </div>
                                             </div>
                                         </div>

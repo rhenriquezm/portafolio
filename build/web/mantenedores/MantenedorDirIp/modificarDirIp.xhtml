@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
+
+    <ui:define name="title">Mantenedor Direccion IP</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h2>Modificar Direccion IP</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+
+
+
+
+                                <p:panel id="panel" header="Datos">
+                                
+
+                               <h:panelGrid columns="2" cellpadding="5">
+                               <p:outputLabel for="sdip" value="Direccion: " />
+                            <p:selectOneMenu id="sdip" value="#{dirIpControl.idDirIp}" style="width:150px">
+                                <p:ajax listener="#{dirIpControl.cambioDirIp()}" update="iddip,dip" />
+                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <f:selectItems id="niveles" value="#{dirIpControl.mostrarDirIp()}" />
+                            </p:selectOneMenu>
+
+
+                            <p:outputLabel for="iddip" value="Id. Direccion IP: " />
+                            <p:inputText id="iddip" value="#{dirIpControl.dirip.idDir}" required="true" label="Id. Direccion IP: " disabled="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:outputLabel for="dip" value=" Direccion IP: " />
+                            <p:inputText id="dip" value="#{dirIpControl.dirip.dirIp}" required="true" label="Direccion IP: "  >
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{dirIpControl.modificarDirIp()}" />
+                          </h:panelGrid>
+
+
+                    </p:panel>
+                            </p:panelGrid>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
