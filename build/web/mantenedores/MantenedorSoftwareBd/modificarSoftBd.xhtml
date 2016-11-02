@@ -5,25 +5,27 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR SOFTWARE BASE DE DATOS / MODIFICAR SOFTWARE</ui:define>
+    <ui:define name="title">Mantenedor Software Base de Datos</ui:define>
 
     <ui:define name="content">
         <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="card">
-                            <h1>MODIFICAR SOFTWARE</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                            <h2>Modificar Software Base de Datos</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-                                <h:form >
-                                    <p:panel id="panel" header="Modificar Software">
-                                        <p:growl id="growl" showDetail="true" sticky="true" />
+                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
 
-                                        <p:outputLabel for="msoft" value="Nivel: " />
+
+                                <p:panel id="panel" header="Datos">
+                                
+
+                               <h:panelGrid columns="2" cellpadding="5">
+                               <p:outputLabel for="msoft" value="Nivel: " />
                                         <p:selectOneMenu id="msoft" value="#{softBdControl.idSoftBd}" style="width:150px">
                                             <p:ajax listener="#{softBdControl.cambioSoftBd()}" update="idmsoft,nmsoft,emsoft,vmsoft" />
                                             <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
@@ -31,7 +33,7 @@
                                         </p:selectOneMenu>
 
 
-                                        <p:outputLabel for="idmsoft" value="Id. NivSens: " />
+                                        <p:outputLabel for="idmsoft" value="Id. Software B.D: " />
                                         <p:inputText id="idmsoft" value="#{softBdControl.softbd.idSoftBd}" required="true" label="Nivel: " disabled="true">
                                             <f:validateLength minimum="2" />
                                         </p:inputText>
@@ -50,31 +52,13 @@
                                         <p:inputText id="vmsoft" value="#{softBdControl.softbd.verSoftBd}" required="true" label="Version: "  >
                                             <f:validateLength minimum="2" />
                                         </p:inputText>
-
-                                        <p:commandButton value="Modificar" update="panel" actionListener="#{softBdControl.modificarSoftBd()}" />
-                                        </h:panelGrid>
-
-
-                                    </p:panel>
-
-                                </h:form>      
+ 
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{softBdControl.modificarSoftBd()}" />
+                          </h:panelGrid>
 
 
-
-
-
-
-
-
+                    </p:panel>
                             </p:panelGrid>
-
-
-                        </div>
-
-                        <div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
                         </div>
                     </div>
 
