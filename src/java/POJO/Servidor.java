@@ -153,6 +153,10 @@ public class Servidor  implements java.io.Serializable {
         this.sistemas = sistemas;
     }
 
+    public void setSalaServ(SalaServ byId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 
