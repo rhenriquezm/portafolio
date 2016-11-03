@@ -9,58 +9,64 @@
 
     <ui:define name="content">
         <h:form>
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Modificar Contacto Garantia</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+            <div class="ui-g ui-fluid dashboard">
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                <p:panel id="panel" header="Datos">
-                                
 
-                               <h:panelGrid columns="2" cellpadding="5">
-                               <p:outputLabel for="mcg" value="Contactos: " />
-                            <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" style="width:150px">
-                                <p:ajax listener="#{contGarControl.cambioContGar()}" update="idcg,ncg,ccg,fcg" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems id="contactos" value="#{contGarControl.mostrarContGar()}" />
-                            </p:selectOneMenu>
+                    <p:panel id="panel" header="Modificar Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" style="width:150px">
+                                    <p:ajax listener="#{contGarControl.cambioContGar()}" update="idcg,ncg,ccg,fcg" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems id="contactos" value="#{contGarControl.mostrarContGar()}" />
+                                </p:selectOneMenu>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="idcg" placeholder="Id. Contacto" value="#{contGarControl.contgar.idCont}" required="true" label="Sistema Operativo: " disabled="true">
+                                    <f:validateLength minimum="2" maximum="4" />
+                                </p:inputText>
+                            </div>
 
-                            <p:outputLabel for="idcg" value="Id. Contacto: " />
-                            <p:inputText id="idcg" value="#{contGarControl.contgar.idCont}" required="true" label="Sistema Operativo: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
+                            <div class="ui-g-12">
+                                <p:inputText id="ncg" placeholder="Nombre Contacto" value="#{contGarControl.contgar.nomCont}" required="true" label="Nombre: "  >
+                                    <f:validateLength minimum="2" maximum="20"/>
+                                </p:inputText>
 
-                            <p:outputLabel for="ncg" value=" Nombre: " />
-                            <p:inputText id="ncg" value="#{contGarControl.contgar.nomCont}" required="true" label="Nombre: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="ccg" value=" Correo: " />
-                            <p:inputText id="ccg" value="#{contGarControl.contgar.correoCont}" required="true" label="Correo: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="fcg" value=" Fono: " />
-                            <p:inputText id="fcg" value="#{contGarControl.contgar.fonoCont}" required="true" label="Fono: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
- 
-                            <p:commandButton value="Modificar" update="panel" actionListener="#{contGarControl.modificarContGar()}" />
-                          </h:panelGrid>
+                            </div>
 
 
-                    </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Correo Contacto" value="#{contGarControl.contgar.correoCont}" required="true" label="Correo: "  >
+                                    <f:validateLength minimum="2" maximum="30" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </p:inputText>
+                            </div>
+
+
+                            <div class="ui-g-12">
+                                <p:inputText id="fcg" placeholder="Fono Contacto" value="#{contGarControl.contgar.fonoCont}" required="true" label="Fono: "  >
+                                    <f:validateLength minimum="2" maximum="8"/>
+                                </p:inputText>
+
+                            </div>
+
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{contGarControl.modificarContGar()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
