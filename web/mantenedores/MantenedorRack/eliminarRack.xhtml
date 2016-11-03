@@ -22,17 +22,17 @@
 
 
 
-                    <p:panel id="panel" header="Eliminar Perfil" style="text-align:center;background:#fff;height:100%">
+                    <p:panel id="panel" header="Eliminar Rack" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{perfilControl.idPerfil}" autoWidth="false">
+                                <p:selectOneMenu id="console" value="#{rackControl.idRack}" autoWidth="false">
                                     <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                    <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
+                                    <f:selectItems value="#{rackControl.listarTodo()}" />
                                 </p:selectOneMenu>
                             </div>
 
                         </div>
-                        <p:commandButton  actionListener="#{perfilControl.eliminarPerfil()}" update="panel" value="Eliminar" icon="fa fa-check"/>
+                        <p:commandButton  actionListener="#{rackControl.eliminarRack()}" update="panel" value="Eliminar" icon="fa fa-check"/>
                     </p:panel>
 
                 </div>

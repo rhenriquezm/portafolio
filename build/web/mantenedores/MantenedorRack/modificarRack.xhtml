@@ -10,47 +10,52 @@
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>MODIFICAR RACK</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+            <div class="ui-g ui-fluid dashboard">
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                <p:panel id="panel" header="Modificar Rack">
-                                
 
-                               <h:panelGrid columns="2" cellpadding="5">
-                               <p:outputLabel for="ra" value="Rack: " />
-                               <p:selectOneMenu id="ra" value="#{rackControl.idRack}" style="width:150px">
-                                   <p:ajax listener="#{rackControl.cambioRack()}" update="rar,idrar" />
-                                  <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                 <f:selectItems value="#{rackControl.listarTodo()}" />
+                    <p:panel id="panel" header="Modificar Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{rackControl.idRack}" autoWidth="false">
+                                    <p:ajax listener="#{rackControl.cambioRack()}" update="idper,nomper,sala" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{rackControl.listarTodo()}" />
                                 </p:selectOneMenu>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="idper" placeholder="Id. Perfil" value="#{rackControl.rack.idRack}" disabled="true" />
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="nomper" placeholder="Nombre Perfil" value="#{rackControl.rack.nombreRack}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
                             
-                               <p:outputLabel for="idrar" value="Id. Rack: " />
-                               <p:inputText id="idrar" value="#{rackControl.rack.idRack}" required="true" label=" Rack: " disabled="true">
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
-                            
-                               <p:outputLabel for="rar" value=" Nombre Rack: " />
-                               <p:inputText id="rar" value="#{rackControl.rack.nombreRack}" required="true" label="Nombre Rack: "  >
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
- 
-                               <p:commandButton value="Modicar" update="panel" actionListener="#{rackControl.modificarRack()}" />
-                          </h:panelGrid>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="sala" value="#{rackControl.idSalaservidor}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{salaServControl.mostrarSalas()}" />
+                                </p:selectOneMenu>
+                            </div>
 
 
-                    </p:panel>
-                            </p:panelGrid>
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{rackControl.modificarRack()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

@@ -131,9 +131,7 @@ public class RackControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
         }
     }
-    
-   
-
+     
     public void buscarRack() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
@@ -149,15 +147,13 @@ public class RackControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             RackDao rackDao = new RackDaoImpl();
-            rack = rackDao.getById(idRack);
+            this.rack = rackDao.getById(idRack);
+            setIdSalaservidor(this.rack.getSalaServ().getIdSalaServ());
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
     }
     
-    
-    
-
     public void limpiarIngresar() {
         this.rack.setNombreRack(null);
         setIdSalaservidor((short)0);
