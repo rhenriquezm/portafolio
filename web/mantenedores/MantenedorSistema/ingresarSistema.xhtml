@@ -33,13 +33,7 @@
                                                     </p:inputText>
                                                 </div>
 
-                                                <div class="ui-g-4">    
-                                                <p:outputLabel for="isrvd" value="ID Servidor: " />
-                                                <p:selectOneMenu id="isrvd" value="{sistemaControl.sistema.servidor.idServ}" style="width:150px">
-                                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                    <f:selectItems value="#{servidorControl.listarTodo()}" />
-                                                </p:selectOneMenu>
-                                                </div>
+                                                
 
                                                 <div class="ui-g-4">
                                                     <p:outputLabel for="iusu" value="ID Usuario: " />
@@ -91,20 +85,9 @@
                                                             <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
                                                         </p:selectOneMenu>
                                                     </div>
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="iws" value="ID Webservice " />
-                                                        <p:selectOneMenu id="iws" value="#{sistemaControl.idWebservice}" style="width:150px" required="true" requiredMessage="Seleccione Webservice.">
-                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                            <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="iorg" value="ID Organizacion" />
-                                                        <p:selectOneMenu id="iorg" value="#{sistemaControl.idOrganizacion}" style="width:150px" required="true" requiredMessage="Seleccione Organizacion.">
-                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                            <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
-                                                        </p:selectOneMenu>
-                                                    </div>
+                                                    
+                                                    
+                                                  
                                                 </div>
                                             </div>
                                             <div class="ui-g">

@@ -8,18 +8,15 @@ package controlador;
 import POJO.NivSeg;
 import POJO.NivSens;
 import POJO.Organizacion;
-import POJO.Perfil;
 import POJO.Proveedor;
 import POJO.Servidor;
 import POJO.SistOper;
 import POJO.Sistema;
 import POJO.SoftBd;
 import POJO.Usuario;
-import POJO.Webservice;
 import dao.NivSegDao;
 import dao.NivSensDao;
 import dao.OrganizacionDao;
-import dao.PerfilDao;
 import dao.ProveedorDao;
 import dao.ServidorDao;
 import dao.SistOperDao;
@@ -30,7 +27,6 @@ import dao.WebServiceDao;
 import dao.impl.NivSegDaoImpl;
 import dao.impl.NivSensDaoImpl;
 import dao.impl.OrganizacionDaoImpl;
-import dao.impl.PerfilDaoImpl;
 import dao.impl.ProveedorDaoImpl;
 import dao.impl.ServidorDaoImpl;
 import dao.impl.SistOperDaoImpl;
@@ -45,7 +41,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.jws.WebService;
 
 /**
  *
@@ -65,8 +60,6 @@ public class SistemaControl {
     private short idProveedor;
     private short idSoftBd;
     private short idWebservice;
-    private short idOrganizacion;
-    
 
     public SistemaControl() {
         this.sistema = new Sistema();
@@ -79,7 +72,6 @@ public class SistemaControl {
         this.idProveedor = 0;
         this.idSoftBd = 0;
         this.idWebservice = 0;
-        this.idOrganizacion = 0;
     }
 
     public short getIdSist() {
@@ -162,21 +154,11 @@ public class SistemaControl {
         this.idWebservice = idWebservice;
     }
 
-    public short getIdOrganizacion() {
-        return idOrganizacion;
-    }
-
-    public void setIdOrganizacion(short idOrganizacion) {
-        this.idOrganizacion = idOrganizacion;
-    }
-    
-    
-
     //Personalizados...
     public void ingresarSistema() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            SistemaDao sisDao = new SistemaDaoImpl();            
+            SistemaDao sisDao = new SistemaDaoImpl();
             //Tenemos que traer los objetos para llenar esta tabla y poder hacer bien el insert
             //1)Instanciamos el objetoDao X
             ServidorDao servidorDao = new ServidorDaoImpl();
@@ -190,29 +172,23 @@ public class SistemaControl {
             OrganizacionDao organizacionDao = new OrganizacionDaoImpl();
             //2) Instanciamos el objeto POJO y le asignamos un objeto que buscaremos a traves del ID que declaraste
             // al comiezo
-            Servidor servidor = servidorDao.getById(getIdServidor());
             Usuario usuario = usuarioDao.getById(getIdUsuario());
             NivSeg nivseg = nivsegDao.getById(getIdNivSeg());
             NivSens nivsens = nivsensDao.getById(getIdNivSens());
             SistOper sistoper = sistoperDao.getById(getIdSistOper());
             Proveedor proveedor = proveedorDao.getById(getIdProveedor());
             SoftBd softbd = softbdDao.getById(getIdSoftBd());
-            WebService webservice = (WebService) webserviceDao.getById(getIdWebservice());
-            Organizacion organizacion = organizacionDao.getById(getIdOrganizacion());          
+            //WebService webservice = webserviceDao.getById(getIdWebservice());
             //3) Modificamos el objeto que hasta el momento es null por el nuevo objeto que fuimos a busacr
             getSistema().setUsuario(usuario);
-            getSistema().setServidor(servidor);
             getSistema().setNivSeg(nivseg);
             getSistema().setNivSens(nivsens);
             getSistema().setSistOper(sistoper);
             getSistema().setProveedor(proveedor);
             getSistema().setSoftBd(softbd);
-            getSistema().setWebservice((Webservice) webservice);
-            getSistema().setOrganizacion(organizacion);
-            
-                    
-            
-            boolean ingresado = sisDao.insert(getSistema());                      
+//            getSistema().setWebservice((Webservice) webservice);
+
+            boolean ingresado = sisDao.insert(getSistema());
             if (ingresado) {
                 LimpiarIngresarSistema();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sistema ingresado exitosamente"));
@@ -230,16 +206,28 @@ public class SistemaControl {
         try {
             SistemaDao msisDao = new SistemaDaoImpl();
             Sistema msis = msisDao.getById(getIdSist());
+
             msis.setNomSist(getSistema().getNomSist());
-            msis.setServidor(getSistema().getServidor());
-            msis.setUsuario(getSistema().getUsuario());
-            msis.setNivSeg(getSistema().getNivSeg());
-            msis.setNivSens(getSistema().getNivSens());
-            msis.setSistOper(getSistema().getSistOper());
-            msis.setProveedor(getSistema().getProveedor());
-            msis.setSoftBd(getSistema().getSoftBd());
-            msis.setWebservice(getSistema().getWebservice());
-            msis.setOrganizacion(getSistema().getOrganizacion());
+
+            
+            UsuarioDao us = new UsuarioDaoImpl();
+            msis.setUsuario(us.getById(getIdUsuario()));
+            
+            NivSegDao niv = new NivSegDaoImpl();
+            msis.setNivSeg(niv.getById(getIdNivSeg()));
+            
+            NivSensDao nivS = new NivSensDaoImpl();
+            msis.setNivSens(nivS.getById(getIdNivSens()));
+            
+            SistOperDao soDao = new SistOperDaoImpl();
+            msis.setSistOper(soDao.getById(getIdSistOper()));
+            
+            ProveedorDao proDao = new ProveedorDaoImpl();
+            msis.setProveedor(proDao.getById(getIdProveedor()));
+            
+            SoftBdDao softDao = new SoftBdDaoImpl();
+            msis.setSoftBd(softDao.getById(getIdSoftBd()));
+            
             boolean modificar = msisDao.update(msis);
             if (modificar) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sistema modificado exitosamente"));
@@ -297,7 +285,13 @@ public class SistemaControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             SistemaDao csisDao = new SistemaDaoImpl();
-            this.sistema = csisDao.getById(this.IdSist);
+            this.sistema = csisDao.getById(getIdSist());
+            setIdNivSeg(this.sistema.getNivSeg().getIdNivSeg());
+            setIdNivSens(this.sistema.getNivSens().getIdNivSens());
+            setIdProveedor(this.sistema.getProveedor().getIdProv());
+            setIdSistOper(this.sistema.getSistOper().getIdSo());
+            setIdSoftBd(this.sistema.getSoftBd().getIdSoftBd());
+            setIdUsuario(this.sistema.getUsuario().getIdUsuario());
 
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
@@ -307,7 +301,6 @@ public class SistemaControl {
 
     public void LimpiarIngresarSistema() {
         sistema.setNomSist(null);
-        sistema.setServidor(null);
         sistema.setUsuario(null);
         sistema.setNivSeg(null);
         sistema.setNivSens(null);
@@ -315,8 +308,6 @@ public class SistemaControl {
         sistema.setProveedor(null);
         sistema.setSoftBd(null);
         sistema.setWebservice(null);
-        sistema.setOrganizacion(null);
     }
-
 
 }
