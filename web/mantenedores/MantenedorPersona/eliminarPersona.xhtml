@@ -6,54 +6,34 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Usuarios</ui:define>
+    <ui:define name="title">Mantenedor Usuarios / Eliminar Usuario</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Eliminar Usuarios</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
+                </div>
 
-                                <p:panel id="panel" header="Eliminar Unidad de Trabajo">
-                        <p:messages id="msgs" />
-
-                        <h:panelGrid columns="3" cellpadding="5">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                            <p:outputLabel for="ut" value="Unidad Trabajo: " />
-                            <p:selectOneMenu id="ut" value="#{uTControl.id}">
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                <f:selectItems value="#{uTControl.todo()}" />
-                            </p:selectOneMenu>
+                    <p:panel id="panel" header="Eliminar Usuario" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{usuarioControl.idUsuario}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                                </p:selectOneMenu>
+                            </div>
 
-                        </h:panelGrid>
-
-                        <p:commandButton value="Eliminar" update="panel" actionListener="#{uTControl.eliminarUTrabajo()}" />
+                        </div>
+                        <p:commandButton  actionListener="#{usuarioControl.eliminarUsuario()}" update="panel" value="Eliminar" icon="fa fa-check"/>
                     </p:panel>
-
-                                <!--AQUI VAN LOS PANEL--> 
-
-
-
-
-
-                            </p:panelGrid>
-
-
-                        </div>
-
-                        <div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
-                        </div>
-                    </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

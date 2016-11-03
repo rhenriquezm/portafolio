@@ -48,6 +48,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             this.transaction = this.session.beginTransaction();
             this.session.save(us);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception ex) {
             if (this.transaction != null) {
@@ -66,7 +67,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public boolean deleteById(short id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = session.beginTransaction();
+            Usuario usa = (Usuario) session.load(Usuario.class, id);
+            this.session.delete(usa);
+            this.transaction.commit();
+            this.session.close();
+            return true;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return false;
     }
 
     @Override

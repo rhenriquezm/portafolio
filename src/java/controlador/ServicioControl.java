@@ -72,7 +72,7 @@ public class ServicioControl {
             
             Sistema sistema = sistemaDao.getById(getIdSist());
             
-            getServicio().setSistema(sistema);
+            
             boolean ingresado = iservDao.insert(servicio);
             if (ingresado) {
                 LimpiarIngresarServicio();
@@ -93,7 +93,6 @@ public class ServicioControl {
             ServicioDao mservDao = new ServicioDaoImpl();
             Servicio mserv = mservDao.getById(getIdServicio());
             mserv.setNomServicio(getServicio().getNomServicio());
-            mserv.setSistema(getServicio().getSistema());
             boolean modificar = mservDao.update(mserv);
             if (modificar) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Servicio modificado exitosamente"));
@@ -162,7 +161,6 @@ public class ServicioControl {
     
     public void LimpiarIngresarServicio(){
         servicio.setNomServicio(null);
-        servicio.setSistema(null);
     }
     
     

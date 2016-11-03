@@ -1,5 +1,5 @@
 package POJO;
-// Generated 20-10-2016 1:49:51 by Hibernate Tools 4.3.1
+// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,7 @@ public class DirIp  implements java.io.Serializable {
 
      private short idDir;
      private String dirIp;
-     private Set asigDirIps = new HashSet(0);
+     private Set servidors = new HashSet(0);
 
     public DirIp() {
     }
@@ -23,10 +23,10 @@ public class DirIp  implements java.io.Serializable {
         this.idDir = idDir;
         this.dirIp = dirIp;
     }
-    public DirIp(short idDir, String dirIp, Set asigDirIps) {
+    public DirIp(short idDir, String dirIp, Set servidors) {
        this.idDir = idDir;
        this.dirIp = dirIp;
-       this.asigDirIps = asigDirIps;
+       this.servidors = servidors;
     }
    
     public short getIdDir() {
@@ -43,12 +43,12 @@ public class DirIp  implements java.io.Serializable {
     public void setDirIp(String dirIp) {
         this.dirIp = dirIp;
     }
-    public Set getAsigDirIps() {
-        return this.asigDirIps;
+    public Set getServidors() {
+        return this.servidors;
     }
     
-    public void setAsigDirIps(Set asigDirIps) {
-        this.asigDirIps = asigDirIps;
+    public void setServidors(Set servidors) {
+        this.servidors = servidors;
     }
 
 

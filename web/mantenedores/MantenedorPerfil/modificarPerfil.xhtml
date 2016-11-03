@@ -71,17 +71,21 @@
                                     <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
                                 </p:selectOneMenu>
                             </div>
-                            
+
                             <div class="ui-g-12">
                                 <p:inputText id="idper" placeholder="Id. Perfil" value="#{perfilControl.perfil.idPerfil}" disabled="true" />
                             </div>
-                            
+
                             <div class="ui-g-12">
-                                <p:inputText id="nomper" placeholder="Nombre Perfil" value="#{perfilControl.perfil.nomPerfil}" />
+                                <p:inputText id="nomper" placeholder="Nombre Perfil" value="#{perfilControl.perfil.nomPerfil}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
                             </div>
-                            
+
                             <div class="ui-g-12">
-                                <p:inputText id="descper" placeholder="Desc. Perfil" value="#{perfilControl.perfil.descPerfil}" />
+                                <p:inputText id="descper" placeholder="Desc. Perfil" value="#{perfilControl.perfil.descPerfil}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
                             </div>
 
                         </div>

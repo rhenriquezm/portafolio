@@ -1,19 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Usuario" table="USUARIO" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idUsuario" type="short">
             <column name="ID_USUARIO" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">
-                    USUARIO_SEQ
-                </param>
+                <param name="sequence">USUARIO_SEQ</param>
             </generator>
         </id>
         <many-to-one name="perfil" class="POJO.Perfil" fetch="select">
-            <column name="ID_PERFIL" precision="4" scale="0" not-null="true" />
+            <column name="ID_PERFIL" precision="4" scale="0" />
         </many-to-one>
         <many-to-one name="unidadTrabajo" class="POJO.UnidadTrabajo" fetch="select">
             <column name="ID_UNI_TRAB" precision="4" scale="0" />
@@ -22,7 +20,7 @@
             <column name="USER_USUARIO" length="20" not-null="true" />
         </property>
         <property name="passUsuario" type="string">
-            <column name="PASS_USUARIO" length="32" not-null="true" />
+            <column name="PASS_USUARIO" length="128" not-null="true" />
         </property>
         <property name="rutUsuario" type="int">
             <column name="RUT_USUARIO" precision="8" scale="0" not-null="true" />

@@ -89,7 +89,6 @@ public class GarantiaDaoImpl implements GarantiaDao{
             this.transaction = session.beginTransaction();
             Garantia ugara = (Garantia) session.load(Garantia.class, ga.getIdGar());
             ugara.setContGar(ga.getContGar());
-            ugara.setServidor(ga.getServidor());
             ugara.setNomGar(ga.getNomGar());
             ugara.setFechaGar(ga.getFechaGar());
             ugara.setFechaCadGar(ga.getFechaCadGar());

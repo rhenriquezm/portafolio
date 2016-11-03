@@ -71,16 +71,18 @@
                                     <f:selectItems value="#{uTControl.mostrarUTs()}" />
                                 </p:selectOneMenu>
                             </div>
-                            
+
                             <div class="ui-g-12">
                                 <p:inputText id="idut" placeholder="Id. Perfil" value="#{uTControl.ut.idUniTrab}" disabled="true" />
                             </div>
-                            
+
                             <div class="ui-g-12">
-                                <p:inputText id="nomut" placeholder="Nombre Perfil" value="#{uTControl.ut.nomUniTrab}" />
+                                <p:inputText id="nomut" placeholder="Nombre Perfil" value="#{uTControl.ut.nomUniTrab}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
                             </div>
-                            
-                            
+
+
                         </div>
                         <p:commandButton  actionListener="#{uTControl.modificarUTrabajo()}" update="panel" value="Modificar" icon="fa fa-check"/>
                     </p:panel>

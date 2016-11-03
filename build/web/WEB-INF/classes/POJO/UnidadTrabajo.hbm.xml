@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.UnidadTrabajo" table="UNIDAD_TRABAJO" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idUniTrab" type="short">
             <column name="ID_UNI_TRAB" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">
-                    UNI_TRAB_SEQ
-                </param>
+                <param name="sequence">UNI_TRAB_SEQ</param>
             </generator>
         </id>
         <property name="nomUniTrab" type="string">

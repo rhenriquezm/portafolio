@@ -1,5 +1,5 @@
 package POJO;
-// Generated 20-10-2016 1:49:51 by Hibernate Tools 4.3.1
+// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,7 +14,6 @@ public class SalaServ  implements java.io.Serializable {
      private short idSalaServ;
      private String nomSalaServ;
      private Set racks = new HashSet(0);
-     private Set servidors = new HashSet(0);
 
     public SalaServ() {
     }
@@ -24,11 +23,10 @@ public class SalaServ  implements java.io.Serializable {
         this.idSalaServ = idSalaServ;
         this.nomSalaServ = nomSalaServ;
     }
-    public SalaServ(short idSalaServ, String nomSalaServ, Set racks, Set servidors) {
+    public SalaServ(short idSalaServ, String nomSalaServ, Set racks) {
        this.idSalaServ = idSalaServ;
        this.nomSalaServ = nomSalaServ;
        this.racks = racks;
-       this.servidors = servidors;
     }
    
     public short getIdSalaServ() {
@@ -51,13 +49,6 @@ public class SalaServ  implements java.io.Serializable {
     
     public void setRacks(Set racks) {
         this.racks = racks;
-    }
-    public Set getServidors() {
-        return this.servidors;
-    }
-    
-    public void setServidors(Set servidors) {
-        this.servidors = servidors;
     }
 
 

@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Sistema" table="SISTEMA" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idSist" type="short">
             <column name="ID_SIST" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">
-                    SISTEMA_SEQ
-                </param>
+                <param name="sequence">SISTEMA_SEQ</param>
             </generator>
         </id>
+        <many-to-one name="lengDesSist" class="POJO.LengDesSist" fetch="select">
+            <column name="ID_LENG_SIST" precision="4" scale="0" />
+        </many-to-one>
         <many-to-one name="nivSeg" class="POJO.NivSeg" fetch="select">
-            <column name="ID_NIV_SEG" precision="5" scale="0" />
+            <column name="ID_NIV_SEG" precision="4" scale="0" />
         </many-to-one>
         <many-to-one name="nivSens" class="POJO.NivSens" fetch="select">
             <column name="ID_NIV_SENS" precision="4" scale="0" />
@@ -23,6 +24,9 @@
         </many-to-one>
         <many-to-one name="proveedor" class="POJO.Proveedor" fetch="select">
             <column name="ID_PROV" precision="4" scale="0" />
+        </many-to-one>
+        <many-to-one name="servicio" class="POJO.Servicio" fetch="select">
+            <column name="ID_SERVICIO" precision="4" scale="0" />
         </many-to-one>
         <many-to-one name="servidor" class="POJO.Servidor" fetch="select">
             <column name="ID_SERV" precision="4" scale="0" />
@@ -42,12 +46,6 @@
         <property name="nomSist" type="string">
             <column name="NOM_SIST" length="20" not-null="true" />
         </property>
-        <set name="servicios" table="SERVICIO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_SIST" precision="4" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="POJO.Servicio" />
-        </set>
         <set name="incidentes" table="INCIDENTE" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SIST" precision="4" scale="0" />

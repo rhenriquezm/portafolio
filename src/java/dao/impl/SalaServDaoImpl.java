@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao.impl;
 
-import POJO.Rack;
 import POJO.SalaServ;
-import dao.SalaServDao;
 import dao.SalaServDao;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
@@ -56,6 +50,7 @@ public class SalaServDaoImpl implements SalaServDao {
         this.transaction = this.session.beginTransaction();
         this.session.save(salaser);
         this.transaction.commit();
+        this.session.close();
         return true;
         } catch (Exception ex) {
             if (this.transaction != null) {
@@ -80,6 +75,7 @@ public class SalaServDaoImpl implements SalaServDao {
             salaservidor.setNomSalaServ(salaser.getNomSalaServ());
             session.update(salaservidor);
             this.transaction.commit();
+            this.session.close();
             return true;
         }  catch (Exception ex) {
             if (this.transaction != null) {
@@ -98,6 +94,7 @@ public class SalaServDaoImpl implements SalaServDao {
         SalaServ sala = (SalaServ) session.load(SalaServ.class, id);
         this.session.delete(sala);
         this.transaction.commit();
+        this.session.close();
         return true;
     } catch (Exception ex) {
             if (this.transaction != null) {

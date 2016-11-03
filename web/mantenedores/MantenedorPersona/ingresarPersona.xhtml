@@ -10,149 +10,104 @@
 
     <ui:define name="content">
         <h:form>
+
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid ">
-                <div class="ui-grid-responsive">
-                    <div class="ui-g">
-                        <div class="ui-g-12 ui-lg-9">
-                            <div class="card">
-                                <h1>INGRESE DATOS</h1> <!-- TITULO-->
-                                
-                                <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
-                                    <p:panel id="panel" header="Nuevo Usuario">
-                                        
+                </div>
 
-                                        
-                                        <div class="ui-g">
-                                            <div class="ui-g-12">
-                                                <div class="ui-g-4">
-                                                    <p:outputLabel for="nomUsuario" value="Nombre Usuario " />
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Nombre de Usuario" id="nomUsuario" value="#{usuarioControl.usuario.nomUsuario}" required="true" label="Nombre Usuario: ">
+                                    <f:validateLength minimum="2" maximum="20"/>
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Apellido Paterno" id="pUsuario"  value="#{usuarioControl.usuario.patUsuario}" required="true" label="Apellido Usuario: ">
+                                    <f:validateLength minimum="2" maximum="20"/>
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Apellido Materno" id="mUsuario" value="#{usuarioControl.usuario.matUsuario}" required="true" label="Apellido Usuario: ">
+                                    <f:validateLength minimum="2" maximum="20"/>
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <div class="ui-g-8">
+                                    <p:inputText placeholder="Rut Usuario" id="rutUsuario" value="#{usuarioControl.usuario.rutUsuario}" required="true" label="Rut Usuario: ">
+                                        <f:validateLength minimum="1" maximum="8" />                           
+                                    </p:inputText>
+                                </div>
+                                <div class="ui-g-1">
+                                    -
+                                </div>
 
-                                                    <p:inputText id="nomUsuario" value="#{usuarioControl.usuario.nomUsuario}" required="true" label="Nombre Usuario: ">
-                                                        <f:validateLength minimum="2" />
-                                                    </p:inputText>
-                                                </div>
+                                <div class="ui-g-3">
+                                    <p:inputText placeholder=" DV Rut Usuario" id="dvUsuario" value="#{usuarioControl.usuario.rutUsuario}" required="true" label="DV Rut Usuario: ">
+                                        <f:validateLength minimum="1" maximum="1" />                           
+                                    </p:inputText>
+                                </div>
 
-
-                                                <div class="ui-g-4">
-                                                    <p:outputLabel for="pUsuario" value="Apellido Paterno " />
-                                                    <p:inputText id="pUsuario"  value="#{usuarioControl.usuario.patUsuario}" required="true" label="Apellido Usuario: ">
-                                                        <f:validateLength minimum="2" />
-                                                    </p:inputText>
-                                                </div>
-
-                                                <div class="ui-g-4">
-                                                    <p:outputLabel for="mUsuario" value="Apellido Materno " />
-
-
-                                                    <p:inputText id="mUsuario" value="#{usuarioControl.usuario.matUsuario}" required="true" label="Apellido Usuario: ">
-                                                        <f:validateLength minimum="2" />
-                                                    </p:inputText>
-                                                </div>
-                                            </div>
-                                            <div class="ui-g">
-                                                <div class="ui-g-12">
-                                                    <div class="ui-g-3">
-                                                        <p:outputLabel for="rutUsuario" value="Rut Usuario " />
-
-                                                        <p:inputText id="rutUsuario" value="#{usuarioControl.usuario.rutUsuario}" required="true" label="Rut Usuario: ">
-                                                            <f:validateLength minimum="2" /> 
-                                                            
-                                                        </p:inputText>
-
-                                                    </div> 
-
-                                                    <div class="ui-g-1">
-                                                        <p:outputLabel for="dvUsuario" value="DV" />
-
-                                                        <p:inputText id="dvUsuario" value="#{usuarioControl.usuario.dvUsuario}" required="true" label="DV Usuario: ">
-                                                            <f:validateLength minimum="1" />
-                                                        </p:inputText>
-                                                    </div>
-
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="sexoUsuario" value="Sexo: " />
-                                                        <p:selectOneMenu id="sexoUsuario" value="#{usuarioControl.usuario.sexoUsuario}">
-                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                                            <f:selectItems value="#{usuarioControl.sexo}" />
-                                                        </p:selectOneMenu>
-
-                                                    </div>
-                                                    <div class="ui-g-6">
-                                                        <p:outputLabel for="correoUsuario" value="Correo Usuario: " />
-                                                        <p:inputText id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
-                                                            <f:validateLength minimum="2" />
-                                                            <f:validator validatorId="ValidatorEmail" />
-                                                        </p:inputText>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ui-g">
-                                                <div class="ui-g-12">
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="fonoUsuario" value="Fono Usuario: " />
-                                                        <p:inputText id="fonoUsuario" value="#{usuarioControl.usuario.fonoUsuario}" required="true" label="Fono Usuario: ">
-                                                            <f:validateLength minimum="2" />
-                                                        </p:inputText>
-                                                    </div>
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="username" value="UserName: " />
-                                                        <p:inputText id="username" value="#{usuarioControl.usuario.userUsuario}" required="true" label="Username: ">
-                                                            <f:validateLength minimum="2" />
-                                                        </p:inputText>
-                                                    </div>
-                                                    <div class="ui-g-4">
-                                                        <p:outputLabel for="passuser" value="Password " />
-                                                        <p:password id="passuser" value="#{usuarioControl.usuario.passUsuario}" required="true" label="Password: ">
-                                                            <f:validateLength minimum="2" />
-                                                        </p:password>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ui-g">
-                                                <div class="ui-g-12">
-                                                    <div class="ui-g-6">
-                                                        <p:outputLabel for="perfil" value="Perfil: " />
-                                                        <p:selectOneMenu id="perfil" value="#{usuarioControl.idPerfil}">
-                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                                            <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                    <div class="ui-g-6">
-                                                        <p:outputLabel for="ut" value="Unidad Trabajo: " />
-                                                        <p:selectOneMenu id="ut" value="#{usuarioControl.idUniTrab}">
-                                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                                            <f:selectItems value="#{uTControl.mostrarUTs()}" />
-                                                        </p:selectOneMenu>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                            <p:commandButton value="Ingresar" update="panel" class="center" actionListener="#{usuarioControl.ingresarUsuario()}" />
-                                        
-
-
-
-
-                                    </p:panel>
-                                </p:panelGrid>
-
-
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="sexoUsuario" value="#{usuarioControl.usuario.sexoUsuario}">
+                                    <f:selectItem itemLabel="Seleccione sexo..." itemValue="" />
+                                    <f:selectItems value="#{usuarioControl.sexo}" />
+                                </p:selectOneMenu>
                             </div>
 
 
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Correo Usuario" id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
+                                    <f:validateLength minimum="2" maximum="30"/>
+                                    <f:validator validatorId="ValidatorEmail" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Fono Usuario" id="fonoUsuario" value="#{usuarioControl.usuario.fonoUsuario}" required="true" label="Fono Usuario: ">
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Username" id="username" value="#{usuarioControl.usuario.userUsuario}" required="true" label="Username: ">
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
+                            </div>
+
+                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">   
+
+                                <p:password id="pwd1" value="#{usuarioControl.usuario.passUsuario}" match="pwd2" label="Password 1" required="true" />
 
 
+                                <p:password id="pwd2" value="#{usuarioControl.usuario.passUsuario}" label="Password 2" required="true" />
 
-
+                            </h:panelGrid>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="perfil" value="#{usuarioControl.idPerfil}">
+                                    <f:selectItem itemLabel="Seleccione perfil..." itemValue="" />
+                                    <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="ut" value="#{usuarioControl.idUniTrab}">
+                                    <f:selectItem itemLabel="Seleccione U. Trabajo..." itemValue="" />
+                                    <f:selectItems value="#{uTControl.mostrarUTs()}" />
+                                </p:selectOneMenu>
+                            </div>
                         </div>
-                    </div>
+                        <p:commandButton value="Ingresar" update="panel" class="center" actionListener="#{usuarioControl.ingresarUsuario()}" />
+                    </p:panel>
                 </div>
+                <div class="ui-g-12 ui-lg-4">
 
-
+                </div>
             </div>
         </h:form>
 

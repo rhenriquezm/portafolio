@@ -69,6 +69,7 @@ public class PerfilDaoImpl implements PerfilDao {
             Perfil per = (Perfil) session.load(Perfil.class, id);
             this.session.delete(per);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception e) {
             if (this.transaction != null) {
@@ -91,6 +92,7 @@ public class PerfilDaoImpl implements PerfilDao {
             perf.setDescPerfil(per.getDescPerfil());
             session.update(perf);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception e) {
             if (this.transaction != null) {

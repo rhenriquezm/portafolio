@@ -34,7 +34,7 @@ public class UsuarioControl {
     private ArrayList<SelectItem> unidadesTrabajo;
 
     public UsuarioControl() {
-        this.usuario = new Usuario();
+        this.usuario = new Usuario();    
         this.sexo = new ArrayList<>();
         this.perfiles = new ArrayList<>();
         this.unidadesTrabajo = new ArrayList<>();
@@ -238,8 +238,21 @@ public class UsuarioControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
     }
-
-    private Object EncryptgetUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void eliminarUsuario(){
+        try {
+            UsuarioDao usuarioDao = new UsuarioDaoImpl();
+            boolean eliminado = usuarioDao.deleteById(this.idUsuario);
+            if (eliminado) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario eliminado exitosamente"));
+            } else if (this.idUsuario == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un perfil"));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha podido ser eliminado exitosamente"));
+            }
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
+        }
     }
+   
 }

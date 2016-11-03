@@ -44,6 +44,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
             this.transaction = this.session.beginTransaction();
             this.session.save(ut);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception ex) {
             if (this.transaction != null) {
@@ -69,6 +70,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
             uTrab.setNomUniTrab(ut.getNomUniTrab());
             session.update(uTrab);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception ex) {
             if (this.transaction != null) {
@@ -88,6 +90,7 @@ public class UnidadTrabajoDaoImpl implements UnidadTrabajoDao {
             UnidadTrabajo unTrab = (UnidadTrabajo) session.load(UnidadTrabajo.class, id);
             this.session.delete(unTrab);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception ex) {
             if (this.transaction != null) {

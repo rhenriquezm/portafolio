@@ -14,7 +14,6 @@ import dao.SalaServDao;
 import dao.ServidorDao;
 import dao.SistOperDao;
 import dao.TipoServDao;
-import dao.TipoServidorDao;
 import dao.UsuarioDao;
 import dao.impl.CarServidorDaoImpl;
 import dao.impl.ProveedorDaoImpl;
@@ -23,7 +22,6 @@ import dao.impl.SalaServDaoImpl;
 import dao.impl.ServidorDaoImpl;
 import dao.impl.SistOperDaoImpl;
 import dao.impl.TipoServDaoImpl;
-import dao.impl.TipoServidorDaoImpl;
 import dao.impl.UsuarioDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -169,18 +167,15 @@ public class ServidorControl {
           UsuarioDao usuarioDao = new UsuarioDaoImpl();
           ProveedorDao iprovDao = new ProveedorDaoImpl();
           TipoServDao tipoDao = new TipoServDaoImpl();
-          TipoServidorDao tipoSDao = new TipoServidorDaoImpl();
           CarServidorDao carDao = new CarServidorDaoImpl();
           SistOperDao msoDao = new SistOperDaoImpl();
           
           this.serv.setRack(rackDao.getById(getIdRack()));
-          this.serv.setSalaServ(salaDao.getById(getIdSalaServ()));
           this.serv.setCarServ(carDao.getById(getIdCarServ()));
           this.serv.setSistOper(msoDao.getById(getIdSistOper()));
           this.serv.setUsuario(usuarioDao.getById(getIdUsuario()));
           this.serv.setProveedor(iprovDao.getById(getIdProv()));
           this.serv.setTipoServ(tipoDao.getById(getIdTipoServ()));
-          this.serv.setTipoServidor(tipoSDao.getById(getIdTipoServidor()));
           
           
            boolean ingresado = servDao.insert(this.serv);

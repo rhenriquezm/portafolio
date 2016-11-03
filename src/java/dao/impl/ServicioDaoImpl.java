@@ -89,7 +89,6 @@ public class ServicioDaoImpl implements ServicioDao {
             this.transaction = session.beginTransaction();
             Servicio userv = (Servicio) session.load(Servicio.class, serv.getIdServicio());
             userv.setNomServicio(userv.getNomServicio());
-            userv.setSistema(userv.getSistema());
             session.update(userv);
             this.transaction.commit();
             return true;

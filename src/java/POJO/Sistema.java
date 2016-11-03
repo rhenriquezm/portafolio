@@ -1,5 +1,5 @@
 package POJO;
-// Generated 20-10-2016 1:49:51 by Hibernate Tools 4.3.1
+// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,17 +12,18 @@ public class Sistema  implements java.io.Serializable {
 
 
      private short idSist;
+     private LengDesSist lengDesSist;
      private NivSeg nivSeg;
      private NivSens nivSens;
      private Organizacion organizacion;
      private Proveedor proveedor;
+     private Servicio servicio;
      private Servidor servidor;
      private SistOper sistOper;
      private SoftBd softBd;
      private Usuario usuario;
      private Webservice webservice;
      private String nomSist;
-     private Set servicios = new HashSet(0);
      private Set incidentes = new HashSet(0);
 
     public Sistema() {
@@ -33,19 +34,20 @@ public class Sistema  implements java.io.Serializable {
         this.idSist = idSist;
         this.nomSist = nomSist;
     }
-    public Sistema(short idSist, NivSeg nivSeg, NivSens nivSens, Organizacion organizacion, Proveedor proveedor, Servidor servidor, SistOper sistOper, SoftBd softBd, Usuario usuario, Webservice webservice, String nomSist, Set servicios, Set incidentes) {
+    public Sistema(short idSist, LengDesSist lengDesSist, NivSeg nivSeg, NivSens nivSens, Organizacion organizacion, Proveedor proveedor, Servicio servicio, Servidor servidor, SistOper sistOper, SoftBd softBd, Usuario usuario, Webservice webservice, String nomSist, Set incidentes) {
        this.idSist = idSist;
+       this.lengDesSist = lengDesSist;
        this.nivSeg = nivSeg;
        this.nivSens = nivSens;
        this.organizacion = organizacion;
        this.proveedor = proveedor;
+       this.servicio = servicio;
        this.servidor = servidor;
        this.sistOper = sistOper;
        this.softBd = softBd;
        this.usuario = usuario;
        this.webservice = webservice;
        this.nomSist = nomSist;
-       this.servicios = servicios;
        this.incidentes = incidentes;
     }
    
@@ -55,6 +57,13 @@ public class Sistema  implements java.io.Serializable {
     
     public void setIdSist(short idSist) {
         this.idSist = idSist;
+    }
+    public LengDesSist getLengDesSist() {
+        return this.lengDesSist;
+    }
+    
+    public void setLengDesSist(LengDesSist lengDesSist) {
+        this.lengDesSist = lengDesSist;
     }
     public NivSeg getNivSeg() {
         return this.nivSeg;
@@ -83,6 +92,13 @@ public class Sistema  implements java.io.Serializable {
     
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+    public Servicio getServicio() {
+        return this.servicio;
+    }
+    
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
     public Servidor getServidor() {
         return this.servidor;
@@ -125,13 +141,6 @@ public class Sistema  implements java.io.Serializable {
     
     public void setNomSist(String nomSist) {
         this.nomSist = nomSist;
-    }
-    public Set getServicios() {
-        return this.servicios;
-    }
-    
-    public void setServicios(Set servicios) {
-        this.servicios = servicios;
     }
     public Set getIncidentes() {
         return this.incidentes;

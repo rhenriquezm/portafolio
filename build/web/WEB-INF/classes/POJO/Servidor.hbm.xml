@@ -1,25 +1,29 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Servidor" table="SERVIDOR" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idServ" type="short">
             <column name="ID_SERV" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">
-                    SERV_SEQ
-                </param>
+                <param name="sequence">SERV_SEQ</param>
             </generator>
         </id>
         <many-to-one name="carServ" class="POJO.CarServ" fetch="select">
             <column name="ID_CAR_SERV" precision="4" scale="0" />
         </many-to-one>
+        <many-to-one name="dirIp" class="POJO.DirIp" fetch="select">
+            <column name="ID_DIR" precision="4" scale="0" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="garantia" class="POJO.Garantia" fetch="select">
+            <column name="ID_GAR" precision="4" scale="0" />
+        </many-to-one>
+        <many-to-one name="proveedor" class="POJO.Proveedor" fetch="select">
+            <column name="ID_PROV" precision="4" scale="0" />
+        </many-to-one>
         <many-to-one name="rack" class="POJO.Rack" fetch="select">
             <column name="ID_RACK" precision="4" scale="0" />
-        </many-to-one>
-        <many-to-one name="salaServ" class="POJO.SalaServ" fetch="select">
-            <column name="ID_SALA_SERV" precision="4" scale="0" />
         </many-to-one>
         <many-to-one name="sistOper" class="POJO.SistOper" fetch="select">
             <column name="ID_SO" precision="4" scale="0" />
@@ -30,12 +34,6 @@
         <many-to-one name="usuario" class="POJO.Usuario" fetch="select">
             <column name="ID_USUARIO" precision="4" scale="0" />
         </many-to-one>
-        <many-to-one name="tipoServidor" class="POJO.TipoServidor" fetch="select">
-            <column name="ID_TIPO_SERV1" precision="4" scale="0" />
-        </many-to-one>
-        <many-to-one name="proveedor" class="POJO.Proveedor" fetch="select">
-            <column name="ID_PROV" precision="4" scale="0" />
-        </many-to-one>
         <property name="nomServ" type="string">
             <column name="NOM_SERV" length="20" not-null="true" />
         </property>
@@ -45,18 +43,6 @@
         <property name="modeloServ" type="string">
             <column name="MODELO_SERV" length="20" not-null="true" />
         </property>
-        <set name="asigDirIps" table="ASIG_DIR_IP" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_SERV" precision="4" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="POJO.AsigDirIp" />
-        </set>
-        <set name="garantias" table="GARANTIA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_SERV" precision="4" scale="0" />
-            </key>
-            <one-to-many class="POJO.Garantia" />
-        </set>
         <set name="incidentes" table="INCIDENTE" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_SERV" precision="4" scale="0" />

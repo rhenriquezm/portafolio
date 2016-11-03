@@ -38,11 +38,12 @@ public class PerfilControl {
 
     // Metodos Personalizados
     public void ingresarPerfil() {
-        
+
         try {
             PerfilDao perfilDao = new PerfilDaoImpl();
             boolean ingresado = perfilDao.insert(getPerfil());
             if (ingresado) {
+                limpiarIngresar();
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil ingresado exitosamente"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser ingresado"));
@@ -107,7 +108,6 @@ public class PerfilControl {
             per.setDescPerfil(perfil.getDescPerfil());
             boolean modificar = perDao.update(per);
             if (modificar) {
-                //limpiarLista();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser modificado exitosamente"));
@@ -119,7 +119,7 @@ public class PerfilControl {
 
     //Limpiar formulario INGRESAR
     public void limpiarIngresar() {
-        perfil.setNomPerfil(null);
-        perfil.setDescPerfil(null);
+        this.perfil.setNomPerfil(null);
+        this.perfil.setDescPerfil(null);
     }
 }

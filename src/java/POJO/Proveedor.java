@@ -1,5 +1,5 @@
 package POJO;
-// Generated 20-10-2016 1:49:51 by Hibernate Tools 4.3.1
+// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,6 +16,7 @@ public class Proveedor  implements java.io.Serializable {
      private String correoProv;
      private String fonoProv;
      private Set sistemas = new HashSet(0);
+     private Set servidors = new HashSet(0);
 
     public Proveedor() {
     }
@@ -27,12 +28,13 @@ public class Proveedor  implements java.io.Serializable {
         this.correoProv = correoProv;
         this.fonoProv = fonoProv;
     }
-    public Proveedor(short idProv, String nomProv, String correoProv, String fonoProv, Set sistemas) {
+    public Proveedor(short idProv, String nomProv, String correoProv, String fonoProv, Set sistemas, Set servidors) {
        this.idProv = idProv;
        this.nomProv = nomProv;
        this.correoProv = correoProv;
        this.fonoProv = fonoProv;
        this.sistemas = sistemas;
+       this.servidors = servidors;
     }
    
     public short getIdProv() {
@@ -69,6 +71,13 @@ public class Proveedor  implements java.io.Serializable {
     
     public void setSistemas(Set sistemas) {
         this.sistemas = sistemas;
+    }
+    public Set getServidors() {
+        return this.servidors;
+    }
+    
+    public void setServidors(Set servidors) {
+        this.servidors = servidors;
     }
 
 

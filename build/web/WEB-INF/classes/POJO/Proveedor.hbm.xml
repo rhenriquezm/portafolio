@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-10-2016 1:49:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Proveedor" table="PROVEEDOR" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idProv" type="short">
             <column name="ID_PROV" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">
-                    PROV_SEQ
-                </param>
+                <param name="sequence">PROV_SEQ</param>
             </generator>
         </id>
         <property name="nomProv" type="string">
@@ -26,6 +24,12 @@
                 <column name="ID_PROV" precision="4" scale="0" />
             </key>
             <one-to-many class="POJO.Sistema" />
+        </set>
+        <set name="servidors" table="SERVIDOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PROV" precision="4" scale="0" />
+            </key>
+            <one-to-many class="POJO.Servidor" />
         </set>
     </class>
 </hibernate-mapping>

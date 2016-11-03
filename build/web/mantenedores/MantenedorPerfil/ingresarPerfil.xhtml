@@ -54,14 +54,18 @@
 
                 </div>
 
-                <div class="ui-g-12 ui-md-6 ui-lg-9">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
                     <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Perfil" value="#{perfilControl.perfil.nomPerfil}" />
+                                <p:inputText placeholder="Nombre Perfil" value="#{perfilControl.perfil.nomPerfil}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Desc Perfil" value="#{perfilControl.perfil.descPerfil}" />
+                                <p:inputText placeholder="Desc Perfil" value="#{perfilControl.perfil.descPerfil}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
                             </div>
 
                         </div>

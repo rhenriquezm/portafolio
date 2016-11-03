@@ -87,7 +87,7 @@ public class GarantiaControl {
             Servidor servidor = servidorDao.getById(getIdServidor());
             ContGar contgar = contgarDao.getById(getIdContGar());
 
-            getGarantia().setServidor(servidor);
+            
             getGarantia().setContGar(contgar);
 
             boolean ingresado = garDao.insert(getGarantia());
@@ -111,7 +111,6 @@ public class GarantiaControl {
             Garantia mgar = mgarDao.getById(getIdGarantia());
 
             mgar.setContGar(getGarantia().getContGar());
-            mgar.setServidor(getGarantia().getServidor());
             mgar.setNomGar(getGarantia().getNomGar());
             mgar.setFechaGar(getGarantia().getFechaGar());
             mgar.setFechaCadGar(getGarantia().getFechaCadGar());
@@ -183,7 +182,6 @@ public class GarantiaControl {
     public void LimpiarIngresar() {
         garantia.setNomGar(null);
         garantia.setContGar(null);
-        garantia.setServidor(null);
         garantia.setFechaGar(null);
         garantia.setFechaCadGar(null);
 
