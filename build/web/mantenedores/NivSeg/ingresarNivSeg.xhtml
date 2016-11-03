@@ -11,12 +11,16 @@
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
             <div class="ui-fluid ">
                 <div class="ui-grid-responsive">
                     <div class="ui-g">
                         <div class="ui-g-12 ui-lg-9">
-                            <div class="card">
-                                <h1>INGRESE DATOS</h1> <!-- TITULO-->
+                           <!-- <div class="card">
+                                <h1>INGRESE DATOS</h1>  TITULO-->
 
                                 <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
@@ -34,7 +38,7 @@
 
 
                                         <div class="ui-g">
-                                            <div class="ui-g-4">
+                                            <div class="ui-g-12">
                                                 <p:commandButton value="Ingresar" update="panel" actionListener="#{nivSegControl.ingresarNivSeg()}" />
                                             </div>
                                         </div>
