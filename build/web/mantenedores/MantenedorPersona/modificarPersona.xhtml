@@ -17,7 +17,8 @@
              
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12 ui-lg-9">
+                    <div class="ui-g-12">
+                        
                        <!-- <div class="card">
                             <h1>MODIFICAR DATOS</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
@@ -86,9 +87,9 @@
                                                         </div>
                                                         <div class="ui-g-6">
                                                             <p:outputLabel for="correoUsuario" value="Correo Usuario: " />
-                                                            <p:inputText id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
+                                                            <p:inputText validatorMessage="Formato incorrecto Correo" id="correoUsuario" class="validate" value="#{usuarioControl.usuario.correoUsuario}" required="true" label="Correo Usuario: ">
                                                                 <f:validateLength minimum="2" />
-                                                                <f:validator validatorId="ValidatorEmail" />
+                                                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                                             </p:inputText>
                                                         </div>
                                                     </div>

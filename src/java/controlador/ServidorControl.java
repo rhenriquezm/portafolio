@@ -53,6 +53,12 @@ public class ServidorControl {
     public ServidorControl() {
                 this.serv = new Servidor();
         this.idRack = 0;
+<<<<<<< HEAD
+=======
+        this.idSalaServ = 0;
+        this.listaServ = new ArrayList<>();
+        this.listaComp = new ArrayList<>();
+>>>>>>> 601190b3afc55bc0d13539a892229320a4fbeed1
     }
 
     public short getIdServ() {
@@ -149,6 +155,7 @@ public class ServidorControl {
           TipoServDao tipoDao = new TipoServDaoImpl();
           CarServidorDao carDao = new CarServidorDaoImpl();
           SistOperDao msoDao = new SistOperDaoImpl();
+          
           
           this.serv.setRack(rackDao.getById(getIdRack()));
           this.serv.setCarServ(carDao.getById(getIdCarServ()));

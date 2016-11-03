@@ -86,8 +86,30 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public boolean update(Usuario us) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = session.beginTransaction();
+            Usuario usa = (Usuario) session.load(Usuario.class, us.getIdUsuario());
+            usa.setNomUsuario(us.getNomUsuario());
+            usa.setRutUsuario(us.getRutUsuario());
+            usa.setDvUsuario(us.getDvUsuario());
+            usa.setCorreoUsuario(us.getCorreoUsuario());
+            usa.setUnidadTrabajo(us.getUnidadTrabajo());
+            usa.setPerfil(us.getPerfil());
+            usa.setSexoUsuario(us.getSexoUsuario());
+            usa.setFonoUsuario(us.getFonoUsuario());
+            session.update(usa);
+            this.transaction.commit();
+            this.session.close();
+            return true;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return false;}
+    //NO HAY NADA AHI PO WN OHHHHHHHHHHjajajajaja ctm
 
     @Override
     public Usuario getById(short id) throws Exception {

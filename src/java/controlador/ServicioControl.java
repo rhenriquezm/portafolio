@@ -131,9 +131,9 @@ public class ServicioControl {
         try {
             ServicioDao lservDao = new ServicioDaoImpl();
             ArrayList<SelectItem> servicios = new ArrayList<>();
-            for (Servicio servicio : lservDao.getAll()) {
-                servicios.add(new SelectItem(servicio.getIdServicio(), servicio.getNomServicio()));
-            }
+                for (Servicio servicio : lservDao.getAll()) {
+                    servicios.add(new SelectItem(servicio.getIdServicio(), servicio.getNomServicio()));
+                }
             if (servicios.isEmpty()) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Servicio Ingresados en el sistema"));
 
