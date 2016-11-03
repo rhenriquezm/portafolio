@@ -72,6 +72,7 @@ public class ContGarDaoImpl implements ContGarDao {
             ContGar dcg = (ContGar) session.load(ContGar.class, id);
             this.session.delete(dcg);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception e) {
             if (this.transaction != null) {
@@ -93,6 +94,7 @@ public class ContGarDaoImpl implements ContGarDao {
             ucg.setFonoCont(cg.getFonoCont());
             session.update(ucg);
             this.transaction.commit();
+            session.close();
             return true;
         } catch (Exception e) {
             if (this.transaction != null) {
