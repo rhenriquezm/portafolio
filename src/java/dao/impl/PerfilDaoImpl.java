@@ -83,7 +83,6 @@ public class PerfilDaoImpl implements PerfilDao {
 
     @Override
     public boolean update(Perfil per) throws Exception {
-
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();

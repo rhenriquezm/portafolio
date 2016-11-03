@@ -68,7 +68,7 @@ public class UTControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-            boolean ingresado = utDao.insert(ut);
+            boolean ingresado = utDao.insert(this.ut);
             if (ingresado) {
                 limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT ingresada exitosamente"));
@@ -153,7 +153,7 @@ public class UTControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
-            ut = utDao.getById(id);
+            this.ut = utDao.getById(this.id);
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
