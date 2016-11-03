@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Contacto Garantia</ui:define>
+    <ui:define name="title">Mantenedor Contacto Garantia / Modificar Contacto</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -23,10 +23,11 @@
 
 
 
-                    <p:panel id="panel" header="Modificar Perfil" style="text-align:center;background:#fff;height:100%">
+                    <p:panel id="panel" header="Modificar Contacto" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
+                            
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" style="width:150px">
+                                <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" >
                                     <p:ajax listener="#{contGarControl.cambioContGar()}" update="idcg,ncg,ccg,fcg" />
                                     <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems id="contactos" value="#{contGarControl.mostrarContGar()}" />

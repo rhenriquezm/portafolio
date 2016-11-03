@@ -9,60 +9,39 @@
 
     <ui:define name="content">
         <h:form>
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Eliminar Garantia</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
+                </div>
 
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
 
-
-                                <p:panel id="panel" header="Datos">
-
-
-                                    <h:panelGrid columns="3" cellpadding="5">
+                            <div class="ui-g-12">
 
 
-                                        <p:outputLabel for="egar" value="Garantia: "/>
-                                        <p:selectOneMenu id="egar" value="#{garantiaControl.idGarantia}">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                            <f:selectItems value="#{garantiaControl.mostrarGarantia()}" />
-                                        </p:selectOneMenu>
+                                <p:selectOneMenu id="egar" value="#{garantiaControl.idGarantia}">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{garantiaControl.mostrarGarantia()}" />
+                                </p:selectOneMenu>
 
-                                        <div class="ui-g">
-                                            <div class="ui-g-6">
-                                                <div class="ui-g-4">
-                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{garantiaControl.eliminarGarantia()}" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </h:panelGrid>
+                            </div>
 
 
-                                </p:panel>
-
-
-
-
-
-                            </p:panelGrid>
-
-
+                            <p:commandButton value="Eliminar" update="panel" actionListener="#{garantiaControl.eliminarGarantia()}" />
                         </div>
+                    </p:panel>
 
-                        <!--<div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
-                        </div>-->
-                    </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
+
         </h:form>
     </ui:define>
 

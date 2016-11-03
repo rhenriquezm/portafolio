@@ -10,70 +10,61 @@
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Modificar Garantia</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
+                </div>
 
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
 
-
-                                <p:panel id="panel" header="Datos">
-
-
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="mgar" value="Garantia: " />
-                                        <p:selectOneMenu id="mgar" value="#{garantiaControl.idGarantia}" style="width:150px">
-                                            <p:ajax listener="#{garantiaControl.cambioGarantia()}" update="idmgar,mngar,mfigar,mfcgar,msgar,mcgar" />
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems id="garantias" value="#{garantiaControl.mostrarGarantia()}" />
-                                        </p:selectOneMenu>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="mgar" value="#{garantiaControl.idGarantia}" >
+                                    <p:ajax listener="#{garantiaControl.cambioGarantia()}" update="idmgar,mngar,mfigar,mfcgar,mcgar" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems id="garantias" value="#{garantiaControl.mostrarGarantia()}" />
+                                </p:selectOneMenu>
+                            </div>
 
 
-                                        <p:outputLabel for="idmgar" value="Id. Garantia: " />
-                                        <p:inputText id="idmgar" value="#{garantiaControl.garantia.idGar}" required="true" label="Garantia: " disabled="true">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
 
-                                        <p:outputLabel for="mngar" value="Nombre: " />
-                                        <p:inputText id="mngar" value="#{garantiaControl.garantia.nomGar}" required="true" label="Nombre: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
+                            <div class="ui-g-12">
+                                
+                                <p:inputText placeholder="Id. Garantia" id="idmgar" value="#{garantiaControl.garantia.idGar}" required="true" label="Garantia: " disabled="true">
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                
+                                <p:inputText placeholder="Nombre Garantia" id="mngar" value="#{garantiaControl.garantia.nomGar}" required="true" label="Nombre: "  >
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
 
-                                        <p:outputLabel for="mfigar" value="Fecha Inicio" />
-                                        <p:calendar id="mfigar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" label="Fecha Inicio: ">
-                                            <f:validateLength minimum="2" />    
-                                        </p:calendar>
-
-                                        <p:outputLabel for="mfcgar" value="Fecha Caducidad " />
-                                        <p:calendar id="mfcgar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" label="Fecha Caducidad: ">
-                                            <f:validateLength minimum="2" />    
-                                        </p:calendar>
-
-
-                                        <p:outputLabel for="msgar" value="Servidor: " />
-                                        <p:selectOneMenu id="msgar" value="#{garantiaControl.idServidor}" style="width:150px" required="true" requiredMessage="Seleccione Servidor.">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{servidorControl.listarTodo()}" />
-                                        </p:selectOneMenu>
-
-                                        <p:outputLabel for="mcgar" value="Contacto Garantia " />
-                                        <p:selectOneMenu id="mcgar" value="#{garantiaControl.idContGar}" style="width:150px" required="true" requiredMessage="Seleccione Contacto Garantia.">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{contGarControl.mostrarContGar()}" />
-                                        </p:selectOneMenu>
-
-                                        <p:commandButton value="Modificar" update="panel" actionListener="#{garantiaControl.modificarGarantia()}" />
-                                    </h:panelGrid>
-
-
-                                </p:panel>
-                            </p:panelGrid>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:calendar placeholder="Fecha Inicio Garantia" id="mfigar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" label="Fecha Inicio: ">
+                                    <f:validateLength minimum="2" />    
+                                </p:calendar>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:calendar placeholder="Fecha Caducidad Garantia" id="mfcgar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" label="Fecha Caducidad: ">
+                                    <f:validateLength minimum="2" />    
+                                </p:calendar>
+                            </div>
+                            
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="mcgar" value="#{garantiaControl.idContGar}" required="true" requiredMessage="Seleccione Contacto Garantia.">
+                                    <f:selectItem itemLabel="Seleccione Contacto..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{contGarControl.mostrarContGar()}" />
+                                </p:selectOneMenu>
+                            </div>
                         </div>
-                    </div>
+                        <p:commandButton value="Modificar" update="panel" actionListener="#{garantiaControl.modificarGarantia()}" />
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

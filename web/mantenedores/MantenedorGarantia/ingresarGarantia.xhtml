@@ -9,59 +9,54 @@
 
     <ui:define name="content">
         <h:form>
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Ingresar Garantia</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
+                </div>
 
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
 
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Nombre Garantia" id="nomGar" value="#{garantiaControl.garantia.nomGar}" required="true" label="Nom Garantia: ">
+                                    <f:validateLength minimum="2" />    
+                                </p:inputText>
+                            </div>
 
-                                <p:panel id="panel" header="Datos">
+                            <div class="ui-g-12">
 
+                                <p:calendar placeholder="Fecha Inicio"  id="fini" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" label="Fecha Inicio: ">
+                                    <f:validateLength minimum="2" />    
+                                </p:calendar>
 
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="nomGar" value="Nombre Garantia " />
-                                        <p:inputText id="nomGar" value="#{garantiaControl.garantia.nomGar}" required="true" label="Nom Garantia: ">
-                                            <f:validateLength minimum="2" />    
-                                        </p:inputText>
+                            </div>
 
-                                        <p:outputLabel for="fini" value="Fecha Inicio" />
-                                        <p:calendar id="fini" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" label="Fecha Inicio: ">
-                                            <f:validateLength minimum="2" />    
-                                        </p:calendar>
+                            <div class="ui-g-12">
 
-                                        <p:outputLabel for="fcad" value="Fecha Caducidad " />
-                                        <p:calendar id="fcad" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" label="Fecha Caducidad: ">
-                                            <f:validateLength minimum="2" />    
-                                        </p:calendar>
+                                <p:calendar placeholder="Fecha Caducidad" id="fcad" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" label="Fecha Caducidad: ">
+                                    <f:validateLength minimum="2" />    
+                                </p:calendar>
 
-                                        <p:outputLabel for="isrvd" value="ID Servidor: " />
-                                        <p:selectOneMenu id="isrvd" value="#{garantiaControl.idServidor}" style="width:150px">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{servidorControl.listarTodo()}" />
-                                        </p:selectOneMenu>
+                            </div>
 
-                                        <p:outputLabel for="iusu" value="ID Contacto Garantia: " />
-                                        <p:selectOneMenu id="iusu" value="#{garantiaControl.idContGar}" style="width:150px" required="true" requiredMessage="Seleccione Usuario.">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{contGarControl.mostrarContGar()}" />
-                                        </p:selectOneMenu>
+                            <div class="ui-g-12">
 
+                                <p:selectOneMenu id="iusu" value="#{garantiaControl.idContGar}" required="true" requiredMessage="Seleccione Usuario.">
+                                    <f:selectItem itemLabel="Seleccione Contacto..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{contGarControl.mostrarContGar()}" />
+                                </p:selectOneMenu>
 
-
-                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{garantiaControl.ingresarGarantia()}" />
-                                    </h:panelGrid>
-
-
-                                </p:panel>
-                            </p:panelGrid>
+                            </div>
                         </div>
-                    </div>
+
+                        <p:commandButton value="Ingresar" update="panel" actionListener="#{garantiaControl.ingresarGarantia()}" />
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

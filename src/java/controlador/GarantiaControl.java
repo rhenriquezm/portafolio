@@ -109,8 +109,10 @@ public class GarantiaControl {
 
             GarantiaDao mgarDao = new GarantiaDaoImpl();
             Garantia mgar = mgarDao.getById(getIdGarantia());
+            
+            ContGarDao contDao = new ContGarDaoImpl();
 
-            mgar.setContGar(getGarantia().getContGar());
+            mgar.setContGar(contDao.getById(mgar.getContGar().getIdCont()));
             mgar.setNomGar(getGarantia().getNomGar());
             mgar.setFechaGar(getGarantia().getFechaGar());
             mgar.setFechaCadGar(getGarantia().getFechaCadGar());
@@ -172,6 +174,7 @@ public class GarantiaControl {
         try {
             GarantiaDao cgarDao = new GarantiaDaoImpl();
             this.garantia = cgarDao.getById(this.idGarantia);
+            setIdContGar(this.garantia.getContGar().getIdCont());
 
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
@@ -184,6 +187,7 @@ public class GarantiaControl {
         garantia.setContGar(null);
         garantia.setFechaGar(null);
         garantia.setFechaCadGar(null);
+        setIdContGar((short)0);
 
     }
 
