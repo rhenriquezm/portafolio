@@ -9,7 +9,6 @@ import POJO.Webservice;
 import dao.WebServiceDao;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

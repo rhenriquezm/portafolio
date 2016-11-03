@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import POJO.DirIp;
 import POJO.Rack;
 import POJO.Servidor;
 import dao.CarServidorDao;
@@ -49,16 +50,11 @@ public class ServidorControl {
     private short idTipoServ;
     private short idTipoServidor;
     private Servidor serv;
-    private ArrayList<SelectItem> listaServ;
-    private ArrayList<Servidor> listaComp;
 
     public ServidorControl() {
-        
-        this.serv = new Servidor();
+                this.serv = new Servidor();
         this.idRack = 0;
         this.idSalaServ = 0;
-        this.listaServ = new ArrayList<>();
-        this.listaComp = new ArrayList<>();
     }
 
     public short getIdServ() {
@@ -141,22 +137,7 @@ public class ServidorControl {
         this.serv = serv;
     }
 
-    public ArrayList<SelectItem> getListaServ() {
-        return listaServ;
-    }
-
-    public void setListaServ(ArrayList<SelectItem> listaServ) {
-        this.listaServ = listaServ;
-    }
-
-    public ArrayList<Servidor> getListaComp() {
-        return listaComp;
-    }
-
-    public void setListaComp(ArrayList<Servidor> listaComp) {
-        this.listaComp = listaComp;
-    }
-    
+   
     //Metodos Personalizados
     
     public void ingresarServidor() {
@@ -178,6 +159,7 @@ public class ServidorControl {
           this.serv.setUsuario(usuarioDao.getById(getIdUsuario()));
           this.serv.setProveedor(iprovDao.getById(getIdProv()));
           this.serv.setTipoServ(tipoDao.getById(getIdTipoServ()));
+          this.serv.setDirIp(new DirIp());
           
           
            boolean ingresado = servDao.insert(this.serv);
@@ -196,6 +178,7 @@ public class ServidorControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
           ServidorDao servDao = new ServidorDaoImpl();
+          ArrayList<SelectItem> listaServ = new ArrayList<>();
           for (Servidor servidor : servDao.getAll()) {
               listaServ.add(new SelectItem(servidor.getIdServ(), servidor.getNomServ()));
           }
@@ -257,9 +240,6 @@ public class ServidorControl {
 
     }
 
-    public void resetLista() {
-        listaServ.clear();
-    }
 
     public void reset() {
         this.serv.setNomServ(null);

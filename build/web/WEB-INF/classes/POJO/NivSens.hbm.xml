@@ -7,7 +7,7 @@
         <id name="idNivSens" type="short">
             <column name="ID_NIV_SENS" precision="4" scale="0" />
             <generator class="sequence" >
-                <param name="sequence">NIV_SENS_SEQ</param>
+                <param name="sequence">NIVSENS_SEQ</param>
             </generator>
         </id>
         <property name="descNivSens" type="string">

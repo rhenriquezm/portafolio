@@ -52,7 +52,7 @@ public class NivSensControl {
     	FacesContext context = FacesContext.getCurrentInstance();
         try {
             NivSensDao nssDao = new NivSensDaoImpl();
-            boolean ingresado = nssDao.insert(nivsens);
+            boolean ingresado = nssDao.insert(getNivsens());
             if (ingresado) {
                 LimpiarIngresarNivSens();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel ingresado exitosamente"));

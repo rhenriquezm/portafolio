@@ -85,9 +85,11 @@ public class SistemaDaoImpl implements SistemaDao{
     @Override
     public boolean update(Sistema sis) throws Exception {
         try {
+            
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
             Sistema usist = (Sistema) session.load(Sistema.class, sis.getIdSist());
+            
             usist.setNomSist(sis.getNomSist());
             usist.setServidor(sis.getServidor());
             usist.setUsuario(sis.getUsuario());
@@ -97,11 +99,11 @@ public class SistemaDaoImpl implements SistemaDao{
             usist.setSistOper(sis.getSistOper());
             usist.setProveedor(sis.getProveedor());
             usist.setSoftBd(sis.getSoftBd());
-            usist.setWebservice(sis.getWebservice());
             usist.setOrganizacion(sis.getOrganizacion());          
             session.update(usist);
             this.transaction.commit();
             return true;
+            
         } catch (Exception e) {
             if (this.transaction != null) {
                 transaction.rollback();
@@ -116,9 +118,9 @@ public class SistemaDaoImpl implements SistemaDao{
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();
-            String sql = "FROM Sistema WHERE idSistema=:idSistema";
+            String sql = "FROM Sistema WHERE idSist=:idSist";
             Query query = session.createQuery(sql);
-            query.setParameter("idSistema", id);
+            query.setParameter("idSist", id);
             this.transaction.commit();
             return (Sistema) query.uniqueResult();
 
