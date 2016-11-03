@@ -51,6 +51,7 @@ public class ServidorDaoImpl implements ServidorDao {
             this.transaction = this.session.beginTransaction();
             this.session.save(se);
             this.transaction.commit();
+            this.session.close();
             return true;
         } catch (Exception ex) {
             if (this.transaction != null) {

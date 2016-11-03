@@ -10,11 +10,15 @@
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
             <div class="ui-fluid">
                 <div class="ui-g">
-                    <div class="ui-g-12 ui-lg-9">
-                        <div class="card">
-                            <h1>Registrar Servidor</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
+                    <div class="ui-g-12">
+                        <!--<div class="card">
+                            <h1>Registrar Servidor</h1> TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
@@ -55,7 +59,7 @@
                                                         <p:outputLabel for="ss" value="Sala Servidor: " />
                                                         <p:selectOneMenu id="ss" value="#{servidorControl.idSalaServ}" style="width:150px">
                                                             <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                            <f:selectItems value="#{salaServControl.listarTodo()}" />
+                                                            <f:selectItems value="#{salaServControl.mostrarSalas()}" />
                                                         </p:selectOneMenu>
                                                     </div>
 
@@ -87,7 +91,7 @@
                                                         <p:outputLabel for="tse" value="Tipo Servidor: " />
                                                         <p:selectOneMenu id="tse" value="#{servidorControl.idTipoServidor}" style="width:150px">
                                                             <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                            <f:selectItems value="#{tipoServidorControl.listarTodo()}" />
+                                                            <f:selectItems value="#{tipoServControl.listarTodo()}" />
                                                         </p:selectOneMenu>
                                                     </div>
 

@@ -23,7 +23,10 @@ and open the template in the editor.
                     <p:panel id="panel" header="Nuevo Proveedor">
                         
                         <p:growl id="growl" showDetail="true" sticky="true" />
-                        
+                        <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="nomProv" value="Nombre " />
                             <p:inputText id="nomProv" value="#{proveedorControl.proveedor.nomProv}" required="true" label="Nom Proveedor: ">
@@ -45,11 +48,11 @@ and open the template in the editor.
                         <p:commandButton value="Ingresar" update="panel" actionListener="#{proveedorControl.ingresarProveedor()}" />
 
                     </p:panel>
-
+</div>
                 </h:form>  
 
             </div>
-            <div class="ui-g-4"></div>
+            
         </div>
 
     </h:body>
