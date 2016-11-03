@@ -38,6 +38,8 @@ public class UsuarioControl {
         this.sexo = new ArrayList<>();
         this.perfiles = new ArrayList<>();
         this.unidadesTrabajo = new ArrayList<>();
+        this.idPerfil = 0;
+        this.idUniTrab = 0;
     }
 
     @PostConstruct
@@ -135,6 +137,7 @@ public class UsuarioControl {
             this.usuario.setPassUsuario(Encrypt.sha512(getUsuario().getPassUsuario()));
             boolean ingresado = usuarioDao.insert(this.usuario);
             if (ingresado) {
+                setUsuario(new Usuario());
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido ingresado exitosamente"));
@@ -197,15 +200,19 @@ public class UsuarioControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             UsuarioDao usDao = new UsuarioDaoImpl();
-            Usuario usu = usDao.getUsuario(usuario);
+            Usuario usu = usDao.getById(getIdUsuario()); 
+            
             usu.setNomUsuario(usuario.getNomUsuario());
+//            usu.setPatUsuario(usuario.getPatUsuario());
+//            usu.setMatUsuario(usuario.getMatUsuario());
+            usu.setRutUsuario(usuario.getRutUsuario());
+            usu.setDvUsuario(usuario.getDvUsuario());
+            usu.setSexoUsuario(usuario.getSexoUsuario());
             usu.setCorreoUsuario(usuario.getCorreoUsuario());
-            usu.setPatUsuario(usuario.getPatUsuario());
-            usu.setMatUsuario(usuario.getMatUsuario());
-            usu.setPerfil(usuario.getPerfil());
-            usu.setUnidadTrabajo(usuario.getUnidadTrabajo());
             usu.setFonoUsuario(usuario.getFonoUsuario());
             
+            
+                        
             PerfilDao perDao = new PerfilDaoImpl();
             usu.setPerfil(perDao.getById(getIdPerfil()));
             
@@ -216,9 +223,9 @@ public class UsuarioControl {
             
             boolean modificado = usDao.update(usu);
             if (modificado) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario modificada exitosamente"));
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido modificada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido modificada exitosamente"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
@@ -254,5 +261,7 @@ public class UsuarioControl {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
         }
     }
+    
+    
    
 }
