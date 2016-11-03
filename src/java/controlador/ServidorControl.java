@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import POJO.DirIp;
 import POJO.Rack;
 import POJO.Servidor;
 import dao.CarServidorDao;
@@ -53,12 +54,7 @@ public class ServidorControl {
     public ServidorControl() {
                 this.serv = new Servidor();
         this.idRack = 0;
-<<<<<<< HEAD
-=======
         this.idSalaServ = 0;
-        this.listaServ = new ArrayList<>();
-        this.listaComp = new ArrayList<>();
->>>>>>> 601190b3afc55bc0d13539a892229320a4fbeed1
     }
 
     public short getIdServ() {
@@ -163,6 +159,7 @@ public class ServidorControl {
           this.serv.setUsuario(usuarioDao.getById(getIdUsuario()));
           this.serv.setProveedor(iprovDao.getById(getIdProv()));
           this.serv.setTipoServ(tipoDao.getById(getIdTipoServ()));
+          this.serv.setDirIp(new DirIp());
           
           
            boolean ingresado = servDao.insert(this.serv);

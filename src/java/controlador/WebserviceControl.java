@@ -9,7 +9,6 @@ import POJO.Webservice;
 import dao.WebServiceDao;
 import dao.impl.WebServiceDaoImpl;
 import java.util.ArrayList;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -49,7 +48,8 @@ public class WebserviceControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             WebServiceDao webserviceDao = new WebServiceDaoImpl();
-            boolean ingresado = webserviceDao.insert(webservice);
+            getWebservice().setProtWebservice("HTTPS");
+            boolean ingresado = webserviceDao.insert(getWebservice());
             if (ingresado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Webservice ingresado exitosamente"));
             } else {
