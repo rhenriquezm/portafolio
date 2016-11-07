@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Lenguaje de Desarrollo / ingresar Lenguaje</ui:define>
+    <ui:define name="title">MANTENEDOR WEB SERVICE</ui:define>
 
     <ui:define name="content">
         <h:form>
@@ -14,40 +14,38 @@
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            
             <div class="ui-fluid">
                 <div class="ui-g">
                     <div class="ui-g-12">
-                        <!--<div class="card">-->
-                            <!--<h1>INGRESAR</h1>  TITULO EN CASO DE CUALQUIER COSA -->
+                       <!-- <div class="card">
+                            <h1>INGRESAR</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
                             <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
-                                <p:panel id="panel" header="Nuevo Lenguaje">
 
+
+                                <p:panel id="panel" header="Datos Nuevo Web Service">
 
 
                                     <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="nomLengDes" value="Nombre Lenguaje " />
-                                        <p:inputText id="nomLengDes" value="#{lengDesSistControl.lengdessist.nomLengDes}" required="true" label="Nom Lenguaje: ">
+                                        <p:outputLabel for="nomWebservice" value="Nombre:" />
+                                        <p:inputText id="nomWebservice" value="#{webserviceControl.webservice.nomWebservice}" required="true" 
+                                                     label="Nom Webservice: ">
                                             <f:validateLength minimum="2" />
                                         </p:inputText>
 
+
+
+                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{webserviceControl.ingresarWebservice()}" />
                                     </h:panelGrid>
-                                    <div class="ui-g">
-                                        <div class="ui-g-4">
-                                            <p:commandButton value="Ingresar" update="panel" actionListener="#{lengDesSistControl.ingresarLengDes()}" />
-                                        </div>
-                                    </div>
-                                    
+
 
                                 </p:panel>
-
                             </p:panelGrid>
-                        <!--/div>fin card-->
+                        </div>
                     </div>
-                </div>
+
                 </div>
             </div>
         </h:form>
