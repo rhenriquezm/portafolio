@@ -5,61 +5,38 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Sistema Operativo</ui:define>
+    <ui:define name="title">Mantenedor Sistema Operativo / Eliminar S.O</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h2>Eliminar Sistema Operativo</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+            <div class="ui-g ui-fluid dashboard">
 
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
-                                <p:panel id="panel" header="Datos">
+                </div>
 
-
-                                    <h:panelGrid columns="3" cellpadding="5">
-
-
-                                        <p:outputLabel for="iso" value="Sistema Operativo: " />
-                                        <p:selectOneMenu id="iso" value="#{sistOperControl.idSo}">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                            <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
-                                        </p:selectOneMenu>
-
-                                        <div class="ui-g">
-                                            <div class="ui-g-6">
-                                                <div class="ui-g-4">
-                                                    <p:commandButton value="Eliminar" update="panel" actionListener="#{sistOperControl.eliminarSistOper()}" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </h:panelGrid>
-
-
-                                </p:panel>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
 
-
-
-                            </p:panelGrid>
-
+                    <p:panel id="panel" header="Eliminar S.O" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{sistOperControl.idSo}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                </p:selectOneMenu>
+                            </div>
 
                         </div>
+                        <p:commandButton  actionListener="#{sistOperControl.eliminarSistOper()}" update="panel" value="Eliminar" icon="fa fa-check"/>
+                    </p:panel>
 
-                        <!--<div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
-                        </div>-->
-                    </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
