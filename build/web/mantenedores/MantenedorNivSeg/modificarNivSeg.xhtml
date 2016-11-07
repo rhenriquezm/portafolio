@@ -5,79 +5,53 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR NIVELES DE SEGURIDAD</ui:define>
-
+    <ui:define name="title">Mantenedor Nivel de Seguridad / Modificar Nivel</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid ">
-                <div class="ui-grid-responsive">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                          <!--  <div class="card">
-                                <h1>MODIFICAR</h1> TITULO-->
 
-                                <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                    <p:panel id="panel" header="Modificar Nivel Seguridad">
-                                        
 
-                                        <h:panelGrid columns="2" cellpadding="5">
-
-                                            <p:outputLabel for="nseg" value="Nivel: " />
-                                            <p:selectOneMenu id="nseg" value="#{nivSegControl.idNivSeg}" style="width:150px">
-                                                <p:ajax listener="#{nivSegControl.cambioNivSeg()}" update="idnseg,dnseg" />
-                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                <f:selectItems id="niveles" value="#{nivSegControl.mostrarNivSeg()}" />
-                                            </p:selectOneMenu>
-
-
-                                            <p:outputLabel for="idnseg" value="Id. NivSeg: " />
-                                            <p:inputText id="idnseg" value="#{nivSegControl.nivseg.idNivSeg}" required="true" label="Nivel: " disabled="true">
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
-
-                                            <p:outputLabel for="dnseg" value=" Nombre Nivel: " />
-                                            <p:inputText id="dnseg" value="#{nivSegControl.nivseg.descNivSeg}" required="true" label="Nivel: "  >
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
-                                            
-                                            
-                                            <div class="ui-g">
-                                                <div class="ui-g-4">
-                                                    <p:commandButton value="Modificar" update="panel" actionListener="#{nivSegControl.modificarNivSeg()}" />
-                                                </div>
-                                            </div>
-                                            
-                                        </h:panelGrid>
-
-
-                                    </p:panel>
-                                </p:panelGrid>
-
-
+                    <p:panel id="panel" header="Modificar Nivel" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{nivSegControl.idNivSeg}" autoWidth="false">
+                                    <p:ajax listener="#{nivSegControl.cambioNivSeg()}" update="id,nom" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
+                                </p:selectOneMenu>
                             </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Nivel" value="#{nivSegControl.nivseg.idNivSeg}" disabled="true" />
+                            </div>
 
-
-
-
-
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre Nivel" value="#{nivSegControl.nivseg.descNivSeg}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{nivSegControl.modificarNivSeg()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
                 </div>
+                <div class="ui-g-12 ui-lg-4">
 
-
+                </div>
             </div>
         </h:form>
-
     </ui:define>
 
 </ui:composition>
-
