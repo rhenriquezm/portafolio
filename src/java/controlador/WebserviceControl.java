@@ -48,7 +48,6 @@ public class WebserviceControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             WebServiceDao webserviceDao = new WebServiceDaoImpl();
-            getWebservice().setProtWebservice("HTTPS");
             boolean ingresado = webserviceDao.insert(getWebservice());
             if (ingresado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Webservice ingresado exitosamente"));

@@ -5,46 +5,38 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR WEB SERVICE</ui:define>
+    <ui:define name="title">Mantenedor Web Service / Eliminar Web Service</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                      <!--  <div class="card">
-                            <h1>ELIMINAR</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-                                <p:panel id="panel" header="Eliminar Webservice">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                    <h:panelGrid columns="3" cellpadding="5">
 
+                    <p:panel id="panel" header="Eliminar Web Service" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{webserviceControl.idWebservice}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
+                                </p:selectOneMenu>
+                            </div>
 
-                                        <p:outputLabel for="ews" value="Webservice: " />
-                                        <p:selectOneMenu id="ews" value="#{webserviceControl.idWebservice}">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                            <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
-                                        </p:selectOneMenu>
-
-                                    </h:panelGrid>
-                                    <div class="ui-g">
-                                        <div class="ui-g-12">
-                                            <p:commandButton value="Eliminar" update="panel" actionListener="#{webserviceControl.eliminarWebservice()}" />
-                                        </div>
-                                    </div>
-
-                                </p:panel>
-
-                            </p:panelGrid>
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{webserviceControl.eliminarWebservice()}" update="panel" value="Eliminar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
@@ -52,4 +44,3 @@
     </ui:define>
 
 </ui:composition>
-

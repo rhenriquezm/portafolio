@@ -5,62 +5,55 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR WEB SERVICE</ui:define>
+    <ui:define name="title">Mantenedor Web Service / Modificar Web Service</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                       <!-- <div class="card">
-                            <h1>MODIFICAR</h1> TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-                                <p:panel id="panel" header="Modificar Webservice">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                    <h:panelGrid columns="2" cellpadding="5">
 
-                                        <p:outputLabel for="ws" value="Webservice: " />
-                                        <p:selectOneMenu id="ws" value="#{webserviceControl.idWebservice}" style="width:150px">
-                                            <p:ajax listener="#{webserviceControl.cambioWebservice()}" update="idws,nws,pws" />
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems id="webservice" value="#{webserviceControl.mostrarWebservice()}" />
-                                        </p:selectOneMenu>
+                    <p:panel id="panel" header="Modificar Web Service" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{webserviceControl.idWebservice}" autoWidth="false">
+                                    <p:ajax listener="#{webserviceControl.cambioWebservice()}" update="id,nom,prot" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{webserviceControl.mostrarWebservice()}" />
+                                </p:selectOneMenu>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Web Service" value="#{webserviceControl.webservice.idWebservice}" disabled="true" />
+                            </div>
 
-                                        <p:outputLabel for="idws" value="Id. Webservice: " />
-                                        <p:inputText id="idws" value="#{webserviceControl.webservice.idWebservice}" required="true" label="Webservice: " disabled="true">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre Web Service" value="#{webserviceControl.webservice.nomWebservice}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
 
-                                        <p:outputLabel for="nws" value=" Nombre Webservice: " />
-                                        <p:inputText id="nws" value="#{webserviceControl.webservice.nomWebservice}" required="true" label="Webservice: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="pws" value=" Protocolo Webservice: " />
-                                        <p:inputText id="pws" value="#{webserviceControl.webservice.protWebservice}" required="true" label="Webservice: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-                                        <div class="ui-g">
-                                            <div class="ui-g-4">
-                                                <p:commandButton value="Modificar" update="panel" actionListener="#{webserviceControl.modificarWebservice()}" />
-                                            </div>
-                                        </div>
-
-                                    </h:panelGrid>
-
-
-                                </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="prot" placeholder="Protocolo Web Service" value="#{webserviceControl.webservice.protWebservice}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{webserviceControl.modificarWebservice()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
