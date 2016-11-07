@@ -5,66 +5,61 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Software Base de Datos</ui:define>
+    <ui:define name="title">Mantenedor Software Base de Datos/ Modificar Software</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>Modificar Software Base de Datos</h1> TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
 
+                    <p:panel id="panel" header="Modificar Software" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{softBdControl.idSoftBd}" autoWidth="false">
+                                    <p:ajax listener="#{softBdControl.cambioSoftBd()}" update="id,nom,emp,ver" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{softBdControl.mostrarSoftBd()}" />
+                                </p:selectOneMenu>
+                            </div>
 
-                                <p:panel id="panel" header="Datos">
-                                
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Software" value="#{softBdControl.softbd.idSoftBd}" disabled="true" />
+                            </div>
 
-                               <h:panelGrid columns="2" cellpadding="5">
-                               <p:outputLabel for="msoft" value="Nivel: " />
-                                        <p:selectOneMenu id="msoft" value="#{softBdControl.idSoftBd}" style="width:150px">
-                                            <p:ajax listener="#{softBdControl.cambioSoftBd()}" update="idmsoft,nmsoft,emsoft,vmsoft" />
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems id="softwares" value="#{softBdControl.mostrarSoftBd()}" />
-                                        </p:selectOneMenu>
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre Software" value="#{softBdControl.softbd.nomSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="emp" placeholder="Empresa Desarroladora" value="#{softBdControl.softbd.empSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
 
-                                        <p:outputLabel for="idmsoft" value="Id. Software B.D: " />
-                                        <p:inputText id="idmsoft" value="#{softBdControl.softbd.idSoftBd}" required="true" label="Nivel: " disabled="true">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="nmsoft" value=" Nombre: " />
-                                        <p:inputText id="nmsoft" value="#{softBdControl.softbd.nomSoftBd}" required="true" label="Nombre: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="emsoft" value=" Empresa: " />
-                                        <p:inputText id="emsoft" value="#{softBdControl.softbd.empSoftBd}" required="true" label="Empresa: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="vmsoft" value=" Version: " />
-                                        <p:inputText id="vmsoft" value="#{softBdControl.softbd.verSoftBd}" required="true" label="Version: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
- 
-                            <p:commandButton value="Modificar" update="panel" actionListener="#{softBdControl.modificarSoftBd()}" />
-                          </h:panelGrid>
-
-
-                    </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="ver" placeholder="Version Software" value="#{softBdControl.softbd.verSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{softBdControl.modificarSoftBd()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
