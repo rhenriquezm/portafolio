@@ -5,78 +5,53 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR NIVELES DE SENSIBILIDAD</ui:define>
-
+    <ui:define name="title">Mantenedor Nivel de Sensibilidad / Modificar Nivel</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid ">
-                <div class="ui-grid-responsive">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                            <!--<div class="card">
-                                <h1>MODIFICAR</h1>  TITULO-->
 
-                                <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-                                    <p:panel id="panel" header="Modificar Nivel Sensibilidad">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                        <h:panelGrid columns="2" cellpadding="5">
 
-                                            <p:outputLabel for="nsen" value="Nivel: " />
-                                            <p:selectOneMenu id="nsen" value="#{nivSensControl.idNivSens}" style="width:150px">
-                                                <p:ajax listener="#{nivSensControl.cambioNivSens()}" update="idnsen,dnsen" />
-                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                                <f:selectItems id="webservice" value="#{nivSensControl.mostrarNivSens()}" />
-                                            </p:selectOneMenu>
-
-
-                                            <p:outputLabel for="idnsen" value="Id. Webservice: " />
-                                            <p:inputText id="idnsen" value="#{nivSensControl.nivsens.idNivSens}" required="true" label="Nivel: " disabled="true">
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
-
-                                            <p:outputLabel for="dnsen" value=" Nombre Nivel: " />
-                                            <p:inputText id="dnsen" value="#{nivSensControl.nivsens.descNivSens}" required="true" label="Nivel: "  >
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
-
-                                            <div class="ui-g">
-                                                <div class="ui-g-12">
-                                                    <p:commandButton value="Modificar" update="panel" actionListener="#{nivSensControl.modificarNivSens()}" />
-                                                </div>
-                                            </div>
-
-                                        </h:panelGrid>
-
-
-                                    </p:panel>
-
-                                </p:panelGrid>
-
-
+                    <p:panel id="panel" header="Modificar Nivel" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{nivSensControl.idNivSens}" autoWidth="false">
+                                    <p:ajax listener="#{nivSensControl.cambioNivSens()}" update="id,nom" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{nivSensControl.mostrarNivSens()}" />
+                                </p:selectOneMenu>
                             </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Nivel" value="#{nivSensControl.nivsens.idNivSens}" disabled="true" />
+                            </div>
 
-
-
-
-
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre Nivel" value="#{nivSensControl.nivsens.descNivSens}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{nivSensControl.modificarNivSens()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
                 </div>
+                <div class="ui-g-12 ui-lg-4">
 
-
+                </div>
             </div>
         </h:form>
-
     </ui:define>
 
 </ui:composition>
-
