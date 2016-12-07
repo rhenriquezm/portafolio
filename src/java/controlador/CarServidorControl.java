@@ -6,11 +6,8 @@
 package controlador;
 
 import POJO.CarServ;
-import POJO.SalaServ;
 import dao.CarServidorDao;
-import dao.SalaServDao;
 import dao.impl.CarServidorDaoImpl;
-import dao.impl.SalaServDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -26,19 +23,14 @@ import javax.faces.model.SelectItem;
 @ViewScoped
 @ManagedBean
 public class CarServidorControl {
-    
+
     private short idCarServidor;
     private CarServ carserv;
-    private ArrayList<SelectItem> listaCarServ;
-    private ArrayList<CarServ> listaComp;
 
     public CarServidorControl() {
         this.carserv = new CarServ();
         this.idCarServidor = 0;
-        this.listaCarServ = new ArrayList<>();
-        this.listaComp = new ArrayList<>();
     }
-    
 
     public short getIdCarServidor() {
         return idCarServidor;
@@ -56,55 +48,114 @@ public class CarServidorControl {
         this.carserv = carserv;
     }
 
-    public ArrayList<SelectItem> getListaCarServ() {
-        return listaCarServ;
-    }
-
-    public void setListaCarServ(ArrayList<SelectItem> listaCarServ) {
-        this.listaCarServ = listaCarServ;
-    }
-
-    public ArrayList<CarServ> getListaComp() {
-        return listaComp;
-    }
-
-    public void setListaComp(ArrayList<CarServ> listaComp) {
-        this.listaComp = listaComp;
-    }
-    
-    public List<SelectItem> listarTodo() {
-         FacesContext context = FacesContext.getCurrentInstance();
+    //Personalizados
+    public void ingresarCarServ() {
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
-          CarServidorDao carDao = new CarServidorDaoImpl();
-          for (CarServ carServidor : carDao.getAll()) {
-              listaCarServ.add(new SelectItem(carServidor.getIdCarServ(), carServidor.getSoServ()));
-          }
-           if (listaCarServ.isEmpty()) {
+            CarServidorDao csDao = new CarServidorDaoImpl();
+            boolean ingresado = csDao.insert(carserv);
+            if (ingresado) {
+                LimpiarIngresar();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Caracteristicas ingresadas exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Las caracteristicas no han podido ser ingresadas"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar " + ex.getMessage()));
+
+        }
+
+    }
+
+    public void modificarCarServ() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            CarServidorDao csDao = new CarServidorDaoImpl();
+            CarServ ccar = csDao.getById(getIdCarServidor());
+            ccar.setSoServ(getCarserv().getSoServ());
+            ccar.setTamDiscServ(getCarserv().getTamDiscServ());
+            ccar.setTamMemServ(getCarserv().getTamMemServ());
+            boolean modificar = csDao.update(ccar);
+            if (modificar) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Caracteristicas modificadas exitosamente"));
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Las Caracteristicas no han podido ser modificado exitosamente"));
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar " + ex.getMessage()));
+
+        }
+    }
+
+    public void eliminarCarServ() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            CarServidorDao csDao = new CarServidorDaoImpl();
+            boolean eliminado = csDao.deleteById(this.idCarServidor);
+            if (eliminado) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Caracteristicas eliminadas exitosamente"));
+
+            } else if (this.idCarServidor == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Caracteristica"));
+
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Caracteristicas no han podido ser eliminadas exitosamente"));
+
+            }
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
+
+        }
+
+    }
+
+    public void cambioCarServ() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            CarServidorDao cgDao = new CarServidorDaoImpl();
+            this.carserv = cgDao.getById(this.idCarServidor);
+
+        } catch (Exception ex) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
+
+        }
+    }
+
+
+    public List<SelectItem> listarTodo() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            CarServidorDao carDao = new CarServidorDaoImpl();
+            ArrayList<SelectItem> listaCarServ = new ArrayList<>();
+            for (CarServ carServidor : carDao.getAll()) {
+                listaCarServ.add(new SelectItem(carServidor.getIdCarServ(), carServidor.getSoServ()));
+            }
+            if (listaCarServ.isEmpty()) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Caracteristicas Servidores en el sistema"));
             } else {
                 return listaCarServ;
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al mostrar Caracteristicas Servidores" + ex.getMessage()));
-        
+
         }
         return null;
     }
-    
+
     public void buscarCarServidor() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-          CarServidorDao carDao = new CarServidorDaoImpl();
-          carserv = carDao.getById(idCarServidor);
-          }
-         catch (Exception ex) {
+            CarServidorDao carDao = new CarServidorDaoImpl();
+            carserv = carDao.getById(idCarServidor);
+        } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al buscar" + ex.getMessage()));
         }
 
     }
 
-    public void resetLista() {
-        listaCarServ.clear();
+    public void LimpiarIngresar() {
+        carserv.setSoServ(null);
+        carserv.setTamDiscServ(0);
+        carserv.setTamMemServ(0);
     }
-
 }

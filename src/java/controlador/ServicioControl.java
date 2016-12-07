@@ -26,26 +26,15 @@ import javax.faces.model.SelectItem;
 @ViewScoped
 @ManagedBean
 public class ServicioControl {
+
     private short idServicio;
     private Servicio servicio;
-    private short IdSist;
 
     public ServicioControl() {
         this.idServicio = 0;
         this.servicio = new Servicio();
-        this.IdSist = 0;
     }
 
-    public short getIdSist() {
-        return IdSist;
-    }
-
-    public void setIdSist(short IdSist) {
-        this.IdSist = IdSist;
-    }
-
-    
-    
     public short getIdServicio() {
         return idServicio;
     }
@@ -61,18 +50,12 @@ public class ServicioControl {
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
-    
+
     //Personalizados...
-    
     public void ingresarServicio() {
-    	FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
             ServicioDao iservDao = new ServicioDaoImpl();
-            SistemaDao sistemaDao = new SistemaDaoImpl();
-            
-            Sistema sistema = sistemaDao.getById(getIdSist());
-            
-            
             boolean ingresado = iservDao.insert(servicio);
             if (ingresado) {
                 LimpiarIngresarServicio();
@@ -88,12 +71,12 @@ public class ServicioControl {
     }
 
     public void modificarServicio() {
-    	FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            ServicioDao mservDao = new ServicioDaoImpl();
-            Servicio mserv = mservDao.getById(getIdServicio());
+            ServicioDao sDao = new ServicioDaoImpl();
+            Servicio mserv = sDao.getById(getIdServicio());
             mserv.setNomServicio(getServicio().getNomServicio());
-            boolean modificar = mservDao.update(mserv);
+            boolean modificar = sDao.update(mserv);
             if (modificar) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Servicio modificado exitosamente"));
             } else {
@@ -106,7 +89,7 @@ public class ServicioControl {
     }
 
     public void eliminarServicio() {
-    	FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
             ServicioDao eservDao = new ServicioDaoImpl();
             boolean eliminado = eservDao.deleteById(this.idServicio);
@@ -127,13 +110,13 @@ public class ServicioControl {
     }
 
     public List<SelectItem> mostrarServicio() {
-    	FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
             ServicioDao lservDao = new ServicioDaoImpl();
             ArrayList<SelectItem> servicios = new ArrayList<>();
-                for (Servicio servicio : lservDao.getAll()) {
-                    servicios.add(new SelectItem(servicio.getIdServicio(), servicio.getNomServicio()));
-                }
+            for (Servicio servicio : lservDao.getAll()) {
+                servicios.add(new SelectItem(servicio.getIdServicio(), servicio.getNomServicio()));
+            }
             if (servicios.isEmpty()) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "No existen Servicio Ingresados en el sistema"));
 
@@ -147,10 +130,10 @@ public class ServicioControl {
     }
 
     public void cambioServicio() {
-    	FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
-            ServicioDao cservDao = new ServicioDaoImpl();
-            this.servicio = cservDao.getById(this.idServicio);
+            ServicioDao sDao = new ServicioDaoImpl();
+            this.servicio = sDao.getById(this.idServicio);
 
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));
@@ -158,10 +141,8 @@ public class ServicioControl {
         }
     }
 
-    
-    public void LimpiarIngresarServicio(){
+    public void LimpiarIngresarServicio() {
         servicio.setNomServicio(null);
     }
-    
-    
+
 }

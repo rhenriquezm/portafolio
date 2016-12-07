@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">Mantenedor Tipo Servidor / Ingresar Tipo Servidor</ui:define>
+
+    <ui:define name="content">
+        <h:form >
+            <p:growl showDetail="true" autoUpdate="true" sticky="false" />
+
+            <div class="ui-g ui-fluid dashboard">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                    <p:panel id="panel" header="Nuevo Tipo Servidor" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <!-- <p:outputLabel for="basic" value="Seleccione Tipo Servidor:" /> -->
+                                <p:selectOneMenu  id="sel" value="#{tipoServControl.tiposerv.descTipo}" style="width:224px" >
+                                    <f:selectItem itemLabel="- Seleccione Tipo de Servidor -" itemValue="" />
+                                    <f:selectItem itemLabel="Servidor de Aplicaciones" itemValue="Servidor de Aplicaciones" />
+                                    <f:selectItem itemLabel="Servidor de Base de Datos" itemValue="Servidor de Base de Datos" />
+                                </p:selectOneMenu>
+                            </div>
+
+
+                            <div class="ui-g-12">
+                                <p:password placeholder="Password Administrador" value="#{tipoServControl.tiposerv.passAdmin}" feedback="true" promptLabel="Porfavor Ingrese Contraseña" weakLabel="Debil"
+                                            goodLabel="Buena" strongLabel="Excelente">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:password>
+                            </div> 
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Usuario Base de Datos" value="#{tipoServControl.tiposerv.usBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>                                
+
+                            <div class="ui-g-12">
+                                <p:password placeholder="Password Base de Datos" value="#{tipoServControl.tiposerv.passBd}" feedback="true" promptLabel="Porfavor Ingrese Contraseña" weakLabel="Debil"
+                                            goodLabel="Buena" strongLabel="Excelente">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:password>
+                            </div>
+                        </div>
+                        <p:commandButton update="panel"  actionListener="#{tipoServControl.ingresarTipoServ()}" value="Ingresar" icon="fa fa-check"/>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+
+                </div>
+            </div>
+
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

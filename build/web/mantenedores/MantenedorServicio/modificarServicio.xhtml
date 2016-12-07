@@ -5,63 +5,49 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Servicio</ui:define>
+    <ui:define name="title">Mantenedor Servicios / Modificar Servicio</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>Modificar Servicio</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
 
+                    <p:panel id="panel" header="Modificar Servicio" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{servicioControl.idServicio}" autoWidth="false">
+                                    <p:ajax listener="#{servicioControl.cambioServicio()}" update="id,nom" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{servicioControl.mostrarServicio()}" />
+                                </p:selectOneMenu>
+                            </div>
 
-                                <p:panel id="panel" header="Datos">
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Servicio" value="#{servicioControl.servicio.idServicio}" disabled="true" />
+                            </div>
 
-
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="msoft" value="Servicio: " />
-                                        <p:selectOneMenu id="msoft" value="#{servicioControl.idServicio}" style="width:150px">
-                                            <p:ajax listener="#{servicioControl.cambioServicio()}" update="idser,nser,isis" />
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems id="servicios" value="#{servicioControl.mostrarServicio()}" />
-                                        </p:selectOneMenu>
-
-
-                                        <p:outputLabel for="idser" value="Id. Servicio: " />
-                                        <p:inputText id="idser" value="#{servicioControl.servicio.idServicio}" required="true" label="Servicio: " disabled="true">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="nser" value=" Nombre: " />
-                                        <p:inputText id="nser" value="#{servicioControl.servicio.nomServicio}" required="true" label="Nombre: "  >
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="isis" value="ID Sistema: " />
-                                        <p:selectOneMenu id="isis" value="#{servicioControl.idSist}" style="width:150px" required="true" requiredMessage="Seleccione Sistema.">
-                                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
-                                        </p:selectOneMenu>
-
-
-                                        <p:commandButton value="Modificar" update="panel" actionListener="#{servicioControl.modificarServicio()}" />
-                                    </h:panelGrid>
-
-
-                                </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre Servicio" value="#{servicioControl.servicio.nomServicio}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{servicioControl.modificarServicio()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

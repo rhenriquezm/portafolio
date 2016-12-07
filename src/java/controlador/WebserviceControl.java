@@ -48,7 +48,6 @@ public class WebserviceControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             WebServiceDao webserviceDao = new WebServiceDaoImpl();
-            getWebservice().setProtWebservice("HTTPS");
             boolean ingresado = webserviceDao.insert(getWebservice());
             if (ingresado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Webservice ingresado exitosamente"));
@@ -129,7 +128,6 @@ public class WebserviceControl {
         try {
             WebServiceDao wsDao = new WebServiceDaoImpl();
             this.webservice = wsDao.getById(getIdWebservice());
-            System.out.println("AAAAAAAAAAAAAAAAAAA: "  + this.webservice.getNomWebservice());
 
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al listar " + ex.getMessage()));

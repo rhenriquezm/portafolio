@@ -15,6 +15,14 @@ import java.util.ArrayList;
 public interface TipoServDao {
     
     public ArrayList<TipoServ> getAll() throws Exception;
+    
+    public boolean insert(TipoServ ts) throws Exception;
+
+    public boolean delete(TipoServ ts) throws Exception;
+
+    public boolean deleteById(short id) throws Exception;
+
+    public boolean update(TipoServ ts) throws Exception;
    
     public TipoServ getById(short id) throws Exception;
     

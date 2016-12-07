@@ -62,5 +62,69 @@ public class CarServidorDaoImpl implements CarServidorDao {
         }
         return null;
     }
+
+    @Override
+    public boolean insert(CarServ cs) throws Exception {
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
+            this.session.save(cs);
+            this.transaction.commit();
+            this.session.close();
+            return true;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(CarServ cs) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deleteById(short id) throws Exception {
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
+            CarServ dcs = (CarServ) session.load(CarServ.class, id);
+            this.session.delete(dcs);
+            this.transaction.commit();
+            this.session.close();
+            return true;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(CarServ cs) throws Exception {
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = session.beginTransaction();
+            CarServ ucs = (CarServ) session.load(CarServ.class, cs.getIdCarServ());
+            ucs.setSoServ(cs.getSoServ());
+            ucs.setTamDiscServ(cs.getTamDiscServ());
+            ucs.setTamMemServ(cs.getTamMemServ());
+            session.update(ucs);
+            this.transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return false;
+    }
     
 }

@@ -13,9 +13,17 @@ import java.util.ArrayList;
  * @author ricardo
  */
 public interface CarServidorDao {
-    
+
     public ArrayList<CarServ> getAll() throws Exception;
-   
+
+    public boolean insert(CarServ cs) throws Exception;
+
+    public boolean delete(CarServ cs) throws Exception;
+
+    public boolean deleteById(short id) throws Exception;
+
+    public boolean update(CarServ cs) throws Exception;
+
     public CarServ getById(short id) throws Exception;
-    
+
 }
