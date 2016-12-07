@@ -5,52 +5,49 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Sistema Operativo</ui:define>
+    <ui:define name="title">Mantenedor Sistema Operativo / Modificar S.O</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h2>Modificar Sistema Operativo</h2> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
 
 
+            <div class="ui-g ui-fluid dashboard">
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                                <p:panel id="panel" header="Datos">
-                                
 
-                               <h:panelGrid columns="2" cellpadding="5">
-                               <p:outputLabel for="mso" value="Sistema Operativo: " />
-                            <p:selectOneMenu id="mso" value="#{sistOperControl.idSo}" style="width:150px">
-                                <p:ajax listener="#{sistOperControl.cambioSistOper()}" update="idmso,nmso" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems id="sistoperativos" value="#{sistOperControl.mostrarSistOper()}" />
-                            </p:selectOneMenu>
+                    <p:panel id="panel" header="Modificar S.O" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{sistOperControl.idSo}" autoWidth="false">
+                                    <p:ajax listener="#{sistOperControl.cambioSistOper()}" update="id,nom" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                </p:selectOneMenu>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. S.O" value="#{sistOperControl.sistoper.idSo}" disabled="true" />
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre S.O" value="#{sistOperControl.sistoper.desSo}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
                             
-                               <p:outputLabel for="idmso" value="Id. SistOper: " />
-                            <p:inputText id="idmso" value="#{sistOperControl.sistoper.idSo}" required="true" label="Sistema Operativo: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="nmso" value=" Nombre: " />
-                            <p:inputText id="nmso" value="#{sistOperControl.sistoper.desSo}" required="true" label="Nombre: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
- 
-                            <p:commandButton value="Modicar" update="panel" actionListener="#{sistOperControl.modificarSistOper()}" />
-                          </h:panelGrid>
-
-
-                    </p:panel>
-                            </p:panelGrid>
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{sistOperControl.modificarSistOper()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

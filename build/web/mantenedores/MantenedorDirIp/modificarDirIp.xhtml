@@ -5,56 +5,49 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Direccion IP</ui:define>
+    <ui:define name="title">Mantenedor Direccion IP/ Modificar IP</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
-             <div class="ui-g ui-fluid dashboard">
+
+
+            <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>Modificar Direccion IP</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
 
+                    <p:panel id="panel" header="Modificar IP" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{dirIpControl.idDirIp}" autoWidth="false">
+                                    <p:ajax listener="#{dirIpControl.cambioDirIp()}" update="id,nom" />
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{dirIpControl.mostrarDirIp()}" />
+                                </p:selectOneMenu>
+                            </div>
 
-                                <p:panel id="panel" header="Datos">
-                                
+                            <div class="ui-g-12">
+                                <p:inputText id="id" placeholder="Id. Direccion IP" value="#{dirIpControl.dirip.idDir}" disabled="true" />
+                            </div>
 
-                               <h:panelGrid columns="2" cellpadding="5">
-                               <p:outputLabel for="sdip" value="Direccion: " />
-                            <p:selectOneMenu id="sdip" value="#{dirIpControl.idDirIp}" style="width:150px">
-                                <p:ajax listener="#{dirIpControl.cambioDirIp()}" update="iddip,dip" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems id="niveles" value="#{dirIpControl.mostrarDirIp()}" />
-                            </p:selectOneMenu>
-
-
-                            <p:outputLabel for="iddip" value="Id. Direccion IP: " />
-                            <p:inputText id="iddip" value="#{dirIpControl.dirip.idDir}" required="true" label="Id. Direccion IP: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:outputLabel for="dip" value=" Direccion IP: " />
-                            <p:inputText id="dip" value="#{dirIpControl.dirip.dirIp}" required="true" label="Direccion IP: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-
-                            <p:commandButton value="Modificar" update="panel" actionListener="#{dirIpControl.modificarDirIp()}" />
-                          </h:panelGrid>
-
-
-                    </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Direccion IP" value="#{dirIpControl.dirip.dirIp}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{dirIpControl.modificarDirIp()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

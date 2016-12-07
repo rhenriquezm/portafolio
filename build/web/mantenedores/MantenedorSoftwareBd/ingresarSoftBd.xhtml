@@ -5,58 +5,48 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Software Base de Datos</ui:define>
+    <ui:define name="title">Mantenedor Software Base de Datos/ Ingresar Software</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
             <div class="ui-g ui-fluid dashboard">
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>Ingresar Software Base de Datos</h1> TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Software" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
 
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Nombre Software" value="#{softBdControl.softbd.nomSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Empresa Desarrolladora" value="#{softBdControl.softbd.empSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
 
-
-                                <p:panel id="panel" header="Datos">
-
-
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel for="ss" value="Software: " />
-                                        <p:inputText id="ss" value="#{softBdControl.softbd.nomSoftBd}" required="true" label="Software: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-
-                                        <p:outputLabel for="empSoftBd" value="Empresa " />
-                                        <p:inputText id="empSoftBd" value="#{softBdControl.softbd.empSoftBd}" required="true" label="Nombre Empresa: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-                                        <p:outputLabel for="verSoftBd" value="Version " />
-                                        <p:inputText id="verSoftBd" value="#{softBdControl.softbd.verSoftBd}" required="true" label="Version: ">
-                                            <f:validateLength minimum="2" />
-                                        </p:inputText>
-
-
-                                        <p:commandButton value="Ingresar" update="panel" actionListener="#{softBdControl.ingresarSoftBd()}" /> 
-                                    </h:panelGrid>
-
-
-                                </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Version Software" value="#{softBdControl.softbd.verSoftBd}" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
                         </div>
-                    </div>
+                        <p:commandButton update="panel"  actionListener="#{softBdControl.ingresarSoftBd()}" value="Ingresar" icon="fa fa-check"/>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
+
+
         </h:form>
     </ui:define>
 
