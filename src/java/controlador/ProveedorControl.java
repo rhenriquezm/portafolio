@@ -101,7 +101,7 @@ public class ProveedorControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Proveedor"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Proveedor no ha podido ser eliminado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Proveedor en Uso"));
 
             }
         } catch (Exception ex) {

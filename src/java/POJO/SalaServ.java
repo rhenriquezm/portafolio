@@ -13,21 +13,21 @@ public class SalaServ  implements java.io.Serializable {
 
      private short idSalaServ;
      private String nomSalaServ;
-     private int numero;
-     private int piso;
+     private Integer numero;
+     private Integer piso;
      private Set racks = new HashSet(0);
 
     public SalaServ() {
     }
 
 	
-    public SalaServ(short idSalaServ, String nomSalaServ, int numero, int piso) {
+    public SalaServ(short idSalaServ, String nomSalaServ, Integer numero, Integer piso) {
         this.idSalaServ = idSalaServ;
         this.nomSalaServ = nomSalaServ;
         this.numero = numero;
         this.piso = piso;
     }
-    public SalaServ(short idSalaServ, String nomSalaServ, int numero, int piso, Set racks) {
+    public SalaServ(short idSalaServ, String nomSalaServ, Integer numero, Integer piso, Set racks) {
        this.idSalaServ = idSalaServ;
        this.nomSalaServ = nomSalaServ;
        this.numero = numero;
@@ -49,18 +49,18 @@ public class SalaServ  implements java.io.Serializable {
     public void setNomSalaServ(String nomSalaServ) {
         this.nomSalaServ = nomSalaServ;
     }
-    public int getNumero() {
+    public Integer getNumero() {
         return this.numero;
     }
     
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
-    public int getPiso() {
+    public Integer getPiso() {
         return this.piso;
     }
     
-    public void setPiso(int piso) {
+    public void setPiso(Integer piso) {
         this.piso = piso;
     }
     public Set getRacks() {

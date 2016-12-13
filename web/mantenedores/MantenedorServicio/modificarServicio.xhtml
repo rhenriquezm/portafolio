@@ -37,8 +37,9 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{servicioControl.servicio.nomServicio}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
+                                <p:inputText id="nom" validatorMessage="Formato Nombre Incorrecto" class="validate" placeholder="Nuevo Nombre" value="#{servicioControl.servicio.nomServicio}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
                             </div>
                             

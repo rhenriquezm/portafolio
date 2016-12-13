@@ -103,7 +103,7 @@ public class OrganizacionControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione una Organizacion"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Organizacion no ha podido ser eliminada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Organizacion en Uso"));
 
             }
         } catch (Exception ex) {
@@ -149,7 +149,7 @@ public class OrganizacionControl {
         organizacion.setRutOrg(null);
         organizacion.setRubroOrg(null);
         organizacion.setCorreoOrg(null);
-        organizacion.setFonoOrg(0);
+        organizacion.setFonoOrg(null);
         organizacion.setIdOrg((short)0);
         setIdorg((short)0);
     }

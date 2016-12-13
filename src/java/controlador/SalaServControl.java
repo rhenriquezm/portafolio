@@ -95,7 +95,7 @@ public class SalaServControl {
             } else if (this.idSalaServidor == 0) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Sala por favor "));  
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sala Servidor no ha sido eliminada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Sala Registrada en Rack"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar" + ex.getMessage()));
@@ -150,8 +150,8 @@ public class SalaServControl {
 
     public void limpiarIngresar() {
         salaser.setNomSalaServ(null);
-        salaser.setNumero(0);
-        salaser.setPiso(0);
+        salaser.setNumero(null);
+        salaser.setPiso(null);
         salaser.setIdSalaServ((short)0);
         setIdSalaServidor((short)0);
     }

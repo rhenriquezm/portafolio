@@ -29,8 +29,9 @@
 
                             <div class="ui-g-12">
 
-                                <p:inputText placeholder="Fono" value="#{proveedorControl.proveedor.fonoProv}" required="true" requiredMessage="Ingrese Fono por favor">
-                                    <f:validateLength minimum="2" maximum="8" />
+                                <p:inputText validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Fono" value="#{proveedorControl.proveedor.fonoProv}" required="true" requiredMessage="Ingrese Fono por favor">
+                                    <f:validateLength minimum="7" maximum="12" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
 

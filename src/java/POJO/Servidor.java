@@ -21,8 +21,8 @@ public class Servidor  implements java.io.Serializable {
      private String nomServ;
      private String marcaServ;
      private String modeloServ;
-     private int tamMemoria;
-     private int tamDisco;
+     private Integer tamMemoria;
+     private Integer tamDisco;
      private String passAdmin;
      private String userBd;
      private String passBd;
@@ -33,7 +33,7 @@ public class Servidor  implements java.io.Serializable {
     }
 
 	
-    public Servidor(short idServ, DirIp dirIp, String nomServ, String marcaServ, String modeloServ, int tamMemoria, int tamDisco) {
+    public Servidor(short idServ, DirIp dirIp, String nomServ, String marcaServ, String modeloServ, Integer tamMemoria, Integer tamDisco) {
         this.idServ = idServ;
         this.dirIp = dirIp;
         this.nomServ = nomServ;
@@ -42,7 +42,7 @@ public class Servidor  implements java.io.Serializable {
         this.tamMemoria = tamMemoria;
         this.tamDisco = tamDisco;
     }
-    public Servidor(short idServ, DirIp dirIp, Garantia garantia, Proveedor proveedor, Rack rack, SistOper sistOper, Usuario usuario, String nomServ, String marcaServ, String modeloServ, int tamMemoria, int tamDisco, String passAdmin, String userBd, String passBd, Set incidentes, Set sistemas) {
+    public Servidor(short idServ, DirIp dirIp, Garantia garantia, Proveedor proveedor, Rack rack, SistOper sistOper, Usuario usuario, String nomServ, String marcaServ, String modeloServ, Integer tamMemoria, Integer tamDisco, String passAdmin, String userBd, String passBd, Set incidentes, Set sistemas) {
        this.idServ = idServ;
        this.dirIp = dirIp;
        this.garantia = garantia;
@@ -132,18 +132,18 @@ public class Servidor  implements java.io.Serializable {
     public void setModeloServ(String modeloServ) {
         this.modeloServ = modeloServ;
     }
-    public int getTamMemoria() {
+    public Integer getTamMemoria() {
         return this.tamMemoria;
     }
     
-    public void setTamMemoria(int tamMemoria) {
+    public void setTamMemoria(Integer tamMemoria) {
         this.tamMemoria = tamMemoria;
     }
-    public int getTamDisco() {
+    public Integer getTamDisco() {
         return this.tamDisco;
     }
     
-    public void setTamDisco(int tamDisco) {
+    public void setTamDisco(Integer tamDisco) {
         this.tamDisco = tamDisco;
     }
     public String getPassAdmin() {

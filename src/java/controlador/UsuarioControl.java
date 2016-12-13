@@ -271,11 +271,11 @@ public class UsuarioControl {
         usuario.setNomUsuario(null);
         usuario.setPatUsuario(null);
         usuario.setMatUsuario(null);
-        usuario.setRutUsuario(0);
+        usuario.setRutUsuario(null);
         usuario.setDvUsuario(Character.MIN_VALUE);
         usuario.setSexoUsuario(Character.MIN_VALUE);
         usuario.setCorreoUsuario(null);
-        usuario.setFonoUsuario(0);
+        usuario.setFonoUsuario(null);
         usuario.setUserUsuario(null);
         usuario.setPassUsuario(null);
         usuario.setIdUsuario((short) 0);

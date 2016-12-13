@@ -98,7 +98,7 @@ public class LengDesSistControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Lenguaje"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Lenguaje no ha podido ser eliminado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Lenguaje de Desarrollo en Uso"));
 
             }
         } catch (Exception ex) {

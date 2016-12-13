@@ -98,7 +98,7 @@ public class DirIpControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione una Direccion IP"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Direccion IP no ha podido ser eliminada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Direccion IP Registrada a un Servidor"));
 
             }
         } catch (Exception ex) {

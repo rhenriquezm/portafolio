@@ -37,8 +37,9 @@
                             </div>
 
                             <div class="ui-g-8">
-                                <p:inputText placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText validatorMessage="Ingrese Rut Valido" class="validate" placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validateLength minimum="8" maximum="8" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-1">
@@ -46,8 +47,9 @@
                             </div>
 
                             <div class="ui-g-3">
-                                <p:inputText placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
+                                <p:inputText validatorMessage="Ingrese DV Valido" class="validate" placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
                                     <f:validateLength minimum="1" maximum="1" />
+                                    <f:validateRegex pattern="[Kk0-9]" />
                             </p:inputText>
                             </div>
 
@@ -58,14 +60,16 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Correo" value="#{usuarioControl.usuario.correoUsuario}" validatorMessage="1Ingrese Correo por favor" required="true" requiredMessage="Ingrese Correo por favor" >
+                                <p:inputText validatorMessage="Formato Correo incorrecto" class="validate" placeholder="Correo" value="#{usuarioControl.usuario.correoUsuario}" required="true" requiredMessage="Ingrese Correo por favor" >
                                     <f:validateLength minimum="5" maximum="20" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
+                                <p:inputText validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
                                 <f:validateLength minimum="2" />
+                                <f:validateRegex pattern="[0-9]+" />
                             </p:inputText>
                             </div>
 

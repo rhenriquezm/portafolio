@@ -99,7 +99,7 @@ public class ContGarControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Contacto"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Contacto no ha podido ser eliminado exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", " Contacto Registrado a una Garantia"));
 
             }
         } catch (Exception ex) {
@@ -144,7 +144,7 @@ public class ContGarControl {
     public void LimpiarIngresar() {
         contgar.setNomCont(null);
         contgar.setCorreoCont(null);
-        contgar.setFonoCont(0);
+        contgar.setFonoCont(null);
         contgar.setIdCont((short)0);
         setIdContGar((short)0);
         

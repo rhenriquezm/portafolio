@@ -21,8 +21,9 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Direccion IP" value="#{dirIpControl.dirip.dirIp}" required="true" requiredMessage="Ingrese Direccion IP por favor">
+                                <p:inputText validatorMessage="Formato Direccion IP Incorrecto" class="validate" placeholder="Direccion IP" value="#{dirIpControl.dirip.dirIp}" required="true" requiredMessage="Ingrese Direccion IP por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$" />
                                 </p:inputText>
                             </div>
                         </div>

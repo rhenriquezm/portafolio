@@ -42,20 +42,23 @@
                             </div>
                             
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Rubro por favor" >
+                                <p:inputText validatorMessage="Formato Nombre Incorrecto" class="validate"  placeholder="Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Rubro por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Correo por favor">
+                                <p:inputText validatorMessage="Formato Correo incorrecto" class="validate" placeholder="Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Correo por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Fono por favor">
+                                <p:inputText placeholder="Fono" validatorMessage="Ingrese Fono Valido" class="validate" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Fono por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                         </div>

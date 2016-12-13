@@ -14,20 +14,20 @@ public class ContGar  implements java.io.Serializable {
      private short idCont;
      private String nomCont;
      private String correoCont;
-     private int fonoCont;
+     private Integer fonoCont;
      private Set garantias = new HashSet(0);
 
     public ContGar() {
     }
 
 	
-    public ContGar(short idCont, String nomCont, String correoCont, int fonoCont) {
+    public ContGar(short idCont, String nomCont, String correoCont, Integer fonoCont) {
         this.idCont = idCont;
         this.nomCont = nomCont;
         this.correoCont = correoCont;
         this.fonoCont = fonoCont;
     }
-    public ContGar(short idCont, String nomCont, String correoCont, int fonoCont, Set garantias) {
+    public ContGar(short idCont, String nomCont, String correoCont, Integer fonoCont, Set garantias) {
        this.idCont = idCont;
        this.nomCont = nomCont;
        this.correoCont = correoCont;
@@ -56,11 +56,11 @@ public class ContGar  implements java.io.Serializable {
     public void setCorreoCont(String correoCont) {
         this.correoCont = correoCont;
     }
-    public int getFonoCont() {
+    public Integer getFonoCont() {
         return this.fonoCont;
     }
     
-    public void setFonoCont(int fonoCont) {
+    public void setFonoCont(Integer fonoCont) {
         this.fonoCont = fonoCont;
     }
     public Set getGarantias() {

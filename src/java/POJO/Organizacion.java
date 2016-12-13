@@ -16,14 +16,14 @@ public class Organizacion  implements java.io.Serializable {
      private String rutOrg;
      private String rubroOrg;
      private String correoOrg;
-     private long fonoOrg;
+     private Integer fonoOrg;
      private Set sistemas = new HashSet(0);
 
     public Organizacion() {
     }
 
 	
-    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, long fonoOrg) {
+    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, Integer fonoOrg) {
         this.idOrg = idOrg;
         this.nomOrg = nomOrg;
         this.rutOrg = rutOrg;
@@ -31,7 +31,7 @@ public class Organizacion  implements java.io.Serializable {
         this.correoOrg = correoOrg;
         this.fonoOrg = fonoOrg;
     }
-    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, long fonoOrg, Set sistemas) {
+    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, Integer fonoOrg, Set sistemas) {
        this.idOrg = idOrg;
        this.nomOrg = nomOrg;
        this.rutOrg = rutOrg;
@@ -76,11 +76,11 @@ public class Organizacion  implements java.io.Serializable {
     public void setCorreoOrg(String correoOrg) {
         this.correoOrg = correoOrg;
     }
-    public long getFonoOrg() {
+    public Integer getFonoOrg() {
         return this.fonoOrg;
     }
     
-    public void setFonoOrg(long fonoOrg) {
+    public void setFonoOrg(Integer fonoOrg) {
         this.fonoOrg = fonoOrg;
     }
     public Set getSistemas() {

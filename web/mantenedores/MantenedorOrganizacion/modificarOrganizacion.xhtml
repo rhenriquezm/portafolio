@@ -42,36 +42,30 @@
                                 </p:inputText>
                             </div>
 
-                            <div class="ui-g-8">
-                                <p:inputText id="rut" placeholder="Rut Sin Puntos" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
-                                    <f:validateLength minimum="8" maximum="8" />
+                            <div class="ui-g-12">
+                                <p:inputText id="rut" placeholder="Rut Sin Puntos Ni Guion" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validateLength minimum="9" maximum="9" />
                                 </p:inputText>
                             </div>
-                            <div class="ui-g-1">
-                                -
-                            </div>
-
-                            <div class="ui-g-3">
-                                <p:inputText id="rut" placeholder="DV" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
-                                    <f:validateLength minimum="1" maximum="1" />
+                            
+                            <div class="ui-g-12">
+                                <p:inputText id="rubro" validatorMessage="Formato Nombre Incorrecto" class="validate"  placeholder="Nuevo Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Nuevo Rubro por favor">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="rubro" placeholder="Nuevo Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Nuevo Rubro por favor">
+                                <p:inputText validatorMessage="Formato Correo incorrecto" class="validate" id="correo" placeholder="Nuevo Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Nuevo Correo por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="correo" placeholder="Nuevo Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Nuevo Correo por favor">
+                                <p:inputText id="fono" validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Nuevo Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Nuevo Fono por favor">
                                     <f:validateLength minimum="1" maximum="20" />
-                                </p:inputText>
-                            </div>
-
-                            <div class="ui-g-12">
-                                <p:inputText id="fono" placeholder="Nuevo Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Nuevo Fono por favor">
-                                    <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                         </div>

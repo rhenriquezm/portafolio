@@ -189,7 +189,7 @@ public class ServidorControl {
             } else if (this.idServ == 0) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Servidor "));
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Servidor no ha sido eliminada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Servidor en Uso"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar" + ex.getMessage()));
@@ -275,8 +275,8 @@ public class ServidorControl {
         serv.setNomServ(null);
         serv.setMarcaServ(null);
         serv.setModeloServ(null);
-        serv.setTamMemoria(0);
-        serv.setTamDisco(0);
+        serv.setTamMemoria(null);
+        serv.setTamDisco(null);
         serv.setPassAdmin(null);
         serv.setUserBd(null);
         serv.setPassBd(null);

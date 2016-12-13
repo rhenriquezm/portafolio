@@ -32,16 +32,18 @@
                             </div>
                             <div class="ui-g-12">
                                 <p:inputText placeholder="Modelo" value="#{servidorControl.serv.modeloServ}" required="true" requiredMessage="Ingrese Modelo por favor" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateLength minimum="1" maximum="5" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Tamaño Memoria(GB)" value="#{servidorControl.serv.tamMemoria}" required="true" requiredMessage="Ingrese Tamaño Memoria por favor" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText validatorMessage="Ingrese Tamaño Valido" class="validate" placeholder="Tamaño Memoria(GB)" value="#{servidorControl.serv.tamMemoria}" required="true" requiredMessage="Ingrese Tamaño Memoria por favor" >
+                                    <f:validateLength minimum="1" maximum="5" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Tamaño Disco(GB)" value="#{servidorControl.serv.tamDisco}" required="true" requiredMessage="Ingrese Tamaño Disco por favor" >
+                                <p:inputText validatorMessage="Ingrese Tamaño Valido" class="validate" placeholder="Tamaño Disco(GB)" value="#{servidorControl.serv.tamDisco}" required="true" requiredMessage="Ingrese Tamaño Disco por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

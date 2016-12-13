@@ -41,8 +41,9 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="ncg" placeholder="Nuevo Nombre" value="#{contGarControl.contgar.nomCont}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
+                                <p:inputText id="ncg" validatorMessage="Formato Nombre Incorrecto" class="validate" placeholder="Nuevo Nombre" value="#{contGarControl.contgar.nomCont}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="2" maximum="20"/>
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
 
                             </div>

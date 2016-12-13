@@ -52,16 +52,18 @@
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText id="tme" placeholder="Tamaño Memoria(GB)" value="#{servidorControl.serv.tamMemoria}" required="true" requiredMessage="Ingrese Nuevo Tamaño Memoria por favor" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText id="tme" validatorMessage="Ingrese Tamaño Valido" class="validate" placeholder="Tamaño Memoria(GB)" value="#{servidorControl.serv.tamMemoria}" required="true" requiredMessage="Ingrese Nuevo Tamaño Memoria por favor" >
+                                    <f:validateLength minimum="1" maximum="5" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText id="tdi" placeholder="Tamaño Disco(GB)" value="#{servidorControl.serv.tamDisco}" required="true" requiredMessage="Ingrese Nuevo Tamaño Disco por favor" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText id="tdi" validatorMessage="Ingrese Tamaño Valido" class="validate" placeholder="Tamaño Disco(GB)" value="#{servidorControl.serv.tamDisco}" required="true" requiredMessage="Ingrese Nuevo Tamaño Disco por favor" >
+                                    <f:validateLength minimum="1" maximum="5" />
+                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
-                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+                            <h:panelGrid columns="2"  cellpadding="5">
                                 <p:password id="pwd1" placeholder="Password Admin" value="#{servidorControl.serv.passAdmin}" match="pwd2" label="Password 1" required="true" requiredMessage="Ingrese Password Admin por favor" />
                                 <p:password id="pwd2" placeholder="Confirme Password" value="#{servidorControl.serv.passAdmin}" label="Password 2" required="true" requiredMessage="Confirme Password Admin por favor" />
                             </h:panelGrid>
@@ -70,8 +72,8 @@
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
-                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
-                                <p:password id="pwd3" placeholder="Password BD" value="#{servidorControl.serv.passBd}" match="pwd4" label="Password 3" required="true" requiredMessage="Ingrese Password BD por favor" />
+                            <h:panelGrid columns="2"  cellpadding="5">
+                                <p:password id="pwd3" placeholder="Password BD" value="#{servidorControl.serv.passBd}" match="pwd3" label="Password 3" required="true" requiredMessage="Ingrese Password BD por favor" />
                                 <p:password id="pwd4" placeholder="Confirme Password" value="#{servidorControl.serv.passBd}" label="Password 4" required="true" requiredMessage="Confirme Password BD por favor" />
                             </h:panelGrid>
                             

@@ -22,8 +22,9 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre" value="#{contGarControl.contgar.nomCont}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                <p:inputText validatorMessage="Formato Nombre Incorrecto" class="validate" placeholder="Nombre" value="#{contGarControl.contgar.nomCont}" required="true" requiredMessage="Ingrese Nombre por favor" >
                                     <f:validateLength minimum="1" maximum="20"/>
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
                             </div>
 
@@ -37,7 +38,7 @@
                             <div class="ui-g-12">
 
                                 <p:inputText placeholder="Fono" value="#{contGarControl.contgar.fonoCont}" required="true" requiredMessage="Ingrese Fono por favor">
-                                    <f:validateLength minimum="2" maximum="8" />
+                                    <f:validateLength minimum="7" maximum="8" />
                                 </p:inputText>
                             </div>
                         </div>

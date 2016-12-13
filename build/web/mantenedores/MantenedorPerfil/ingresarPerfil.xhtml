@@ -58,8 +58,9 @@
                     <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre" value="#{perfilControl.perfil.nomPerfil}" required="true" requiredMessage="Ingrese Nombre por favor">
+                                <p:inputText validatorMessage="Formato Nombre Incorrecto" class="validate" placeholder="Nombre" value="#{perfilControl.perfil.nomPerfil}" required="true" requiredMessage="Ingrese Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
+                                    <f:validateRegex pattern="^[\p{L}\s'.-]+$" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
