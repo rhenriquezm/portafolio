@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar Organizacion" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{organizacionControl.idorg}" autoWidth="false">
-                                    <p:ajax listener="#{organizacionControl.cambioOrga()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <p:selectOneMenu id="console" value="#{organizacionControl.idorg}" autoWidth="false" required="true" requiredMessage="Seleccione Organizacion por favor">
+                                    <p:ajax listener="#{organizacionControl.cambioOrga()}" update="id,nom,rut,rubro,correo,fono" />
+                                    <f:selectItem itemLabel="Seleccione Organizacion..." itemValue="" />
                                     <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,11 +37,43 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre Organizacion" value="#{organizacionControl.organizacion.nomOrg}" >
+                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{organizacionControl.organizacion.nomOrg}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
-                            
+
+                            <div class="ui-g-8">
+                                <p:inputText id="rut" placeholder="Rut Sin Puntos" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validateLength minimum="8" maximum="8" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-1">
+                                -
+                            </div>
+
+                            <div class="ui-g-3">
+                                <p:inputText id="rut" placeholder="DV" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
+                                    <f:validateLength minimum="1" maximum="1" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="rubro" placeholder="Nuevo Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Nuevo Rubro por favor">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="correo" placeholder="Nuevo Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Nuevo Correo por favor">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="fono" placeholder="Nuevo Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Nuevo Fono por favor">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
                         </div>
                         <p:commandButton  actionListener="#{organizacionControl.modificarOrga()}" update="panel" value="Modificar" icon="fa fa-check"/>
                     </p:panel>

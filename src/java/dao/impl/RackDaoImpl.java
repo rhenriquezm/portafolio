@@ -25,14 +25,13 @@ public class RackDaoImpl implements RackDao {
 
     @Override
     public ArrayList<Rack> getAll() throws Exception {
-
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
+            this.transaction = this.session.beginTransaction();
             Criteria criteria = session.createCriteria(Rack.class);
-            ArrayList<Rack> lis = (ArrayList<Rack>) criteria.list();
-            session.close();
-            return lis;
+            ArrayList<Rack> racks = (ArrayList<Rack>) criteria.list();
+            transaction.commit();
+            return racks;
         } catch (Exception ex) {
             if (this.transaction != null) {
                 this.transaction.rollback();
@@ -77,9 +76,13 @@ public class RackDaoImpl implements RackDao {
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
+            
             Rack rack = (Rack) session.load(Rack.class, ra.getIdRack());
+            
             rack.setNombreRack(ra.getNombreRack());
-            this.session.update(rack);
+            rack.setSalaServ(ra.getSalaServ());
+            
+            session.update(rack);
             this.transaction.commit();
             this.session.close();
             return true;

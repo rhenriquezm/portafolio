@@ -5,55 +5,49 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR PROVEEDOR</ui:define>
+    <ui:define name="title">Mantenedor Proveedor / Ingresar Proveedor</ui:define>
 
     <ui:define name="content">
         <h:form>
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
             <div class="ui-g ui-fluid dashboard">
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                       <!-- <div class="card">
-                            <h1>REGISTRAR PROVEEDOR</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-                            <p:panel id="panel" header="Nuevo Proveedor">
-                                    
-                             <h:panelGrid columns="" cellpadding="5">
-                                
-                             <p:outputLabel for="pr" value="Nombre Proveedor: " />
-                            <p:inputText id="pr" value="#{proveedorControl.proveedor.nomProv}" required="true" label="Nombre Proveedor: ">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-                            
-                            <p:outputLabel for="fo" value="Fono Proveedor: " />
-                            <p:inputText  id="fo" value="#{proveedorControl.proveedor.fonoProv}" required="true" label="FonoProveedor: ">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-                            
-                            <p:outputLabel for="co" value="Correo Proveedor: " />
-                            <p:inputText validatorMessage="Formato Correo incorrecto" id="co" value="#{proveedorControl.proveedor.correoProv}" required="true" label="Correo Proveedor: ">
-                                <f:validateLength minimum="2" />
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                    <p:panel id="panel" header="Nuevo Proveedor" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
 
-                     <div class="ui-g">
-                       <div class="ui-g-6">
-                         <div class="ui-g-4">
-                           <p:commandButton value="Ingresar" update="panel" actionListener="#{proveedorControl.ingresarProveedor()}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </h:panelGrid>
-                                    
-                                </p:panel>
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Nombre" value="#{proveedorControl.proveedor.nomProv}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="20"/>
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+
+                                <p:inputText placeholder="Fono" value="#{proveedorControl.proveedor.fonoProv}" required="true" requiredMessage="Ingrese Fono por favor">
+                                    <f:validateLength minimum="2" maximum="8" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+
+                                <p:inputText validatorMessage="Formato Correo incorrecto" placeholder="Correo" class="validate" id="correoCG" value="#{proveedorControl.proveedor.correoProv}" required="true" requiredMessage="Ingrese Correo por favor">
+                                    <f:validateLength minimum="2" maximum="30" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
-                    </div>
+                        <p:commandButton update="panel" actionListener="#{proveedorControl.ingresarProveedor()}" value="Ingresar" icon="fa fa-check"/>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+
                 </div>
             </div>
         </h:form>

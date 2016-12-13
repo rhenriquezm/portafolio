@@ -74,6 +74,7 @@ public class LengDesSistControl {
             ld.setNomLengDes(getLengdessist().getNomLengDes());
             boolean modificar = ldDao.update(ld);
             if (modificar) {
+                LimpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Lenguaje modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Lenguaje no ha podido ser modificado exitosamente"));
@@ -143,5 +144,8 @@ public class LengDesSistControl {
     
     public void LimpiarIngresar(){
         lengdessist.setNomLengDes(null);
+        lengdessist.setVerLengDes(null);
+        lengdessist.setIdLengSist((short)0);
+        setIdLengSist((short)0);
     }
 }

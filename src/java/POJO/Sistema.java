@@ -1,5 +1,5 @@
 package POJO;
-// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
+// Generated 06-12-2016 23:27:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,6 +24,9 @@ public class Sistema  implements java.io.Serializable {
      private Usuario usuario;
      private Webservice webservice;
      private String nomSist;
+     private String unIntResp;
+     private String utIntResp;
+     private String unExtResp;
      private Set incidentes = new HashSet(0);
 
     public Sistema() {
@@ -34,7 +37,7 @@ public class Sistema  implements java.io.Serializable {
         this.idSist = idSist;
         this.nomSist = nomSist;
     }
-    public Sistema(short idSist, LengDesSist lengDesSist, NivSeg nivSeg, NivSens nivSens, Organizacion organizacion, Proveedor proveedor, Servicio servicio, Servidor servidor, SistOper sistOper, SoftBd softBd, Usuario usuario, Webservice webservice, String nomSist, Set incidentes) {
+    public Sistema(short idSist, LengDesSist lengDesSist, NivSeg nivSeg, NivSens nivSens, Organizacion organizacion, Proveedor proveedor, Servicio servicio, Servidor servidor, SistOper sistOper, SoftBd softBd, Usuario usuario, Webservice webservice, String nomSist, String unIntResp, String utIntResp, String unExtResp, Set incidentes) {
        this.idSist = idSist;
        this.lengDesSist = lengDesSist;
        this.nivSeg = nivSeg;
@@ -48,6 +51,9 @@ public class Sistema  implements java.io.Serializable {
        this.usuario = usuario;
        this.webservice = webservice;
        this.nomSist = nomSist;
+       this.unIntResp = unIntResp;
+       this.utIntResp = utIntResp;
+       this.unExtResp = unExtResp;
        this.incidentes = incidentes;
     }
    
@@ -141,6 +147,27 @@ public class Sistema  implements java.io.Serializable {
     
     public void setNomSist(String nomSist) {
         this.nomSist = nomSist;
+    }
+    public String getUnIntResp() {
+        return this.unIntResp;
+    }
+    
+    public void setUnIntResp(String unIntResp) {
+        this.unIntResp = unIntResp;
+    }
+    public String getUtIntResp() {
+        return this.utIntResp;
+    }
+    
+    public void setUtIntResp(String utIntResp) {
+        this.utIntResp = utIntResp;
+    }
+    public String getUnExtResp() {
+        return this.unExtResp;
+    }
+    
+    public void setUnExtResp(String unExtResp) {
+        this.unExtResp = unExtResp;
     }
     public Set getIncidentes() {
         return this.incidentes;

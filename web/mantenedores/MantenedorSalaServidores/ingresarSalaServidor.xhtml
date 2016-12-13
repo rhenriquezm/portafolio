@@ -16,10 +16,22 @@
                 </div>
 
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
-                    <p:panel id="panel" header="Nuevo Sala Servidor" style="text-align:center;background:#fff;height:100%">
+                    <p:panel id="panel" header="Nueva Sala Servidor" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Sala Servidor" value="#{salaServControl.salaser.nomSalaServ}" >
+                                <p:inputText placeholder="Nombre" value="#{salaServControl.salaser.nomSalaServ}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Numero Sala" value="#{salaServControl.salaser.numero}" required="true" requiredMessage="Ingrese Numero Sala por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Piso" value="#{salaServControl.salaser.piso}" required="true" requiredMessage="Ingrese Piso por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

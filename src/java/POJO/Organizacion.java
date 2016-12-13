@@ -1,5 +1,5 @@
 package POJO;
-// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
+// Generated 06-12-2016 23:27:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,19 +13,31 @@ public class Organizacion  implements java.io.Serializable {
 
      private short idOrg;
      private String nomOrg;
+     private String rutOrg;
+     private String rubroOrg;
+     private String correoOrg;
+     private long fonoOrg;
      private Set sistemas = new HashSet(0);
 
     public Organizacion() {
     }
 
 	
-    public Organizacion(short idOrg, String nomOrg) {
+    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, long fonoOrg) {
         this.idOrg = idOrg;
         this.nomOrg = nomOrg;
+        this.rutOrg = rutOrg;
+        this.rubroOrg = rubroOrg;
+        this.correoOrg = correoOrg;
+        this.fonoOrg = fonoOrg;
     }
-    public Organizacion(short idOrg, String nomOrg, Set sistemas) {
+    public Organizacion(short idOrg, String nomOrg, String rutOrg, String rubroOrg, String correoOrg, long fonoOrg, Set sistemas) {
        this.idOrg = idOrg;
        this.nomOrg = nomOrg;
+       this.rutOrg = rutOrg;
+       this.rubroOrg = rubroOrg;
+       this.correoOrg = correoOrg;
+       this.fonoOrg = fonoOrg;
        this.sistemas = sistemas;
     }
    
@@ -42,6 +54,34 @@ public class Organizacion  implements java.io.Serializable {
     
     public void setNomOrg(String nomOrg) {
         this.nomOrg = nomOrg;
+    }
+    public String getRutOrg() {
+        return this.rutOrg;
+    }
+    
+    public void setRutOrg(String rutOrg) {
+        this.rutOrg = rutOrg;
+    }
+    public String getRubroOrg() {
+        return this.rubroOrg;
+    }
+    
+    public void setRubroOrg(String rubroOrg) {
+        this.rubroOrg = rubroOrg;
+    }
+    public String getCorreoOrg() {
+        return this.correoOrg;
+    }
+    
+    public void setCorreoOrg(String correoOrg) {
+        this.correoOrg = correoOrg;
+    }
+    public long getFonoOrg() {
+        return this.fonoOrg;
+    }
+    
+    public void setFonoOrg(long fonoOrg) {
+        this.fonoOrg = fonoOrg;
     }
     public Set getSistemas() {
         return this.sistemas;

@@ -32,9 +32,9 @@ public class ServidorDaoImpl implements ServidorDao {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = this.session.beginTransaction();
             Criteria criteria = this.session.createCriteria(Servidor.class);
-            ArrayList<Servidor> lis = (ArrayList<Servidor>) criteria.list();
+            ArrayList<Servidor> servidores = (ArrayList<Servidor>) criteria.list();
             this.transaction.commit();
-            return lis;
+            return servidores;
         } catch (Exception ex) {
             if (this.transaction != null) {
                 this.transaction.rollback();
@@ -89,12 +89,27 @@ public class ServidorDaoImpl implements ServidorDao {
     @Override
     public boolean update(Servidor se) throws Exception {
         try {
+            
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
+            
             Servidor servidor = (Servidor) session.load(Servidor.class, se.getIdServ());
+            
             servidor.setNomServ(se.getNomServ());
             servidor.setMarcaServ(se.getMarcaServ());
             servidor.setModeloServ(se.getModeloServ());
+            servidor.setTamMemoria(se.getTamMemoria());
+            servidor.setTamDisco(se.getTamDisco());
+            servidor.setPassAdmin(se.getPassAdmin());
+            servidor.setUserBd(se.getUserBd());
+            servidor.setPassBd(se.getPassBd());
+            servidor.setUsuario(se.getUsuario());
+            servidor.setProveedor(se.getProveedor());
+            servidor.setSistOper(se.getSistOper());
+            servidor.setRack(se.getRack());
+            servidor.setDirIp(se.getDirIp());
+            servidor.setGarantia(se.getGarantia());
+                    
             session.update(servidor);
             this.transaction.commit();
             return true;

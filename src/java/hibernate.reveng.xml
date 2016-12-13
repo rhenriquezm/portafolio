@@ -2,26 +2,24 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-schema="PROYPORTAFOLIO"/>
-  <table-filter match-name="CAR_SERV"/>
-  <table-filter match-name="SIST_OPER"/>
-  <table-filter match-name="PERFIL"/>
-  <table-filter match-name="DIR_IP"/>
-  <table-filter match-name="SERVICIO"/>
-  <table-filter match-name="GARANTIA"/>
-  <table-filter match-name="UNIDAD_TRABAJO"/>
-  <table-filter match-name="INCIDENTE"/>
+  <table-filter match-name="LENG_DES_SIST"/>
+  <table-filter match-name="WEBSERVICE"/>
+  <table-filter match-name="NIV_SENS"/>
   <table-filter match-name="SERVIDOR"/>
+  <table-filter match-name="RACK"/>
+  <table-filter match-name="GARANTIA"/>
+  <table-filter match-name="ORGANIZACION"/>
+  <table-filter match-name="PERFIL"/>
+  <table-filter match-name="INCIDENTE"/>
+  <table-filter match-name="SERVICIO"/>
+  <table-filter match-name="UNIDAD_TRABAJO"/>
+  <table-filter match-name="USUARIO"/>
+  <table-filter match-name="PROVEEDOR"/>
   <table-filter match-name="CONT_GAR"/>
   <table-filter match-name="SALA_SERV"/>
-  <table-filter match-name="NIV_SENS"/>
-  <table-filter match-name="LENG_DES_SIST"/>
-  <table-filter match-name="RACK"/>
-  <table-filter match-name="ORGANIZACION"/>
-  <table-filter match-name="PROVEEDOR"/>
-  <table-filter match-name="NIV_SEG"/>
-  <table-filter match-name="SOFT_BD"/>
-  <table-filter match-name="WEBSERVICE"/>
-  <table-filter match-name="USUARIO"/>
-  <table-filter match-name="TIPO_SERV"/>
+  <table-filter match-name="SIST_OPER"/>
   <table-filter match-name="SISTEMA"/>
+  <table-filter match-name="NIV_SEG"/>
+  <table-filter match-name="DIR_IP"/>
+  <table-filter match-name="SOFT_BD"/>
 </hibernate-reverse-engineering>

@@ -5,57 +5,38 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR SISTEMA / ELIMINAR SISTEMA/</ui:define>
+    <ui:define name="title">Mantenedor Sistema / Eliminar Sistema</ui:define>
 
     <ui:define name="content">
         <h:form>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <div class="card">
-                            <h1>Eliminar Sistema</h1> <!-- TITULO EN CASO DE CUALQUIER COSA -->
-
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-                                <h:form >
-
-                                    <p:panel id="panel" header="Datos">
-                                        <p:growl id="growl" showDetail="true" sticky="true" />
-
-                                        <h:panelGrid columns="3" cellpadding="5">
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
 
 
-                                            <p:outputLabel for="esis" value="Sistema: "/>
-                                            <p:selectOneMenu id="esis" value="#{sistemaControl.idSist}">
-                                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
-                                                <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
-                                            </p:selectOneMenu>
-                                        <p:commandButton value="Eliminar" update="panel" actionListener="#{sistemaControl.eliminarSistema()}" />
-                                        </h:panelGrid>
+            <div class="ui-g ui-fluid dashboard">
 
-                                        
-                                    </p:panel>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
-                                </h:form>  
+                </div>
 
-
-                                <!--AQUI VAN LOS PANEL--> 
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
 
-
-
-                            </p:panelGrid>
-
+                    <p:panel id="panel" header="Eliminar Sistema" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{sistemaControl.idSist}" autoWidth="false">
+                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
+                                </p:selectOneMenu>
+                            </div>
 
                         </div>
+                        <p:commandButton  actionListener="#{sistemaControl.eliminarSistema()}" update="panel" value="Eliminar" icon="fa fa-check"/>
+                    </p:panel>
 
-                        <div class="card">
-
-                           <!-- <h1> PANEL 2 EJ PARA UN DATA GRID</h1> -->
-
-                        </div>
-                    </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

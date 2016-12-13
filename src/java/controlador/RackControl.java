@@ -8,6 +8,7 @@ import dao.impl.RackDaoImpl;
 import dao.impl.SalaServDaoImpl;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -22,11 +23,42 @@ public class RackControl {
     private short idRack;
     private short idSalaservidor;
     private Rack rack;
+    
+    private ArrayList<SelectItem> salas;
 
     public RackControl() {
         this.rack = new Rack();
-        this.idRack = 0;
         this.idSalaservidor = 0;
+        this.salas = new ArrayList<>();
+    }
+    
+    @PostConstruct
+    public void init() {
+       
+        llenarSelectItems();
+
+    }
+    
+    public void llenarSelectItems() {
+        try {
+            SalaServDao ssDao = new SalaServDaoImpl();
+            
+            for (SalaServ ss : ssDao.getAll()) {
+                 this.salas.add(new SelectItem(ss.getIdSalaServ(), ss.getNomSalaServ()));
+            }
+                      
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public ArrayList<SelectItem> getSalas() {
+        return salas;
+    }
+
+    public void setSalas(ArrayList<SelectItem> salas) {
+        this.salas = salas;
     }
 
     public short getIdRack() {
@@ -101,6 +133,9 @@ public class RackControl {
             boolean eliminado = rackDao.deleteById(idRack);
             if (eliminado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Rack eliminada exitosamente"));
+            } else if (this.idRack == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un Rack"));
+            
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Rack no ha sido eliminada exitosamente"));
             }
@@ -113,17 +148,22 @@ public class RackControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             RackDao rackDao = new RackDaoImpl();
-            Rack ra = rackDao.getById(idRack);
+            Rack ra = rackDao.getById(getIdRack());
+            
             ra.setNombreRack(rack.getNombreRack());
 
             SalaServDao salaDao = new SalaServDaoImpl();
-            SalaServ sala = salaDao.getById(idSalaservidor);
-            ra.setSalaServ(sala);
+            ra.setSalaServ(salaDao.getById(getIdSalaservidor()));
+           
 
             boolean modificado = rackDao.update(ra);
             
             if (modificado) {
+                limpiarModificar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Rack modificada exitosamente"));
+            } else if (this.idSalaservidor == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione una Sala por favor"));
+            
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Rack no ha sido modificada exitosamente"));
             }
@@ -131,24 +171,13 @@ public class RackControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
         }
     }
-     
-    public void buscarRack() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        try {
-            RackDao rackDao = new RackDaoImpl();
-            rack = rackDao.getById(idRack);
-        } catch (Exception ex) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al buscar" + ex.getMessage()));
-        }
-
-    }
 
     public void cambioRack() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             RackDao rackDao = new RackDaoImpl();
-            this.rack = rackDao.getById(idRack);
-            setIdSalaservidor(this.rack.getSalaServ().getIdSalaServ());
+            setRack(rackDao.getById(getIdRack()));
+            setIdSalaservidor(getRack().getSalaServ().getIdSalaServ());
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
@@ -157,6 +186,14 @@ public class RackControl {
     public void limpiarIngresar() {
         this.rack.setNombreRack(null);
         setIdSalaservidor((short)0);
+
+    }
+    
+    public void limpiarModificar() {
+        this.rack.setNombreRack(null);
+        this.rack.setIdRack((short)0);
+        setIdSalaservidor((short)0);
+        setIdRack((short)0);
 
     }
 

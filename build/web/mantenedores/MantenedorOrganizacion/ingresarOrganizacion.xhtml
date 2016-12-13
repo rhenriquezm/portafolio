@@ -21,7 +21,40 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Organizacion" value="#{organizacionControl.organizacion.nomOrg}" >
+                                <p:inputText placeholder="Nombre" value="#{organizacionControl.organizacion.nomOrg}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
+                            <div class="ui-g-8">
+                                <p:inputText placeholder="Rut Sin Puntos" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validateLength minimum="8" maximum="8" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-1">
+                                -
+                            </div>
+
+                            <div class="ui-g-3">
+                                <p:inputText placeholder="DV" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
+                                    <f:validateLength minimum="1" maximum="1" />
+                            </p:inputText>
+                            </div>
+                            
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Rubro" value="#{organizacionControl.organizacion.rubroOrg}" required="true" requiredMessage="Ingrese Rubro por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Correo" value="#{organizacionControl.organizacion.correoOrg}" required="true" requiredMessage="Ingrese Correo por favor">
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Fono por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

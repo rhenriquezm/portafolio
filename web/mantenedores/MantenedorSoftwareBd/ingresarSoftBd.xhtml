@@ -21,19 +21,19 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Software" value="#{softBdControl.softbd.nomSoftBd}" >
+                                <p:inputText placeholder="Nombre" value="#{softBdControl.softbd.nomSoftBd}" required="true" requiredMessage="Ingrese Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Empresa Desarrolladora" value="#{softBdControl.softbd.empSoftBd}" >
+                                <p:inputText placeholder="Empresa Desarrolladora" value="#{softBdControl.softbd.empSoftBd}" required="true" requiredMessage="Ingrese Empresa por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Version Software" value="#{softBdControl.softbd.verSoftBd}" >
+                                <p:inputText placeholder="Version" value="#{softBdControl.softbd.verSoftBd}" required="true" requiredMessage="Ingrese Version por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

@@ -16,8 +16,6 @@ public interface SalaServDao {
     
     public ArrayList<SalaServ> getAll() throws Exception;
 
-    public SalaServ getPerfil(SalaServ aser) throws Exception;
-
     public boolean insert(SalaServ salaser) throws Exception;
 
     public boolean delete(SalaServ salaser) throws Exception;

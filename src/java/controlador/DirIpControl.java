@@ -75,6 +75,7 @@ public class DirIpControl {
             mdip.setDirIp(getDirip().getDirIp());
             boolean modificar = mdipDao.update(mdip);
             if (modificar) {
+                LimpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Direccion IP modificada exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Direccion IP no ha podido ser modificada exitosamente"));
@@ -141,6 +142,8 @@ public class DirIpControl {
 
     public void LimpiarIngresar() {
         dirip.setDirIp(null);
+        dirip.setIdDir((short)0);
+        setIdDirIp((short)0);
     }
 
     

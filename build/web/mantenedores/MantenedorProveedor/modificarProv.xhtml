@@ -5,67 +5,71 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">MANTENEDOR PROVEEDOR</ui:define>
+    <ui:define name="title">Mantenedor Proveedor / Modificar Proveedor</ui:define>
 
     <ui:define name="content">
         <h:form>
+
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>MODIFICAR PROVEEDOR</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
-
-                                <p:panel id="panel" header="Modificar Proveedor">
-                                
-                        <p:growl id="growl" showDetail="true" sticky="true" />
-                        
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="pr" value="Proveedor: " />
-                            <p:selectOneMenu id="pr" value="#{proveedorControl.idProv}" style="width:150px">
-                                <p:ajax listener="#{proveedorControl.cambioProveedor()}" update="prr,idprr,prf,prc" />
-                                <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
-                            </p:selectOneMenu>
-
-                            
-                            <p:outputLabel for="idprr" value="Id. Proveedor: " />
-                            <p:inputText id="idprr" value="#{proveedorControl.proveedor.idProv}" required="true" label="Proveedor: " disabled="true">
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-                            
-                            <p:outputLabel for="prr" value=" Nombre Proveedor: " />
-                            <p:inputText id="prr" value="#{proveedorControl.proveedor.nomProv}" required="true" label="Nombre Proveedor: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-                            
-                            <p:outputLabel for="prf" value=" Fono Proveedor: " />
-                            <p:inputText id="prf" value="#{proveedorControl.proveedor.fonoProv}" required="true" label="Fono Proveedor: "  >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
-                            
-                            <p:outputLabel for="prc" value=" Correo Proveedor: " />
-                            <p:inputText validatorMessage="Formato Correo incorrecto" id="prc" value="#{proveedorControl.proveedor.correoProv}" required="true" label="Correo Proveedor: "  >
-                                <f:validateLength minimum="2" />
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
-                            
-                            
-
-                            <p:commandButton value="Modicar" update="panel" actionListener="#{proveedorControl.modificarProveedor()}" />
-                        </h:panelGrid>
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                    </p:panel>
-                            </p:panelGrid>
+
+                    <p:panel id="panel" header="Modificar Proveedor" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="mcg" value="#{proveedorControl.idProv}" required="true" requiredMessage="Seleccione Proveedor por favor">
+                                    <p:ajax listener="#{proveedorControl.cambioProveedor()}" update="idcg,ncg,ccg,fcg" />
+                                    <f:selectItem itemLabel="Seleccione Proveedor..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems id="proveedores" value="#{proveedorControl.mostrarProveedor()}" />
+                                </p:selectOneMenu>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="idcg" placeholder="Id. Proveedor" value="#{proveedorControl.proveedor.idProv}" disabled="true">
+                                    <f:validateLength minimum="2" maximum="4" />
+                                </p:inputText>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="ncg" placeholder="Nuevo Nombre" value="#{proveedorControl.proveedor.nomProv}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
+                                    <f:validateLength minimum="2" maximum="20"/>
+                                </p:inputText>
+
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="fcg" placeholder="Nuevo Fono" value="#{proveedorControl.proveedor.fonoProv}" required="true" requiredMessage="Ingrese Nuevo Fono por favor" >
+                                    <f:validateLength minimum="2" maximum="8"/>
+                                </p:inputText>
+
+                            </div>
+
+
+                            <div class="ui-g-12">
+                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Nuevo Correo" value="#{proveedorControl.proveedor.correoProv}" required="true" requiredMessage="Ingrese Nuevo Correo por favor" >
+                                    <f:validateLength minimum="2" maximum="30" />
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </p:inputText>
+                            </div>
+
+
+                            
+
                         </div>
-                    </div>
+                        <p:commandButton  actionListener="#{proveedorControl.modificarProveedor()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>
@@ -73,4 +77,3 @@
     </ui:define>
 
 </ui:composition>
-

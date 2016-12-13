@@ -76,6 +76,7 @@ public class ContGarControl {
             cgar.setFonoCont(getContgar().getFonoCont());
             boolean modificar = cgDao.update(cgar);
             if (modificar) {
+                LimpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Contacto modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Contacto no ha podido ser modificado exitosamente"));
@@ -144,6 +145,9 @@ public class ContGarControl {
         contgar.setNomCont(null);
         contgar.setCorreoCont(null);
         contgar.setFonoCont(0);
+        contgar.setIdCont((short)0);
+        setIdContGar((short)0);
+        
 
     }
 

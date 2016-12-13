@@ -89,8 +89,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
     try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
+            
             Usuario usa = (Usuario) session.load(Usuario.class, us.getIdUsuario());
+            
             usa.setNomUsuario(us.getNomUsuario());
+            usa.setPatUsuario(us.getPatUsuario());
+            usa.setMatUsuario(us.getMatUsuario());
             usa.setRutUsuario(us.getRutUsuario());
             usa.setDvUsuario(us.getDvUsuario());
             usa.setCorreoUsuario(us.getCorreoUsuario());
@@ -98,6 +102,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usa.setPerfil(us.getPerfil());
             usa.setSexoUsuario(us.getSexoUsuario());
             usa.setFonoUsuario(us.getFonoUsuario());
+            usa.setUserUsuario(us.getUserUsuario());
             session.update(usa);
             this.transaction.commit();
             this.session.close();
@@ -109,7 +114,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
             System.out.println("Error" + e.getMessage());
         }
         return false;}
-    //NO HAY NADA AHI PO WN OHHHHHHHHHHjajajajaja ctm
+    
 
     @Override
     public Usuario getById(short id) throws Exception {

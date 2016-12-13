@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06-12-2016 23:27:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Servidor" table="SERVIDOR" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idServ" type="short">
@@ -10,9 +10,6 @@
                 <param name="sequence">SERV_SEQ</param>
             </generator>
         </id>
-        <many-to-one name="carServ" class="POJO.CarServ" fetch="select">
-            <column name="ID_CAR_SERV" precision="4" scale="0" />
-        </many-to-one>
         <many-to-one name="dirIp" class="POJO.DirIp" fetch="select">
             <column name="ID_DIR" precision="4" scale="0" not-null="true" unique="true" />
         </many-to-one>
@@ -28,9 +25,6 @@
         <many-to-one name="sistOper" class="POJO.SistOper" fetch="select">
             <column name="ID_SO" precision="4" scale="0" />
         </many-to-one>
-        <many-to-one name="tipoServ" class="POJO.TipoServ" fetch="select">
-            <column name="ID_TIPO_SERV" precision="4" scale="0" />
-        </many-to-one>
         <many-to-one name="usuario" class="POJO.Usuario" fetch="select">
             <column name="ID_USUARIO" precision="4" scale="0" />
         </many-to-one>
@@ -42,6 +36,21 @@
         </property>
         <property name="modeloServ" type="string">
             <column name="MODELO_SERV" length="20" not-null="true" />
+        </property>
+        <property name="tamMemoria" type="int">
+            <column name="TAM_MEMORIA" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="tamDisco" type="int">
+            <column name="TAM_DISCO" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="passAdmin" type="string">
+            <column name="PASS_ADMIN" length="20" />
+        </property>
+        <property name="userBd" type="string">
+            <column name="USER_BD" length="20" />
+        </property>
+        <property name="passBd" type="string">
+            <column name="PASS_BD" length="20" />
         </property>
         <set name="incidentes" table="INCIDENTE" inverse="true" lazy="true" fetch="select">
             <key>

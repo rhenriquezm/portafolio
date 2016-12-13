@@ -95,7 +95,6 @@ public class SistemaDaoImpl implements SistemaDao{
             usist.setUsuario(sis.getUsuario());
             usist.setNivSeg(sis.getNivSeg());
             usist.setNivSens(sis.getNivSens());
-            //sistemaoperativo
             usist.setSistOper(sis.getSistOper());
             usist.setProveedor(sis.getProveedor());
             usist.setSoftBd(sis.getSoftBd());

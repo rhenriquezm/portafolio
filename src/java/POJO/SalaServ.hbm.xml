@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06-12-2016 23:27:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.SalaServ" table="SALA_SERV" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idSalaServ" type="short">
@@ -12,6 +12,12 @@
         </id>
         <property name="nomSalaServ" type="string">
             <column name="NOM_SALA_SERV" length="20" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="NUMERO" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="piso" type="int">
+            <column name="PISO" precision="6" scale="0" not-null="true" />
         </property>
         <set name="racks" table="RACK" inverse="true" lazy="true" fetch="select">
             <key>

@@ -108,6 +108,7 @@ public class PerfilControl {
             per.setDescPerfil(perfil.getDescPerfil());
             boolean modificar = perDao.update(per);
             if (modificar) {
+                limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Perfil modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Perfil no ha podido ser modificado exitosamente"));
@@ -119,7 +120,9 @@ public class PerfilControl {
 
     //Limpiar formulario INGRESAR
     public void limpiarIngresar() {
-        this.perfil.setNomPerfil(null);
-        this.perfil.setDescPerfil(null);
+        perfil.setNomPerfil(null);
+        perfil.setDescPerfil(null);
+        perfil.setIdPerfil((short)0);
+        setIdPerfil((short)0);
     }
 }

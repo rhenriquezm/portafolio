@@ -58,13 +58,13 @@
                     <p:panel id="panel" header="Nuevo Perfil" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Perfil" value="#{perfilControl.perfil.nomPerfil}" >
+                                <p:inputText placeholder="Nombre" value="#{perfilControl.perfil.nomPerfil}" required="true" requiredMessage="Ingrese Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Desc Perfil" value="#{perfilControl.perfil.descPerfil}" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText placeholder="Descripcion" value="#{perfilControl.perfil.descPerfil}" required="true" requiredMessage="Ingrese Descripcion por favor" >
+                                    <f:validateLength minimum="1" maximum="40" />
                                 </p:inputText>
                             </div>
 

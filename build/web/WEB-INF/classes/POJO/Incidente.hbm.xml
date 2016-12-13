@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06-12-2016 23:27:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Incidente" table="INCIDENTE" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idIncidente" type="short">
             <column name="ID_INCIDENTE" precision="4" scale="0" />
-            <generator class="sequence" >
-                <param name="sequence">INCIDENTE_SEQ</param>
-            </generator>
+            <generator class="assigned" />
         </id>
         <many-to-one name="servidor" class="POJO.Servidor" fetch="select">
             <column name="ID_SERV" precision="4" scale="0" />
@@ -20,7 +18,7 @@
             <column name="ID_UNI_TRAB" precision="4" scale="0" />
         </many-to-one>
         <property name="probIncid" type="string">
-            <column name="PROB_INCID" length="40" not-null="true" />
+            <column name="PROB_INCID" length="700" not-null="true" />
         </property>
         <property name="solIncid" type="string">
             <column name="SOL_INCID" length="40" />
@@ -28,8 +26,23 @@
         <property name="TInacIncid" type="java.lang.Short">
             <column name="T_INAC_INCID" precision="4" scale="0" />
         </property>
-        <property name="activoIncid" type="char">
-            <column name="ACTIVO_INCID" length="1" not-null="true" />
+        <property name="activoIncid" type="java.lang.Character">
+            <column name="ACTIVO_INCID" length="1" />
+        </property>
+        <property name="fechaSolucion" type="string">
+            <column name="FECHA_SOLUCION" length="50" />
+        </property>
+        <property name="fechaProblema" type="string">
+            <column name="FECHA_PROBLEMA" length="50" />
+        </property>
+        <property name="horaProblema" type="string">
+            <column name="HORA_PROBLEMA" length="50" />
+        </property>
+        <property name="horaSolucion" type="string">
+            <column name="HORA_SOLUCION" length="50" />
+        </property>
+        <property name="codigoSeg" type="string">
+            <column name="CODIGO_SEG" length="100" />
         </property>
     </class>
 </hibernate-mapping>

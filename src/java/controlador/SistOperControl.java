@@ -75,6 +75,7 @@ public class SistOperControl {
             mso.setDesSo(getSistoper().getDesSo());
             boolean modificar = msoDao.update(mso);
             if (modificar) {
+                LimpiarIngresarSistOper();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sistema Operativo modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sistema Operativo no ha podido ser modificado exitosamente"));
@@ -141,6 +142,8 @@ public class SistOperControl {
     
     public void LimpiarIngresarSistOper(){
         sistoper.setDesSo(null);
+        sistoper.setIdSo((short)0);
+        setIdSo((short)0);
     }
     
     

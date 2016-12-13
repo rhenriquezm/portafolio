@@ -73,6 +73,7 @@ public class NivSensControl {
             ns.setDescNivSens(getNivsens().getDescNivSens());
             boolean modificar = nivseDao.update(ns);
             if (modificar) {
+                LimpiarIngresarNivSens();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser modificado exitosamente"));
@@ -139,6 +140,8 @@ public class NivSensControl {
     
     public void LimpiarIngresarNivSens(){
         nivsens.setDescNivSens(null);
+        nivsens.setIdNivSens((short)0);
+        setIdNivSens((short)0);
     }
     
 }

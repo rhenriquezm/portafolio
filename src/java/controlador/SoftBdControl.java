@@ -77,6 +77,7 @@ public class SoftBdControl {
             msof.setVerSoftBd(getSoftbd().getVerSoftBd());
             boolean modificar = msofDao.update(msof);
             if (modificar) {
+                LimpiarIngresarSoftBd();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Software modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Software no ha podido ser modificado exitosamente"));
@@ -145,6 +146,8 @@ public class SoftBdControl {
         softbd.setNomSoftBd(null);
         softbd.setEmpSoftBd(null);
         softbd.setVerSoftBd(null);
+        softbd.setIdSoftBd((short)0);
+        setIdSoftBd((short)0);
     }
     
 }   

@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar Nivel" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{nivSensControl.idNivSens}" autoWidth="false">
+                                <p:selectOneMenu id="console" value="#{nivSensControl.idNivSens}" autoWidth="false" required="true" requiredMessage="Seleccione UT por favor">
                                     <p:ajax listener="#{nivSensControl.cambioNivSens()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItem itemLabel="Seleccione Nivel Sensibilidad..." itemValue="" />
                                     <f:selectItems value="#{nivSensControl.mostrarNivSens()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre Nivel" value="#{nivSensControl.nivsens.descNivSens}" >
+                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{nivSensControl.nivsens.descNivSens}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

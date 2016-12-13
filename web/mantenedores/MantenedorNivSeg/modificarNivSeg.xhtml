@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar Nivel" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{nivSegControl.idNivSeg}" autoWidth="false">
+                                <p:selectOneMenu id="console" value="#{nivSegControl.idNivSeg}" autoWidth="false" required="true" requiredMessage="Seleccione Nivel por favor" >
                                     <p:ajax listener="#{nivSegControl.cambioNivSeg()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItem itemLabel="Seleccione Nivel Seguridad..." itemValue="" noSelectionOption="true"/>
                                     <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre Nivel" value="#{nivSegControl.nivseg.descNivSeg}" >
+                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{nivSegControl.nivseg.descNivSeg}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

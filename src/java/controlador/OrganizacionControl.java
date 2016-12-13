@@ -72,13 +72,16 @@ public class OrganizacionControl {
             OrganizacionDao morgDao = new OrganizacionDaoImpl();
             Organizacion morg = morgDao.getById(getIdorg());
             morg.setNomOrg(getOrganizacion().getNomOrg());
-            System.out.println("MENSAJE: " + getOrganizacion().getNomOrg());
+            morg.setRutOrg(getOrganizacion().getRutOrg());
+            morg.setRubroOrg(getOrganizacion().getRubroOrg());
+            morg.setCorreoOrg(getOrganizacion().getCorreoOrg());
+            morg.setFonoOrg(getOrganizacion().getFonoOrg());
             boolean modificar = morgDao.update(morg);
             if (modificar) {
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAA: " + morg.getIdOrg());
+                LimpiarIngresarOrga();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel modificado exitosamente"));
             } else {
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAA: " + morg.getIdOrg());
+              
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser modificado exitosamente"));
             }
         } catch (Exception ex) {
@@ -143,6 +146,12 @@ public class OrganizacionControl {
 
     public void LimpiarIngresarOrga() {
         organizacion.setNomOrg(null);
+        organizacion.setRutOrg(null);
+        organizacion.setRubroOrg(null);
+        organizacion.setCorreoOrg(null);
+        organizacion.setFonoOrg(0);
+        organizacion.setIdOrg((short)0);
+        setIdorg((short)0);
     }
 
 }

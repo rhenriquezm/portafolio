@@ -39,11 +39,6 @@ public class SalaServDaoImpl implements SalaServDao {
     }
 
     @Override
-    public SalaServ getPerfil(SalaServ salaser) throws Exception  {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public boolean insert(SalaServ salaser)  throws Exception {
         try {
         this.session = HibernateUtil.getSessionFactory().openSession();
@@ -73,6 +68,8 @@ public class SalaServDaoImpl implements SalaServDao {
             this.transaction =session.beginTransaction();
             SalaServ salaservidor = (SalaServ) session.load(SalaServ.class,salaser.getIdSalaServ());
             salaservidor.setNomSalaServ(salaser.getNomSalaServ());
+            salaservidor.setNumero(salaser.getNumero());
+            salaservidor.setPiso(salaser.getPiso());
             session.update(salaservidor);
             this.transaction.commit();
             this.session.close();

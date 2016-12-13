@@ -88,7 +88,7 @@ public class ServicioDaoImpl implements ServicioDao {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
             Servicio userv = (Servicio) session.load(Servicio.class, serv.getIdServicio());
-            userv.setNomServicio(userv.getNomServicio());
+            userv.setNomServicio(serv.getNomServicio());
             session.update(userv);
             this.transaction.commit();
             return true;

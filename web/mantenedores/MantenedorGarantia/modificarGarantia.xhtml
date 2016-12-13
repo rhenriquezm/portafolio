@@ -21,9 +21,9 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="mgar" value="#{garantiaControl.idGarantia}" >
-                                    <p:ajax listener="#{garantiaControl.cambioGarantia()}" update="idmgar,mngar,mfigar,mfcgar,mcgar" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <p:selectOneMenu id="mgar" value="#{garantiaControl.idGarantia}" required="true" requiredMessage="Seleccione Garantia por favor">
+                                    <p:ajax listener="#{garantiaControl.cambioGarantia()}" update="idmgar,mngar,mfigar,mfcgar,mcgar,idcon,idcont" />
+                                    <f:selectItem itemLabel="Seleccione Garantia..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems id="garantias" value="#{garantiaControl.mostrarGarantia()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -31,43 +31,59 @@
 
 
                             <div class="ui-g-12">
-                                
-                                <p:inputText placeholder="Id. Garantia" id="idmgar" value="#{garantiaControl.garantia.idGar}" required="true" label="Garantia: " disabled="true">
+
+                                <p:inputText placeholder="Id. Garantia" id="idmgar" value="#{garantiaControl.garantia.idGar}" required="true"  disabled="true">
                                     <f:validateLength minimum="2" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                
-                                <p:inputText placeholder="Nombre Garantia" id="mngar" value="#{garantiaControl.garantia.nomGar}" required="true" label="Nombre: "  >
+
+                                <p:inputText placeholder="Nombre" id="mngar" value="#{garantiaControl.garantia.nomGar}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="2" />
                                 </p:inputText>
 
                             </div>
                             <div class="ui-g-12">
-                                <p:calendar placeholder="Fecha Inicio Garantia" id="mfigar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" label="Fecha Inicio: ">
+                                <p:calendar placeholder="Fecha Inicio" id="mfigar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Nueva Fecha Inicio por favor">
                                     <f:validateLength minimum="2" />    
                                 </p:calendar>
                             </div>
                             <div class="ui-g-12">
-                                <p:calendar placeholder="Fecha Caducidad Garantia" id="mfcgar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" label="Fecha Caducidad: ">
+                                <p:calendar placeholder="Fecha Caducidad" id="mfcgar" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Nueva Fecha Caducidad por favor">
                                     <f:validateLength minimum="2" />    
                                 </p:calendar>
                             </div>
-                            
+
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="mcgar" value="#{garantiaControl.idContGar}" required="true" requiredMessage="Seleccione Contacto Garantia.">
+                                <p:selectOneMenu id="mcgar" value="#{garantiaControl.idContGar}" required="true" requiredMessage="Seleccione Contacto Garantia por favor">
                                     <f:selectItem itemLabel="Seleccione Contacto..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems value="#{contGarControl.mostrarContGar()}" />
                                 </p:selectOneMenu>
                             </div>
-                        </div>
-                        <p:commandButton value="Modificar" update="panel" actionListener="#{garantiaControl.modificarGarantia()}" />
-                    </p:panel>
-                </div>
+                            
+                            <div class="ui-g-8">
+                                <h5>Datos Contacto:</h5>    
+                                <p:inputText placeholder="Correo Contacto" id="idcon" value="#{garantiaControl.garantia.contGar.correoCont}" required="true"  disabled="true">
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
+                                <p:inputText placeholder="Fono Contacto" id="idcont" value="#{garantiaControl.garantia.contGar.fonoCont}" required="true"  disabled="true">
+                                    <f:validateLength minimum="2" />
+                                </p:inputText>
+                            </div>
+
+                            
+
+                            <div class="ui-g-5">
+                            </div>
+                            <p:commandButton value="Modificar" update="panel" actionListener="#{garantiaControl.modificarGarantia()}" />
+                    </div></p:panel>
+                   
                 <div class="ui-g-12 ui-lg-4">
 
                 </div>
-            </div>
+                </div>
+        </div>
+            
         </h:form>
     </ui:define>
 

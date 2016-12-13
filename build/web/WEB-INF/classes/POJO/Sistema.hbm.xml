@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06-12-2016 23:27:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Sistema" table="SISTEMA" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idSist" type="short">
@@ -45,6 +45,15 @@
         </many-to-one>
         <property name="nomSist" type="string">
             <column name="NOM_SIST" length="20" not-null="true" />
+        </property>
+        <property name="unIntResp" type="string">
+            <column name="UN_INT_RESP" length="20" />
+        </property>
+        <property name="utIntResp" type="string">
+            <column name="UT_INT_RESP" length="20" />
+        </property>
+        <property name="unExtResp" type="string">
+            <column name="UN_EXT_RESP" length="20" />
         </property>
         <set name="incidentes" table="INCIDENTE" inverse="true" lazy="true" fetch="select">
             <key>

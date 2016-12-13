@@ -1,5 +1,5 @@
 package POJO;
-// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
+// Generated 06-12-2016 23:27:57 by Hibernate Tools 4.3.1
 
 
 
@@ -16,18 +16,22 @@ public class Incidente  implements java.io.Serializable {
      private String probIncid;
      private String solIncid;
      private Short TInacIncid;
-     private char activoIncid;
+     private Character activoIncid;
+     private String fechaSolucion;
+     private String fechaProblema;
+     private String horaProblema;
+     private String horaSolucion;
+     private String codigoSeg;
 
     public Incidente() {
     }
 
 	
-    public Incidente(short idIncidente, String probIncid, char activoIncid) {
+    public Incidente(short idIncidente, String probIncid) {
         this.idIncidente = idIncidente;
         this.probIncid = probIncid;
-        this.activoIncid = activoIncid;
     }
-    public Incidente(short idIncidente, Servidor servidor, Sistema sistema, UnidadTrabajo unidadTrabajo, String probIncid, String solIncid, Short TInacIncid, char activoIncid) {
+    public Incidente(short idIncidente, Servidor servidor, Sistema sistema, UnidadTrabajo unidadTrabajo, String probIncid, String solIncid, Short TInacIncid, Character activoIncid, String fechaSolucion, String fechaProblema, String horaProblema, String horaSolucion, String codigoSeg) {
        this.idIncidente = idIncidente;
        this.servidor = servidor;
        this.sistema = sistema;
@@ -36,6 +40,11 @@ public class Incidente  implements java.io.Serializable {
        this.solIncid = solIncid;
        this.TInacIncid = TInacIncid;
        this.activoIncid = activoIncid;
+       this.fechaSolucion = fechaSolucion;
+       this.fechaProblema = fechaProblema;
+       this.horaProblema = horaProblema;
+       this.horaSolucion = horaSolucion;
+       this.codigoSeg = codigoSeg;
     }
    
     public short getIdIncidente() {
@@ -87,12 +96,47 @@ public class Incidente  implements java.io.Serializable {
     public void setTInacIncid(Short TInacIncid) {
         this.TInacIncid = TInacIncid;
     }
-    public char getActivoIncid() {
+    public Character getActivoIncid() {
         return this.activoIncid;
     }
     
-    public void setActivoIncid(char activoIncid) {
+    public void setActivoIncid(Character activoIncid) {
         this.activoIncid = activoIncid;
+    }
+    public String getFechaSolucion() {
+        return this.fechaSolucion;
+    }
+    
+    public void setFechaSolucion(String fechaSolucion) {
+        this.fechaSolucion = fechaSolucion;
+    }
+    public String getFechaProblema() {
+        return this.fechaProblema;
+    }
+    
+    public void setFechaProblema(String fechaProblema) {
+        this.fechaProblema = fechaProblema;
+    }
+    public String getHoraProblema() {
+        return this.horaProblema;
+    }
+    
+    public void setHoraProblema(String horaProblema) {
+        this.horaProblema = horaProblema;
+    }
+    public String getHoraSolucion() {
+        return this.horaSolucion;
+    }
+    
+    public void setHoraSolucion(String horaSolucion) {
+        this.horaSolucion = horaSolucion;
+    }
+    public String getCodigoSeg() {
+        return this.codigoSeg;
+    }
+    
+    public void setCodigoSeg(String codigoSeg) {
+        this.codigoSeg = codigoSeg;
     }
 
 

@@ -75,6 +75,7 @@ public class NivSegControl {
             nseg.setDescNivSeg(getNivseg().getDescNivSeg());
             boolean modificar = nivsegDao.update(nseg);
             if (modificar) {
+                LimpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Nivel modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nivel no ha podido ser modificado exitosamente"));
@@ -141,6 +142,8 @@ public class NivSegControl {
 
     public void LimpiarIngresar() {
         nivseg.setDescNivSeg(null);
+        nivseg.setIdNivSeg((short)0);
+        setIdNivSeg((short)0);
 
     }
 

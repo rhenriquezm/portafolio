@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar Lenguaje" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{lengDesSistControl.idLengSist}" autoWidth="false">
-                                    <p:ajax listener="#{lengDesSistControl.cambioLengDes()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                <p:selectOneMenu id="console" value="#{lengDesSistControl.idLengSist}" autoWidth="false" required="true" requiredMessage="Seleccione Lenguaje">
+                                    <p:ajax listener="#{lengDesSistControl.cambioLengDes()}" update="id,nom,ver" />
+                                    <f:selectItem itemLabel="Seleccione Lenguaje de Desarrollo..." itemValue="" />
                                     <f:selectItems value="#{lengDesSistControl.mostrarLengDes()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,7 +37,13 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre Lenguaje" value="#{lengDesSistControl.lengdessist.nomLengDes}" >
+                                <p:inputText id="nom" placeholder="Nombre Lenguaje" value="#{lengDesSistControl.lengdessist.nomLengDes}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="40" />
+                                </p:inputText>
+                            </div>
+                            
+                            <div class="ui-g-12">
+                                <p:inputText id="ver" placeholder="Version" value="#{lengDesSistControl.lengdessist.verLengDes}" required="true" requiredMessage="Ingrese Nueva Version por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

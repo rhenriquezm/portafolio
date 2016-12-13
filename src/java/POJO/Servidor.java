@@ -1,5 +1,5 @@
 package POJO;
-// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
+// Generated 06-12-2016 23:27:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,17 +12,20 @@ public class Servidor  implements java.io.Serializable {
 
 
      private short idServ;
-     private CarServ carServ;
      private DirIp dirIp;
      private Garantia garantia;
      private Proveedor proveedor;
      private Rack rack;
      private SistOper sistOper;
-     private TipoServ tipoServ;
      private Usuario usuario;
      private String nomServ;
      private String marcaServ;
      private String modeloServ;
+     private int tamMemoria;
+     private int tamDisco;
+     private String passAdmin;
+     private String userBd;
+     private String passBd;
      private Set incidentes = new HashSet(0);
      private Set sistemas = new HashSet(0);
 
@@ -30,26 +33,31 @@ public class Servidor  implements java.io.Serializable {
     }
 
 	
-    public Servidor(short idServ, DirIp dirIp, String nomServ, String marcaServ, String modeloServ) {
+    public Servidor(short idServ, DirIp dirIp, String nomServ, String marcaServ, String modeloServ, int tamMemoria, int tamDisco) {
         this.idServ = idServ;
         this.dirIp = dirIp;
         this.nomServ = nomServ;
         this.marcaServ = marcaServ;
         this.modeloServ = modeloServ;
+        this.tamMemoria = tamMemoria;
+        this.tamDisco = tamDisco;
     }
-    public Servidor(short idServ, CarServ carServ, DirIp dirIp, Garantia garantia, Proveedor proveedor, Rack rack, SistOper sistOper, TipoServ tipoServ, Usuario usuario, String nomServ, String marcaServ, String modeloServ, Set incidentes, Set sistemas) {
+    public Servidor(short idServ, DirIp dirIp, Garantia garantia, Proveedor proveedor, Rack rack, SistOper sistOper, Usuario usuario, String nomServ, String marcaServ, String modeloServ, int tamMemoria, int tamDisco, String passAdmin, String userBd, String passBd, Set incidentes, Set sistemas) {
        this.idServ = idServ;
-       this.carServ = carServ;
        this.dirIp = dirIp;
        this.garantia = garantia;
        this.proveedor = proveedor;
        this.rack = rack;
        this.sistOper = sistOper;
-       this.tipoServ = tipoServ;
        this.usuario = usuario;
        this.nomServ = nomServ;
        this.marcaServ = marcaServ;
        this.modeloServ = modeloServ;
+       this.tamMemoria = tamMemoria;
+       this.tamDisco = tamDisco;
+       this.passAdmin = passAdmin;
+       this.userBd = userBd;
+       this.passBd = passBd;
        this.incidentes = incidentes;
        this.sistemas = sistemas;
     }
@@ -60,13 +68,6 @@ public class Servidor  implements java.io.Serializable {
     
     public void setIdServ(short idServ) {
         this.idServ = idServ;
-    }
-    public CarServ getCarServ() {
-        return this.carServ;
-    }
-    
-    public void setCarServ(CarServ carServ) {
-        this.carServ = carServ;
     }
     public DirIp getDirIp() {
         return this.dirIp;
@@ -103,13 +104,6 @@ public class Servidor  implements java.io.Serializable {
     public void setSistOper(SistOper sistOper) {
         this.sistOper = sistOper;
     }
-    public TipoServ getTipoServ() {
-        return this.tipoServ;
-    }
-    
-    public void setTipoServ(TipoServ tipoServ) {
-        this.tipoServ = tipoServ;
-    }
     public Usuario getUsuario() {
         return this.usuario;
     }
@@ -138,6 +132,41 @@ public class Servidor  implements java.io.Serializable {
     public void setModeloServ(String modeloServ) {
         this.modeloServ = modeloServ;
     }
+    public int getTamMemoria() {
+        return this.tamMemoria;
+    }
+    
+    public void setTamMemoria(int tamMemoria) {
+        this.tamMemoria = tamMemoria;
+    }
+    public int getTamDisco() {
+        return this.tamDisco;
+    }
+    
+    public void setTamDisco(int tamDisco) {
+        this.tamDisco = tamDisco;
+    }
+    public String getPassAdmin() {
+        return this.passAdmin;
+    }
+    
+    public void setPassAdmin(String passAdmin) {
+        this.passAdmin = passAdmin;
+    }
+    public String getUserBd() {
+        return this.userBd;
+    }
+    
+    public void setUserBd(String userBd) {
+        this.userBd = userBd;
+    }
+    public String getPassBd() {
+        return this.passBd;
+    }
+    
+    public void setPassBd(String passBd) {
+        this.passBd = passBd;
+    }
     public Set getIncidentes() {
         return this.incidentes;
     }
@@ -151,10 +180,6 @@ public class Servidor  implements java.io.Serializable {
     
     public void setSistemas(Set sistemas) {
         this.sistemas = sistemas;
-    }
-
-    public void setSalaServ(SalaServ byId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

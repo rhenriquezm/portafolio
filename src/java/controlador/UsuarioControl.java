@@ -27,14 +27,13 @@ public class UsuarioControl {
     private short idUsuario;
     private short idUniTrab;
     private Usuario usuario;
-    
 
     private ArrayList<SelectItem> sexo;
     private ArrayList<SelectItem> perfiles;
     private ArrayList<SelectItem> unidadesTrabajo;
 
     public UsuarioControl() {
-        this.usuario = new Usuario();    
+        this.usuario = new Usuario();
         this.sexo = new ArrayList<>();
         this.perfiles = new ArrayList<>();
         this.unidadesTrabajo = new ArrayList<>();
@@ -46,6 +45,7 @@ public class UsuarioControl {
     public void init() {
         this.sexo.add(new SelectItem('M', "Masculino"));
         this.sexo.add(new SelectItem('F', "Femenino"));
+        this.sexo.add(new SelectItem('O', "Otro"));
         llenarSelectItems();
 
     }
@@ -54,15 +54,15 @@ public class UsuarioControl {
         try {
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
             PerfilDao perDao = new PerfilDaoImpl();
-            
+
             for (UnidadTrabajo ut : utDao.getAll()) {
-                 this.perfiles.add(new SelectItem(ut.getIdUniTrab(), ut.getNomUniTrab()));
+                this.perfiles.add(new SelectItem(ut.getIdUniTrab(), ut.getNomUniTrab()));
             }
-            
+
             for (Perfil per : perDao.getAll()) {
-                 this.unidadesTrabajo.add(new SelectItem(per.getIdPerfil(), per.getNomPerfil()));
+                this.unidadesTrabajo.add(new SelectItem(per.getIdPerfil(), per.getNomPerfil()));
             }
-                      
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -137,8 +137,12 @@ public class UsuarioControl {
             this.usuario.setPassUsuario(Encrypt.sha512(getUsuario().getPassUsuario()));
             boolean ingresado = usuarioDao.insert(this.usuario);
             if (ingresado) {
-                setUsuario(new Usuario());
+                limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
+            } else if (this.idPerfil == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Perfil "));
+            } else if (this.idUniTrab == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Unidad de Trabajo"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido ingresado exitosamente"));
             }
@@ -200,30 +204,31 @@ public class UsuarioControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             UsuarioDao usDao = new UsuarioDaoImpl();
-            Usuario usu = usDao.getById(getIdUsuario()); 
-            
+            Usuario usu = usDao.getById(getIdUsuario());
+
             usu.setNomUsuario(usuario.getNomUsuario());
-//            usu.setPatUsuario(usuario.getPatUsuario());
-//            usu.setMatUsuario(usuario.getMatUsuario());
+            usu.setPatUsuario(usuario.getPatUsuario());
+            usu.setMatUsuario(usuario.getMatUsuario());
             usu.setRutUsuario(usuario.getRutUsuario());
             usu.setDvUsuario(usuario.getDvUsuario());
             usu.setSexoUsuario(usuario.getSexoUsuario());
             usu.setCorreoUsuario(usuario.getCorreoUsuario());
             usu.setFonoUsuario(usuario.getFonoUsuario());
-            
-            
-                        
+
             PerfilDao perDao = new PerfilDaoImpl();
             usu.setPerfil(perDao.getById(getIdPerfil()));
-            
+
             UnidadTrabajoDao utDao = new UnidadTrabajoDaoImpl();
             usu.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
-            
-            
-            
+
             boolean modificado = usDao.update(usu);
             if (modificado) {
+                limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario modificada exitosamente"));
+            } else if (this.idPerfil == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Perfil "));
+            } else if (this.idUniTrab == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Unidad de Trabajo"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido modificada exitosamente"));
             }
@@ -245,15 +250,15 @@ public class UsuarioControl {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al cambiar" + ex.getMessage()));
         }
     }
-    
-    public void eliminarUsuario(){
+
+    public void eliminarUsuario() {
         try {
             UsuarioDao usuarioDao = new UsuarioDaoImpl();
             boolean eliminado = usuarioDao.deleteById(this.idUsuario);
             if (eliminado) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario eliminado exitosamente"));
             } else if (this.idUsuario == 0) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione un perfil"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Usuario"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha podido ser eliminado exitosamente"));
             }
@@ -261,7 +266,23 @@ public class UsuarioControl {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al eliminar " + ex.getMessage()));
         }
     }
-    
-    
-   
+
+    public void limpiarIngresar() {
+        usuario.setNomUsuario(null);
+        usuario.setPatUsuario(null);
+        usuario.setMatUsuario(null);
+        usuario.setRutUsuario(0);
+        usuario.setDvUsuario(Character.MIN_VALUE);
+        usuario.setSexoUsuario(Character.MIN_VALUE);
+        usuario.setCorreoUsuario(null);
+        usuario.setFonoUsuario(0);
+        usuario.setUserUsuario(null);
+        usuario.setPassUsuario(null);
+        usuario.setIdUsuario((short) 0);
+        setIdUsuario((short)0);
+        setIdPerfil((short) 0);
+        setIdUniTrab((short) 0);
+
+    }
+
 }

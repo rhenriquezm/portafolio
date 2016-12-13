@@ -92,6 +92,8 @@ public class SalaServControl {
             boolean eliminado = salaDao.deleteById(idSalaServidor);
             if (eliminado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sala Servidor eliminada exitosamente"));
+            } else if (this.idSalaServidor == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Sala por favor "));  
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sala Servidor no ha sido eliminada exitosamente"));
             }
@@ -106,11 +108,14 @@ public class SalaServControl {
             SalaServDao salaDao = new SalaServDaoImpl();
             SalaServ salaServidor = salaDao.getById(idSalaServidor);
             salaServidor.setNomSalaServ(salaser.getNomSalaServ());
+            salaServidor.setNumero(salaser.getNumero());
+            salaServidor.setPiso(salaser.getPiso());
             boolean modificado = salaDao.update(salaServidor);
             if (modificado) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sala Servidor modificada exitosamente"));
+                limpiarIngresar();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Sala Servidor modificada exitosamente"));  
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "ala Servidor no ha sido modificada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Sala Servidor no ha sido modificada exitosamente"));
             }
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al modificar" + ex.getMessage()));
@@ -144,7 +149,11 @@ public class SalaServControl {
     }
 
     public void limpiarIngresar() {
-        this.salaser.setNomSalaServ(null);
+        salaser.setNomSalaServ(null);
+        salaser.setNumero(0);
+        salaser.setPiso(0);
+        salaser.setIdSalaServ((short)0);
+        setIdSalaServidor((short)0);
     }
 
 }

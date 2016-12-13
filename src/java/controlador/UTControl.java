@@ -108,6 +108,8 @@ public class UTControl {
             boolean eliminado = utDao.deleteById(id);
             if (eliminado) {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT eliminada exitosamente"));
+            } else if (this.id == 0) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione UT "));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido eliminada exitosamente"));
             }
@@ -124,6 +126,7 @@ public class UTControl {
             uTrab.setNomUniTrab(ut.getNomUniTrab());
             boolean modificado = utDao.update(uTrab);
             if (modificado) {
+                limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "UT modificada exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "UT no ha sido modificada exitosamente"));
@@ -146,7 +149,9 @@ public class UTControl {
     }
 
     public void limpiarIngresar() {
-        this.ut.setNomUniTrab(null);
+        ut.setNomUniTrab(null);
+        ut.setIdUniTrab((short)0);
+        setId((short)0);
     }
 
     public void cambioUT() {

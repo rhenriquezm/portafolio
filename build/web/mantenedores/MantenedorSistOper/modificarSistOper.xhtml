@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar S.O" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{sistOperControl.idSo}" autoWidth="false">
+                                <p:selectOneMenu id="console" value="#{sistOperControl.idSo}" autoWidth="false" required="true" requiredMessage="Seleccione S.O por favor">
                                     <p:ajax listener="#{sistOperControl.cambioSistOper()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItem itemLabel="Seleccione Sistema Operativo..." itemValue="" />
                                     <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,8 +37,8 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre S.O" value="#{sistOperControl.sistoper.desSo}" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{sistOperControl.sistoper.desSo}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="40" />
                                 </p:inputText>
                             </div>
                             

@@ -25,9 +25,9 @@
                     <p:panel id="panel" header="Modificar Servicio" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="console" value="#{servicioControl.idServicio}" autoWidth="false">
+                                <p:selectOneMenu id="console" value="#{servicioControl.idServicio}" autoWidth="false" required="true" requiredMessage="Seleccione Servicio por favor">
                                     <p:ajax listener="#{servicioControl.cambioServicio()}" update="id,nom" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" />
+                                    <f:selectItem itemLabel="Seleccione Servicio..." itemValue="" />
                                     <f:selectItems value="#{servicioControl.mostrarServicio()}" />
                                 </p:selectOneMenu>
                             </div>
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="nom" placeholder="Nombre Servicio" value="#{servicioControl.servicio.nomServicio}" >
+                                <p:inputText id="nom" placeholder="Nuevo Nombre" value="#{servicioControl.servicio.nomServicio}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

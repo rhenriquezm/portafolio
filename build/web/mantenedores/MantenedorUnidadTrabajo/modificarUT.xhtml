@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/mantenedores/layout/template.xhtml">
+
+    <ui:define name="title">Mantenedor Unidad de Trabajo/ Modificar UT</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
+            <div class="ui-g ui-fluid dashboard">
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+
+                    <p:panel id="panel" header="Modificar UT" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{uTControl.id}" autoWidth="false" required="true" requiredMessage="Seleccione UT por favor">
+                                    <p:ajax listener="#{uTControl.cambioUT()}" update="idutr,utr" />
+                                    <f:selectItem itemLabel="Seleccione Unidad de Trabajo..."  itemValue="" noSelectionOption="true"/>
+                                    <f:selectItems value="#{uTControl.mostrarUTs()}" />
+                                </p:selectOneMenu>
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="idutr" placeholder="Id. Unidad de Trabajo" value="#{uTControl.ut.idUniTrab}" disabled="true" />
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="utr" placeholder="Nombre" value="#{uTControl.ut.nomUniTrab}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            
+                        </div>
+                        <p:commandButton value="Modificar" update="panel" actionListener="#{uTControl.modificarUTrabajo()}" />
+                    </p:panel>
+
+                </div>
+                <div class="ui-g-12 ui-lg-4">
+
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

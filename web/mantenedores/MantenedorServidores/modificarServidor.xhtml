@@ -5,75 +5,120 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
-    <ui:define name="title">Mantenedor Servidores</ui:define>
+    <ui:define name="title">Mantenedor Servidor / Modificar Servidor</ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+
+
             <div class="ui-g ui-fluid dashboard">
+
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
 
                 </div>
-            <div class="ui-fluid">
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <!--<div class="card">
-                            <h1>Modificar Servidor</h1>  TITULO EN CASO DE CUALQUIER COSA -->
 
-                            <p:panelGrid columns="12" columnClasses="ui-grid-col-3 ui-grid-col-12 ui-grid-col-3 ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                <div class="ui-g-12 ui-md-6 ui-lg-4">
 
 
-                              <p:panel id="panel" header="Modificar Servidor">
-                                
 
-                               <h:panelGrid columns="4" cellpadding="5">
-                               <p:outputLabel for="se" value="Servidor: " />
-                               <p:selectOneMenu id="se" value="#{servidorControl.idServ}" style="width:150px">
-                                   <p:ajax listener="#{servidorControl.cambioServidor()}" update="idser,ser" />
-                                  <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                                 <f:selectItems value="#{servidorControl.listarTodo()}" />
+                    <p:panel id="panel" header="Modificar Servidor" style="text-align:center;background:#fff;height:100%">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="console" value="#{servidorControl.idServ}" required="true" requiredMessage="Seleccione Servidor por favor">
+                                    <p:ajax listener="#{servidorControl.cambioServidor()}" update="idper,nom,mar,mod,tme,tdi,ubd,usu,pro,so,rac,ip,gar" />
+                                    <f:selectItem itemLabel="Seleccione Servidor..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{servidorControl.listarTodo()}" />
                                 </p:selectOneMenu>
+                            </div>
 
+                            <div class="ui-g-12">
+                                <p:inputText id="idper" placeholder="Id. Servidor" value="#{servidorControl.serv.idServ}" disabled="true" />
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:inputText id="nom" placeholder="Nombre" value="#{servidorControl.serv.nomServ}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText id="mar" placeholder="Marca" value="#{servidorControl.serv.marcaServ}" required="true" requiredMessage="Ingrese Nueva Marca por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText id="mod" placeholder="Modelo" value="#{servidorControl.serv.modeloServ}" required="true" requiredMessage="Ingrese Nuevo Modelo por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText id="tme" placeholder="Tamaño Memoria(GB)" value="#{servidorControl.serv.tamMemoria}" required="true" requiredMessage="Ingrese Nuevo Tamaño Memoria por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:inputText id="tdi" placeholder="Tamaño Disco(GB)" value="#{servidorControl.serv.tamDisco}" required="true" requiredMessage="Ingrese Nuevo Tamaño Disco por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+                                <p:password id="pwd1" placeholder="Password Admin" value="#{servidorControl.serv.passAdmin}" match="pwd2" label="Password 1" required="true" requiredMessage="Ingrese Password Admin por favor" />
+                                <p:password id="pwd2" placeholder="Confirme Password" value="#{servidorControl.serv.passAdmin}" label="Password 2" required="true" requiredMessage="Confirme Password Admin por favor" />
+                            </h:panelGrid>
+                            <div class="ui-g-12">
+                                <p:inputText id="ubd" placeholder="Usuario BD" value="#{servidorControl.serv.userBd}" required="true" requiredMessage="Ingrese Nuevo Usuario BD por favor" >
+                                    <f:validateLength minimum="1" maximum="20" />
+                                </p:inputText>
+                            </div>
+                            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+                                <p:password id="pwd3" placeholder="Password BD" value="#{servidorControl.serv.passBd}" match="pwd4" label="Password 3" required="true" requiredMessage="Ingrese Password BD por favor" />
+                                <p:password id="pwd4" placeholder="Confirme Password" value="#{servidorControl.serv.passBd}" label="Password 4" required="true" requiredMessage="Confirme Password BD por favor" />
+                            </h:panelGrid>
                             
-                               <p:outputLabel for="idser" value="Id. Servidor: " />
-                               <p:inputText id="idser" value="#{servidorControl.serv.idServ}" required="true" label="Servidor: " disabled="true">
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
-                            
-                               <p:outputLabel for="ser" value=" Nombre Servidor: " />
-                               <p:inputText id="ser" value="#{servidorControl.serv.nomServ}" required="true" label="Nombre Servidor: "  >
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
-                               
-                               <p:outputLabel for="sem" value=" Marca Servidor: " />
-                               <p:inputText id="sem" value="#{servidorControl.serv.marcaServ}" required="true" label="Marca Servidor: "  >
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
- 
-                               
-                               <p:outputLabel for="semo" value=" Modelo Servidor: " />
-                               <p:inputText id="semo" value="#{servidorControl.serv.modeloServ}" required="true" label="Modelo Servidor: "  >
-                                  <f:validateLength minimum="2" />
-                               </p:inputText>
- 
- 
-                               <p:commandButton value="Modicar" update="panel" actionListener="#{servidorControl.modificarServidor()}" />
-                              </h:panelGrid>
-
-
-                               </p:panel>
-
-                            </p:panelGrid>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="usu" value="#{servidorControl.idUsuario}" autoWidth="false" required="true" requiredMessage="Seleccione Usuario por favor">
+                                    <f:selectItem itemLabel="Seleccione Usuario..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{usuarioControl.mostrarUsuario()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="pro" value="#{servidorControl.idProv}" required="true" requiredMessage="Seleccione Proveedor por favor">
+                                    <f:selectItem itemLabel="Seleccione Proveedor..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{proveedorControl.mostrarProveedor()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="so" value="#{servidorControl.idSistOper}" required="true" requiredMessage="Seleccione Sistema Operativo por favor">
+                                    <f:selectItem itemLabel="Seleccione Sistema Operativo..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{sistOperControl.mostrarSistOper()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="rac" value="#{servidorControl.idRack}" required="true" requiredMessage="Seleccione Rack por favor">
+                                    <f:selectItem itemLabel="Seleccione Rack..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{rackControl.listarTodo()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="ip" value="#{servidorControl.idIp}" required="true" requiredMessage="Seleccione IP por favor">
+                                    <f:selectItem itemLabel="Seleccione Direccion IP..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{dirIpControl.mostrarDirIp()}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-12">
+                                <p:selectOneMenu id="gar" value="#{servidorControl.idGarantia}" required="true" requiredMessage="Seleccione Garantia por favor">
+                                    <f:selectItem itemLabel="Seleccione Garantia..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{garantiaControl.mostrarGarantia()}" />
+                                </p:selectOneMenu>
+                            </div>
 
 
                         </div>
+                        <p:commandButton  actionListener="#{servidorControl.modificarServidor()}" update="panel" value="Modificar" icon="fa fa-check"/>
+                    </p:panel>
 
-                        <!--<div class="card">
-
-                            <h1> PANEL 2 EJ PARA UN DATA GRID</h1>
-
-                        </div>-->
-                    </div>
+                </div>
+                <div class="ui-g-12 ui-lg-4">
 
                 </div>
             </div>

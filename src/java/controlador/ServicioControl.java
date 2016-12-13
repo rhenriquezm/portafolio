@@ -74,10 +74,11 @@ public class ServicioControl {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             ServicioDao sDao = new ServicioDaoImpl();
-            Servicio mserv = sDao.getById(getIdServicio());
-            mserv.setNomServicio(getServicio().getNomServicio());
+            Servicio mserv = sDao.getById(idServicio);
+            mserv.setNomServicio(servicio.getNomServicio());
             boolean modificar = sDao.update(mserv);
             if (modificar) {
+                LimpiarIngresarServicio();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Servicio modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Servicio no ha podido ser modificado exitosamente"));
@@ -143,6 +144,8 @@ public class ServicioControl {
 
     public void LimpiarIngresarServicio() {
         servicio.setNomServicio(null);
+        servicio.setIdServicio((short)0);
+        setIdServicio((short)0);
     }
 
 }

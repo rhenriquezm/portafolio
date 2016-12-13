@@ -21,10 +21,17 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Lenguaje" value="#{lengDesSistControl.lengdessist.nomLengDes}" >
-                                    <f:validateLength minimum="1" maximum="20" />
+                                <p:inputText placeholder="Nombre" value="#{lengDesSistControl.lengdessist.nomLengDes}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                    <f:validateLength minimum="1" maximum="40" />
                                 </p:inputText>
                             </div>
+                            
+                            <div class="ui-g-12">
+                                <p:inputText placeholder="Version" value="#{lengDesSistControl.lengdessist.verLengDes}" required="true" requiredMessage="Ingrese Version por favor" >
+                                    <f:validateLength minimum="1" maximum="40" />
+                                </p:inputText>
+                            </div>
+                            
                         </div>
                         <p:commandButton update="panel"  actionListener="#{lengDesSistControl.ingresarLengDes()}" value="Ingresar" icon="fa fa-check"/>
                     </p:panel>

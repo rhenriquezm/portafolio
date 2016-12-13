@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-11-2016 5:17:06 by Hibernate Tools 4.3.1 -->
+<!-- Generated 06-12-2016 23:27:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="POJO.Garantia" table="GARANTIA" schema="PROYPORTAFOLIO" optimistic-lock="version">
         <id name="idGar" type="short">
             <column name="ID_GAR" precision="4" scale="0" />
-            <generator class="sequence">
+            <generator class="sequence" >
                 <param name="sequence">GARANTIA_SEQ</param>
             </generator>
         </id>

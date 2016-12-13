@@ -1,5 +1,5 @@
 package POJO;
-// Generated 03-11-2016 5:17:04 by Hibernate Tools 4.3.1
+// Generated 06-12-2016 23:27:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,19 +13,22 @@ public class LengDesSist  implements java.io.Serializable {
 
      private short idLengSist;
      private String nomLengDes;
+     private String verLengDes;
      private Set sistemas = new HashSet(0);
 
     public LengDesSist() {
     }
 
 	
-    public LengDesSist(short idLengSist, String nomLengDes) {
+    public LengDesSist(short idLengSist, String nomLengDes, String verLengDes) {
         this.idLengSist = idLengSist;
         this.nomLengDes = nomLengDes;
+        this.verLengDes = verLengDes;
     }
-    public LengDesSist(short idLengSist, String nomLengDes, Set sistemas) {
+    public LengDesSist(short idLengSist, String nomLengDes, String verLengDes, Set sistemas) {
        this.idLengSist = idLengSist;
        this.nomLengDes = nomLengDes;
+       this.verLengDes = verLengDes;
        this.sistemas = sistemas;
     }
    
@@ -42,6 +45,13 @@ public class LengDesSist  implements java.io.Serializable {
     
     public void setNomLengDes(String nomLengDes) {
         this.nomLengDes = nomLengDes;
+    }
+    public String getVerLengDes() {
+        return this.verLengDes;
+    }
+    
+    public void setVerLengDes(String verLengDes) {
+        this.verLengDes = verLengDes;
     }
     public Set getSistemas() {
         return this.sistemas;

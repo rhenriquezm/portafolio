@@ -21,7 +21,7 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Nombre Servicio" value="#{servicioControl.servicio.nomServicio}" >
+                                <p:inputText placeholder="Nombre" value="#{servicioControl.servicio.nomServicio}" required="true" requiredMessage="Ingrese Nombre por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

@@ -27,21 +27,21 @@
                         <div class="ui-g">
                             
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" >
+                                <p:selectOneMenu id="mcg" value="#{contGarControl.idContGar}" required="true" requiredMessage="Seleccione Contacto por favor">
                                     <p:ajax listener="#{contGarControl.cambioContGar()}" update="idcg,ncg,ccg,fcg" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                    <f:selectItem itemLabel="Seleccione Contacto..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems id="contactos" value="#{contGarControl.mostrarContGar()}" />
                                 </p:selectOneMenu>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="idcg" placeholder="Id. Contacto" value="#{contGarControl.contgar.idCont}" required="true" label="Sistema Operativo: " disabled="true">
+                                <p:inputText id="idcg" placeholder="Id. Contacto" value="#{contGarControl.contgar.idCont}" disabled="true">
                                     <f:validateLength minimum="2" maximum="4" />
                                 </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="ncg" placeholder="Nombre Contacto" value="#{contGarControl.contgar.nomCont}" required="true" label="Nombre: "  >
+                                <p:inputText id="ncg" placeholder="Nuevo Nombre" value="#{contGarControl.contgar.nomCont}" required="true" requiredMessage="Ingrese Nuevo Nombre por favor">
                                     <f:validateLength minimum="2" maximum="20"/>
                                 </p:inputText>
 
@@ -49,7 +49,7 @@
 
 
                             <div class="ui-g-12">
-                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Correo Contacto" value="#{contGarControl.contgar.correoCont}" required="true" label="Correo: "  >
+                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Nuevo Correo" value="#{contGarControl.contgar.correoCont}" required="true" requiredMessage="Ingrese Nuevo Correo por favor" >
                                     <f:validateLength minimum="2" maximum="30" />
                                     <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 </p:inputText>
@@ -57,7 +57,7 @@
 
 
                             <div class="ui-g-12">
-                                <p:inputText id="fcg" placeholder="Fono Contacto" value="#{contGarControl.contgar.fonoCont}" required="true" label="Fono: "  >
+                                <p:inputText id="fcg" placeholder="Nuevo Fono" value="#{contGarControl.contgar.fonoCont}" required="true" requiredMessage="Ingrese Nuevo Fono por favor" >
                                     <f:validateLength minimum="2" maximum="8"/>
                                 </p:inputText>
 

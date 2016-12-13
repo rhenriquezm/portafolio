@@ -21,7 +21,7 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Direccion IP" value="#{dirIpControl.dirip.dirIp}" >
+                                <p:inputText placeholder="Direccion IP" value="#{dirIpControl.dirip.dirIp}" required="true" requiredMessage="Ingrese Direccion IP por favor">
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>

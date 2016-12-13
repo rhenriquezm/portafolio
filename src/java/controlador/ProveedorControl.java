@@ -77,6 +77,7 @@ public class ProveedorControl {
             mprov.setFonoProv(getProveedor().getFonoProv());
             boolean modificar = mprovDao.update(mprov);
             if (modificar) {
+                LimpiarIngresarProveedor();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Proveedor modificado exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Proveedor no ha podido ser modificado exitosamente"));
@@ -147,6 +148,8 @@ public class ProveedorControl {
         proveedor.setNomProv(null);
         proveedor.setCorreoProv(null);
         proveedor.setFonoProv(null);
+        proveedor.setIdProv((short)0);
+        setIdProv((short)0);
     }
 
 }

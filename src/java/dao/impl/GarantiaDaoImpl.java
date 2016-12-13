@@ -87,11 +87,13 @@ public class GarantiaDaoImpl implements GarantiaDao{
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaction = session.beginTransaction();
+            
             Garantia ugara = (Garantia) session.load(Garantia.class, ga.getIdGar());
-            ugara.setContGar(ga.getContGar());
+            
             ugara.setNomGar(ga.getNomGar());
             ugara.setFechaGar(ga.getFechaGar());
             ugara.setFechaCadGar(ga.getFechaCadGar());
+            ugara.setContGar(ga.getContGar());
             session.update(ugara);
             this.transaction.commit();
             return true;
