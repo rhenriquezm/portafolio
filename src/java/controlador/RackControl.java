@@ -97,7 +97,7 @@ public class RackControl {
             boolean ingresado = rackDao.insert(this.rack);
             if (ingresado) {
                 limpiarIngresar();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Rack ingresada exitosamente"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rack Ingresado!", "Rack ingresada exitosamente"));
             } else {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Rack no ha sido ingresada exitosamente"));
             }

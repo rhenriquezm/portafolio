@@ -103,7 +103,7 @@ public class OrganizacionControl {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione una Organizacion"));
 
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR AL ELIMINAR!", "Organizacion en Uso"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ERROR!", "Organizacion en Uso"));
 
             }
         } catch (Exception ex) {

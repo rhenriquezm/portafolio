@@ -149,6 +149,8 @@ public class ServidorControl {
 
             boolean ingresado = servDao.insert(this.serv);
             if (ingresado) {
+                
+//                dipDao.modificarIp(dipDao.getById(getIdIp()).getDirIp());
                 limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Servidor ingresada exitosamente"));
             } else {

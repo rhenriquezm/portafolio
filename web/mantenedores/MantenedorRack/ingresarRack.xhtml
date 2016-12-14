@@ -9,7 +9,7 @@
 
     <ui:define name="content">
         <h:form>
-            <p:growl showDetail="true" autoUpdate="true" sticky="false"/>
+            <p:growl autoUpdate="true" sticky="true"/>
 
             <div class="ui-g ui-fluid dashboard">
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
@@ -21,26 +21,16 @@
                         <div class="ui-g">
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Rack" value="#{rackControl.rack.nombreRack}" required="true" requiredMessage="Ingrese Nombre por favor" >
+                                <p:inputText placeholder="Rack" value="#{rackControl.rack.nombreRack}" required="true" requiredMessage="Ingrese Nombre por favor"  >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="mgar" value="#{rackControl.idSalaservidor}" required="true" requiredMessage="Seleccione Garantia por favor">
-                                    <p:ajax listener="#{salaServControl.cambioSalaServidor()}" update="idcon,idcont" />
-                                    <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                                <p:selectOneMenu id="mgar" value="#{rackControl.idSalaservidor}" required="true" requiredMessage="Seleccione Sala Servidor por favor">
+                                    <f:selectItem itemLabel="Seleccione Sala Servidor..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems id="contactos" value="#{salaServControl.mostrarSalas()}" />
                                 </p:selectOneMenu>
-                            </div>
-                        </div>
-
-                        <div class="ui-g-8">
-             <h5>Datos Sala:</h5>
-             <p:inputText placeholder="Numero Sala" id="idcon" value="#{salaServControl.salaser.numero}" required="true"  disabled="true" >
-                                    <f:validateLength minimum="2" />
-             </p:inputText> <p:inputText placeholder="Piso" id="idcont" value="#{salaServControl.salaser.piso}" required="true"  disabled="true">
-                                    <f:validateLength minimum="2" />
-                                </p:inputText>
+                            </div>         
                         </div>
                         <p:commandButton update="panel" actionListener="#{rackControl.ingresarRack()}" value="Ingresar" icon="fa fa-check"/>
                     </p:panel>

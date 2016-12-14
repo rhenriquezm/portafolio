@@ -50,7 +50,7 @@
 
 
                             <div class="ui-g-12">
-                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Nuevo Correo" value="#{contGarControl.contgar.correoCont}" required="true" requiredMessage="Ingrese Nuevo Correo por favor" >
+                                <p:inputText id="ccg" validatorMessage="Formato incorrecto Correo" placeholder="Nuevo Correo" value="#{contGarControl.contgar.correoCont}" required="true" requiredMessage="Ingrese Nuevo Correo por favor /Ej: " >
                                     <f:validateLength minimum="2" maximum="30" />
                                     <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 </p:inputText>
@@ -59,7 +59,7 @@
 
                             <div class="ui-g-12">
                                 <p:inputText id="fcg" placeholder="Nuevo Fono" value="#{contGarControl.contgar.fonoCont}" required="true" requiredMessage="Ingrese Nuevo Fono por favor" >
-                                    <f:validateLength minimum="2" maximum="8"/>
+                                    <f:validateLength minimum="1" maximum="8"/>
                                 </p:inputText>
 
                             </div>

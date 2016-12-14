@@ -37,14 +37,32 @@
                                 </p:inputText>
                             </div>
 
+<<<<<<< HEAD
                             <div class="ui-g-12">
                                 <p:inputText class="validate" placeholder="Rut" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
                                     <f:validator validatorId="ValidatorRut"/>
                                 </p:inputText>
                             </div>
                             
+=======
+                            <div class="ui-g-8">
+                                <p:inputText placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validateLength minimum="8" maximum="8" />
+                                </p:inputText>
+                            </div>
+                            <div class="ui-g-1">
+                                -
+                            </div>
+
+                            <div class="ui-g-3">
+                                <p:inputText placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
+                                    <f:validateLength minimum="1" maximum="1" />
+                            </p:inputText>
+                            </div>
+>>>>>>> 673a2fbce75313e5d30060b91e6bd813a46434fe
 
                             <div class="ui-g-12">
+                                <p:outputLabel value="Sexo" />
                                 <p:selectOneButton value="#{usuarioControl.usuario.sexoUsuario}" required="true" requiredMessage="Seleccione Sexo por favor" >
                                     <f:selectItems value="#{usuarioControl.sexo}" />
                                 </p:selectOneButton>
@@ -59,8 +77,13 @@
 
                             <div class="ui-g-12">
                                 <p:inputText placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
+<<<<<<< HEAD
                                     <f:validateLength minimum="2" maximum="8" />
                                 </p:inputText>
+=======
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+>>>>>>> 673a2fbce75313e5d30060b91e6bd813a46434fe
                             </div>
 
                             <div class="ui-g-12">

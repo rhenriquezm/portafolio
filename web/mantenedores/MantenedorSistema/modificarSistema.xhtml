@@ -26,7 +26,7 @@
                         <div class="ui-g">
                             <div class="ui-g-12">
                                 <p:selectOneMenu id="console" value="#{sistemaControl.idSist}" required="true" requiredMessage="Seleccione Sistema por favor">
-                                    <p:ajax listener="#{sistemaControl.cambioSistema()}" update="idsis,nom,uit,ete,uer,srvdor,usu,nivseg,so,prov,sbd,ws,org,ld,svcio" />
+                                    <p:ajax listener="#{sistemaControl.cambioSistema()}" update="idsis,nom,uit,ete,uer,srvdor,usu,nivseg,so,prov,sbd,ws,ld,svcio,orga" />
                                     <f:selectItem itemLabel="Seleccione Sistema..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems value="#{sistemaControl.mostrarSistema()}" />
                                 </p:selectOneMenu>
@@ -61,7 +61,7 @@
                              </div>
 
                              <div class="ui-g-12">
-                                 <p:selectOneMenu id="srvdor" value="#{sistemaControl.idServidor}" required="true" requiredMessage="Seleccione Nuevo Servidor por favor">
+                                 <p:selectOneMenu id="srvdor" value="#{sistemaControl.idServidor}" required="true" >
                                     <f:selectItem itemLabel="Seleccione Servidor..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems value="#{servidorControl.listarTodo()}" />
                                 </p:selectOneMenu>
@@ -75,10 +75,10 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="nivseg" value="#{sistemaControl.idNivSeg}" required="true" requiredMessage="Seleccione Nivel de Seguridad Usuario por favor">
-                                    <f:selectItem itemLabel="Seleccione Nivel de Seguridad..." itemValue="" noSelectionOption="true" />
+                                <p:outputLabel value="Nivel de Seguridad" />
+                                <p:selectOneButton id="nivseg" value="#{sistemaControl.idNivSeg}" required="true" requiredMessage="Seleccione Nivel Seguridad por favor">
                                     <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
-                                </p:selectOneMenu>
+                                </p:selectOneButton>
                             </div>
 
                             <div class="ui-g-12">
@@ -110,11 +110,11 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:selectOneMenu id="org" value="#{sistemaControl.idOrganizacion}" required="true" requiredMessage="Seleccione Nuevo Organizacion por favor">
+                                <p:selectOneMenu id="orga" value="#{sistemaControl.idOrganizacion}" required="true" requiredMessage="Seleccione Nueva Organizacion por favor">
                                     <f:selectItem itemLabel="Seleccione Organizacion..." itemValue="" noSelectionOption="true" />
                                     <f:selectItems value="#{organizacionControl.mostrarOrga()}" />
                                 </p:selectOneMenu>
-                            </div>
+                            </div>                            
 
                             <div class="ui-g-12">
                                 <p:selectOneMenu id="ld" value="#{sistemaControl.idLengDes}" required="true" requiredMessage="Seleccione Nuevo Lenguaje de Desarrollo por favor">
