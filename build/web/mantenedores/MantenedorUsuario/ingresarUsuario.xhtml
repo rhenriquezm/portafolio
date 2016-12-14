@@ -37,9 +37,8 @@
                             </div>
 
                             <div class="ui-g-8">
-                                <p:inputText validatorMessage="Ingrese Rut Valido" class="validate" placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                <p:inputText placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
                                     <f:validateLength minimum="8" maximum="8" />
-                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                             <div class="ui-g-1">
@@ -47,13 +46,13 @@
                             </div>
 
                             <div class="ui-g-3">
-                                <p:inputText validatorMessage="Ingrese DV Valido" class="validate" placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
+                                <p:inputText placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
                                     <f:validateLength minimum="1" maximum="1" />
-                                    <f:validateRegex pattern="[Kk0-9]" />
                             </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
+                                <p:outputLabel value="Sexo" />
                                 <p:selectOneButton value="#{usuarioControl.usuario.sexoUsuario}" required="true" requiredMessage="Seleccione Sexo por favor" >
                                 <f:selectItems value="#{usuarioControl.sexo}" />
                             </p:selectOneButton>
@@ -67,9 +66,8 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
+                                <p:inputText placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
                                 <f:validateLength minimum="2" />
-                                <f:validateRegex pattern="[0-9]+" />
                             </p:inputText>
                             </div>
 

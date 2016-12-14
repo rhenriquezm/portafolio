@@ -5,6 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/mantenedores/layout/template.xhtml">
 
+    
     <ui:define name="title">Mantenedor Garantia / Ingresar Garantia</ui:define>
 
     <ui:define name="content">
@@ -29,20 +30,14 @@
 
                             <div class="ui-g-12">
 
-                                <p:calendar validatorMessage="Formato Fecha Incorrecto" class="validate" placeholder="Fecha Inicio"  id="fini" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Fecha Inicio por favor">
-                                    <f:validateLength minimum="2" /> 
-                                    <f:validateRegex pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)" />
-
+                                <p:calendar placeholder="Fecha Inicio"  id="fini" pattern="dd/MM/yyyy" value="#{garantiaControl.garantia.fechaGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Fecha Inicio por favor"> 
                                 </p:calendar>
 
                             </div>
 
                             <div class="ui-g-12">
 
-                                <p:calendar validatorMessage="Formato Fecha Incorrecto" class="validate" placeholder="Fecha Caducidad" id="fcad" pattern="dd-MM-yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Fecha Caducidad por favor">
-                                    <f:validateLength minimum="2" />
-                                    <f:validateRegex pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)" />
-
+                                <p:calendar placeholder="Fecha Caducidad" id="fcad" pattern="dd/MM/yyyy" value="#{garantiaControl.garantia.fechaCadGar}"  effect="fold" locale="es" required="true" requiredMessage="Ingrese Fecha Caducidad por favor">
                                 </p:calendar>
 
                             </div>
@@ -54,16 +49,7 @@
                                 </p:selectOneMenu>
                             </div>
                         </div>
-
-                        <div class="ui-g-8">
-             <h5>Datos Contacto:</h5>
-                            <p:inputText placeholder="Correo Contacto" id="idcon" value="#{contGarControl.contgar.correoCont}" required="true"  disabled="true" >
-                                    <f:validateLength minimum="2" />
-                            </p:inputText> <p:inputText placeholder="Fono Contacto" id="idcont" value="#{contGarControl.contgar.fonoCont}" required="true"  disabled="true">
-                                    <f:validateLength minimum="2" />
-                                </p:inputText>
-                        </div>
-                        
+       
                         <p:commandButton value="Ingresar" update="panel" actionListener="#{garantiaControl.ingresarGarantia()}" />
                     </p:panel>
                 </div>

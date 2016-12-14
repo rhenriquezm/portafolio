@@ -44,7 +44,7 @@
 
                             <div class="ui-g-12">
                                 <p:inputText id="rut" placeholder="Rut Sin Puntos Ni Guion" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
-                                    <f:validateLength minimum="9" maximum="9" />
+                                    <f:validateLength minimum="1" maximum="12" />
                                 </p:inputText>
                             </div>
                             
@@ -63,9 +63,8 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText id="fono" validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Nuevo Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Nuevo Fono por favor">
+                                <p:inputText id="fono" placeholder="Nuevo Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Nuevo Fono por favor">
                                     <f:validateLength minimum="1" maximum="20" />
-                                    <f:validateRegex pattern="[0-9]+" />
                                 </p:inputText>
                             </div>
                         </div>

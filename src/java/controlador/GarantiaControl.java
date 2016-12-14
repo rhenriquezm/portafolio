@@ -114,6 +114,7 @@ public class GarantiaControl {
             GarantiaDao garDao = new GarantiaDaoImpl();
             ContGarDao contgarDao = new ContGarDaoImpl();
             this.garantia.setContGar(contgarDao.getById(getIdContGar()));
+            
 
             boolean ingresado = garDao.insert(getGarantia());
             if (ingresado) {
@@ -143,6 +144,7 @@ public class GarantiaControl {
             mgar.setFechaCadGar(garantia.getFechaCadGar());
             
             boolean modificado = mgarDao.update(mgar);
+            
             if (modificado) {
                 LimpiarModificar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Garantia modificada exitosamente"));

@@ -26,19 +26,10 @@
                                 </p:inputText>
                             </div>
                             
-                            <div class="ui-g-8">
+                            <div class="ui-g-12">
                                 <p:inputText placeholder="Rut Sin Puntos" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Rut por favor" >
-                                    <f:validateLength minimum="8" maximum="8" />
+                                    <f:validateLength minimum="1" maximum="12" />
                                 </p:inputText>
-                            </div>
-                            <div class="ui-g-1">
-                                -
-                            </div>
-
-                            <div class="ui-g-3">
-                                <p:inputText placeholder="DV" value="#{organizacionControl.organizacion.rutOrg}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
-                                    <f:validateLength minimum="1" maximum="1" />
-                            </p:inputText>
                             </div>
                             
                             <div class="ui-g-12">
@@ -56,9 +47,8 @@
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText placeholder="Fono" validatorMessage="Ingrese Fono Valido" class="validate" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Fono por favor">
-                                    <f:validateLength minimum="1" maximum="20" />
-                                    <f:validateRegex pattern="[0-9]+" />
+                                <p:inputText placeholder="Fono" value="#{organizacionControl.organizacion.fonoOrg}" required="true" requiredMessage="Ingrese Fono por favor">
+                                    <f:validateLength minimum="1" maximum="10" />
                                 </p:inputText>
                             </div>
                         </div>

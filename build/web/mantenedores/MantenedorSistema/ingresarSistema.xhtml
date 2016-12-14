@@ -54,6 +54,7 @@
                                 </p:selectOneMenu>
                             </div>
                             <div class="ui-g-12">
+                                <p:outputLabel value="Nivel de Seguridad" />
                                 <p:selectOneButton id="nivseg" value="#{sistemaControl.idNivSeg}" required="true" requiredMessage="Seleccione Nivel Seguridad por favor">
                                     <f:selectItems value="#{nivSegControl.mostrarNivSeg()}" />
                                 </p:selectOneButton>

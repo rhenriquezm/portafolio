@@ -22,7 +22,7 @@
         <property name="correoOrg" type="string">
             <column name="CORREO_ORG" length="20" not-null="true" />
         </property>
-        <property name="fonoOrg" type="long">
+        <property name="fonoOrg" type="integer">
             <column name="FONO_ORG" precision="10" scale="0" not-null="true" />
         </property>
         <set name="sistemas" table="SISTEMA" inverse="true" lazy="true" fetch="select">
