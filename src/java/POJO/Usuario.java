@@ -16,8 +16,7 @@ public class Usuario  implements java.io.Serializable {
      private UnidadTrabajo unidadTrabajo;
      private String userUsuario;
      private String passUsuario;
-     private Integer rutUsuario;
-     private char dvUsuario;
+     private String rutUsuario;
      private String nomUsuario;
      private String patUsuario;
      private String matUsuario;
@@ -31,12 +30,11 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(short idUsuario, String userUsuario, String passUsuario, Integer rutUsuario, char dvUsuario, String nomUsuario, String patUsuario, String matUsuario, char sexoUsuario, String correoUsuario, Integer fonoUsuario) {
+    public Usuario(short idUsuario, String userUsuario, String passUsuario, String rutUsuario, char dvUsuario, String nomUsuario, String patUsuario, String matUsuario, char sexoUsuario, String correoUsuario, Integer fonoUsuario) {
         this.idUsuario = idUsuario;
         this.userUsuario = userUsuario;
         this.passUsuario = passUsuario;
         this.rutUsuario = rutUsuario;
-        this.dvUsuario = dvUsuario;
         this.nomUsuario = nomUsuario;
         this.patUsuario = patUsuario;
         this.matUsuario = matUsuario;
@@ -44,14 +42,13 @@ public class Usuario  implements java.io.Serializable {
         this.correoUsuario = correoUsuario;
         this.fonoUsuario = fonoUsuario;
     }
-    public Usuario(short idUsuario, Perfil perfil, UnidadTrabajo unidadTrabajo, String userUsuario, String passUsuario, Integer rutUsuario, char dvUsuario, String nomUsuario, String patUsuario, String matUsuario, char sexoUsuario, String correoUsuario, Integer fonoUsuario, Set servidors, Set sistemas) {
+    public Usuario(short idUsuario, Perfil perfil, UnidadTrabajo unidadTrabajo, String userUsuario, String passUsuario, String rutUsuario, char dvUsuario, String nomUsuario, String patUsuario, String matUsuario, char sexoUsuario, String correoUsuario, Integer fonoUsuario, Set servidors, Set sistemas) {
        this.idUsuario = idUsuario;
        this.perfil = perfil;
        this.unidadTrabajo = unidadTrabajo;
        this.userUsuario = userUsuario;
        this.passUsuario = passUsuario;
        this.rutUsuario = rutUsuario;
-       this.dvUsuario = dvUsuario;
        this.nomUsuario = nomUsuario;
        this.patUsuario = patUsuario;
        this.matUsuario = matUsuario;
@@ -97,20 +94,14 @@ public class Usuario  implements java.io.Serializable {
     public void setPassUsuario(String passUsuario) {
         this.passUsuario = passUsuario;
     }
-    public Integer getRutUsuario() {
+    public String getRutUsuario() {
         return this.rutUsuario;
     }
     
-    public void setRutUsuario(Integer rutUsuario) {
+    public void setRutUsuario(String rutUsuario) {
         this.rutUsuario = rutUsuario;
     }
-    public char getDvUsuario() {
-        return this.dvUsuario;
-    }
-    
-    public void setDvUsuario(char dvUsuario) {
-        this.dvUsuario = dvUsuario;
-    }
+   
     public String getNomUsuario() {
         return this.nomUsuario;
     }

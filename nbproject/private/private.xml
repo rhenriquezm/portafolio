@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/src/java/Validator/ValidatorRut.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/web/mantenedores/MantenedorUsuario/ingresarUsuario.xhtml</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/src/java/controlador/ContGarControl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/src/java/Validator/ValidatorVacio.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/src/java/Validator/ValidatorEmail.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/src/java/controlador/UsuarioControl.java</file>
+            <file>file:/C:/Users/Rorro/Desktop/Proyecto%20Actualizado/portafolio/web/mantenedores/MantenedorContGar/ingresarContGar.xhtml</file>
+        </group>
     </open-files>
 </project-private>

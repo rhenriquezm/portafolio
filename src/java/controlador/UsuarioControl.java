@@ -136,16 +136,22 @@ public class UsuarioControl {
             this.usuario.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
             this.usuario.setPassUsuario(Encrypt.sha512(getUsuario().getPassUsuario()));
             boolean ingresado = usuarioDao.insert(this.usuario);
-            if (ingresado) {
-                limpiarIngresar();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
-            } else if (this.idPerfil == 0) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Perfil "));
-            } else if (this.idUniTrab == 0) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Unidad de Trabajo"));
-            } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido ingresado exitosamente"));
+
+            if (usuarioDao.getNombreUsuario(this.usuario.getNomUsuario()) == null ){
+                if (ingresado) {
+                    limpiarIngresar();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario ingresado exitosamente"));
+                } else if (this.idPerfil == 0) {
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Perfil "));
+                } else if (this.idUniTrab == 0) {
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Seleccione Unidad de Trabajo"));
+                } else {
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Usuario no ha sido ingresado exitosamente"));
+                }
+            }else{
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", "Nombre de Usuario existe"));
             }
+
         } catch (Exception ex) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR FATAL!", "Ha ocurrido un error al ingresar Usuario " + ex.getMessage()));
         }
@@ -210,7 +216,6 @@ public class UsuarioControl {
             usu.setPatUsuario(usuario.getPatUsuario());
             usu.setMatUsuario(usuario.getMatUsuario());
             usu.setRutUsuario(usuario.getRutUsuario());
-            usu.setDvUsuario(usuario.getDvUsuario());
             usu.setSexoUsuario(usuario.getSexoUsuario());
             usu.setCorreoUsuario(usuario.getCorreoUsuario());
             usu.setFonoUsuario(usuario.getFonoUsuario());
@@ -222,6 +227,7 @@ public class UsuarioControl {
             usu.setUnidadTrabajo(utDao.getById(getIdUniTrab()));
 
             boolean modificado = usDao.update(usu);
+
             if (modificado) {
                 limpiarIngresar();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EXITO!", "Usuario modificada exitosamente"));
@@ -272,14 +278,13 @@ public class UsuarioControl {
         usuario.setPatUsuario(null);
         usuario.setMatUsuario(null);
         usuario.setRutUsuario(null);
-        usuario.setDvUsuario(Character.MIN_VALUE);
         usuario.setSexoUsuario(Character.MIN_VALUE);
         usuario.setCorreoUsuario(null);
         usuario.setFonoUsuario(null);
         usuario.setUserUsuario(null);
         usuario.setPassUsuario(null);
         usuario.setIdUsuario((short) 0);
-        setIdUsuario((short)0);
+        setIdUsuario((short) 0);
         setIdPerfil((short) 0);
         setIdUniTrab((short) 0);
 

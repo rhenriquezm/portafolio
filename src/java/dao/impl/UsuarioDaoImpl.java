@@ -96,7 +96,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
             usa.setPatUsuario(us.getPatUsuario());
             usa.setMatUsuario(us.getMatUsuario());
             usa.setRutUsuario(us.getRutUsuario());
-            usa.setDvUsuario(us.getDvUsuario());
             usa.setCorreoUsuario(us.getCorreoUsuario());
             usa.setUnidadTrabajo(us.getUnidadTrabajo());
             usa.setPerfil(us.getPerfil());
@@ -145,6 +144,26 @@ public class UsuarioDaoImpl implements UsuarioDao {
             Query query = session.createQuery(sql);
             query.setParameter("userUsuario", nombreUsuario);
             query.setParameter("passUsuario", contrasena);
+            this.transaction.commit();
+            return (Usuario) query.uniqueResult();
+        } catch (Exception e) {
+            if (this.transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error" + e.getMessage());
+        }
+        return null;
+    }
+    
+    @Override
+    public Usuario getNombreUsuario(String nombreUsuario) throws Exception {
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaction = this.session.beginTransaction();
+            //Recordar que los nombres de las entidades y campos corresponden a los pojos 
+            String sql = "FROM Usuario WHERE userUsuario=:nom_usuario";
+            Query query = session.createQuery(sql);
+            query.setParameter("nom_usuario", nombreUsuario);
             this.transaction.commit();
             return (Usuario) query.uniqueResult();
         } catch (Exception e) {

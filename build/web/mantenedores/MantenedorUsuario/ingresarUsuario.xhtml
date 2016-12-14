@@ -18,15 +18,16 @@
                 <div class="ui-g-12 ui-md-6 ui-lg-4">
                     <p:panel id="panel" header="Nuevo Usuario" style="text-align:center;background:#fff;height:100%">
                         <div class="ui-g">
+
                             <div class="ui-g-12">
                                 <p:inputText placeholder="Nombre" value="#{usuarioControl.usuario.nomUsuario}" required="true" requiredMessage="Ingrese Nombre por favor" >
                                     <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
-                            
+
                             <div class="ui-g-12">
                                 <p:inputText placeholder="Apellido Paterno" value="#{usuarioControl.usuario.patUsuario}" required="true" requiredMessage="Ingrese Apellido Paterno por favor" >
-                                    <f:validateLength minimum="2" maximum="20" />
+                                    <f:validateLength minimum="1" maximum="20" />
                                 </p:inputText>
                             </div>
 
@@ -36,77 +37,65 @@
                                 </p:inputText>
                             </div>
 
-                            <div class="ui-g-8">
-                                <p:inputText validatorMessage="Ingrese Rut Valido" class="validate" placeholder="Rut Sin Puntos" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
-                                    <f:validateLength minimum="8" maximum="8" />
-                                    <f:validateRegex pattern="[0-9]+" />
+                            <div class="ui-g-12">
+                                <p:inputText class="validate" placeholder="Rut" value="#{usuarioControl.usuario.rutUsuario}" required="true" requiredMessage="Ingrese Rut por favor" >
+                                    <f:validator validatorId="ValidatorRut"/>
                                 </p:inputText>
                             </div>
-                            <div class="ui-g-1">
-                                -
-                            </div>
-
-                            <div class="ui-g-3">
-                                <p:inputText validatorMessage="Ingrese DV Valido" class="validate" placeholder="DV" value="#{usuarioControl.usuario.dvUsuario}" required="true" requiredMessage="Ingrese Digito Verificador por favor" >
-                                    <f:validateLength minimum="1" maximum="1" />
-                                    <f:validateRegex pattern="[Kk0-9]" />
-                            </p:inputText>
-                            </div>
+                            
 
                             <div class="ui-g-12">
                                 <p:selectOneButton value="#{usuarioControl.usuario.sexoUsuario}" required="true" requiredMessage="Seleccione Sexo por favor" >
-                                <f:selectItems value="#{usuarioControl.sexo}" />
-                            </p:selectOneButton>
+                                    <f:selectItems value="#{usuarioControl.sexo}" />
+                                </p:selectOneButton>
                             </div>
 
                             <div class="ui-g-12">
                                 <p:inputText validatorMessage="Formato Correo incorrecto" class="validate" placeholder="Correo" value="#{usuarioControl.usuario.correoUsuario}" required="true" requiredMessage="Ingrese Correo por favor" >
-                                    <f:validateLength minimum="5" maximum="20" />
+                                    <f:validateLength minimum="6" maximum="30" />
                                     <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </p:inputText>
+                                </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
-                                <p:inputText validatorMessage="Ingrese Fono Valido" class="validate" placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
-                                <f:validateLength minimum="2" />
-                                <f:validateRegex pattern="[0-9]+" />
-                            </p:inputText>
+                                <p:inputText placeholder="Fono" value="#{usuarioControl.usuario.fonoUsuario}" required="true" requiredMessage="Ingrese Fono por favor" >
+                                    <f:validateLength minimum="2" maximum="8" />
+                                </p:inputText>
                             </div>
 
                             <div class="ui-g-12">
                                 <p:inputText placeholder="Username" value="#{usuarioControl.usuario.userUsuario}" required="true" requiredMessage="Ingrese Usuario por favor" >
-                                <f:validateLength minimum="2" />
-                            </p:inputText>
+                                    <f:validateLength minimum="2" maximum="20" />
+                                </p:inputText>
                             </div>
                             <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
                                 <p:password id="pwd1" placeholder="Password" value="#{usuarioControl.usuario.passUsuario}" match="pwd2" label="Password 1" required="true" requiredMessage="Ingrese Contraseña por favor" />
                                 <p:password id="pwd2" placeholder="Confirme Password" value="#{usuarioControl.usuario.passUsuario}" label="Password 2" required="true" requiredMessage="Ingrese Contraseña por favor" />
                             </h:panelGrid>
-                                                        
+
                             <div class="ui-g-12">
                                 <p:selectOneMenu id="perfil" value="#{usuarioControl.idPerfil}" required="true" requiredMessage="Seleccione Perfil favor" >
                                     <f:selectItem itemLabel="Seleccione Perfil..." itemValue="" noSelectionOption="true"/>
-                                <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
-                            </p:selectOneMenu>
+                                    <f:selectItems value="#{perfilControl.mostrarPerfiles()}" />
+                                </p:selectOneMenu>
                             </div>
-                        
+
                             <div class="ui-g-12">
                                 <p:selectOneMenu id="ut" value="#{usuarioControl.idUniTrab}" required="true" requiredMessage="Seleccione Unidad de Trabajo por favor" >
                                     <f:selectItem itemLabel="Seleccione Unidad de Trabajo..." itemValue="" noSelectionOption="true"/>
-                                <f:selectItems value="#{uTControl.mostrarUTs()}" />
-                            </p:selectOneMenu>
+                                    <f:selectItems value="#{uTControl.mostrarUTs()}" />
+                                </p:selectOneMenu>
                             </div>
-
-                            
-                           
 
                         </div>
                         <p:commandButton update="panel" actionListener="#{usuarioControl.ingresarUsuario()}" value="Ingresar" icon="fa fa-check"/>
                     </p:panel>
                 </div>
+
                 <div class="ui-g-12 ui-lg-4">
 
                 </div>
+
             </div>
         </h:form>
     </ui:define>

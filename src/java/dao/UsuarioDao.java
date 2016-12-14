@@ -21,4 +21,5 @@ public interface UsuarioDao {
     
     public Usuario getByUserPass(String nombreUsuario, String contrasena) throws Exception;
     
+    public Usuario getNombreUsuario(String nombreUsuario) throws Exception;
 }

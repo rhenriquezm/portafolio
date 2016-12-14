@@ -44,9 +44,10 @@ public class ValidatorRut implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         if (!validarRut(value.toString())) {
             RequestContext requestContext = RequestContext.getCurrentInstance();
-            requestContext.execute("toast('El rut ingresado tiene un formato incorrecto','error')");
-            requestContext.execute("toast('}Ej 18379851-0','info')");
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:","Formato de incorrecto"));
+            
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", "El rut ingresado tiene un formato incorrecto. Ej: 18379851-0"));
+
+            
         }
     }
 

@@ -22,11 +22,8 @@
         <property name="passUsuario" type="string">
             <column name="PASS_USUARIO" length="128" not-null="true" />
         </property>
-        <property name="rutUsuario" type="int">
+        <property name="rutUsuario" type="string">
             <column name="RUT_USUARIO" precision="8" scale="0" not-null="true" />
-        </property>
-        <property name="dvUsuario" type="char">
-            <column name="DV_USUARIO" length="1" not-null="true" />
         </property>
         <property name="nomUsuario" type="string">
             <column name="NOM_USUARIO" length="20" not-null="true" />
